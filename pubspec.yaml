@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Logger
+  logger: ^2.1.0
+
   # State-manager
   flutter_bloc: ^8.1.4
 
@@ -25,6 +28,10 @@ dependencies:
   # Serialization
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  get_it: ^7.6.7
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +45,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true 

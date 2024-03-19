@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Logger
+  logger: ^2.1.0
+
   # State-manager
   flutter_bloc: ^8.1.4
 

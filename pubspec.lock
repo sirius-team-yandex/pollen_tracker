@@ -8,7 +8,7 @@ packages:
       sha256: ae92f5d747aee634b87f89d9946000c2de774be1d6ac3e58268224348cd0101a
       url: "https://pub.dev"
     source: hosted
-    version: "67.0.0"
+    version: "61.0.0"
   _flutterfire_internals:
     dependency: transitive
     description:
@@ -549,8 +549,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
-<<<<<<< HEAD
-=======
   path_provider:
     dependency: "direct main"
     description:
@@ -607,7 +605,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.4"
->>>>>>> sirius-team-yandex/develop
   plugin_platform_interface:
     dependency: transitive
     description:

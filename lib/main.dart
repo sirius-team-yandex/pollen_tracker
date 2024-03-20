@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
@@ -6,10 +8,15 @@ import 'package:pollen_tracker/injection_container.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
-void main() {
-  initializeDependencies(); // get_it
-
-  runApp(const PollenApp());
+void main() async {
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      initializeDependencies();
+      runApp(const PollenApp());
+    },
+    (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),
+  );
 }
 
 class PollenApp extends StatelessWidget {

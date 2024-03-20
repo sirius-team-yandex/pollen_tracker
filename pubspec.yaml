@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Firebase
+  firebase_core: ^2.27.1
+
   # Logger
   logger: ^2.1.0
 
@@ -32,6 +35,7 @@ dependencies:
     sdk: flutter
   intl: any
   get_it: ^7.6.7
+  firebase_crashlytics: ^3.4.19
 
 dev_dependencies:
   flutter_test:

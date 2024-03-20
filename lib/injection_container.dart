@@ -9,10 +9,13 @@ import 'package:pollen_tracker/domain/datasources/mood_local_storage_datasource.
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
+import 'package:pollen_tracker/app/firebase/init.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  //Firebase
+  initFirebase();
   // repositories
   sl.registerSingleton<PollenRepository>(PollenRepositoryMock());
   sl.registerSingleton<Dio>(_configureDio());

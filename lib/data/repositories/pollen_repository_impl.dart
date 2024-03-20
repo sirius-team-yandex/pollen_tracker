@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
-import 'package:pollen_tracker/domain/pollen_repository/pollen_repository.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
 class PollenRepositoryImpl implements PollenRepository {
   @override

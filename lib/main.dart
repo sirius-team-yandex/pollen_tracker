@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/injection_container.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -13,6 +14,7 @@ void main() async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       initializeDependencies();
+      logger.i('Starting app in main.dart');
       runApp(const PollenApp());
     },
     (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),

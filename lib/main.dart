@@ -15,7 +15,7 @@ void main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      initializeDependencies();
+      await initializeDependencies();
       logger.i('Starting app in main.dart');
       runApp(const PollenApp());
     },

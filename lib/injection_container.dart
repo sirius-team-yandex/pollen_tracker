@@ -17,6 +17,13 @@ import 'package:pollen_tracker/app/firebase/init.dart';
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  // mappers
+  sl.registerSingleton<MoodRecordModelIsarToEntityMapper>(MoodRecordModelIsarToEntityMapper());
+  sl.registerSingleton<MoodRecordEntityToModelIsarMapper>(MoodRecordEntityToModelIsarMapper());
+  sl.registerSingleton<PollenDtoToPollenEntityMappper>(PollenDtoToPollenEntityMappper());
+  sl.registerSingleton<PollenModelToPollenEntityMapper>(PollenModelToPollenEntityMapper());
+  sl.registerSingleton<PollenEntityToPollenModelMapper>(PollenEntityToPollenModelMapper());
+
   //Firebase
   initFirebase();
   // repositories
@@ -24,12 +31,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<Dio>(_configureDio());
   sl.registerSingleton<MoodLocalStorageDatasourceIsar>(MoodLocalStorageDatasourceIsar());
   sl.registerSingleton<MoodRecordRepository>(MoodRecordRepositoryIsarImpl(sl()));
-  // mappers
-  sl.registerSingleton<PollenDtoToPollenEntityMappper>(PollenDtoToPollenEntityMappper());
-  sl.registerSingleton<PollenModelToPollenEntityMapper>(PollenModelToPollenEntityMapper());
-  sl.registerSingleton<PollenEntityToPollenModelMapper>(PollenEntityToPollenModelMapper());
-  sl.registerSingleton<MoodRecordModelIsarToEntityMapper>(MoodRecordModelIsarToEntityMapper());
-  sl.registerSingleton<MoodRecordEntityToModelIsarMapper>(MoodRecordEntityToModelIsarMapper());
+
   // blocs
   // sl.registerSingleton<SomeBloc>(SomeBloc(sl()));
 

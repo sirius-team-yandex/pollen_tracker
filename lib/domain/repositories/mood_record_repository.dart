@@ -1,8 +1,8 @@
-import 'package:pollen_tracker/data/models/local/mood_record_model.dart';
+import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 
 abstract class MoodRecordRepository {
-  Future<List<MoodRecordModel>> fetchAllmoodRecordModels();
-  Future<int?> insertMoodRecordModel(MoodRecordModel moodRecordModel);
-  Future<int?> updateMoodRecordModel(MoodRecordModel moodRecordModel);
+  Future<List<MoodRecordEntity>> fetchAllmoodRecordModels();
+  Future<int?> insertMoodRecordModel(MoodRecordEntity moodRecordModel);
+  Future<int?> updateMoodRecordModel(MoodRecordEntity moodRecordModel);
   Future<bool> deleteMoodRecord(int id);
 }

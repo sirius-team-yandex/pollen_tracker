@@ -6,9 +6,9 @@ import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/common/enum/mood_type_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
-import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/injection_container.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -41,7 +41,7 @@ class PollenApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        locale: Locale('ru'), // change it later
+        locale: const Locale('ru'), // change it later
         supportedLocales: const [
           Locale('en'), // English
           Locale('ru'), // Russian
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
       children: [
         Text(
           '${AppLocalizations.of(context).health_check})',
-          style: GetIt.I<AppThemeData>().textTheme.headline2,
+          style: GetIt.I<AppThemeData>().textTheme.displayMedium,
         ),
         IconButton(
             onPressed: () {
@@ -78,6 +78,43 @@ class HomePage extends StatelessWidget {
             },
             icon: const Icon(Icons.add))
       ],
+    );
+  }
+}
+
+// Kill it with fire when we will find better solution
+
+class TestPage extends StatefulWidget {
+  const TestPage({super.key});
+
+  @override
+  State<TestPage> createState() => _TestPageState();
+}
+
+class _TestPageState extends State<TestPage> {
+  String state = 'Default state';
+
+  // In case of async state
+  void loadState() async {
+    var repo = GetIt.I<PollenRepository>();
+    var entity = await repo.getPollenEntities(0, 0);
+
+    setState(() {
+      state = entity.toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'state: $state',
+      style: GetIt.I<AppThemeData>().textTheme.displayMedium,
     );
   }
 }

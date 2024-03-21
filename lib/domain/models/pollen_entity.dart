@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pollen_tracker/data/models/local/species_enums.dart';
+import 'package:pollen_tracker/common/enums/species_enums.dart';
 
 part 'pollen_entity.freezed.dart';
 

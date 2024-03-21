@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/data/mappers/pollen_dto_to_pollen_entity_mapper.dart';
-import 'package:pollen_tracker/data/models/local/pollen_entity.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
+import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
 class PollenRepositoryMock implements PollenRepository {

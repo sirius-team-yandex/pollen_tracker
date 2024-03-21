@@ -1,6 +1,6 @@
-import 'package:pollen_tracker/data/models/local/pollen_entity.dart';
-import 'package:pollen_tracker/data/models/local/species_enums.dart';
+import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
+import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
 class PollenDtoToPollenEntityMappper {
   List<PollenEntity> map(AmbeeDto dto) {

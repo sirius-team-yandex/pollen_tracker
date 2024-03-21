@@ -19,7 +19,7 @@ Future<void> initializeDependencies() async {
   // repositories
   sl.registerSingleton<PollenRepository>(PollenRepositoryMock());
   sl.registerSingleton<Dio>(_configureDio());
-  sl.registerSingleton<MoodLocalStorageDatasourceIsar>(await MoodLocalStorageDatasourceIsar.create());
+  sl.registerSingleton<MoodLocalStorageDatasourceIsar>(MoodLocalStorageDatasourceIsar());
   sl.registerSingleton<MoodRecordRepository>(MoodRecordRepositoryIsarImpl(sl()));
   // blocs
   // sl.registerSingleton<SomeBloc>(SomeBloc(sl()));

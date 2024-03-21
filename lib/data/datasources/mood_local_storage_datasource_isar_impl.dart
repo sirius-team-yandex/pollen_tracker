@@ -3,46 +3,56 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 
 class MoodLocalStorageDatasourceIsar {
-  late final Isar isar;
+  Isar? isar;
 
-  MoodLocalStorageDatasourceIsar._(this.isar);
-
-  static Future<MoodLocalStorageDatasourceIsar> create() async {
+  MoodLocalStorageDatasourceIsar();
+  Future<Isar> _getIsarInstance() async {
+    if (isar != null) {
+      return isar!;
+    }
     final dir = await getApplicationDocumentsDirectory();
-    final isarInstance = await Isar.open(
+    return Isar.open(
       [MoodRecordModelIsarSchema],
       directory: dir.path,
     );
-    return MoodLocalStorageDatasourceIsar._(isarInstance);
   }
 
   Future<bool> deleteMoodRecord(int id) async {
     late bool deleted;
-    await isar.writeTxn(() async {
-      deleted = await isar.moodRecordModelIsars.delete(id);
-    });
+    isar ??= await _getIsarInstance();
+    await isar?.writeTxn(
+      () async {
+        deleted = await isar!.moodRecordModelIsars.delete(id);
+      },
+    );
     return deleted;
   }
 
   Future<List<MoodRecordModelIsar>> fetchAllmoodRecordModels() async {
-    final moodRecordModels = await isar.moodRecordModelIsars.where().findAll();
+    isar ??= await _getIsarInstance();
+    final moodRecordModels = await isar!.moodRecordModelIsars.where().findAll();
     return moodRecordModels;
   }
 
   Future<int?> insertMoodRecordModel(MoodRecordModelIsar moodRecordModel) async {
     late int id;
-
-    await isar.writeTxn(() async {
-      id = await isar.moodRecordModelIsars.put(moodRecordModel);
-    });
+    isar ??= await _getIsarInstance();
+    await isar?.writeTxn(
+      () async {
+        id = await isar!.moodRecordModelIsars.put(moodRecordModel);
+      },
+    );
     return id;
   }
 
   Future<int?> updateMoodRecordModel(MoodRecordModelIsar moodRecordModel) async {
     late int id;
-    await isar.writeTxn(() async {
-      id = await isar.moodRecordModelIsars.put(moodRecordModel);
-    });
+    isar ??= await _getIsarInstance();
+    await isar?.writeTxn(
+      () async {
+        id = await isar!.moodRecordModelIsars.put(moodRecordModel);
+      },
+    );
     return id;
   }
 }

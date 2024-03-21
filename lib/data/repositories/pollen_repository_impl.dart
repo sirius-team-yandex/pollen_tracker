@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/mappers/pollen_dto_to_pollen_entity_mapper.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
-@Injectable(as: PollenRepository, env: [Environment.prod])
+@Injectable(as: PollenRepository, env: [Environment.test, Environment.prod])
 class PollenRepositoryImpl implements PollenRepository {
   PollenRepositoryImpl({
     required this.dio,

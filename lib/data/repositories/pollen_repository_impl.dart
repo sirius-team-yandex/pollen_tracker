@@ -6,24 +6,26 @@ import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
 class PollenRepositoryImpl implements PollenRepository {
-
-  static const _apiHeader = 'x-api-key';
+  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY')
+      ? String.fromEnvironment('AMBEE_KEY')
+      : null;
 
   final _url = 'latest/pollen/by-lat-lng';
-  final Map<String, dynamic> _headers = {
-    _apiHeader: const String.fromEnvironment('AMBEE_KEY'),
+  static final Map<String, dynamic> _headers = {
+    'x-api-key': _apiHeader,
     'Content-type': 'application/json',
   };
 
+  final dio = GetIt.I<Dio>();
+  final options = Options(headers: _headers);
+
   @override
   Future<List<PollenEntity>> getPollenEntities(double lat, double lng) async {
-    if (_apiHeader.isEmpty) {
+    if (_apiHeader == null) {
       throw AssertionError('AMBEE_KEY is not set');
     }
 
     final Map<String, dynamic> queries = {'lat': lat, 'lng': lng};
-    final dio = GetIt.I<Dio>();
-    final options = Options(headers: _headers);
 
     final rs = await dio.get(
       _url,

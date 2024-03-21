@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'pollen_dm.dart';
+part of 'pollen_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PollenDm {
+mixin _$PollenEntity {
   DateTime get time => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get lng => throw _privateConstructorUsedError;
   Map<Species, int> get levels => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PollenDmCopyWith<PollenDm> get copyWith =>
+  $PollenEntityCopyWith<PollenEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PollenDmCopyWith<$Res> {
-  factory $PollenDmCopyWith(PollenDm value, $Res Function(PollenDm) then) =
-      _$PollenDmCopyWithImpl<$Res, PollenDm>;
+abstract class $PollenEntityCopyWith<$Res> {
+  factory $PollenEntityCopyWith(
+          PollenEntity value, $Res Function(PollenEntity) then) =
+      _$PollenEntityCopyWithImpl<$Res, PollenEntity>;
   @useResult
   $Res call({DateTime time, double lat, double lng, Map<Species, int> levels});
 }
 
 /// @nodoc
-class _$PollenDmCopyWithImpl<$Res, $Val extends PollenDm>
-    implements $PollenDmCopyWith<$Res> {
-  _$PollenDmCopyWithImpl(this._value, this._then);
+class _$PollenEntityCopyWithImpl<$Res, $Val extends PollenEntity>
+    implements $PollenEntityCopyWith<$Res> {
+  _$PollenEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,22 +75,22 @@ class _$PollenDmCopyWithImpl<$Res, $Val extends PollenDm>
 }
 
 /// @nodoc
-abstract class _$$PollenDmImplCopyWith<$Res>
-    implements $PollenDmCopyWith<$Res> {
-  factory _$$PollenDmImplCopyWith(
-          _$PollenDmImpl value, $Res Function(_$PollenDmImpl) then) =
-      __$$PollenDmImplCopyWithImpl<$Res>;
+abstract class _$$PollenEntityImplCopyWith<$Res>
+    implements $PollenEntityCopyWith<$Res> {
+  factory _$$PollenEntityImplCopyWith(
+          _$PollenEntityImpl value, $Res Function(_$PollenEntityImpl) then) =
+      __$$PollenEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime time, double lat, double lng, Map<Species, int> levels});
 }
 
 /// @nodoc
-class __$$PollenDmImplCopyWithImpl<$Res>
-    extends _$PollenDmCopyWithImpl<$Res, _$PollenDmImpl>
-    implements _$$PollenDmImplCopyWith<$Res> {
-  __$$PollenDmImplCopyWithImpl(
-      _$PollenDmImpl _value, $Res Function(_$PollenDmImpl) _then)
+class __$$PollenEntityImplCopyWithImpl<$Res>
+    extends _$PollenEntityCopyWithImpl<$Res, _$PollenEntityImpl>
+    implements _$$PollenEntityImplCopyWith<$Res> {
+  __$$PollenEntityImplCopyWithImpl(
+      _$PollenEntityImpl _value, $Res Function(_$PollenEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +101,7 @@ class __$$PollenDmImplCopyWithImpl<$Res>
     Object? lng = null,
     Object? levels = null,
   }) {
-    return _then(_$PollenDmImpl(
+    return _then(_$PollenEntityImpl(
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -123,8 +124,8 @@ class __$$PollenDmImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PollenDmImpl with DiagnosticableTreeMixin implements _PollenDm {
-  const _$PollenDmImpl(
+class _$PollenEntityImpl with DiagnosticableTreeMixin implements _PollenEntity {
+  const _$PollenEntityImpl(
       {required this.time,
       required this.lat,
       required this.lng,
@@ -147,14 +148,14 @@ class _$PollenDmImpl with DiagnosticableTreeMixin implements _PollenDm {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PollenDm(time: $time, lat: $lat, lng: $lng, levels: $levels)';
+    return 'PollenEntity(time: $time, lat: $lat, lng: $lng, levels: $levels)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'PollenDm'))
+      ..add(DiagnosticsProperty('type', 'PollenEntity'))
       ..add(DiagnosticsProperty('time', time))
       ..add(DiagnosticsProperty('lat', lat))
       ..add(DiagnosticsProperty('lng', lng))
@@ -165,7 +166,7 @@ class _$PollenDmImpl with DiagnosticableTreeMixin implements _PollenDm {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PollenDmImpl &&
+            other is _$PollenEntityImpl &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
@@ -179,16 +180,16 @@ class _$PollenDmImpl with DiagnosticableTreeMixin implements _PollenDm {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PollenDmImplCopyWith<_$PollenDmImpl> get copyWith =>
-      __$$PollenDmImplCopyWithImpl<_$PollenDmImpl>(this, _$identity);
+  _$$PollenEntityImplCopyWith<_$PollenEntityImpl> get copyWith =>
+      __$$PollenEntityImplCopyWithImpl<_$PollenEntityImpl>(this, _$identity);
 }
 
-abstract class _PollenDm implements PollenDm {
-  const factory _PollenDm(
+abstract class _PollenEntity implements PollenEntity {
+  const factory _PollenEntity(
       {required final DateTime time,
       required final double lat,
       required final double lng,
-      required final Map<Species, int> levels}) = _$PollenDmImpl;
+      required final Map<Species, int> levels}) = _$PollenEntityImpl;
 
   @override
   DateTime get time;
@@ -200,6 +201,6 @@ abstract class _PollenDm implements PollenDm {
   Map<Species, int> get levels;
   @override
   @JsonKey(ignore: true)
-  _$$PollenDmImplCopyWith<_$PollenDmImpl> get copyWith =>
+  _$$PollenEntityImplCopyWith<_$PollenEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

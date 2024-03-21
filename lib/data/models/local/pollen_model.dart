@@ -1,10 +1,9 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 
-part 'pollen_record_model.g.dart';
+part 'pollen_model.g.dart';
 
 @collection
-class PollenRecordModel {
+class PollenModel {
   Id id = Isar.autoIncrement;
   // Meta
   DateTime time;
@@ -39,7 +38,7 @@ class PollenRecordModel {
   int grass;
   // Others
   int others;
-  PollenRecordModel({
+  PollenModel({
     // Meta
     required this.time,
     required this.lat,

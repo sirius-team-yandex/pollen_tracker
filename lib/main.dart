@@ -7,6 +7,7 @@ import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/injection_container.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -63,17 +64,57 @@ class HomePage extends StatelessWidget {
       children: [
         Text(
           '${AppLocalizations.of(context).health_check})',
-          style: GetIt.I<AppThemeData>().textTheme.headline2,
+          style: GetIt.I<AppThemeData>().textTheme.displayMedium,
         ),
         IconButton(
-            onPressed: () {
-              GetIt.I<MoodRecordRepository>().insertMoodRecordModel(MoodRecordModel(
+          onPressed: () {
+            GetIt.I<MoodRecordRepository>().insertMoodRecordModel(
+              MoodRecordModel(
                 date: DateTime.now(),
                 moodType: MoodType.veryBad,
-              ));
-            },
-            icon: const Icon(Icons.add))
+              ),
+            );
+          },
+          icon: const Icon(Icons.add),
+        ),
       ],
+    );
+  }
+}
+
+// Kill it with fire when we will find better solution
+
+class TestPage extends StatefulWidget {
+  const TestPage({super.key});
+
+  @override
+  State<TestPage> createState() => _TestPageState();
+}
+
+class _TestPageState extends State<TestPage> {
+  String state = 'Default state';
+
+  // In case of async state
+  void loadState() async {
+    var repo = GetIt.I<PollenRepository>();
+    var entity = await repo.getPollenEntities(0, 0);
+
+    setState(() {
+      state = entity.toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'state: $state',
+      style: GetIt.I<AppThemeData>().textTheme.displayMedium,
     );
   }
 }

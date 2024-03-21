@@ -1,13 +1,14 @@
-import 'package:pollen_tracker/data/models/local/pollen_dm.dart';
-import 'package:pollen_tracker/data/models/local/pollen_record_model.dart';
+import 'package:pollen_tracker/data/models/local/pollen_entity.dart';
+import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 import 'package:pollen_tracker/data/models/local/species_enums.dart';
 
-class RecordToDmMapper {
-  List<PollenDm> map(List<PollenRecordModel> records) {
-    List<PollenDm> res = List.empty(growable: true);
+class PollenModelToPollenEntityMapper {
+  List<PollenEntity> map(List<PollenModel> records) {
+    List<PollenEntity> res = List.empty(growable: true);
 
     for (var record in records) {
-      res.add(PollenDm(
+      res.add(
+        PollenEntity(
           time: record.time,
           lat: record.lat,
           lng: record.lng,
@@ -41,7 +42,9 @@ class RecordToDmMapper {
             Species.grass: record.grass,
             // Others
             Species.others: record.others,
-          }));
+          },
+        ),
+      );
     }
 
     return res;

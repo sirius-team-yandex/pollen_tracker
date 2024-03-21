@@ -1,5 +1,5 @@
-import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
+import 'package:pollen_tracker/data/models/local/pollen_entity.dart';
 
 abstract class PollenRepository {
-    Future<AmbeeDto> getPollenDto(double lat, double lng);
+  Future<List<PollenEntity>> getPollenEntities(double lat, double lng);
 }

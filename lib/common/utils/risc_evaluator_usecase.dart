@@ -3,16 +3,16 @@ import 'package:pollen_tracker/data/models/local/risc_enum.dart';
 import 'package:pollen_tracker/data/models/local/species_enums.dart';
 
 class RiscEvaluatorUseCase {
-  RiscLevel evaluateType(
-    PollenDm dm,
+  static RiscLevel evaluateType(
+    PollenEntity dm,
     List<Species> targets,
     SpeciesType targetType,
   ) {
     return evaluate(dm, targets)[targetType] ?? RiscLevel.low;
   }
 
-  Map<SpeciesType, RiscLevel> evaluate(
-    PollenDm dm,
+  static Map<SpeciesType, RiscLevel> evaluate(
+    PollenEntity dm,
     List<Species> targets,
   ) {
     Map<SpeciesType, int> counts = {};

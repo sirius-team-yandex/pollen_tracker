@@ -1,34 +1,39 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pollen_tracker/data/mappers/pollen_dto_to_pollen_entity_mapper.dart';
+import 'package:pollen_tracker/data/models/local/pollen_entity.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
 class PollenRepositoryImpl implements PollenRepository {
+
+  static const _apiHeader = 'x-api-key';
+
+  final _url = 'latest/pollen/by-lat-lng';
+  final Map<String, dynamic> _headers = {
+    _apiHeader: const String.fromEnvironment('AMBEE_KEY'),
+    'Content-type': 'application/json',
+  };
+
   @override
-  Future<AmbeeDto> getPollenDto(double lat, double lng) async {
-    const ambeeApiKey = String.fromEnvironment('AMBEE_KEY');
-    if (ambeeApiKey.isEmpty) {
+  Future<List<PollenEntity>> getPollenEntities(double lat, double lng) async {
+    if (_apiHeader.isEmpty) {
       throw AssertionError('AMBEE_KEY is not set');
     }
 
-    final url = "latest/pollen/by-lat-lng";
-    final Map<String, dynamic> headers = {
-      "x-api-key":
-          ambeeApiKey,
-      "Content-type": "application/json"
-    };
-    final Map<String, dynamic> queries = {"lat": lat, "lng": lng};
+    final Map<String, dynamic> queries = {'lat': lat, 'lng': lng};
     final dio = GetIt.I<Dio>();
-    final options = Options(headers: headers);
+    final options = Options(headers: _headers);
 
     final rs = await dio.get(
-      url,
+      _url,
       options: options,
       queryParameters: queries,
     );
 
-    return AmbeeDto.fromJson(rs.data);
+    PollenDtoToPollenEntityMappper mapper =
+        GetIt.I<PollenDtoToPollenEntityMappper>();
+
+    return mapper.map(AmbeeDto.fromJson(rs.data));
   }
 }

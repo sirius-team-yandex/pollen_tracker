@@ -1,11 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/mappers/pollen_dto_to_pollen_entity_mapper.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 
+@Injectable(as: PollenRepository, env: [Environment.prod])
 class PollenRepositoryImpl implements PollenRepository {
+  PollenRepositoryImpl({
+    required this.dio,
+    required this.pollenDtoToPollenEntityMapper,
+  });
+
   static const _apiHeader = bool.hasEnvironment('AMBEE_KEY')
       ? String.fromEnvironment('AMBEE_KEY')
       : null;
@@ -16,8 +23,9 @@ class PollenRepositoryImpl implements PollenRepository {
     'Content-type': 'application/json',
   };
 
-  final dio = GetIt.I<Dio>();
+  final Dio dio;
   final options = Options(headers: _headers);
+  final PollenDtoToPollenEntityMappper pollenDtoToPollenEntityMapper;
 
   @override
   Future<List<PollenEntity>> getPollenEntities(double lat, double lng) async {
@@ -33,9 +41,6 @@ class PollenRepositoryImpl implements PollenRepository {
       queryParameters: queries,
     );
 
-    PollenDtoToPollenEntityMappper mapper =
-        GetIt.I<PollenDtoToPollenEntityMappper>();
-
-    return mapper.map(AmbeeDto.fromJson(rs.data));
+    return pollenDtoToPollenEntityMapper.map(AmbeeDto.fromJson(rs.data));
   }
 }

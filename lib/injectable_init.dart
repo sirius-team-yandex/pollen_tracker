@@ -22,16 +22,15 @@ abstract class Module {
         BaseOptions(
           baseUrl: Config.pollenApi,
         ),
-      )
-    ..interceptors.add(
-      PrettyDioLogger(
-        requestHeader: false,
-        requestBody: true,
-        responseBody: true,
-        responseHeader: false,
-        error: true,
-        compact: true,
-        maxWidth: 90,
-      ),
-    );
+      )..interceptors.add(
+          PrettyDioLogger(
+            requestHeader: false,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90,
+          ),
+        );
 }

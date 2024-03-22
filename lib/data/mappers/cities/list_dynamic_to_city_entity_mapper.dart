@@ -1,5 +1,7 @@
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 
+@injectable
 class ListDynamicToCityEntityMapper {
   T? _cast<T>(x) => x is T ? x : null;
 

@@ -17,7 +17,6 @@ class ProfileRepositoryIsarImpl implements ProfileRepository {
   final ProfileModelIsarToEntityMapper profileModelIsarToEntityMapper;
   final ProfileEntityToModelIsarMapper profileEntityToModelIsarMapper;
 
-
   @override
   Future<List<ProfileEntity>> fetchAllProfileModels() async {
     final List<ProfileEntity> profilesEntities =

@@ -96,7 +96,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _profileSelection(
-      SelectProfile event, Emitter<ProfileState> emit,) async {
+    SelectProfile event,
+    Emitter<ProfileState> emit,
+  ) async {
     try {
       int? id = event.id;
       if (id == null) {
@@ -119,7 +121,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _endRegistration(
-      EndRegistration event, Emitter<ProfileState> emit,) async {
+    EndRegistration event,
+    Emitter<ProfileState> emit,
+  ) async {
     try {
       emit(
         ProfileState.inProfile(event.profile),
@@ -142,7 +146,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _changeProfile(
-      ChangeProfile event, Emitter<ProfileState> emit,) async {
+    ChangeProfile event,
+    Emitter<ProfileState> emit,
+  ) async {
     //someaction
     try {
       emit(
@@ -155,7 +161,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _deleteProfile(
-      DeleteProfile event, Emitter<ProfileState> emit,) async {
+    DeleteProfile event,
+    Emitter<ProfileState> emit,
+  ) async {
     try {
       int id = event.id;
       bool success = await profileRepository.deleteProfileModel(id);
@@ -167,8 +175,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           );
           logger.i('Emit NoProfileState');
         } else {
-          _error(Exception('cant clear Config.lastIndex '), emit,
-              'Error on logOut',);
+          _error(
+            Exception('cant clear Config.lastIndex '),
+            emit,
+            'Error on logOut',
+          );
         }
       } else {
         _error(Exception('cant delete profile'), emit, 'Error on logOut');
@@ -179,8 +190,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
   }
 
-  Future<void> _error(Object e, Emitter<ProfileState> emit,
-      [String message = 'Error',]) async {
+  Future<void> _error(
+    Object e,
+    Emitter<ProfileState> emit, [
+    String message = 'Error',
+  ]) async {
     logger.e('$message: $e');
     emit(const ProfileState.error());
   }

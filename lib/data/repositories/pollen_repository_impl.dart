@@ -14,7 +14,9 @@ class PollenRepositoryImpl implements PollenRepository {
     required this.pollenDtoToPollenEntityMapper,
   });
 
-  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY') ? String.fromEnvironment('AMBEE_KEY') : null;
+  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY')
+      ? String.fromEnvironment('AMBEE_KEY')
+      : null;
 
   final _url = 'latest/pollen/by-lat-lng';
   static final Map<String, dynamic> _headers = {

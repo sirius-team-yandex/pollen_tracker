@@ -36,7 +36,9 @@ class MoodLocalStorageDatasourceIsar {
     return moodRecordModels;
   }
 
-  Future<int?> insertMoodRecordModel(MoodRecordModelIsar moodRecordModel) async {
+  Future<int?> insertMoodRecordModel(
+    MoodRecordModelIsar moodRecordModel,
+  ) async {
     late int id;
     isar ??= await _getIsarInstance();
     await isar?.writeTxn(
@@ -48,7 +50,9 @@ class MoodLocalStorageDatasourceIsar {
   }
 
   //TODO Проверить реализацию
-  Future<int?> updateMoodRecordModel(MoodRecordModelIsar moodRecordModel) async {
+  Future<int?> updateMoodRecordModel(
+    MoodRecordModelIsar moodRecordModel,
+  ) async {
     late int id;
     isar ??= await _getIsarInstance();
     await isar?.writeTxn(

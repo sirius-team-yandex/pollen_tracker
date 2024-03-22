@@ -32,7 +32,6 @@ class PollenApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(

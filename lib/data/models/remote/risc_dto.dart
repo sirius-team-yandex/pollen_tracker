@@ -12,4 +12,3 @@ class RiscDto with _$RiscDto {
   factory RiscDto.fromJson(Map<String, Object?> json) =>
       _$RiscDtoFromJson(json);
 }
-

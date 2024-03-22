@@ -47,14 +47,19 @@ class ProfileLocalStorageDatasourceIsar {
 
   Future<ProfileModelIsar?> fetchProfileModelById(int id) async {
     isar ??= await _getIsarInstance();
-    final profileModels = await isar!.profileModelIsars.filter().idEqualTo(id).findFirst();
+    final profileModels =
+        await isar!.profileModelIsars.filter().idEqualTo(id).findFirst();
     return profileModels;
   }
+
   // TODO Проверить реализацию
   Future<int?> updateProfileModelInfo(ProfileModelIsar newInfo) async {
     late int id;
     isar ??= await _getIsarInstance();
-    final objectToUpdate = await isar!.profileModelIsars.filter().idEqualTo(newInfo.id).findFirst();
+    final objectToUpdate = await isar!.profileModelIsars
+        .filter()
+        .idEqualTo(newInfo.id)
+        .findFirst();
     if (objectToUpdate != null) {
       objectToUpdate
         ..name = newInfo.name

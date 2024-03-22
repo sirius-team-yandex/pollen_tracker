@@ -28,6 +28,7 @@ import 'injectable_init.dart' as _i15;
 import 'ui/theme/theme.dart' as _i3;
 
 const String _dev = 'dev';
+const String _test = 'test';
 const String _prod = 'prod';
 
 extension GetItInjectableX on _i1.GetIt {
@@ -74,7 +75,10 @@ extension GetItInjectableX on _i1.GetIt {
         dio: gh<_i4.Dio>(),
         pollenDtoToPollenEntityMapper: gh<_i9.PollenDtoToPollenEntityMappper>(),
       ),
-      registerFor: {_prod},
+      registerFor: {
+        _test,
+        _prod,
+      },
     );
     return this;
   }

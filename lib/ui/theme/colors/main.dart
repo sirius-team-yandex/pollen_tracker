@@ -1,29 +1,29 @@
 part of '../theme.dart';
 
-class Colors {
-  // ********** MAIN ***********
-  Colors({
+class ColorsTheme {
+  // ** MAIN Theme Colors **
+  ColorsTheme({
     required this.background,
     required this.dark,
-    required this.textPrymary,
+    required this.textPrimary,
     required this.textSecondary,
   });
 
-  factory Colors.light() => Colors(
+  factory ColorsTheme.light() => ColorsTheme(
         background: const Color(0xFFF8FBFF),
-        textPrymary: const Color(0xFF192038),
+        textPrimary: const Color(0xFF192038),
         textSecondary: const Color(0xFF7F8CA3),
         dark: const Color(0xFF283047),
       );
 
-  factory Colors.dark() => Colors(
+  factory ColorsTheme.dark() => ColorsTheme(
         background: const Color(0xFF252C41),
-        textPrymary: const Color(0xFFFFFFFF),
+        textPrimary: const Color(0xFFFFFFFF),
         textSecondary: const Color(0xFF7F8CA3),
         dark: const Color(0xFF283047),
       );
 
-  Color textPrymary;
+  Color textPrimary;
   Color textSecondary;
 
   Color dark;

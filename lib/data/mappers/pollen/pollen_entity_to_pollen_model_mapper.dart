@@ -42,7 +42,7 @@ class PollenEntityToPollenModelMapper {
           grass: entity.levels[Species.grass] ?? 0,
           // Other
           others: entity.levels[Species.others] ?? 0,
-        ),
+        )
       );
     }
     return res;

@@ -39,7 +39,7 @@ class _InheritedStTheme extends InheritedTheme {
         context.findAncestorWidgetOfExactType<_InheritedStTheme>();
     return identical(this, ancestorTheme)
         ? child
-        : AppTheme(data: theme.data, child: child);
+        : AppTheme(data: theme.data!, child: child);
   }
 
   @override

@@ -42,8 +42,9 @@ class ProfileRepositoryIsarImpl implements ProfileRepository {
 
   @override
   Future<bool> updateProfileModelInfo(ProfileEntity profileEntity) async {
-    final success =
-        await profileLocalStorageDatasource.updateProfileModelInfo(profileEntityToModelIsarMapper.map(profileEntity));
+    final success = await profileLocalStorageDatasource.updateProfileModelInfo(
+      profileEntityToModelIsarMapper.map(profileEntity),
+    );
     return (success != null);
   }
 }

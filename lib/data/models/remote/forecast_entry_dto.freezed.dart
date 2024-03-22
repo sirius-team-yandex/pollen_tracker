@@ -31,14 +31,12 @@ mixin _$ForecastEntryDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ForecastEntryDtoCopyWith<ForecastEntryDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ForecastEntryDtoCopyWith<ForecastEntryDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ForecastEntryDtoCopyWith<$Res> {
-  factory $ForecastEntryDtoCopyWith(
-          ForecastEntryDto value, $Res Function(ForecastEntryDto) then) =
+  factory $ForecastEntryDtoCopyWith(ForecastEntryDto value, $Res Function(ForecastEntryDto) then) =
       _$ForecastEntryDtoCopyWithImpl<$Res, ForecastEntryDto>;
   @useResult
   $Res call(
@@ -54,8 +52,7 @@ abstract class $ForecastEntryDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ForecastEntryDtoCopyWithImpl<$Res, $Val extends ForecastEntryDto>
-    implements $ForecastEntryDtoCopyWith<$Res> {
+class _$ForecastEntryDtoCopyWithImpl<$Res, $Val extends ForecastEntryDto> implements $ForecastEntryDtoCopyWith<$Res> {
   _$ForecastEntryDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -134,10 +131,8 @@ class _$ForecastEntryDtoCopyWithImpl<$Res, $Val extends ForecastEntryDto>
 }
 
 /// @nodoc
-abstract class _$$ForecastEntryDtoImplCopyWith<$Res>
-    implements $ForecastEntryDtoCopyWith<$Res> {
-  factory _$$ForecastEntryDtoImplCopyWith(_$ForecastEntryDtoImpl value,
-          $Res Function(_$ForecastEntryDtoImpl) then) =
+abstract class _$$ForecastEntryDtoImplCopyWith<$Res> implements $ForecastEntryDtoCopyWith<$Res> {
+  factory _$$ForecastEntryDtoImplCopyWith(_$ForecastEntryDtoImpl value, $Res Function(_$ForecastEntryDtoImpl) then) =
       __$$ForecastEntryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -157,11 +152,9 @@ abstract class _$$ForecastEntryDtoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ForecastEntryDtoImplCopyWithImpl<$Res>
-    extends _$ForecastEntryDtoCopyWithImpl<$Res, _$ForecastEntryDtoImpl>
+class __$$ForecastEntryDtoImplCopyWithImpl<$Res> extends _$ForecastEntryDtoCopyWithImpl<$Res, _$ForecastEntryDtoImpl>
     implements _$$ForecastEntryDtoImplCopyWith<$Res> {
-  __$$ForecastEntryDtoImplCopyWithImpl(_$ForecastEntryDtoImpl _value,
-      $Res Function(_$ForecastEntryDtoImpl) _then)
+  __$$ForecastEntryDtoImplCopyWithImpl(_$ForecastEntryDtoImpl _value, $Res Function(_$ForecastEntryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -208,8 +201,7 @@ class _$ForecastEntryDtoImpl implements _ForecastEntryDto {
       @JsonKey(name: 'Count') this.count,
       this.updatedAt});
 
-  factory _$ForecastEntryDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ForecastEntryDtoImplFromJson(json);
+  factory _$ForecastEntryDtoImpl.fromJson(Map<String, dynamic> json) => _$$ForecastEntryDtoImplFromJson(json);
 
   @override
   final int? time;
@@ -239,21 +231,18 @@ class _$ForecastEntryDtoImpl implements _ForecastEntryDto {
             (identical(other.species, species) || other.species == species) &&
             (identical(other.risk, risk) || other.risk == risk) &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, time, species, risk, count, updatedAt);
+  int get hashCode => Object.hash(runtimeType, time, species, risk, count, updatedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ForecastEntryDtoImplCopyWith<_$ForecastEntryDtoImpl> get copyWith =>
-      __$$ForecastEntryDtoImplCopyWithImpl<_$ForecastEntryDtoImpl>(
-          this, _$identity);
+      __$$ForecastEntryDtoImplCopyWithImpl<_$ForecastEntryDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -271,8 +260,7 @@ abstract class _ForecastEntryDto implements ForecastEntryDto {
       @JsonKey(name: 'Count') final CountDto? count,
       final String? updatedAt}) = _$ForecastEntryDtoImpl;
 
-  factory _ForecastEntryDto.fromJson(Map<String, dynamic> json) =
-      _$ForecastEntryDtoImpl.fromJson;
+  factory _ForecastEntryDto.fromJson(Map<String, dynamic> json) = _$ForecastEntryDtoImpl.fromJson;
 
   @override
   int? get time;
@@ -289,6 +277,5 @@ abstract class _ForecastEntryDto implements ForecastEntryDto {
   String? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$ForecastEntryDtoImplCopyWith<_$ForecastEntryDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ForecastEntryDtoImplCopyWith<_$ForecastEntryDtoImpl> get copyWith => throw _privateConstructorUsedError;
 }

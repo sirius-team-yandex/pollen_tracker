@@ -20,27 +20,30 @@ CountDto _$CountDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CountDto {
-  int? get grass_pollen => throw _privateConstructorUsedError;
-  int? get tree_pollen => throw _privateConstructorUsedError;
-  int? get weed_pollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'grass_pollen')
+  int? get grassPollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tree_pollen')
+  int? get treePollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'weed_pollen')
+  int? get weedPollen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CountDtoCopyWith<CountDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CountDtoCopyWith<CountDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CountDtoCopyWith<$Res> {
-  factory $CountDtoCopyWith(CountDto value, $Res Function(CountDto) then) =
-      _$CountDtoCopyWithImpl<$Res, CountDto>;
+  factory $CountDtoCopyWith(CountDto value, $Res Function(CountDto) then) = _$CountDtoCopyWithImpl<$Res, CountDto>;
   @useResult
-  $Res call({int? grass_pollen, int? tree_pollen, int? weed_pollen});
+  $Res call(
+      {@JsonKey(name: 'grass_pollen') int? grassPollen,
+      @JsonKey(name: 'tree_pollen') int? treePollen,
+      @JsonKey(name: 'weed_pollen') int? weedPollen});
 }
 
 /// @nodoc
-class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto>
-    implements $CountDtoCopyWith<$Res> {
+class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto> implements $CountDtoCopyWith<$Res> {
   _$CountDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -51,65 +54,63 @@ class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grass_pollen = freezed,
-    Object? tree_pollen = freezed,
-    Object? weed_pollen = freezed,
+    Object? grassPollen = freezed,
+    Object? treePollen = freezed,
+    Object? weedPollen = freezed,
   }) {
     return _then(_value.copyWith(
-      grass_pollen: freezed == grass_pollen
-          ? _value.grass_pollen
-          : grass_pollen // ignore: cast_nullable_to_non_nullable
+      grassPollen: freezed == grassPollen
+          ? _value.grassPollen
+          : grassPollen // ignore: cast_nullable_to_non_nullable
               as int?,
-      tree_pollen: freezed == tree_pollen
-          ? _value.tree_pollen
-          : tree_pollen // ignore: cast_nullable_to_non_nullable
+      treePollen: freezed == treePollen
+          ? _value.treePollen
+          : treePollen // ignore: cast_nullable_to_non_nullable
               as int?,
-      weed_pollen: freezed == weed_pollen
-          ? _value.weed_pollen
-          : weed_pollen // ignore: cast_nullable_to_non_nullable
+      weedPollen: freezed == weedPollen
+          ? _value.weedPollen
+          : weedPollen // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$CountDtoImplCopyWith<$Res>
-    implements $CountDtoCopyWith<$Res> {
-  factory _$$CountDtoImplCopyWith(
-          _$CountDtoImpl value, $Res Function(_$CountDtoImpl) then) =
+abstract class _$$CountDtoImplCopyWith<$Res> implements $CountDtoCopyWith<$Res> {
+  factory _$$CountDtoImplCopyWith(_$CountDtoImpl value, $Res Function(_$CountDtoImpl) then) =
       __$$CountDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? grass_pollen, int? tree_pollen, int? weed_pollen});
+  $Res call(
+      {@JsonKey(name: 'grass_pollen') int? grassPollen,
+      @JsonKey(name: 'tree_pollen') int? treePollen,
+      @JsonKey(name: 'weed_pollen') int? weedPollen});
 }
 
 /// @nodoc
-class __$$CountDtoImplCopyWithImpl<$Res>
-    extends _$CountDtoCopyWithImpl<$Res, _$CountDtoImpl>
+class __$$CountDtoImplCopyWithImpl<$Res> extends _$CountDtoCopyWithImpl<$Res, _$CountDtoImpl>
     implements _$$CountDtoImplCopyWith<$Res> {
-  __$$CountDtoImplCopyWithImpl(
-      _$CountDtoImpl _value, $Res Function(_$CountDtoImpl) _then)
-      : super(_value, _then);
+  __$$CountDtoImplCopyWithImpl(_$CountDtoImpl _value, $Res Function(_$CountDtoImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grass_pollen = freezed,
-    Object? tree_pollen = freezed,
-    Object? weed_pollen = freezed,
+    Object? grassPollen = freezed,
+    Object? treePollen = freezed,
+    Object? weedPollen = freezed,
   }) {
     return _then(_$CountDtoImpl(
-      grass_pollen: freezed == grass_pollen
-          ? _value.grass_pollen
-          : grass_pollen // ignore: cast_nullable_to_non_nullable
+      grassPollen: freezed == grassPollen
+          ? _value.grassPollen
+          : grassPollen // ignore: cast_nullable_to_non_nullable
               as int?,
-      tree_pollen: freezed == tree_pollen
-          ? _value.tree_pollen
-          : tree_pollen // ignore: cast_nullable_to_non_nullable
+      treePollen: freezed == treePollen
+          ? _value.treePollen
+          : treePollen // ignore: cast_nullable_to_non_nullable
               as int?,
-      weed_pollen: freezed == weed_pollen
-          ? _value.weed_pollen
-          : weed_pollen // ignore: cast_nullable_to_non_nullable
+      weedPollen: freezed == weedPollen
+          ? _value.weedPollen
+          : weedPollen // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -118,21 +119,26 @@ class __$$CountDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CountDtoImpl implements _CountDto {
-  const _$CountDtoImpl({this.grass_pollen, this.tree_pollen, this.weed_pollen});
+  const _$CountDtoImpl(
+      {@JsonKey(name: 'grass_pollen') this.grassPollen,
+      @JsonKey(name: 'tree_pollen') this.treePollen,
+      @JsonKey(name: 'weed_pollen') this.weedPollen});
 
-  factory _$CountDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CountDtoImplFromJson(json);
+  factory _$CountDtoImpl.fromJson(Map<String, dynamic> json) => _$$CountDtoImplFromJson(json);
 
   @override
-  final int? grass_pollen;
+  @JsonKey(name: 'grass_pollen')
+  final int? grassPollen;
   @override
-  final int? tree_pollen;
+  @JsonKey(name: 'tree_pollen')
+  final int? treePollen;
   @override
-  final int? weed_pollen;
+  @JsonKey(name: 'weed_pollen')
+  final int? weedPollen;
 
   @override
   String toString() {
-    return 'CountDto(grass_pollen: $grass_pollen, tree_pollen: $tree_pollen, weed_pollen: $weed_pollen)';
+    return 'CountDto(grassPollen: $grassPollen, treePollen: $treePollen, weedPollen: $weedPollen)';
   }
 
   @override
@@ -140,18 +146,14 @@ class _$CountDtoImpl implements _CountDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CountDtoImpl &&
-            (identical(other.grass_pollen, grass_pollen) ||
-                other.grass_pollen == grass_pollen) &&
-            (identical(other.tree_pollen, tree_pollen) ||
-                other.tree_pollen == tree_pollen) &&
-            (identical(other.weed_pollen, weed_pollen) ||
-                other.weed_pollen == weed_pollen));
+            (identical(other.grassPollen, grassPollen) || other.grassPollen == grassPollen) &&
+            (identical(other.treePollen, treePollen) || other.treePollen == treePollen) &&
+            (identical(other.weedPollen, weedPollen) || other.weedPollen == weedPollen));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, grass_pollen, tree_pollen, weed_pollen);
+  int get hashCode => Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
 
   @JsonKey(ignore: true)
   @override
@@ -169,21 +171,22 @@ class _$CountDtoImpl implements _CountDto {
 
 abstract class _CountDto implements CountDto {
   const factory _CountDto(
-      {final int? grass_pollen,
-      final int? tree_pollen,
-      final int? weed_pollen}) = _$CountDtoImpl;
+      {@JsonKey(name: 'grass_pollen') final int? grassPollen,
+      @JsonKey(name: 'tree_pollen') final int? treePollen,
+      @JsonKey(name: 'weed_pollen') final int? weedPollen}) = _$CountDtoImpl;
 
-  factory _CountDto.fromJson(Map<String, dynamic> json) =
-      _$CountDtoImpl.fromJson;
+  factory _CountDto.fromJson(Map<String, dynamic> json) = _$CountDtoImpl.fromJson;
 
   @override
-  int? get grass_pollen;
+  @JsonKey(name: 'grass_pollen')
+  int? get grassPollen;
   @override
-  int? get tree_pollen;
+  @JsonKey(name: 'tree_pollen')
+  int? get treePollen;
   @override
-  int? get weed_pollen;
+  @JsonKey(name: 'weed_pollen')
+  int? get weedPollen;
   @override
   @JsonKey(ignore: true)
-  _$$CountDtoImplCopyWith<_$CountDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CountDtoImplCopyWith<_$CountDtoImpl> get copyWith => throw _privateConstructorUsedError;
 }

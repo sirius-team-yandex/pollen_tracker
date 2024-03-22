@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:pollen_tracker/data/mappers/pollen/pollen_dto_to_pollen_entity_mapper.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pollen_tracker/data/mappers/pollen_dto_to_pollen_entity_mapper.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
@@ -12,9 +12,7 @@ class PollenRepositoryImpl implements PollenRepository {
     required this.pollenDtoToPollenEntityMapper,
   });
 
-  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY')
-      ? String.fromEnvironment('AMBEE_KEY')
-      : null;
+  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY') ? String.fromEnvironment('AMBEE_KEY') : null;
 
   final _url = 'latest/pollen/by-lat-lng';
   static final Map<String, dynamic> _headers = {

@@ -27,25 +27,18 @@ mixin _$AmbeeDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AmbeeDtoCopyWith<AmbeeDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AmbeeDtoCopyWith<AmbeeDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AmbeeDtoCopyWith<$Res> {
-  factory $AmbeeDtoCopyWith(AmbeeDto value, $Res Function(AmbeeDto) then) =
-      _$AmbeeDtoCopyWithImpl<$Res, AmbeeDto>;
+  factory $AmbeeDtoCopyWith(AmbeeDto value, $Res Function(AmbeeDto) then) = _$AmbeeDtoCopyWithImpl<$Res, AmbeeDto>;
   @useResult
-  $Res call(
-      {String? message,
-      double? lat,
-      double? lng,
-      List<ForecastEntryDto>? data});
+  $Res call({String? message, double? lat, double? lng, List<ForecastEntryDto>? data});
 }
 
 /// @nodoc
-class _$AmbeeDtoCopyWithImpl<$Res, $Val extends AmbeeDto>
-    implements $AmbeeDtoCopyWith<$Res> {
+class _$AmbeeDtoCopyWithImpl<$Res, $Val extends AmbeeDto> implements $AmbeeDtoCopyWith<$Res> {
   _$AmbeeDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -83,27 +76,18 @@ class _$AmbeeDtoCopyWithImpl<$Res, $Val extends AmbeeDto>
 }
 
 /// @nodoc
-abstract class _$$AmbeeDtoImplCopyWith<$Res>
-    implements $AmbeeDtoCopyWith<$Res> {
-  factory _$$AmbeeDtoImplCopyWith(
-          _$AmbeeDtoImpl value, $Res Function(_$AmbeeDtoImpl) then) =
+abstract class _$$AmbeeDtoImplCopyWith<$Res> implements $AmbeeDtoCopyWith<$Res> {
+  factory _$$AmbeeDtoImplCopyWith(_$AmbeeDtoImpl value, $Res Function(_$AmbeeDtoImpl) then) =
       __$$AmbeeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? message,
-      double? lat,
-      double? lng,
-      List<ForecastEntryDto>? data});
+  $Res call({String? message, double? lat, double? lng, List<ForecastEntryDto>? data});
 }
 
 /// @nodoc
-class __$$AmbeeDtoImplCopyWithImpl<$Res>
-    extends _$AmbeeDtoCopyWithImpl<$Res, _$AmbeeDtoImpl>
+class __$$AmbeeDtoImplCopyWithImpl<$Res> extends _$AmbeeDtoCopyWithImpl<$Res, _$AmbeeDtoImpl>
     implements _$$AmbeeDtoImplCopyWith<$Res> {
-  __$$AmbeeDtoImplCopyWithImpl(
-      _$AmbeeDtoImpl _value, $Res Function(_$AmbeeDtoImpl) _then)
-      : super(_value, _then);
+  __$$AmbeeDtoImplCopyWithImpl(_$AmbeeDtoImpl _value, $Res Function(_$AmbeeDtoImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -137,12 +121,9 @@ class __$$AmbeeDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AmbeeDtoImpl with DiagnosticableTreeMixin implements _AmbeeDto {
-  const _$AmbeeDtoImpl(
-      {this.message, this.lat, this.lng, final List<ForecastEntryDto>? data})
-      : _data = data;
+  const _$AmbeeDtoImpl({this.message, this.lat, this.lng, final List<ForecastEntryDto>? data}) : _data = data;
 
-  factory _$AmbeeDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AmbeeDtoImplFromJson(json);
+  factory _$AmbeeDtoImpl.fromJson(Map<String, dynamic> json) => _$$AmbeeDtoImplFromJson(json);
 
   @override
   final String? message;
@@ -189,8 +170,7 @@ class _$AmbeeDtoImpl with DiagnosticableTreeMixin implements _AmbeeDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, lat, lng,
-      const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, message, lat, lng, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -213,8 +193,7 @@ abstract class _AmbeeDto implements AmbeeDto {
       final double? lng,
       final List<ForecastEntryDto>? data}) = _$AmbeeDtoImpl;
 
-  factory _AmbeeDto.fromJson(Map<String, dynamic> json) =
-      _$AmbeeDtoImpl.fromJson;
+  factory _AmbeeDto.fromJson(Map<String, dynamic> json) = _$AmbeeDtoImpl.fromJson;
 
   @override
   String? get message;
@@ -226,6 +205,5 @@ abstract class _AmbeeDto implements AmbeeDto {
   List<ForecastEntryDto>? get data;
   @override
   @JsonKey(ignore: true)
-  _$$AmbeeDtoImplCopyWith<_$AmbeeDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AmbeeDtoImplCopyWith<_$AmbeeDtoImpl> get copyWith => throw _privateConstructorUsedError;
 }

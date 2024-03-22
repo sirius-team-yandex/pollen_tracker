@@ -1,0 +1,37 @@
+name: Flutter PR
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+  pull_request:
+    branches:
+    - main
+    - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      # - uses: actions/setup-java@v2
+      #   with:
+      #     java-version: '12'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.19.3'
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+        
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Format code
+        run: dart format --line-length 120 --set-exit-if-changed .
+      - name: Stop workflow if previous step failed
+        if: failure()
+        run: exit 1

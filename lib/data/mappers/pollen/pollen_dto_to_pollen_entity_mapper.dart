@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/data/mappers/string_to_species_mapper.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
@@ -13,33 +14,14 @@ class PollenDtoToPollenEntityMappper {
     List<PollenEntity> res = List.empty(growable: true);
 
     for (var entry in dto.data!) {
-      if (entry.time == null || entry.Species?.Tree == null) {
+      if (entry.time == null || entry.species?.tree == null) {
         continue;
       }
 
       Map<Species, int> levels = {};
-      for (var species in entry.Species!.Tree!.entries) {
+      for (var species in entry.species!.tree!.entries) {
         //TODO add weeds, grass and others!
-        Species? type = switch (species.key) {
-          'Acacia' => Species.acacia,
-          'Alder' => Species.alder,
-          'Ash' => Species.ash,
-          'Birch' => Species.birch,
-          'Casuarina' => Species.casuarina,
-          'Cypress' || 'Cypress/Juniper/Cedar' => Species.cypress,
-          'Elm' => Species.elm,
-          'Hazel' => Species.hazel,
-          'Maple' => Species.maple,
-          'Mulberry' => Species.mulberry,
-          'Myrtaceae' => Species.myrtaceae,
-          'Oak' => Species.oak,
-          'Olive' => Species.olive,
-          'Pine' => Species.pine,
-          'Plane' => Species.plane,
-          'Poplar / Cottonwood' || 'Poplar/Cottonwood' => Species.poplar,
-          'Willow' => Species.willow,
-          _ => null,
-        };
+        Species? type = stringSpeciesMapper[species.key];
 
         if (type != null) {
           levels[type] = species.value ?? 0;

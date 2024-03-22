@@ -12,5 +12,4 @@ class PollenLocalStorageDatasourceIsarImpl implements PollenLocalStorageDatasour
     // TODO: implement initialize
     throw UnimplementedError();
   }
-  
 }

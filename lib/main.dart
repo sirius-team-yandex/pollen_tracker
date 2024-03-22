@@ -32,7 +32,6 @@ class PollenApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
@@ -71,7 +70,7 @@ class HomePage extends StatelessWidget {
       children: [
         Text(
           '${AppLocalizations.of(context).health_check})',
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         IconButton(
           onPressed: () {

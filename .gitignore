@@ -48,6 +48,9 @@ app.*.map.json
 # Neovim config
 /.nvim.lua
 
+# Taskfile 
+/Taskfile.yml
+
 #Firebase
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist

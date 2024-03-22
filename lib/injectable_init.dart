@@ -14,7 +14,6 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default  
   asExtension: true, // default  
 )  
-
 void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env); 
 
 @module
@@ -36,9 +35,4 @@ abstract class Module {
         maxWidth: 90,
       ),
     );
-
-
-
-  @singleton
-  AppThemeData get lightTheme => AppThemeData.light();
 }

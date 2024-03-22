@@ -3,20 +3,23 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
+import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
+import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
-import 'mock_injection_container.dart';
 
 void main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      configureDependencies(env: Environment.test);
+      await initFirebase();
 
-      await initializeDependencies();
-      logger.i('Starting app in main_api_test.dart');
+      logger.i('Starting app in main.dart');
       runApp(const PollenApp());
     },
     (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),
@@ -32,6 +35,7 @@ class PollenApp extends StatelessWidget {
       data: GetIt.I<AppThemeData>(),
       child: MaterialApp(
         theme: materialThemeFromAppTheme(GetIt.I<AppThemeData>()),
+
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

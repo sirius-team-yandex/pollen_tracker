@@ -3,12 +3,13 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/enum/mood_type_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
-import 'package:pollen_tracker/injection_container.dart';
+import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
@@ -16,7 +17,9 @@ void main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await initializeDependencies();
+      configureDependencies();
+      await initFirebase();
+
       logger.i('Starting app in main.dart');
       runApp(const PollenApp());
     },

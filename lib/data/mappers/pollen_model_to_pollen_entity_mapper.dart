@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
+@injectable
 class PollenModelToPollenEntityMapper {
   List<PollenEntity> map(List<PollenModel> records) {
     List<PollenEntity> res = List.empty(growable: true);

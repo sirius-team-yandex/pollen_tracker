@@ -32,3 +32,6 @@ jobs:
 
       - name: Format code
         run: dart format --set-exit-if-changed .
+      - name: Stop workflow if previous step failed
+        if: failure()
+        run: exit 1

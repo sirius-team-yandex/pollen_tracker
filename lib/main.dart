@@ -33,7 +33,7 @@ class PollenApp extends StatelessWidget {
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
-      data: GetIt.I<AppThemeData>(),
+      data: AppThemeData.light(),
       child: MaterialApp(
         theme: materialThemeFromAppTheme(lightAppThemeData),
         darkTheme: materialThemeFromAppTheme(darkAppThemeData),

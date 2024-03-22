@@ -35,8 +35,6 @@ Future<void> initializeDependencies() async {
   // blocs
   // sl.registerSingleton<SomeBloc>(SomeBloc(sl()));
 
-  // Theme
-  sl.registerSingleton<AppThemeData>(AppThemeData.light());
 }
 
 Dio _configureDio() {

@@ -1,16 +1,22 @@
-import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/datasources/profile_local_storage_datasource_isar_impl.dart';
 import 'package:pollen_tracker/data/mappers/profile/profile_entity_to_profile_model_mapper.dart';
 import 'package:pollen_tracker/data/mappers/profile/profile_model_to_profile_entity_mapper.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 
+@Injectable(as: ProfileRepository)
 class ProfileRepositoryIsarImpl implements ProfileRepository {
-  ProfileRepositoryIsarImpl(this.profileLocalStorageDatasource);
-  ProfileLocalStorageDatasourceIsar profileLocalStorageDatasource;
+  ProfileRepositoryIsarImpl(
+    this.profileLocalStorageDatasource,
+    this.profileModelIsarToEntityMapper,
+    this.profileEntityToModelIsarMapper,
+  );
 
-  ProfileModelIsarToEntityMapper profileModelIsarToEntityMapper = GetIt.I<ProfileModelIsarToEntityMapper>();
-  ProfileEntityToModelIsarMapper profileEntityToModelIsarMapper = GetIt.I<ProfileEntityToModelIsarMapper>();
+  final ProfileLocalStorageDatasourceIsar profileLocalStorageDatasource;
+  final ProfileModelIsarToEntityMapper profileModelIsarToEntityMapper;
+  final ProfileEntityToModelIsarMapper profileEntityToModelIsarMapper;
+
 
   @override
   Future<List<ProfileEntity>> fetchAllProfileModels() async {

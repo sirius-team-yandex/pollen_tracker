@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-
 import 'package:pollen_tracker/data/mappers/pollen/pollen_dto_to_pollen_entity_mapper.dart';
-
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';

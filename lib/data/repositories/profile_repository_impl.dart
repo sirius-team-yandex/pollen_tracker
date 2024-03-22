@@ -9,23 +9,20 @@ class ProfileRepositoryIsarImpl implements ProfileRepository {
   ProfileRepositoryIsarImpl(this.profileLocalStorageDatasource);
   ProfileLocalStorageDatasourceIsar profileLocalStorageDatasource;
 
-  ProfileModelIsarToEntityMapper profileModelIsarToEntityMapper =
-      GetIt.I<ProfileModelIsarToEntityMapper>();
-  ProfileEntityToModelIsarMapper profileEntityToModelIsarMapper =
-      GetIt.I<ProfileEntityToModelIsarMapper>();
+  ProfileModelIsarToEntityMapper profileModelIsarToEntityMapper = GetIt.I<ProfileModelIsarToEntityMapper>();
+  ProfileEntityToModelIsarMapper profileEntityToModelIsarMapper = GetIt.I<ProfileEntityToModelIsarMapper>();
 
   @override
   Future<List<ProfileEntity>> fetchAllProfileModels() async {
-    final List<ProfileEntity> profilesEntities = profileModelIsarToEntityMapper
-        .mapList(await profileLocalStorageDatasource.fetchAllProfileModels())
-        .toList();
+    final List<ProfileEntity> profilesEntities =
+        profileModelIsarToEntityMapper.mapList(await profileLocalStorageDatasource.fetchAllProfileModels()).toList();
     return profilesEntities;
   }
 
   @override
   Future<bool> addNewProfileModel(ProfileEntity profileEntity) async {
-    final success = await profileLocalStorageDatasource
-        .addNewProfileModel(profileEntityToModelIsarMapper.map(profileEntity));
+    final success =
+        await profileLocalStorageDatasource.addNewProfileModel(profileEntityToModelIsarMapper.map(profileEntity));
     return (success != null);
   }
 
@@ -36,8 +33,7 @@ class ProfileRepositoryIsarImpl implements ProfileRepository {
 
   @override
   Future<ProfileEntity?> fetchProfileModelById(int id) async {
-    final profileModel =
-        await profileLocalStorageDatasource.fetchProfileModelById(id);
+    final profileModel = await profileLocalStorageDatasource.fetchProfileModelById(id);
     if (profileModel != null) {
       return profileModelIsarToEntityMapper.map(profileModel);
     }

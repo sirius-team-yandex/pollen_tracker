@@ -13,6 +13,5 @@ class AmbeeDto with _$AmbeeDto {
     double? lng,
     List<ForecastEntryDto>? data,
   }) = _AmbeeDto;
-  factory AmbeeDto.fromJson(Map<String, Object?> json) =>
-      _$AmbeeDtoFromJson(json);
+  factory AmbeeDto.fromJson(Map<String, Object?> json) => _$AmbeeDtoFromJson(json);
 }

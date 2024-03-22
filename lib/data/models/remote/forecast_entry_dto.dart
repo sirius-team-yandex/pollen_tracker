@@ -15,6 +15,5 @@ class ForecastEntryDto with _$ForecastEntryDto {
     @JsonKey(name: 'Count') CountDto? count,
     String? updatedAt,
   }) = _ForecastEntryDto;
-  factory ForecastEntryDto.fromJson(Map<String, Object?> json) =>
-      _$ForecastEntryDtoFromJson(json);
+  factory ForecastEntryDto.fromJson(Map<String, Object?> json) => _$ForecastEntryDtoFromJson(json);
 }

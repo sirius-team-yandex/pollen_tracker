@@ -45,6 +45,9 @@ app.*.map.json
 # VS CODE
 /.vscode
 
+# Neovim config
+/.nvim.lua
+
 #Firebase
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist

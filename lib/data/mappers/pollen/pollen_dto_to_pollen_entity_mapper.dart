@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/data/mappers/string_to_species_mapper.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
+@injectable
 class PollenDtoToPollenEntityMappper {
   List<PollenEntity> map(AmbeeDto dto) {
     if (dto.message != 'success' || dto.data == null) {

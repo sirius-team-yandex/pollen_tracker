@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 
+@singleton
 class MoodLocalStorageDatasourceIsar {
   Isar? isar;
 

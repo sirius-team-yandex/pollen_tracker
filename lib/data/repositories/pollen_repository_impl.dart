@@ -1,15 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
+
 import 'package:pollen_tracker/data/mappers/pollen/pollen_dto_to_pollen_entity_mapper.dart';
+
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+@Injectable(as: PollenRepository, env: [Environment.test, Environment.prod])
 class PollenRepositoryImpl implements PollenRepository {
-  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY')
-      ? String.fromEnvironment('AMBEE_KEY')
-      : null;
+  PollenRepositoryImpl({
+    required this.dio,
+    required this.pollenDtoToPollenEntityMapper,
+  });
+
+  static const _apiHeader = bool.hasEnvironment('AMBEE_KEY') ? String.fromEnvironment('AMBEE_KEY') : null;
 
   final _url = 'latest/pollen/by-lat-lng';
   static final Map<String, dynamic> _headers = {
@@ -17,22 +22,9 @@ class PollenRepositoryImpl implements PollenRepository {
     'Content-type': 'application/json',
   };
 
-  final dio = GetIt.I<Dio>()
-    ..interceptors.add(
-      PrettyDioLogger(
-        requestHeader: false,
-        requestBody: true,
-        responseBody: true,
-        responseHeader: false,
-        error: true,
-        compact: true,
-        maxWidth: 90,
-      ),
-    );
-
+  final Dio dio;
   final options = Options(headers: _headers);
-  static PollenDtoToPollenEntityMappper mapper =
-      GetIt.I<PollenDtoToPollenEntityMappper>();
+  final PollenDtoToPollenEntityMappper pollenDtoToPollenEntityMapper;
 
   @override
   Future<List<PollenEntity>> getPollenEntities(double lat, double lng) async {
@@ -48,6 +40,6 @@ class PollenRepositoryImpl implements PollenRepository {
       queryParameters: queries,
     );
 
-    return mapper.map(AmbeeDto.fromJson(rs.data));
+    return pollenDtoToPollenEntityMapper.map(AmbeeDto.fromJson(rs.data));
   }
 }

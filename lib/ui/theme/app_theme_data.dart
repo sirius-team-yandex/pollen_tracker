@@ -3,7 +3,6 @@
 part of 'theme.dart';
 
 ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
-      textTheme: theme.textTheme,
       colorScheme: ColorScheme(
         brightness: Brightness.light,
         background: theme.main.background,
@@ -19,13 +18,14 @@ ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
         error: theme.main.background,
       ),
     ).copyWith(
+      textTheme: theme.textTheme,
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         },
       ),
-      brightness: Brightness.dark,
+      brightness: theme.isDarkMode ? Brightness.dark : Brightness.light,
       scaffoldBackgroundColor: theme.main.background,
       appBarTheme: AppBarTheme(
         backgroundColor: theme.main.background,
@@ -35,11 +35,6 @@ ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
       ),
     );
 
-CupertinoThemeData cupertinoThemeFromAppTheme(AppThemeData theme) =>
-    MaterialBasedCupertinoThemeData(materialTheme: materialThemeFromAppTheme(theme)).copyWith(
-      scaffoldBackgroundColor: theme.main.background,
-    );
-
 class AppThemeData {
   AppThemeData({
     required this.main,
@@ -47,22 +42,22 @@ class AppThemeData {
   });
 
   factory AppThemeData.dark() => AppThemeData(
-        main: Colors.dark(),
+        main: ColorsTheme.dark(),
         isDarkMode: true,
       );
 
   factory AppThemeData.light() => AppThemeData(
-        main: Colors.light(),
+        main: ColorsTheme.light(),
         isDarkMode: false,
       );
 
   final bool isDarkMode;
-  final Colors main;
+  final ColorsTheme main;
 
   TextStyle create({
     double fontSize = 14,
     FontWeight fontWeight = FontWeight.normal,
-    Color? color,
+    Color? color = Colors.blue,
     double? figmaHeight,
   }) {
     final height = (figmaHeight ?? fontSize) / fontSize;
@@ -70,7 +65,7 @@ class AppThemeData {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
-      color: color ?? main.textPrymary,
+      color: color ?? main.textPrimary,
       height: height,
     );
   }
@@ -79,14 +74,23 @@ class AppThemeData {
         fontSize: 22,
         figmaHeight: 32,
         fontWeight: FontWeight.w700,
+        color: main.textPrimary,
       );
   TextStyle get h2 => create(
         fontSize: 14,
         figmaHeight: 32,
         fontWeight: FontWeight.w700,
+        color: main.textPrimary,
+      );
+  TextStyle get bodyText1 => create(
+        fontSize: 14,
+        figmaHeight: 32,
+        fontWeight: FontWeight.w700,
+        color: main.textPrimary,
       );
 
   TextTheme get textTheme => TextTheme(
+        bodyText1: bodyText1,
         headline1: h1,
         headline2: h2,
       );

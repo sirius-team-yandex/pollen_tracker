@@ -45,6 +45,7 @@ class MoodLocalStorageDatasourceIsar {
     return id;
   }
 
+  //TODO Проверить реализацию
   Future<int?> updateMoodRecordModel(MoodRecordModelIsar moodRecordModel) async {
     late int id;
     isar ??= await _getIsarInstance();

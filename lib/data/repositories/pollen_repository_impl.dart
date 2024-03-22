@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pollen_tracker/common/logger.dart';
 
 import 'package:pollen_tracker/data/mappers/pollen/pollen_dto_to_pollen_entity_mapper.dart';
 
@@ -31,6 +32,7 @@ class PollenRepositoryImpl implements PollenRepository {
   @override
   Future<List<PollenEntity>> getPollenEntities(double lat, double lng) async {
     if (_apiHeader == null) {
+      logger.d('you should set AMBEE_KEY in .env file');
       throw AssertionError('AMBEE_KEY is not set');
     }
 

@@ -5,7 +5,7 @@ import 'package:pollen_tracker/data/mappers/mood_record/mood_record_model_isar_t
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 
-@injectable
+@Injectable(as: MoodRecordRepository)
 class MoodRecordRepositoryIsarImpl implements MoodRecordRepository {
   MoodRecordRepositoryIsarImpl({
     required this.moodLocalStorageDatasource,
@@ -24,12 +24,11 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository {
 
   @override
   Future<List<MoodRecordEntity>> fetchAllmoodRecordModels() async {
-    final List<MoodRecordEntity> moodRecordsEntities =
-        moodRecordModelIsarToEntityMapper
-            .mapList(
-              await moodLocalStorageDatasource.fetchAllmoodRecordModels(),
-            )
-            .toList();
+    final List<MoodRecordEntity> moodRecordsEntities = moodRecordModelIsarToEntityMapper
+        .mapList(
+          await moodLocalStorageDatasource.fetchAllmoodRecordModels(),
+        )
+        .toList();
     return moodRecordsEntities;
   }
 

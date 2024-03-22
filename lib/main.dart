@@ -29,11 +29,14 @@ class PollenApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final lightAppThemeData = AppThemeData.light();
+    final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
       data: GetIt.I<AppThemeData>(),
       child: MaterialApp(
-        theme: materialThemeFromAppTheme(GetIt.I<AppThemeData>()),
-
+        theme: materialThemeFromAppTheme(lightAppThemeData),
+        darkTheme: materialThemeFromAppTheme(darkAppThemeData),
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -61,10 +64,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           '${AppLocalizations.of(context).health_check})',
-          style: GetIt.I<AppThemeData>().textTheme.displayMedium,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         IconButton(
           onPressed: () {

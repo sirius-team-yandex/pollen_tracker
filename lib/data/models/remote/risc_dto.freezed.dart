@@ -20,9 +20,12 @@ RiscDto _$RiscDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RiscDto {
-  String? get grass_pollen => throw _privateConstructorUsedError;
-  String? get tree_pollen => throw _privateConstructorUsedError;
-  String? get weed_pollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'grass_pollen')
+  String? get grassPollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tree_pollen')
+  String? get treePollen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'weed_pollen')
+  String? get weedPollen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +37,10 @@ abstract class $RiscDtoCopyWith<$Res> {
   factory $RiscDtoCopyWith(RiscDto value, $Res Function(RiscDto) then) =
       _$RiscDtoCopyWithImpl<$Res, RiscDto>;
   @useResult
-  $Res call({String? grass_pollen, String? tree_pollen, String? weed_pollen});
+  $Res call(
+      {@JsonKey(name: 'grass_pollen') String? grassPollen,
+      @JsonKey(name: 'tree_pollen') String? treePollen,
+      @JsonKey(name: 'weed_pollen') String? weedPollen});
 }
 
 /// @nodoc
@@ -50,22 +56,22 @@ class _$RiscDtoCopyWithImpl<$Res, $Val extends RiscDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grass_pollen = freezed,
-    Object? tree_pollen = freezed,
-    Object? weed_pollen = freezed,
+    Object? grassPollen = freezed,
+    Object? treePollen = freezed,
+    Object? weedPollen = freezed,
   }) {
     return _then(_value.copyWith(
-      grass_pollen: freezed == grass_pollen
-          ? _value.grass_pollen
-          : grass_pollen // ignore: cast_nullable_to_non_nullable
+      grassPollen: freezed == grassPollen
+          ? _value.grassPollen
+          : grassPollen // ignore: cast_nullable_to_non_nullable
               as String?,
-      tree_pollen: freezed == tree_pollen
-          ? _value.tree_pollen
-          : tree_pollen // ignore: cast_nullable_to_non_nullable
+      treePollen: freezed == treePollen
+          ? _value.treePollen
+          : treePollen // ignore: cast_nullable_to_non_nullable
               as String?,
-      weed_pollen: freezed == weed_pollen
-          ? _value.weed_pollen
-          : weed_pollen // ignore: cast_nullable_to_non_nullable
+      weedPollen: freezed == weedPollen
+          ? _value.weedPollen
+          : weedPollen // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -78,7 +84,10 @@ abstract class _$$RiscDtoImplCopyWith<$Res> implements $RiscDtoCopyWith<$Res> {
       __$$RiscDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? grass_pollen, String? tree_pollen, String? weed_pollen});
+  $Res call(
+      {@JsonKey(name: 'grass_pollen') String? grassPollen,
+      @JsonKey(name: 'tree_pollen') String? treePollen,
+      @JsonKey(name: 'weed_pollen') String? weedPollen});
 }
 
 /// @nodoc
@@ -92,22 +101,22 @@ class __$$RiscDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? grass_pollen = freezed,
-    Object? tree_pollen = freezed,
-    Object? weed_pollen = freezed,
+    Object? grassPollen = freezed,
+    Object? treePollen = freezed,
+    Object? weedPollen = freezed,
   }) {
     return _then(_$RiscDtoImpl(
-      grass_pollen: freezed == grass_pollen
-          ? _value.grass_pollen
-          : grass_pollen // ignore: cast_nullable_to_non_nullable
+      grassPollen: freezed == grassPollen
+          ? _value.grassPollen
+          : grassPollen // ignore: cast_nullable_to_non_nullable
               as String?,
-      tree_pollen: freezed == tree_pollen
-          ? _value.tree_pollen
-          : tree_pollen // ignore: cast_nullable_to_non_nullable
+      treePollen: freezed == treePollen
+          ? _value.treePollen
+          : treePollen // ignore: cast_nullable_to_non_nullable
               as String?,
-      weed_pollen: freezed == weed_pollen
-          ? _value.weed_pollen
-          : weed_pollen // ignore: cast_nullable_to_non_nullable
+      weedPollen: freezed == weedPollen
+          ? _value.weedPollen
+          : weedPollen // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -116,21 +125,27 @@ class __$$RiscDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RiscDtoImpl implements _RiscDto {
-  const _$RiscDtoImpl({this.grass_pollen, this.tree_pollen, this.weed_pollen});
+  const _$RiscDtoImpl(
+      {@JsonKey(name: 'grass_pollen') this.grassPollen,
+      @JsonKey(name: 'tree_pollen') this.treePollen,
+      @JsonKey(name: 'weed_pollen') this.weedPollen});
 
   factory _$RiscDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$RiscDtoImplFromJson(json);
 
   @override
-  final String? grass_pollen;
+  @JsonKey(name: 'grass_pollen')
+  final String? grassPollen;
   @override
-  final String? tree_pollen;
+  @JsonKey(name: 'tree_pollen')
+  final String? treePollen;
   @override
-  final String? weed_pollen;
+  @JsonKey(name: 'weed_pollen')
+  final String? weedPollen;
 
   @override
   String toString() {
-    return 'RiscDto(grass_pollen: $grass_pollen, tree_pollen: $tree_pollen, weed_pollen: $weed_pollen)';
+    return 'RiscDto(grassPollen: $grassPollen, treePollen: $treePollen, weedPollen: $weedPollen)';
   }
 
   @override
@@ -138,18 +153,18 @@ class _$RiscDtoImpl implements _RiscDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RiscDtoImpl &&
-            (identical(other.grass_pollen, grass_pollen) ||
-                other.grass_pollen == grass_pollen) &&
-            (identical(other.tree_pollen, tree_pollen) ||
-                other.tree_pollen == tree_pollen) &&
-            (identical(other.weed_pollen, weed_pollen) ||
-                other.weed_pollen == weed_pollen));
+            (identical(other.grassPollen, grassPollen) ||
+                other.grassPollen == grassPollen) &&
+            (identical(other.treePollen, treePollen) ||
+                other.treePollen == treePollen) &&
+            (identical(other.weedPollen, weedPollen) ||
+                other.weedPollen == weedPollen));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, grass_pollen, tree_pollen, weed_pollen);
+      Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
 
   @JsonKey(ignore: true)
   @override
@@ -167,18 +182,21 @@ class _$RiscDtoImpl implements _RiscDto {
 
 abstract class _RiscDto implements RiscDto {
   const factory _RiscDto(
-      {final String? grass_pollen,
-      final String? tree_pollen,
-      final String? weed_pollen}) = _$RiscDtoImpl;
+      {@JsonKey(name: 'grass_pollen') final String? grassPollen,
+      @JsonKey(name: 'tree_pollen') final String? treePollen,
+      @JsonKey(name: 'weed_pollen') final String? weedPollen}) = _$RiscDtoImpl;
 
   factory _RiscDto.fromJson(Map<String, dynamic> json) = _$RiscDtoImpl.fromJson;
 
   @override
-  String? get grass_pollen;
+  @JsonKey(name: 'grass_pollen')
+  String? get grassPollen;
   @override
-  String? get tree_pollen;
+  @JsonKey(name: 'tree_pollen')
+  String? get treePollen;
   @override
-  String? get weed_pollen;
+  @JsonKey(name: 'weed_pollen')
+  String? get weedPollen;
   @override
   @JsonKey(ignore: true)
   _$$RiscDtoImplCopyWith<_$RiscDtoImpl> get copyWith =>

@@ -20,10 +20,14 @@ SpeciesDto _$SpeciesDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpeciesDto {
-  Map<String, int?>? get Grass => throw _privateConstructorUsedError;
-  int? get Others => throw _privateConstructorUsedError;
-  Map<String, int?>? get Tree => throw _privateConstructorUsedError;
-  Map<String, int?>? get Weed => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Grass')
+  Map<String, int?>? get grass => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Others')
+  int? get others => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Tree')
+  Map<String, int?>? get tree => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Weed')
+  Map<String, int?>? get weed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,10 +42,10 @@ abstract class $SpeciesDtoCopyWith<$Res> {
       _$SpeciesDtoCopyWithImpl<$Res, SpeciesDto>;
   @useResult
   $Res call(
-      {Map<String, int?>? Grass,
-      int? Others,
-      Map<String, int?>? Tree,
-      Map<String, int?>? Weed});
+      {@JsonKey(name: 'Grass') Map<String, int?>? grass,
+      @JsonKey(name: 'Others') int? others,
+      @JsonKey(name: 'Tree') Map<String, int?>? tree,
+      @JsonKey(name: 'Weed') Map<String, int?>? weed});
 }
 
 /// @nodoc
@@ -57,27 +61,27 @@ class _$SpeciesDtoCopyWithImpl<$Res, $Val extends SpeciesDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? Grass = freezed,
-    Object? Others = freezed,
-    Object? Tree = freezed,
-    Object? Weed = freezed,
+    Object? grass = freezed,
+    Object? others = freezed,
+    Object? tree = freezed,
+    Object? weed = freezed,
   }) {
     return _then(_value.copyWith(
-      Grass: freezed == Grass
-          ? _value.Grass
-          : Grass // ignore: cast_nullable_to_non_nullable
+      grass: freezed == grass
+          ? _value.grass
+          : grass // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
-      Others: freezed == Others
-          ? _value.Others
-          : Others // ignore: cast_nullable_to_non_nullable
+      others: freezed == others
+          ? _value.others
+          : others // ignore: cast_nullable_to_non_nullable
               as int?,
-      Tree: freezed == Tree
-          ? _value.Tree
-          : Tree // ignore: cast_nullable_to_non_nullable
+      tree: freezed == tree
+          ? _value.tree
+          : tree // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
-      Weed: freezed == Weed
-          ? _value.Weed
-          : Weed // ignore: cast_nullable_to_non_nullable
+      weed: freezed == weed
+          ? _value.weed
+          : weed // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
     ) as $Val);
   }
@@ -92,10 +96,10 @@ abstract class _$$SpeciesDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Map<String, int?>? Grass,
-      int? Others,
-      Map<String, int?>? Tree,
-      Map<String, int?>? Weed});
+      {@JsonKey(name: 'Grass') Map<String, int?>? grass,
+      @JsonKey(name: 'Others') int? others,
+      @JsonKey(name: 'Tree') Map<String, int?>? tree,
+      @JsonKey(name: 'Weed') Map<String, int?>? weed});
 }
 
 /// @nodoc
@@ -109,27 +113,27 @@ class __$$SpeciesDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? Grass = freezed,
-    Object? Others = freezed,
-    Object? Tree = freezed,
-    Object? Weed = freezed,
+    Object? grass = freezed,
+    Object? others = freezed,
+    Object? tree = freezed,
+    Object? weed = freezed,
   }) {
     return _then(_$SpeciesDtoImpl(
-      Grass: freezed == Grass
-          ? _value._Grass
-          : Grass // ignore: cast_nullable_to_non_nullable
+      grass: freezed == grass
+          ? _value._grass
+          : grass // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
-      Others: freezed == Others
-          ? _value.Others
-          : Others // ignore: cast_nullable_to_non_nullable
+      others: freezed == others
+          ? _value.others
+          : others // ignore: cast_nullable_to_non_nullable
               as int?,
-      Tree: freezed == Tree
-          ? _value._Tree
-          : Tree // ignore: cast_nullable_to_non_nullable
+      tree: freezed == tree
+          ? _value._tree
+          : tree // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
-      Weed: freezed == Weed
-          ? _value._Weed
-          : Weed // ignore: cast_nullable_to_non_nullable
+      weed: freezed == weed
+          ? _value._weed
+          : weed // ignore: cast_nullable_to_non_nullable
               as Map<String, int?>?,
     ));
   }
@@ -139,52 +143,56 @@ class __$$SpeciesDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SpeciesDtoImpl implements _SpeciesDto {
   const _$SpeciesDtoImpl(
-      {final Map<String, int?>? Grass,
-      this.Others,
-      final Map<String, int?>? Tree,
-      final Map<String, int?>? Weed})
-      : _Grass = Grass,
-        _Tree = Tree,
-        _Weed = Weed;
+      {@JsonKey(name: 'Grass') final Map<String, int?>? grass,
+      @JsonKey(name: 'Others') this.others,
+      @JsonKey(name: 'Tree') final Map<String, int?>? tree,
+      @JsonKey(name: 'Weed') final Map<String, int?>? weed})
+      : _grass = grass,
+        _tree = tree,
+        _weed = weed;
 
   factory _$SpeciesDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpeciesDtoImplFromJson(json);
 
-  final Map<String, int?>? _Grass;
+  final Map<String, int?>? _grass;
   @override
-  Map<String, int?>? get Grass {
-    final value = _Grass;
+  @JsonKey(name: 'Grass')
+  Map<String, int?>? get grass {
+    final value = _grass;
     if (value == null) return null;
-    if (_Grass is EqualUnmodifiableMapView) return _Grass;
+    if (_grass is EqualUnmodifiableMapView) return _grass;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
 
   @override
-  final int? Others;
-  final Map<String, int?>? _Tree;
+  @JsonKey(name: 'Others')
+  final int? others;
+  final Map<String, int?>? _tree;
   @override
-  Map<String, int?>? get Tree {
-    final value = _Tree;
+  @JsonKey(name: 'Tree')
+  Map<String, int?>? get tree {
+    final value = _tree;
     if (value == null) return null;
-    if (_Tree is EqualUnmodifiableMapView) return _Tree;
+    if (_tree is EqualUnmodifiableMapView) return _tree;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, int?>? _Weed;
+  final Map<String, int?>? _weed;
   @override
-  Map<String, int?>? get Weed {
-    final value = _Weed;
+  @JsonKey(name: 'Weed')
+  Map<String, int?>? get weed {
+    final value = _weed;
     if (value == null) return null;
-    if (_Weed is EqualUnmodifiableMapView) return _Weed;
+    if (_weed is EqualUnmodifiableMapView) return _weed;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
 
   @override
   String toString() {
-    return 'SpeciesDto(Grass: $Grass, Others: $Others, Tree: $Tree, Weed: $Weed)';
+    return 'SpeciesDto(grass: $grass, others: $others, tree: $tree, weed: $weed)';
   }
 
   @override
@@ -192,20 +200,20 @@ class _$SpeciesDtoImpl implements _SpeciesDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeciesDtoImpl &&
-            const DeepCollectionEquality().equals(other._Grass, _Grass) &&
-            (identical(other.Others, Others) || other.Others == Others) &&
-            const DeepCollectionEquality().equals(other._Tree, _Tree) &&
-            const DeepCollectionEquality().equals(other._Weed, _Weed));
+            const DeepCollectionEquality().equals(other._grass, _grass) &&
+            (identical(other.others, others) || other.others == others) &&
+            const DeepCollectionEquality().equals(other._tree, _tree) &&
+            const DeepCollectionEquality().equals(other._weed, _weed));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_Grass),
-      Others,
-      const DeepCollectionEquality().hash(_Tree),
-      const DeepCollectionEquality().hash(_Weed));
+      const DeepCollectionEquality().hash(_grass),
+      others,
+      const DeepCollectionEquality().hash(_tree),
+      const DeepCollectionEquality().hash(_weed));
 
   @JsonKey(ignore: true)
   @override
@@ -223,22 +231,26 @@ class _$SpeciesDtoImpl implements _SpeciesDto {
 
 abstract class _SpeciesDto implements SpeciesDto {
   const factory _SpeciesDto(
-      {final Map<String, int?>? Grass,
-      final int? Others,
-      final Map<String, int?>? Tree,
-      final Map<String, int?>? Weed}) = _$SpeciesDtoImpl;
+      {@JsonKey(name: 'Grass') final Map<String, int?>? grass,
+      @JsonKey(name: 'Others') final int? others,
+      @JsonKey(name: 'Tree') final Map<String, int?>? tree,
+      @JsonKey(name: 'Weed') final Map<String, int?>? weed}) = _$SpeciesDtoImpl;
 
   factory _SpeciesDto.fromJson(Map<String, dynamic> json) =
       _$SpeciesDtoImpl.fromJson;
 
   @override
-  Map<String, int?>? get Grass;
+  @JsonKey(name: 'Grass')
+  Map<String, int?>? get grass;
   @override
-  int? get Others;
+  @JsonKey(name: 'Others')
+  int? get others;
   @override
-  Map<String, int?>? get Tree;
+  @JsonKey(name: 'Tree')
+  Map<String, int?>? get tree;
   @override
-  Map<String, int?>? get Weed;
+  @JsonKey(name: 'Weed')
+  Map<String, int?>? get weed;
   @override
   @JsonKey(ignore: true)
   _$$SpeciesDtoImplCopyWith<_$SpeciesDtoImpl> get copyWith =>

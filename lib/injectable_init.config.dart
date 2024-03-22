@@ -21,14 +21,14 @@ import 'data/mappers/pollen/pollen_dto_to_pollen_entity_mapper.dart' as _i8;
 import 'data/mappers/pollen/pollen_entity_to_pollen_model_mapper.dart' as _i9;
 import 'data/mappers/pollen/pollen_model_to_pollen_entity_mapper.dart' as _i10;
 import 'data/repositories/mood_record_repository_impl.dart' as _i7;
-import 'data/repositories/pollen_repository_impl.dart' as _i12;
-import 'data/repositories/pollen_repository_mock_impl.dart' as _i13;
+import 'data/repositories/pollen_repository_impl.dart' as _i13;
+import 'data/repositories/pollen_repository_mock_impl.dart' as _i12;
 import 'domain/repositories/pollen_repository.dart' as _i11;
 import 'injectable_init.dart' as _i14;
 
+const String _dev = 'dev';
 const String _test = 'test';
 const String _prod = 'prod';
-const String _dev = 'dev';
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -64,7 +64,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i10.PollenModelToPollenEntityMapper>(
         () => _i10.PollenModelToPollenEntityMapper());
     gh.factory<_i11.PollenRepository>(
-      () => _i12.PollenRepositoryImpl(
+      () => _i12.PollenRepositoryMock(
+          mapper: gh<_i8.PollenDtoToPollenEntityMappper>()),
+      registerFor: {_dev},
+    );
+    gh.factory<_i11.PollenRepository>(
+      () => _i13.PollenRepositoryImpl(
         dio: gh<_i3.Dio>(),
         pollenDtoToPollenEntityMapper: gh<_i8.PollenDtoToPollenEntityMappper>(),
       ),
@@ -72,11 +77,6 @@ extension GetItInjectableX on _i1.GetIt {
         _test,
         _prod,
       },
-    );
-    gh.factory<_i11.PollenRepository>(
-      () => _i13.PollenRepositoryMock(
-          mapper: gh<_i8.PollenDtoToPollenEntityMappper>()),
-      registerFor: {_dev},
     );
     return this;
   }

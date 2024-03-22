@@ -7,11 +7,11 @@ part 'ambee_dto.g.dart';
 
 @freezed
 class AmbeeDto with _$AmbeeDto {
-  const factory AmbeeDto(
-      {String? message,
-      double? lat,
-      double? lng,
-      List<ForecastEntryDto>? data}) = _AmbeeDto;
-  factory AmbeeDto.fromJson(Map<String, Object?> json) =>
-      _$AmbeeDtoFromJson(json);
+  const factory AmbeeDto({
+    String? message,
+    double? lat,
+    double? lng,
+    List<ForecastEntryDto>? data,
+  }) = _AmbeeDto;
+  factory AmbeeDto.fromJson(Map<String, Object?> json) => _$AmbeeDtoFromJson(json);
 }

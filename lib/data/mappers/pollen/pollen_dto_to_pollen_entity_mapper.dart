@@ -14,12 +14,12 @@ class PollenDtoToPollenEntityMappper {
     List<PollenEntity> res = List.empty(growable: true);
 
     for (var entry in dto.data!) {
-      if (entry.time == null || entry.Species?.Tree == null) {
+      if (entry.time == null || entry.species?.tree == null) {
         continue;
       }
 
       Map<Species, int> levels = {};
-      for (var species in entry.Species!.Tree!.entries) {
+      for (var species in entry.species!.tree!.entries) {
         //TODO add weeds, grass and others!
         Species? type = stringSpeciesMapper[species.key];
 

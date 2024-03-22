@@ -19,7 +19,7 @@ mixin _$ProfileEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
-  Species get species => throw _privateConstructorUsedError;
+  List<Species> get species => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileEntityCopyWith<ProfileEntity> get copyWith =>
@@ -32,7 +32,7 @@ abstract class $ProfileEntityCopyWith<$Res> {
           ProfileEntity value, $Res Function(ProfileEntity) then) =
       _$ProfileEntityCopyWithImpl<$Res, ProfileEntity>;
   @useResult
-  $Res call({int id, String name, String city, Species species});
+  $Res call({int id, String name, String city, List<Species> species});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
       species: null == species
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
-              as Species,
+              as List<Species>,
     ) as $Val);
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$ProfileEntityImplCopyWith<$Res>
       __$$ProfileEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String city, Species species});
+  $Res call({int id, String name, String city, List<Species> species});
 }
 
 /// @nodoc
@@ -115,9 +115,9 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
           : city // ignore: cast_nullable_to_non_nullable
               as String,
       species: null == species
-          ? _value.species
+          ? _value._species
           : species // ignore: cast_nullable_to_non_nullable
-              as Species,
+              as List<Species>,
     ));
   }
 }
@@ -129,7 +129,8 @@ class _$ProfileEntityImpl implements _ProfileEntity {
       {required this.id,
       required this.name,
       required this.city,
-      required this.species});
+      required final List<Species> species})
+      : _species = species;
 
   @override
   final int id;
@@ -137,8 +138,13 @@ class _$ProfileEntityImpl implements _ProfileEntity {
   final String name;
   @override
   final String city;
+  final List<Species> _species;
   @override
-  final Species species;
+  List<Species> get species {
+    if (_species is EqualUnmodifiableListView) return _species;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_species);
+  }
 
   @override
   String toString() {
@@ -153,11 +159,12 @@ class _$ProfileEntityImpl implements _ProfileEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.city, city) || other.city == city) &&
-            (identical(other.species, species) || other.species == species));
+            const DeepCollectionEquality().equals(other._species, _species));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, city, species);
+  int get hashCode => Object.hash(runtimeType, id, name, city,
+      const DeepCollectionEquality().hash(_species));
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +178,7 @@ abstract class _ProfileEntity implements ProfileEntity {
       {required final int id,
       required final String name,
       required final String city,
-      required final Species species}) = _$ProfileEntityImpl;
+      required final List<Species> species}) = _$ProfileEntityImpl;
 
   @override
   int get id;
@@ -180,7 +187,7 @@ abstract class _ProfileEntity implements ProfileEntity {
   @override
   String get city;
   @override
-  Species get species;
+  List<Species> get species;
   @override
   @JsonKey(ignore: true)
   _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>

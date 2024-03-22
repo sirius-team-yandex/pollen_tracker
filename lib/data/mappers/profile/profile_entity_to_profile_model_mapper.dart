@@ -3,13 +3,13 @@ import 'package:pollen_tracker/domain/models/profile_entity.dart';
 
 class ProfileEntityToModelIsarMapper {
   ProfileModelIsar map(ProfileEntity profileEntity) {
-    final speciesName = profileEntity.species.name;
+    final speciesName = profileEntity.species.map((e) => e.name).toList();
     return ProfileModelIsar(
-        id: profileEntity.id,
-        name: profileEntity.name,
-        city: profileEntity.city,
-        //TODO SPECIES TO LIST
-        species: speciesName[0].toUpperCase() + speciesName.substring(1));
+      id: profileEntity.id,
+      name: profileEntity.name,
+      city: profileEntity.city,
+      species: speciesName.map((e) => e[0].toUpperCase() + e.substring(1)).toList(),
+    );
   }
 
   List<ProfileModelIsar> mapList(List<ProfileEntity> profileEntity) {

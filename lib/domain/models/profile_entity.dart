@@ -9,6 +9,6 @@ class ProfileEntity with _$ProfileEntity {
     required Id id,
     required String name,
     required String city,
-    required Species species,
+    required List<Species> species,
   }) = _ProfileEntity;
 }

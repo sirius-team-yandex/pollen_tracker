@@ -30,7 +30,7 @@ const ProfileModelIsarSchema = CollectionSchema(
     r'species': PropertySchema(
       id: 2,
       name: r'species',
-      type: IsarType.string,
+      type: IsarType.stringList,
     )
   },
   estimateSize: _profileModelIsarEstimateSize,
@@ -56,6 +56,12 @@ int _profileModelIsarEstimateSize(
   bytesCount += 3 + object.city.length * 3;
   bytesCount += 3 + object.name.length * 3;
   bytesCount += 3 + object.species.length * 3;
+  {
+    for (var i = 0; i < object.species.length; i++) {
+      final value = object.species[i];
+      bytesCount += value.length * 3;
+    }
+  }
   return bytesCount;
 }
 
@@ -67,7 +73,7 @@ void _profileModelIsarSerialize(
 ) {
   writer.writeString(offsets[0], object.city);
   writer.writeString(offsets[1], object.name);
-  writer.writeString(offsets[2], object.species);
+  writer.writeStringList(offsets[2], object.species);
 }
 
 ProfileModelIsar _profileModelIsarDeserialize(
@@ -80,7 +86,7 @@ ProfileModelIsar _profileModelIsarDeserialize(
     city: reader.readString(offsets[0]),
     id: id,
     name: reader.readString(offsets[1]),
-    species: reader.readString(offsets[2]),
+    species: reader.readStringList(offsets[2]) ?? [],
   );
   return object;
 }
@@ -97,7 +103,7 @@ P _profileModelIsarDeserializeProp<P>(
     case 1:
       return (reader.readString(offset)) as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -526,7 +532,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesEqualTo(
+      speciesElementEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -540,7 +546,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesGreaterThan(
+      speciesElementGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -556,7 +562,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesLessThan(
+      speciesElementLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -572,7 +578,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesBetween(
+      speciesElementBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -592,7 +598,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesStartsWith(
+      speciesElementStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -606,7 +612,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesEndsWith(
+      speciesElementEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -620,7 +626,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesContains(String value, {bool caseSensitive = true}) {
+      speciesElementContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'species',
@@ -631,7 +637,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesMatches(String pattern, {bool caseSensitive = true}) {
+      speciesElementMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'species',
@@ -642,7 +648,7 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesIsEmpty() {
+      speciesElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'species',
@@ -652,12 +658,101 @@ extension ProfileModelIsarQueryFilter
   }
 
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
-      speciesIsNotEmpty() {
+      speciesElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'species',
         value: '',
       ));
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        length,
+        true,
+        length,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        0,
+        true,
+        0,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        0,
+        false,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        0,
+        true,
+        length,
+        include,
+      );
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        length,
+        include,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'species',
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      );
     });
   }
 }
@@ -693,20 +788,6 @@ extension ProfileModelIsarQuerySortBy
       sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
-      sortBySpecies() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'species', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
-      sortBySpeciesDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'species', Sort.desc);
     });
   }
 }
@@ -751,20 +832,6 @@ extension ProfileModelIsarQuerySortThenBy
       return query.addSortBy(r'name', Sort.desc);
     });
   }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
-      thenBySpecies() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'species', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
-      thenBySpeciesDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'species', Sort.desc);
-    });
-  }
 }
 
 extension ProfileModelIsarQueryWhereDistinct
@@ -783,10 +850,10 @@ extension ProfileModelIsarQueryWhereDistinct
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctBySpecies(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct>
+      distinctBySpecies() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'species', caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'species');
     });
   }
 }
@@ -811,7 +878,8 @@ extension ProfileModelIsarQueryProperty
     });
   }
 
-  QueryBuilder<ProfileModelIsar, String, QQueryOperations> speciesProperty() {
+  QueryBuilder<ProfileModelIsar, List<String>, QQueryOperations>
+      speciesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'species');
     });

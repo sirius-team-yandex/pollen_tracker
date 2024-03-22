@@ -6,7 +6,7 @@ class ProfileModelIsar {
   Id id;
   String name;
   String city;
-  String species;
+  List<String> species;
 
   ProfileModelIsar({
     required this.id,

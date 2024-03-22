@@ -17,6 +17,7 @@ class ConfigRepositoryIsarImpl implements ConfigRepository {
   final ConfigModelIsarToEntityMapper configModelIsarToEntityMapper;
   final ConfigEntityToModelIsarMapper configEntityToModelIsarMapper;
 
+
   @override
   Future<ConfigEntity?> fetchConfigModel() async {
     final profileModel = await configLocalStorageDatasource.fetchConfigModel();

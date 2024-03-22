@@ -10,13 +10,13 @@ _$ForecastEntryDtoImpl _$$ForecastEntryDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$ForecastEntryDtoImpl(
       time: json['time'] as int?,
-      Species: json['Species'] == null
+      species: json['Species'] == null
           ? null
           : SpeciesDto.fromJson(json['Species'] as Map<String, dynamic>),
-      Risk: json['Risk'] == null
+      risk: json['Risc'] == null
           ? null
-          : RiscDto.fromJson(json['Risk'] as Map<String, dynamic>),
-      Count: json['Count'] == null
+          : RiscDto.fromJson(json['Risc'] as Map<String, dynamic>),
+      count: json['Count'] == null
           ? null
           : CountDto.fromJson(json['Count'] as Map<String, dynamic>),
       updatedAt: json['updatedAt'] as String?,
@@ -26,8 +26,8 @@ Map<String, dynamic> _$$ForecastEntryDtoImplToJson(
         _$ForecastEntryDtoImpl instance) =>
     <String, dynamic>{
       'time': instance.time,
-      'Species': instance.Species,
-      'Risk': instance.Risk,
-      'Count': instance.Count,
+      'Species': instance.species,
+      'Risc': instance.risk,
+      'Count': instance.count,
       'updatedAt': instance.updatedAt,
     };

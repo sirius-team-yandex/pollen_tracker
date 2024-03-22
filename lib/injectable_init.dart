@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/config.dart';
-import 'package:pollen_tracker/ui/theme/theme.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'injectable_init.config.dart';

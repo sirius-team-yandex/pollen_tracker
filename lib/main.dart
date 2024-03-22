@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
       children: [
         Text(
           '${AppLocalizations.of(context).health_check})',
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
         IconButton(
           onPressed: () {

@@ -14,6 +14,9 @@ import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 void main() async {
+
+  logger.d('hi, i\'m main.dart');
+  
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();

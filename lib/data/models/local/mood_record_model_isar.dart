@@ -5,12 +5,14 @@ part 'mood_record_model_isar.g.dart';
 @collection
 class MoodRecordModelIsar {
   Id id;
+  Id profileId;
   @enumerated
   MoodType moodType;
   String? comment;
   DateTime date;
   MoodRecordModelIsar({
     required this.moodType,
+    required this.profileId,
     this.comment,
     required this.date,
   }) : id = int.parse(date.millisecondsSinceEpoch.toString().substring(0, 10));

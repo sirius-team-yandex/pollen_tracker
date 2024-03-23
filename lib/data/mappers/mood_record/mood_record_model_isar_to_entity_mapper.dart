@@ -7,6 +7,7 @@ class MoodRecordModelIsarToEntityMapper {
   MoodRecordEntity map(MoodRecordModelIsar model) {
     return MoodRecordEntity(
       id: model.id,
+      profileId: model.profileId,
       moodType: model.moodType,
       comment: model.comment,
       date: model.date,

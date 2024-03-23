@@ -15,7 +15,11 @@ class ListDynamicToCityEntityMapper {
       final String? country = _cast(city[3]);
       final int? id = _cast(city[4]);
 
-      if (name != null && lat != null && lng != null && country != null && id != null) {
+      if (name != null &&
+          lat != null &&
+          lng != null &&
+          country != null &&
+          id != null) {
         cities.add(
           CityEntity(name: name, lat: lat, lng: lng, country: country, id: id),
         );

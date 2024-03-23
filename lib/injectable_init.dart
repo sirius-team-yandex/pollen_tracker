@@ -13,7 +13,8 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env);
+void configureDependencies({String env = Environment.dev}) =>
+    getIt.init(environment: env);
 
 @module
 abstract class Module {

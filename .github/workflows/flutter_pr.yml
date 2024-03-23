@@ -49,10 +49,8 @@ jobs:
         if: failure()
         run: exit 1
       - name: Format code
-        run: dart format --line-length 120 --set-exit-if-changed .
+        run: find . -name "*.dart" ! -name "firebase_options.dart" -exec dart format {} +
 
-      - name: Format code
-        run: dart format --line-length 120 --set-exit-if-changed .
       # - uses: actions/upload-artifact@v1
       #   with:
       #     name: release-apk

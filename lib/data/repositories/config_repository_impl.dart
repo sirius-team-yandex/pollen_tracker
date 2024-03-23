@@ -33,7 +33,8 @@ class ConfigRepositoryIsarImpl implements ConfigRepository {
 
     if (profileModel != null) {
       profileModel.lastId = newId;
-      final success = await configLocalStorageDatasource.updateModel(profileModel);
+      final success =
+          await configLocalStorageDatasource.updateModel(profileModel);
       if (success != null) {
         return true;
       }
@@ -47,7 +48,8 @@ class ConfigRepositoryIsarImpl implements ConfigRepository {
 
     if (profileModel != null) {
       profileModel.locale = newLocale;
-      final success = await configLocalStorageDatasource.updateModel(profileModel);
+      final success =
+          await configLocalStorageDatasource.updateModel(profileModel);
       if (success != null) {
         return true;
       }
@@ -61,7 +63,8 @@ class ConfigRepositoryIsarImpl implements ConfigRepository {
 
     if (profileModel != null) {
       profileModel.isDark = isDark;
-      final success = await configLocalStorageDatasource.updateModel(profileModel);
+      final success =
+          await configLocalStorageDatasource.updateModel(profileModel);
       if (success != null) {
         return true;
       }

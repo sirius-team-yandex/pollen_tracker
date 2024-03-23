@@ -9,5 +9,6 @@ class RiscDto with _$RiscDto {
     @JsonKey(name: 'tree_pollen') String? treePollen,
     @JsonKey(name: 'weed_pollen') String? weedPollen,
   }) = _RiscDto;
-  factory RiscDto.fromJson(Map<String, Object?> json) => _$RiscDtoFromJson(json);
+  factory RiscDto.fromJson(Map<String, Object?> json) =>
+      _$RiscDtoFromJson(json);
 }

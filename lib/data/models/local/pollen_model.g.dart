@@ -333,11 +333,13 @@ List<IsarLinkBase<dynamic>> _pollenModelGetLinks(PollenModel object) {
   return [];
 }
 
-void _pollenModelAttach(IsarCollection<dynamic> col, Id id, PollenModel object) {
+void _pollenModelAttach(
+    IsarCollection<dynamic> col, Id id, PollenModel object) {
   object.id = id;
 }
 
-extension PollenModelQueryWhereSort on QueryBuilder<PollenModel, PollenModel, QWhere> {
+extension PollenModelQueryWhereSort
+    on QueryBuilder<PollenModel, PollenModel, QWhere> {
   QueryBuilder<PollenModel, PollenModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
@@ -345,7 +347,8 @@ extension PollenModelQueryWhereSort on QueryBuilder<PollenModel, PollenModel, QW
   }
 }
 
-extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhereClause> {
+extension PollenModelQueryWhere
+    on QueryBuilder<PollenModel, PollenModel, QWhereClause> {
   QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
@@ -355,7 +358,8 @@ extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhere
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idNotEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -377,7 +381,8 @@ extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhere
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idGreaterThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -385,7 +390,8 @@ extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhere
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idLessThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -410,8 +416,10 @@ extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhere
   }
 }
 
-extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> acaciaEqualTo(int value) {
+extension PollenModelQueryFilter
+    on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> acaciaEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acacia',
@@ -420,7 +428,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> acaciaGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      acaciaGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -463,7 +472,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> alderEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> alderEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'alder',
@@ -472,7 +482,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> alderGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      alderGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -515,7 +526,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> ashEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> ashEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'ash',
@@ -567,7 +579,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> birchEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> birchEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'birch',
@@ -576,7 +589,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> birchGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      birchGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -619,7 +633,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> casuarinaEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      casuarinaEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'casuarina',
@@ -628,7 +643,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> casuarinaGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      casuarinaGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -641,7 +657,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> casuarinaLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      casuarinaLessThan(
     int value, {
     bool include = false,
   }) {
@@ -654,7 +671,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> casuarinaBetween(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      casuarinaBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -671,7 +689,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> chenopodEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> chenopodEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'chenopod',
@@ -680,7 +699,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> chenopodGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      chenopodGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -693,7 +713,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> chenopodLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      chenopodLessThan(
     int value, {
     bool include = false,
   }) {
@@ -723,7 +744,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> cypressEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> cypressEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'cypress',
@@ -732,7 +754,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> cypressGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      cypressGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -775,7 +798,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> elmEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> elmEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'elm',
@@ -827,7 +851,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> grassEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> grassEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'grass',
@@ -836,7 +861,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> grassGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      grassGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -879,7 +905,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> hazelEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> hazelEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'hazel',
@@ -888,7 +915,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> hazelGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      hazelGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -931,7 +959,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idEqualTo(
+      Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -1107,7 +1136,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mapleEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mapleEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'maple',
@@ -1116,7 +1146,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mapleGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      mapleGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1159,7 +1190,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mugwortEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mugwortEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'mugwort',
@@ -1168,7 +1200,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mugwortGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      mugwortGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1211,7 +1244,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mulberryEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mulberryEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'mulberry',
@@ -1220,7 +1254,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mulberryGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      mulberryGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1233,7 +1268,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> mulberryLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      mulberryLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1263,7 +1299,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> myrtaceaeEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      myrtaceaeEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'myrtaceae',
@@ -1272,7 +1309,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> myrtaceaeGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      myrtaceaeGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1285,7 +1323,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> myrtaceaeLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      myrtaceaeLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1298,7 +1337,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> myrtaceaeBetween(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      myrtaceaeBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1315,7 +1355,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> nettleEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> nettleEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'nettle',
@@ -1324,7 +1365,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> nettleGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      nettleGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1367,7 +1409,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> oakEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> oakEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'oak',
@@ -1419,7 +1462,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> oliveEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> oliveEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'olive',
@@ -1428,7 +1472,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> oliveGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      oliveGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1471,7 +1516,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> othersEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> othersEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'others',
@@ -1480,7 +1526,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> othersGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      othersGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1523,7 +1570,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> pineEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> pineEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'pine',
@@ -1575,7 +1623,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> planeEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> planeEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'plane',
@@ -1584,7 +1633,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> planeGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      planeGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1627,7 +1677,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> plantagoEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> plantagoEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'plantago',
@@ -1636,7 +1687,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> plantagoGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      plantagoGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1649,7 +1701,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> plantagoLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      plantagoLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1679,7 +1732,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> poplarEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> poplarEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'poplar',
@@ -1688,7 +1742,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> poplarGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      poplarGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1731,7 +1786,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> ragweedEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> ragweedEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'ragweed',
@@ -1740,7 +1796,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> ragweedGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      ragweedGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1783,7 +1840,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> rumexEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> rumexEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'rumex',
@@ -1792,7 +1850,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> rumexGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      rumexGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1835,7 +1894,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> timeEqualTo(DateTime value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> timeEqualTo(
+      DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'time',
@@ -1887,7 +1947,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> willowEqualTo(int value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> willowEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'willow',
@@ -1896,7 +1957,8 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> willowGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition>
+      willowGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1940,11 +2002,14 @@ extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilt
   }
 }
 
-extension PollenModelQueryObject on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {}
+extension PollenModelQueryObject
+    on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {}
 
-extension PollenModelQueryLinks on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {}
+extension PollenModelQueryLinks
+    on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {}
 
-extension PollenModelQuerySortBy on QueryBuilder<PollenModel, PollenModel, QSortBy> {
+extension PollenModelQuerySortBy
+    on QueryBuilder<PollenModel, PollenModel, QSortBy> {
   QueryBuilder<PollenModel, PollenModel, QAfterSortBy> sortByAcacia() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acacia', Sort.asc);
@@ -2282,7 +2347,8 @@ extension PollenModelQuerySortBy on QueryBuilder<PollenModel, PollenModel, QSort
   }
 }
 
-extension PollenModelQuerySortThenBy on QueryBuilder<PollenModel, PollenModel, QSortThenBy> {
+extension PollenModelQuerySortThenBy
+    on QueryBuilder<PollenModel, PollenModel, QSortThenBy> {
   QueryBuilder<PollenModel, PollenModel, QAfterSortBy> thenByAcacia() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'acacia', Sort.asc);
@@ -2632,7 +2698,8 @@ extension PollenModelQuerySortThenBy on QueryBuilder<PollenModel, PollenModel, Q
   }
 }
 
-extension PollenModelQueryWhereDistinct on QueryBuilder<PollenModel, PollenModel, QDistinct> {
+extension PollenModelQueryWhereDistinct
+    on QueryBuilder<PollenModel, PollenModel, QDistinct> {
   QueryBuilder<PollenModel, PollenModel, QDistinct> distinctByAcacia() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'acacia');
@@ -2802,7 +2869,8 @@ extension PollenModelQueryWhereDistinct on QueryBuilder<PollenModel, PollenModel
   }
 }
 
-extension PollenModelQueryProperty on QueryBuilder<PollenModel, PollenModel, QQueryProperty> {
+extension PollenModelQueryProperty
+    on QueryBuilder<PollenModel, PollenModel, QQueryProperty> {
   QueryBuilder<PollenModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');

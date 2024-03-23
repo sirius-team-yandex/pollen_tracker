@@ -108,14 +108,10 @@ MoodRecordModelIsar _moodRecordModelIsarDeserialize(
   final object = MoodRecordModelIsar(
     comment: reader.readStringOrNull(offsets[0]),
     date: reader.readDateTime(offsets[1]),
-<<<<<<< HEAD
-    id: id,
     moodType: _MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offsets[2])] ?? MoodType.veryBad,
     ownerId: reader.readLong(offsets[3]),
-=======
-    moodType: _MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offsets[2])] ?? MoodType.veryBad,
->>>>>>> f65daa2e262cdab82d7f70a3aecde657b7010254
   );
+  object.id = id;
   return object;
 }
 
@@ -132,11 +128,8 @@ P _moodRecordModelIsarDeserializeProp<P>(
       return (reader.readDateTime(offset)) as P;
     case 2:
       return (_MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offset)] ?? MoodType.veryBad) as P;
-<<<<<<< HEAD
     case 3:
       return (reader.readLong(offset)) as P;
-=======
->>>>>>> f65daa2e262cdab82d7f70a3aecde657b7010254
     default:
       throw IsarError('Unknown property with id $propertyId');
   }

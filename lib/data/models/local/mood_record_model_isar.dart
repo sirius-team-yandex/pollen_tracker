@@ -12,12 +12,13 @@ class MoodRecordModelIsar {
   // You should make sure that you deleted all of the other entries with the same index.
   @Index(composite: [CompositeIndex('date')])
   int ownerId;
+  // date, as a part of the "composite key" should be stable and time zone agnostic
+  // Those it should be stored as utc time to avoid any possible errors
   DateTime date;
   @enumerated
   MoodType moodType;
   String? comment;
   MoodRecordModelIsar({
-    required this.id,
     required this.ownerId,
     required this.date,
     required this.moodType,

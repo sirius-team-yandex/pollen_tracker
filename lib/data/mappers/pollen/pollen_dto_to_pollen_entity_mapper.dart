@@ -7,6 +7,10 @@ import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
 @injectable
 class PollenDtoToPollenEntityMappper {
+  PollenDtoToPollenEntityMappper({required this.stringSpeciesMapper});
+
+  final StringSpeciesMapper stringSpeciesMapper;
+
   List<PollenEntity> map(AmbeeDto dto) {
     final message = dto.message;
     final data = dto.data;
@@ -33,11 +37,9 @@ class PollenDtoToPollenEntityMappper {
       Map<Species, int> levels = {};
       for (var species in tree.entries) {
         //TODO add weeds, grass and others! FEAT-72
-        Species? type = stringSpeciesMapper[species.key];
+        Species? type = stringSpeciesMapper.map(species.key);
 
-        if (type != null) {
-          levels[type] = species.value ?? 0;
-        }
+        levels[type] = species.value ?? 0;
       }
 
       res.add(

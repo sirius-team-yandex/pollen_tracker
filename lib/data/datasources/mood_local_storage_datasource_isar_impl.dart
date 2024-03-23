@@ -32,8 +32,7 @@ class MoodLocalStorageDatasourceIsar {
 
   Future<List<MoodRecordModelIsar>> fetchAllmoodRecordModels() async {
     _isar ??= await _getIsarInstance();
-    final moodRecordModels =
-        await _isar!.moodRecordModelIsars.where().findAll();
+    final moodRecordModels = await _isar!.moodRecordModelIsars.where().findAll();
     return moodRecordModels;
   }
 

@@ -22,22 +22,19 @@ mixin _$PollenEntity {
   Map<Species, int> get levels => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PollenEntityCopyWith<PollenEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PollenEntityCopyWith<PollenEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PollenEntityCopyWith<$Res> {
-  factory $PollenEntityCopyWith(
-          PollenEntity value, $Res Function(PollenEntity) then) =
+  factory $PollenEntityCopyWith(PollenEntity value, $Res Function(PollenEntity) then) =
       _$PollenEntityCopyWithImpl<$Res, PollenEntity>;
   @useResult
   $Res call({DateTime time, double lat, double lng, Map<Species, int> levels});
 }
 
 /// @nodoc
-class _$PollenEntityCopyWithImpl<$Res, $Val extends PollenEntity>
-    implements $PollenEntityCopyWith<$Res> {
+class _$PollenEntityCopyWithImpl<$Res, $Val extends PollenEntity> implements $PollenEntityCopyWith<$Res> {
   _$PollenEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -75,10 +72,8 @@ class _$PollenEntityCopyWithImpl<$Res, $Val extends PollenEntity>
 }
 
 /// @nodoc
-abstract class _$$PollenEntityImplCopyWith<$Res>
-    implements $PollenEntityCopyWith<$Res> {
-  factory _$$PollenEntityImplCopyWith(
-          _$PollenEntityImpl value, $Res Function(_$PollenEntityImpl) then) =
+abstract class _$$PollenEntityImplCopyWith<$Res> implements $PollenEntityCopyWith<$Res> {
+  factory _$$PollenEntityImplCopyWith(_$PollenEntityImpl value, $Res Function(_$PollenEntityImpl) then) =
       __$$PollenEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -86,11 +81,9 @@ abstract class _$$PollenEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PollenEntityImplCopyWithImpl<$Res>
-    extends _$PollenEntityCopyWithImpl<$Res, _$PollenEntityImpl>
+class __$$PollenEntityImplCopyWithImpl<$Res> extends _$PollenEntityCopyWithImpl<$Res, _$PollenEntityImpl>
     implements _$$PollenEntityImplCopyWith<$Res> {
-  __$$PollenEntityImplCopyWithImpl(
-      _$PollenEntityImpl _value, $Res Function(_$PollenEntityImpl) _then)
+  __$$PollenEntityImplCopyWithImpl(_$PollenEntityImpl _value, $Res Function(_$PollenEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,10 +119,7 @@ class __$$PollenEntityImplCopyWithImpl<$Res>
 
 class _$PollenEntityImpl with DiagnosticableTreeMixin implements _PollenEntity {
   const _$PollenEntityImpl(
-      {required this.time,
-      required this.lat,
-      required this.lng,
-      required final Map<Species, int> levels})
+      {required this.time, required this.lat, required this.lng, required final Map<Species, int> levels})
       : _levels = levels;
 
   @override
@@ -174,8 +164,7 @@ class _$PollenEntityImpl with DiagnosticableTreeMixin implements _PollenEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, time, lat, lng,
-      const DeepCollectionEquality().hash(_levels));
+  int get hashCode => Object.hash(runtimeType, time, lat, lng, const DeepCollectionEquality().hash(_levels));
 
   @JsonKey(ignore: true)
   @override
@@ -201,6 +190,5 @@ abstract class _PollenEntity implements PollenEntity {
   Map<Species, int> get levels;
   @override
   @JsonKey(ignore: true)
-  _$$PollenEntityImplCopyWith<_$PollenEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PollenEntityImplCopyWith<_$PollenEntityImpl> get copyWith => throw _privateConstructorUsedError;
 }

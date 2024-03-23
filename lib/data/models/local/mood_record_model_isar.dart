@@ -1,5 +1,5 @@
 import 'package:isar/isar.dart';
-import 'package:pollen_tracker/common/enum/mood_type_enum.dart';
+import 'package:pollen_tracker/common/enums/mood_type.dart';
 part 'mood_record_model_isar.g.dart';
 
 @collection

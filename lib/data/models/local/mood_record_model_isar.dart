@@ -5,7 +5,7 @@ part 'mood_record_model_isar.g.dart';
 @collection
 class MoodRecordModelIsar {
   Id id;
-  Id profileId;
+  int profileId;
   @enumerated
   MoodType moodType;
   String? comment;

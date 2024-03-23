@@ -32,6 +32,11 @@ const MoodRecordModelIsarSchema = CollectionSchema(
       name: r'moodType',
       type: IsarType.byte,
       enumMap: _MoodRecordModelIsarmoodTypeEnumValueMap,
+    ),
+    r'profileId': PropertySchema(
+      id: 3,
+      name: r'profileId',
+      type: IsarType.long,
     )
   },
   estimateSize: _moodRecordModelIsarEstimateSize,
@@ -72,6 +77,7 @@ void _moodRecordModelIsarSerialize(
   writer.writeString(offsets[0], object.comment);
   writer.writeDateTime(offsets[1], object.date);
   writer.writeByte(offsets[2], object.moodType.index);
+  writer.writeLong(offsets[3], object.profileId);
 }
 
 MoodRecordModelIsar _moodRecordModelIsarDeserialize(
@@ -84,6 +90,7 @@ MoodRecordModelIsar _moodRecordModelIsarDeserialize(
     comment: reader.readStringOrNull(offsets[0]),
     date: reader.readDateTime(offsets[1]),
     moodType: _MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offsets[2])] ?? MoodType.veryBad,
+    profileId: reader.readLong(offsets[3]),
   );
   object.id = id;
   return object;
@@ -102,6 +109,8 @@ P _moodRecordModelIsarDeserializeProp<P>(
       return (reader.readDateTime(offset)) as P;
     case 2:
       return (_MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offset)] ?? MoodType.veryBad) as P;
+    case 3:
+      return (reader.readLong(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -506,6 +515,58 @@ extension MoodRecordModelIsarQueryFilter on QueryBuilder<MoodRecordModelIsar, Mo
       ));
     });
   }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'profileId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension MoodRecordModelIsarQueryObject on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QFilterCondition> {}
@@ -546,6 +607,18 @@ extension MoodRecordModelIsarQuerySortBy on QueryBuilder<MoodRecordModelIsar, Mo
   QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByMoodTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'moodType', Sort.desc);
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByProfileIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.desc);
     });
   }
 }
@@ -598,6 +671,18 @@ extension MoodRecordModelIsarQuerySortThenBy on QueryBuilder<MoodRecordModelIsar
       return query.addSortBy(r'moodType', Sort.desc);
     });
   }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByProfileIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.desc);
+    });
+  }
 }
 
 extension MoodRecordModelIsarQueryWhereDistinct on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct> {
@@ -616,6 +701,12 @@ extension MoodRecordModelIsarQueryWhereDistinct on QueryBuilder<MoodRecordModelI
   QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct> distinctByMoodType() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'moodType');
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct> distinctByProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'profileId');
     });
   }
 }
@@ -642,6 +733,12 @@ extension MoodRecordModelIsarQueryProperty on QueryBuilder<MoodRecordModelIsar, 
   QueryBuilder<MoodRecordModelIsar, MoodType, QQueryOperations> moodTypeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'moodType');
+    });
+  }
+
+  QueryBuilder<MoodRecordModelIsar, int, QQueryOperations> profileIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'profileId');
     });
   }
 }

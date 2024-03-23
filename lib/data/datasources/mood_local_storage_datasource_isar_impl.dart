@@ -30,9 +30,18 @@ class MoodLocalStorageDatasourceIsar {
     return deleted;
   }
 
-  Future<List<MoodRecordModelIsar>> fetchAllmoodRecordModels() async {
+  Future<List<MoodRecordModelIsar>> fetchAllmoodRecordModels(
+    int profileId,
+    DateTime firstDayOfMonth,
+    DateTime lastDayOfMonth,
+  ) async {
     _isar ??= await _getIsarInstance();
-    final moodRecordModels = await _isar!.moodRecordModelIsars.where().findAll();
+    final moodRecordModels = await _isar!.moodRecordModelIsars
+        .filter()
+        .dateBetween(firstDayOfMonth, lastDayOfMonth)
+        .and()
+        .profileIdEqualTo(profileId)
+        .findAll();
     return moodRecordModels;
   }
 

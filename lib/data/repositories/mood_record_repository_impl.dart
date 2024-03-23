@@ -5,8 +5,8 @@ import 'package:pollen_tracker/data/mappers/mood_record/mood_record_model_isar_t
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 
-@Injectable(as: MoodRecordRepository)
-class MoodRecordRepositoryIsarImpl implements MoodRecordRepository {
+@Injectable(as: MoodRecordsRepository)
+class MoodRecordRepositoryIsarImpl implements MoodRecordsRepository {
   MoodRecordRepositoryIsarImpl({
     required this.moodLocalStorageDatasource,
     required this.moodRecordModelIsarToEntityMapper,
@@ -18,31 +18,38 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository {
   MoodRecordEntityToModelIsarMapper moodRecordEntityToModelIsarMapper;
 
   @override
-  Future<bool> deleteMoodRecord(int id) {
+  Future<bool> deleteMoodRecord(MoodRecordEntity moodRecordModel) {
+    // Parse entity to isar ID
+    final id = moodRecordEntityToModelIsarMapper.map(moodRecordModel).id;
     return moodLocalStorageDatasource.deleteMoodRecord(id);
   }
 
   @override
-  Future<List<MoodRecordEntity>> fetchAllmoodRecordModels() async {
+  Future<List<MoodRecordEntity>> fetchAllmoodRecordModels(int profileId, DateTime date) async {
+    final DateTime firstDayOfMonth = DateTime(date.year, date.month, 1);
+    final DateTime lastDayOfMonth = DateTime(date.year, date.month + 1, 1).subtract(const Duration(days: 1));
     final List<MoodRecordEntity> moodRecordsEntities = moodRecordModelIsarToEntityMapper
         .mapList(
-          await moodLocalStorageDatasource.fetchAllmoodRecordModels(),
+          await moodLocalStorageDatasource.fetchAllmoodRecordModels(profileId, firstDayOfMonth, lastDayOfMonth),
         )
         .toList();
     return moodRecordsEntities;
   }
 
   @override
-  Future<int?> insertMoodRecordModel(MoodRecordEntity moodRecordEntity) {
-    return moodLocalStorageDatasource.insertMoodRecordModel(
+  Future<bool> addMoodRecordModel(MoodRecordEntity moodRecordEntity) async {
+    final success = await moodLocalStorageDatasource.insertMoodRecordModel(
       moodRecordEntityToModelIsarMapper.map(moodRecordEntity),
     );
+
+    return success != null;
   }
 
   @override
-  Future<int?> updateMoodRecordModel(MoodRecordEntity moodRecordEntity) {
-    return moodLocalStorageDatasource.updateMoodRecordModel(
+  Future<bool> updateMoodRecordModel(MoodRecordEntity moodRecordEntity) async {
+    final success = await moodLocalStorageDatasource.updateMoodRecordModel(
       moodRecordEntityToModelIsarMapper.map(moodRecordEntity),
     );
+    return success != null;
   }
 }

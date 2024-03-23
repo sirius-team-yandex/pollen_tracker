@@ -48,7 +48,7 @@ app.*.map.json
 # Neovim config
 /.nvim.lua
 
-# Task file
+# Taskfile 
 /Taskfile.yml
 
 #Firebase

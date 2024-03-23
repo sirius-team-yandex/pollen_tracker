@@ -10,5 +10,6 @@ class CountDto with _$CountDto {
     @JsonKey(name: 'tree_pollen') int? treePollen,
     @JsonKey(name: 'weed_pollen') int? weedPollen,
   }) = _CountDto;
-  factory CountDto.fromJson(Map<String, Object?> json) => _$CountDtoFromJson(json);
+  factory CountDto.fromJson(Map<String, Object?> json) =>
+      _$CountDtoFromJson(json);
 }

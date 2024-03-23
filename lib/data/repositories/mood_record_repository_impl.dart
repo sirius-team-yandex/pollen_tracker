@@ -24,11 +24,12 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository {
 
   @override
   Future<List<MoodRecordEntity>> fetchAllmoodRecordModels() async {
-    final List<MoodRecordEntity> moodRecordsEntities = moodRecordModelIsarToEntityMapper
-        .mapList(
-          await moodLocalStorageDatasource.fetchAllmoodRecordModels(),
-        )
-        .toList();
+    final List<MoodRecordEntity> moodRecordsEntities =
+        moodRecordModelIsarToEntityMapper
+            .mapList(
+              await moodLocalStorageDatasource.fetchAllmoodRecordModels(),
+            )
+            .toList();
     return moodRecordsEntities;
   }
 

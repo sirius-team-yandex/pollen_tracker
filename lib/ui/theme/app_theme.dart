@@ -19,7 +19,8 @@ class AppTheme extends StatelessWidget {
   }
 
   static AppThemeData of(BuildContext context) {
-    final inheritedTheme = context.dependOnInheritedWidgetOfExactType<_InheritedStTheme>();
+    final inheritedTheme =
+        context.dependOnInheritedWidgetOfExactType<_InheritedStTheme>();
     assert(inheritedTheme != null, 'No instance of AppThemeData.');
     return inheritedTheme!.theme.data;
   }
@@ -34,10 +35,14 @@ class _InheritedStTheme extends InheritedTheme {
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    final ancestorTheme = context.findAncestorWidgetOfExactType<_InheritedStTheme>();
-    return identical(this, ancestorTheme) ? child : AppTheme(data: theme.data, child: child);
+    final ancestorTheme =
+        context.findAncestorWidgetOfExactType<_InheritedStTheme>();
+    return identical(this, ancestorTheme)
+        ? child
+        : AppTheme(data: theme.data, child: child);
   }
 
   @override
-  bool updateShouldNotify(_InheritedStTheme old) => theme.data != old.theme.data;
+  bool updateShouldNotify(_InheritedStTheme old) =>
+      theme.data != old.theme.data;
 }

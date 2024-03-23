@@ -117,11 +117,13 @@ List<IsarLinkBase<dynamic>> _profileModelIsarGetLinks(ProfileModelIsar object) {
   return [];
 }
 
-void _profileModelIsarAttach(IsarCollection<dynamic> col, Id id, ProfileModelIsar object) {
+void _profileModelIsarAttach(
+    IsarCollection<dynamic> col, Id id, ProfileModelIsar object) {
   object.id = id;
 }
 
-extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhere> {
+extension ProfileModelIsarQueryWhereSort
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhere> {
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
@@ -129,8 +131,10 @@ extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, Profi
   }
 }
 
-extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhereClause> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idEqualTo(Id id) {
+extension ProfileModelIsarQueryWhere
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhereClause> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -139,7 +143,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -161,7 +166,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -169,7 +175,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      idLessThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -194,8 +201,10 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
   }
 }
 
-extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityEqualTo(
+extension ProfileModelIsarQueryFilter
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -208,7 +217,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -223,7 +233,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -238,7 +249,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -257,7 +269,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityStartsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -270,7 +283,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityEndsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -283,8 +297,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityContains(String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'city',
@@ -294,8 +308,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityMatches(String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'city',
@@ -305,7 +319,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIsEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'city',
@@ -314,7 +329,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIsNotEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'city',
@@ -323,7 +339,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -332,7 +349,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -345,7 +363,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -358,7 +377,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -375,7 +395,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -388,7 +409,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -403,7 +425,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -418,7 +441,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -437,7 +461,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -450,7 +475,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -463,8 +489,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameContains(String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'name',
@@ -474,8 +500,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameMatches(String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'name',
@@ -485,7 +511,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'name',
@@ -494,7 +521,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
@@ -503,7 +531,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementEqualTo(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -516,7 +545,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -531,7 +561,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -546,7 +577,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -565,7 +597,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementStartsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -578,7 +611,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementEndsWith(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -591,8 +625,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementContains(String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'species',
@@ -602,8 +636,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementMatches(String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'species',
@@ -613,7 +647,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementIsEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'species',
@@ -622,7 +657,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementIsNotEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'species',
@@ -631,7 +667,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesLengthEqualTo(int length) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'species',
@@ -643,7 +680,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesIsEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'species',
@@ -655,7 +693,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesIsNotEmpty() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
         r'species',
@@ -667,7 +706,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesLengthLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthLessThan(
     int length, {
     bool include = false,
   }) {
@@ -682,7 +722,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesLengthGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthGreaterThan(
     int length, {
     bool include = false,
   }) {
@@ -697,7 +738,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesLengthBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesLengthBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -715,18 +757,22 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
   }
 }
 
-extension ProfileModelIsarQueryObject on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
+extension ProfileModelIsarQueryObject
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
 
-extension ProfileModelIsarQueryLinks on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
+extension ProfileModelIsarQueryLinks
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
 
-extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortBy> {
+extension ProfileModelIsarQuerySortBy
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortBy> {
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCity() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'city', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      sortByCityDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'city', Sort.desc);
     });
@@ -738,21 +784,24 @@ extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByNameDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortThenBy> {
+extension ProfileModelIsarQuerySortThenBy
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortThenBy> {
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCity() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'city', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByCityDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'city', Sort.desc);
     });
@@ -764,7 +813,8 @@ extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, Prof
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
@@ -776,34 +826,40 @@ extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, Prof
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByNameDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension ProfileModelIsarQueryWhereDistinct on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByCity({bool caseSensitive = true}) {
+extension ProfileModelIsarQueryWhereDistinct
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByCity(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'city', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByName({bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByName(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctBySpecies() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct>
+      distinctBySpecies() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'species');
     });
   }
 }
 
-extension ProfileModelIsarQueryProperty on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QQueryProperty> {
+extension ProfileModelIsarQueryProperty
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QQueryProperty> {
   QueryBuilder<ProfileModelIsar, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
@@ -822,7 +878,8 @@ extension ProfileModelIsarQueryProperty on QueryBuilder<ProfileModelIsar, Profil
     });
   }
 
-  QueryBuilder<ProfileModelIsar, List<String>, QQueryOperations> speciesProperty() {
+  QueryBuilder<ProfileModelIsar, List<String>, QQueryOperations>
+      speciesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'species');
     });

@@ -20,8 +20,9 @@ class ListDynamicToCityEntityMapper {
           lng != null &&
           country != null &&
           id != null) {
-        cities.add(CityEntity(
-            name: name, lat: lat, lng: lng, country: country, id: id));
+        cities.add(
+          CityEntity(name: name, lat: lat, lng: lng, country: country, id: id),
+        );
       }
     }
     return cities;

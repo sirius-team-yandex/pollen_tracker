@@ -1,15 +1,14 @@
-import 'package:isar/isar.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 
 class MoodRecordEntity {
-  Id? id;
+  // date is the effective id of entity in the domain layer.
+  // date should be in local time and presented in UI as is.
+  DateTime date;
   MoodType moodType;
   String? comment;
-  DateTime date;
   MoodRecordEntity({
-    required this.id,
+    required this.date,
     required this.moodType,
     this.comment,
-    required this.date,
   });
 }

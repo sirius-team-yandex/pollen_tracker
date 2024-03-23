@@ -74,11 +74,10 @@ class HomePage extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            GetIt.I<MoodRecordRepository>().insertMoodRecordModel(
+            GetIt.I<MoodRecordRepository>().insert(
               MoodRecordEntity(
                 date: DateTime.now(),
                 moodType: MoodType.veryBad,
-                id: null,
               ),
             );
           },

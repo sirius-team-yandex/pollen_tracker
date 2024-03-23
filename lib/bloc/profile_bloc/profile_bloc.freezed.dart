@@ -82,12 +82,14 @@ mixin _$ProfileEvent {
 
 /// @nodoc
 abstract class $ProfileEventCopyWith<$Res> {
-  factory $ProfileEventCopyWith(ProfileEvent value, $Res Function(ProfileEvent) then) =
+  factory $ProfileEventCopyWith(
+          ProfileEvent value, $Res Function(ProfileEvent) then) =
       _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
 }
 
 /// @nodoc
-class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent> implements $ProfileEventCopyWith<$Res> {
+class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
+    implements $ProfileEventCopyWith<$Res> {
   _$ProfileEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -98,16 +100,19 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent> implements $Pr
 
 /// @nodoc
 abstract class _$$LoadProfileImplCopyWith<$Res> {
-  factory _$$LoadProfileImplCopyWith(_$LoadProfileImpl value, $Res Function(_$LoadProfileImpl) then) =
+  factory _$$LoadProfileImplCopyWith(
+          _$LoadProfileImpl value, $Res Function(_$LoadProfileImpl) then) =
       __$$LoadProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? id});
 }
 
 /// @nodoc
-class __$$LoadProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$LoadProfileImpl>
+class __$$LoadProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$LoadProfileImpl>
     implements _$$LoadProfileImplCopyWith<$Res> {
-  __$$LoadProfileImplCopyWithImpl(_$LoadProfileImpl _value, $Res Function(_$LoadProfileImpl) _then)
+  __$$LoadProfileImplCopyWithImpl(
+      _$LoadProfileImpl _value, $Res Function(_$LoadProfileImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +145,9 @@ class _$LoadProfileImpl implements LoadProfile {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadProfileImpl && (identical(other.id, id) || other.id == id));
+        (other.runtimeType == runtimeType &&
+            other is _$LoadProfileImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
@@ -244,21 +251,25 @@ abstract class LoadProfile implements ProfileEvent {
 
   int? get id;
   @JsonKey(ignore: true)
-  _$$LoadProfileImplCopyWith<_$LoadProfileImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$LoadProfileImplCopyWith<_$LoadProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SelectProfileImplCopyWith<$Res> {
-  factory _$$SelectProfileImplCopyWith(_$SelectProfileImpl value, $Res Function(_$SelectProfileImpl) then) =
+  factory _$$SelectProfileImplCopyWith(
+          _$SelectProfileImpl value, $Res Function(_$SelectProfileImpl) then) =
       __$$SelectProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? id});
 }
 
 /// @nodoc
-class __$$SelectProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$SelectProfileImpl>
+class __$$SelectProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$SelectProfileImpl>
     implements _$$SelectProfileImplCopyWith<$Res> {
-  __$$SelectProfileImplCopyWithImpl(_$SelectProfileImpl _value, $Res Function(_$SelectProfileImpl) _then)
+  __$$SelectProfileImplCopyWithImpl(
+      _$SelectProfileImpl _value, $Res Function(_$SelectProfileImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -397,12 +408,14 @@ abstract class SelectProfile implements ProfileEvent {
 
   int? get id;
   @JsonKey(ignore: true)
-  _$$SelectProfileImplCopyWith<_$SelectProfileImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$SelectProfileImplCopyWith<_$SelectProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EndRegistrationImplCopyWith<$Res> {
-  factory _$$EndRegistrationImplCopyWith(_$EndRegistrationImpl value, $Res Function(_$EndRegistrationImpl) then) =
+  factory _$$EndRegistrationImplCopyWith(_$EndRegistrationImpl value,
+          $Res Function(_$EndRegistrationImpl) then) =
       __$$EndRegistrationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileEntity profile});
@@ -411,9 +424,11 @@ abstract class _$$EndRegistrationImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EndRegistrationImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$EndRegistrationImpl>
+class __$$EndRegistrationImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$EndRegistrationImpl>
     implements _$$EndRegistrationImplCopyWith<$Res> {
-  __$$EndRegistrationImplCopyWithImpl(_$EndRegistrationImpl _value, $Res Function(_$EndRegistrationImpl) _then)
+  __$$EndRegistrationImplCopyWithImpl(
+      _$EndRegistrationImpl _value, $Res Function(_$EndRegistrationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -466,7 +481,8 @@ class _$EndRegistrationImpl implements EndRegistration {
   @override
   @pragma('vm:prefer-inline')
   _$$EndRegistrationImplCopyWith<_$EndRegistrationImpl> get copyWith =>
-      __$$EndRegistrationImplCopyWithImpl<_$EndRegistrationImpl>(this, _$identity);
+      __$$EndRegistrationImplCopyWithImpl<_$EndRegistrationImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -556,23 +572,29 @@ class _$EndRegistrationImpl implements EndRegistration {
 }
 
 abstract class EndRegistration implements ProfileEvent {
-  const factory EndRegistration(final ProfileEntity profile) = _$EndRegistrationImpl;
+  const factory EndRegistration(final ProfileEntity profile) =
+      _$EndRegistrationImpl;
 
   ProfileEntity get profile;
   @JsonKey(ignore: true)
-  _$$EndRegistrationImplCopyWith<_$EndRegistrationImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$EndRegistrationImplCopyWith<_$EndRegistrationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LogOutImplCopyWith<$Res> {
-  factory _$$LogOutImplCopyWith(_$LogOutImpl value, $Res Function(_$LogOutImpl) then) =
+  factory _$$LogOutImplCopyWith(
+          _$LogOutImpl value, $Res Function(_$LogOutImpl) then) =
       __$$LogOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LogOutImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$LogOutImpl>
+class __$$LogOutImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$LogOutImpl>
     implements _$$LogOutImplCopyWith<$Res> {
-  __$$LogOutImplCopyWithImpl(_$LogOutImpl _value, $Res Function(_$LogOutImpl) _then) : super(_value, _then);
+  __$$LogOutImplCopyWithImpl(
+      _$LogOutImpl _value, $Res Function(_$LogOutImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -587,7 +609,8 @@ class _$LogOutImpl implements LogOut {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LogOutImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogOutImpl);
   }
 
   @override
@@ -686,7 +709,8 @@ abstract class LogOut implements ProfileEvent {
 
 /// @nodoc
 abstract class _$$ChangeProfileImplCopyWith<$Res> {
-  factory _$$ChangeProfileImplCopyWith(_$ChangeProfileImpl value, $Res Function(_$ChangeProfileImpl) then) =
+  factory _$$ChangeProfileImplCopyWith(
+          _$ChangeProfileImpl value, $Res Function(_$ChangeProfileImpl) then) =
       __$$ChangeProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileEntity newProfile});
@@ -695,9 +719,11 @@ abstract class _$$ChangeProfileImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChangeProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$ChangeProfileImpl>
+class __$$ChangeProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ChangeProfileImpl>
     implements _$$ChangeProfileImplCopyWith<$Res> {
-  __$$ChangeProfileImplCopyWithImpl(_$ChangeProfileImpl _value, $Res Function(_$ChangeProfileImpl) _then)
+  __$$ChangeProfileImplCopyWithImpl(
+      _$ChangeProfileImpl _value, $Res Function(_$ChangeProfileImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -740,7 +766,8 @@ class _$ChangeProfileImpl implements ChangeProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeProfileImpl &&
-            (identical(other.newProfile, newProfile) || other.newProfile == newProfile));
+            (identical(other.newProfile, newProfile) ||
+                other.newProfile == newProfile));
   }
 
   @override
@@ -840,25 +867,30 @@ class _$ChangeProfileImpl implements ChangeProfile {
 }
 
 abstract class ChangeProfile implements ProfileEvent {
-  const factory ChangeProfile(final ProfileEntity newProfile) = _$ChangeProfileImpl;
+  const factory ChangeProfile(final ProfileEntity newProfile) =
+      _$ChangeProfileImpl;
 
   ProfileEntity get newProfile;
   @JsonKey(ignore: true)
-  _$$ChangeProfileImplCopyWith<_$ChangeProfileImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ChangeProfileImplCopyWith<_$ChangeProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$DeleteProfileImplCopyWith<$Res> {
-  factory _$$DeleteProfileImplCopyWith(_$DeleteProfileImpl value, $Res Function(_$DeleteProfileImpl) then) =
+  factory _$$DeleteProfileImplCopyWith(
+          _$DeleteProfileImpl value, $Res Function(_$DeleteProfileImpl) then) =
       __$$DeleteProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$DeleteProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$DeleteProfileImpl>
+class __$$DeleteProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$DeleteProfileImpl>
     implements _$$DeleteProfileImplCopyWith<$Res> {
-  __$$DeleteProfileImplCopyWithImpl(_$DeleteProfileImpl _value, $Res Function(_$DeleteProfileImpl) _then)
+  __$$DeleteProfileImplCopyWithImpl(
+      _$DeleteProfileImpl _value, $Res Function(_$DeleteProfileImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -997,7 +1029,8 @@ abstract class DeleteProfile implements ProfileEvent {
 
   int get id;
   @JsonKey(ignore: true)
-  _$$DeleteProfileImplCopyWith<_$DeleteProfileImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DeleteProfileImplCopyWith<_$DeleteProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1005,7 +1038,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
@@ -1014,7 +1047,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
@@ -1023,7 +1056,7 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,
@@ -1062,12 +1095,14 @@ mixin _$ProfileState {
 
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(ProfileState value, $Res Function(ProfileState) then) =
+  factory $ProfileStateCopyWith(
+          ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
 }
 
 /// @nodoc
-class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState> implements $ProfileStateCopyWith<$Res> {
+class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
+    implements $ProfileStateCopyWith<$Res> {
   _$ProfileStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1078,16 +1113,17 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState> implements $Pr
 
 /// @nodoc
 abstract class _$$LoadingProfileStateImplCopyWith<$Res> {
-  factory _$$LoadingProfileStateImplCopyWith(
-          _$LoadingProfileStateImpl value, $Res Function(_$LoadingProfileStateImpl) then) =
+  factory _$$LoadingProfileStateImplCopyWith(_$LoadingProfileStateImpl value,
+          $Res Function(_$LoadingProfileStateImpl) then) =
       __$$LoadingProfileStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$LoadingProfileStateImpl>
+class __$$LoadingProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$LoadingProfileStateImpl>
     implements _$$LoadingProfileStateImplCopyWith<$Res> {
-  __$$LoadingProfileStateImplCopyWithImpl(
-      _$LoadingProfileStateImpl _value, $Res Function(_$LoadingProfileStateImpl) _then)
+  __$$LoadingProfileStateImplCopyWithImpl(_$LoadingProfileStateImpl _value,
+      $Res Function(_$LoadingProfileStateImpl) _then)
       : super(_value, _then);
 }
 
@@ -1103,7 +1139,9 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LoadingProfileStateImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingProfileStateImpl);
   }
 
   @override
@@ -1113,7 +1151,7 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
@@ -1125,7 +1163,7 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
@@ -1137,7 +1175,7 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,
@@ -1196,71 +1234,109 @@ abstract class LoadingProfileState implements ProfileState {
 
 /// @nodoc
 abstract class _$$NoProfileStateImplCopyWith<$Res> {
-  factory _$$NoProfileStateImplCopyWith(_$NoProfileStateImpl value, $Res Function(_$NoProfileStateImpl) then) =
+  factory _$$NoProfileStateImplCopyWith(_$NoProfileStateImpl value,
+          $Res Function(_$NoProfileStateImpl) then) =
       __$$NoProfileStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ProfileEntity> profiles});
 }
 
 /// @nodoc
-class __$$NoProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$NoProfileStateImpl>
+class __$$NoProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$NoProfileStateImpl>
     implements _$$NoProfileStateImplCopyWith<$Res> {
-  __$$NoProfileStateImplCopyWithImpl(_$NoProfileStateImpl _value, $Res Function(_$NoProfileStateImpl) _then)
+  __$$NoProfileStateImplCopyWithImpl(
+      _$NoProfileStateImpl _value, $Res Function(_$NoProfileStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profiles = null,
+  }) {
+    return _then(_$NoProfileStateImpl(
+      null == profiles
+          ? _value._profiles
+          : profiles // ignore: cast_nullable_to_non_nullable
+              as List<ProfileEntity>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NoProfileStateImpl implements NoProfileState {
-  const _$NoProfileStateImpl();
+  const _$NoProfileStateImpl(final List<ProfileEntity> profiles)
+      : _profiles = profiles;
+
+  final List<ProfileEntity> _profiles;
+  @override
+  List<ProfileEntity> get profiles {
+    if (_profiles is EqualUnmodifiableListView) return _profiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_profiles);
+  }
 
   @override
   String toString() {
-    return 'ProfileState.noProfile()';
+    return 'ProfileState.noProfile(profiles: $profiles)';
   }
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoProfileStateImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoProfileStateImpl &&
+            const DeepCollectionEquality().equals(other._profiles, _profiles));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_profiles));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NoProfileStateImplCopyWith<_$NoProfileStateImpl> get copyWith =>
+      __$$NoProfileStateImplCopyWithImpl<_$NoProfileStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
   }) {
-    return noProfile();
+    return noProfile(profiles);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
   }) {
-    return noProfile?.call();
+    return noProfile?.call(profiles);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (noProfile != null) {
-      return noProfile();
+      return noProfile(profiles);
     }
     return orElse();
   }
@@ -1307,13 +1383,20 @@ class _$NoProfileStateImpl implements NoProfileState {
 }
 
 abstract class NoProfileState implements ProfileState {
-  const factory NoProfileState() = _$NoProfileStateImpl;
+  const factory NoProfileState(final List<ProfileEntity> profiles) =
+      _$NoProfileStateImpl;
+
+  List<ProfileEntity> get profiles;
+  @JsonKey(ignore: true)
+  _$$NoProfileStateImplCopyWith<_$NoProfileStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ProfileStateRegistarationImplCopyWith<$Res> {
   factory _$$ProfileStateRegistarationImplCopyWith(
-          _$ProfileStateRegistarationImpl value, $Res Function(_$ProfileStateRegistarationImpl) then) =
+          _$ProfileStateRegistarationImpl value,
+          $Res Function(_$ProfileStateRegistarationImpl) then) =
       __$$ProfileStateRegistarationImplCopyWithImpl<$Res>;
 }
 
@@ -1322,7 +1405,8 @@ class __$$ProfileStateRegistarationImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateRegistarationImpl>
     implements _$$ProfileStateRegistarationImplCopyWith<$Res> {
   __$$ProfileStateRegistarationImplCopyWithImpl(
-      _$ProfileStateRegistarationImpl _value, $Res Function(_$ProfileStateRegistarationImpl) _then)
+      _$ProfileStateRegistarationImpl _value,
+      $Res Function(_$ProfileStateRegistarationImpl) _then)
       : super(_value, _then);
 }
 
@@ -1338,7 +1422,9 @@ class _$ProfileStateRegistarationImpl implements ProfileStateRegistaration {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ProfileStateRegistarationImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileStateRegistarationImpl);
   }
 
   @override
@@ -1348,7 +1434,7 @@ class _$ProfileStateRegistarationImpl implements ProfileStateRegistaration {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
@@ -1360,7 +1446,7 @@ class _$ProfileStateRegistarationImpl implements ProfileStateRegistaration {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
@@ -1372,7 +1458,7 @@ class _$ProfileStateRegistarationImpl implements ProfileStateRegistaration {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,
@@ -1431,7 +1517,8 @@ abstract class ProfileStateRegistaration implements ProfileState {
 
 /// @nodoc
 abstract class _$$InProfileStateImplCopyWith<$Res> {
-  factory _$$InProfileStateImplCopyWith(_$InProfileStateImpl value, $Res Function(_$InProfileStateImpl) then) =
+  factory _$$InProfileStateImplCopyWith(_$InProfileStateImpl value,
+          $Res Function(_$InProfileStateImpl) then) =
       __$$InProfileStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileEntity profile});
@@ -1440,9 +1527,11 @@ abstract class _$$InProfileStateImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$InProfileStateImpl>
+class __$$InProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$InProfileStateImpl>
     implements _$$InProfileStateImplCopyWith<$Res> {
-  __$$InProfileStateImplCopyWithImpl(_$InProfileStateImpl _value, $Res Function(_$InProfileStateImpl) _then)
+  __$$InProfileStateImplCopyWithImpl(
+      _$InProfileStateImpl _value, $Res Function(_$InProfileStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1495,13 +1584,14 @@ class _$InProfileStateImpl implements InProfileState {
   @override
   @pragma('vm:prefer-inline')
   _$$InProfileStateImplCopyWith<_$InProfileStateImpl> get copyWith =>
-      __$$InProfileStateImplCopyWithImpl<_$InProfileStateImpl>(this, _$identity);
+      __$$InProfileStateImplCopyWithImpl<_$InProfileStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
@@ -1513,7 +1603,7 @@ class _$InProfileStateImpl implements InProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
@@ -1525,7 +1615,7 @@ class _$InProfileStateImpl implements InProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,
@@ -1579,23 +1669,28 @@ class _$InProfileStateImpl implements InProfileState {
 }
 
 abstract class InProfileState implements ProfileState {
-  const factory InProfileState(final ProfileEntity profile) = _$InProfileStateImpl;
+  const factory InProfileState(final ProfileEntity profile) =
+      _$InProfileStateImpl;
 
   ProfileEntity get profile;
   @JsonKey(ignore: true)
-  _$$InProfileStateImplCopyWith<_$InProfileStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$InProfileStateImplCopyWith<_$InProfileStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ErrorProfileStateImplCopyWith<$Res> {
-  factory _$$ErrorProfileStateImplCopyWith(_$ErrorProfileStateImpl value, $Res Function(_$ErrorProfileStateImpl) then) =
+  factory _$$ErrorProfileStateImplCopyWith(_$ErrorProfileStateImpl value,
+          $Res Function(_$ErrorProfileStateImpl) then) =
       __$$ErrorProfileStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ErrorProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$ErrorProfileStateImpl>
+class __$$ErrorProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ErrorProfileStateImpl>
     implements _$$ErrorProfileStateImplCopyWith<$Res> {
-  __$$ErrorProfileStateImplCopyWithImpl(_$ErrorProfileStateImpl _value, $Res Function(_$ErrorProfileStateImpl) _then)
+  __$$ErrorProfileStateImplCopyWithImpl(_$ErrorProfileStateImpl _value,
+      $Res Function(_$ErrorProfileStateImpl) _then)
       : super(_value, _then);
 }
 
@@ -1611,7 +1706,8 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ErrorProfileStateImpl);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ErrorProfileStateImpl);
   }
 
   @override
@@ -1621,7 +1717,7 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() noProfile,
+    required TResult Function(List<ProfileEntity> profiles) noProfile,
     required TResult Function() registration,
     required TResult Function(ProfileEntity profile) inProfile,
     required TResult Function() error,
@@ -1633,7 +1729,7 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? noProfile,
+    TResult? Function(List<ProfileEntity> profiles)? noProfile,
     TResult? Function()? registration,
     TResult? Function(ProfileEntity profile)? inProfile,
     TResult? Function()? error,
@@ -1645,7 +1741,7 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? noProfile,
+    TResult Function(List<ProfileEntity> profiles)? noProfile,
     TResult Function()? registration,
     TResult Function(ProfileEntity profile)? inProfile,
     TResult Function()? error,

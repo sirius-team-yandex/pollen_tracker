@@ -4,7 +4,7 @@ part of 'profile_bloc.dart';
 class ProfileState with _$ProfileState {
   const factory ProfileState.loading() = LoadingProfileState;
 
-  const factory ProfileState.noProfile() = NoProfileState;
+  const factory ProfileState.noProfile(List<ProfileEntity> profiles) = NoProfileState;
 
   const factory ProfileState.registration() = ProfileStateRegistaration;
 

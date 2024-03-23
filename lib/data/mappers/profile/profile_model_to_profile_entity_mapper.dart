@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/data/mappers/string_to_species_mapper.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
 
+@injectable
 class ProfileModelIsarToEntityMapper {
   ProfileEntity map(ProfileModelIsar profileModelIsar) {
     return ProfileEntity(

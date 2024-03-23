@@ -26,8 +26,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   //final SomeOtherBloc someOtherBloc;
   //late StreamSubscription streamSubscription;
 
-  ProfileBloc({required this.profileRepository, required this.configRepository})
-      : super(const ProfileState.noProfile()) {
+  ProfileBloc({required this.profileRepository, required this.configRepository}) : super(const ProfileState.loading()) {
     /*
     streamSubscription = editorBloc.stream.listen((state) {
       if (state is SomeOtherBlockState) {
@@ -70,24 +69,29 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     add(ProfileEvent.deleteProfile(id: id));
   }
 
+  Future<void> _loadProfiles(Emitter<ProfileState> emit) async {
+    List<ProfileEntity> profiles = await profileRepository.fetchAllProfileModels();
+    emit(
+      ProfileState.noProfile(profiles),
+    );
+    logger.i('Emit NoProfileState');
+  }
+
   Future<void> _load(LoadProfile event, Emitter<ProfileState> emit) async {
     try {
       ConfigEntity? config = await configRepository.fetchConfigModel();
       int? id = config?.lastId;
 
       if (id == null) {
-        emit(
-          const ProfileState.noProfile(),
-        );
-        logger.i('Emit NoProfileState');
+        _loadProfiles(emit);
       } else {
-        final profile = await profileRepository.fetchProfileModelById(id);
+        final ProfileEntity? profile = await profileRepository.fetchProfileModelById(id);
         if (profile != null) {
           emit(ProfileState.inProfile(profile));
           logger.i('Emit InProfileState');
         } else {
-          emit(const ProfileState.noProfile());
-          logger.i('NoProfileById => Emit NoProfileState');
+          emit(const ProfileState.error());
+          _error(Exception('Profile not found'), emit, 'Error on Loading');
         }
       }
     } catch (e) {
@@ -125,10 +129,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     try {
-      emit(
-        ProfileState.inProfile(event.profile),
-      );
-      logger.i('Emit InProfileState');
+      final success = await profileRepository.addNewProfileModel(event.profile);
+      if (success) {
+        emit(
+          ProfileState.inProfile(event.profile),
+        );
+        logger.i('Emit InProfileState');
+      } else {
+        _error(Exception('cant save nFewProfile'), emit, 'Error on endRegistration');
+      }
     } catch (e) {
       _error(e, emit, 'Error on Registration');
     }
@@ -136,10 +145,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<void> _profileLogOut(LogOut event, Emitter<ProfileState> emit) async {
     try {
-      emit(
-        const ProfileState.noProfile(),
-      );
-      logger.i('Emit InProfileState');
+      _loadProfiles(emit);
+      logger.i('From LogOut');
     } catch (e) {
       _error(e, emit, 'Error on LogOut');
     }
@@ -170,10 +177,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       if (success) {
         success &= await configRepository.updateModelId(null);
         if (success) {
-          emit(
-            const ProfileState.noProfile(),
-          );
-          logger.i('Emit NoProfileState');
+          _loadProfiles(emit);
+          logger.i('From deleteProfile ');
         } else {
           _error(
             Exception('cant clear Config.lastIndex '),

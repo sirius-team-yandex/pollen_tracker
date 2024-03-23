@@ -14,6 +14,7 @@ import 'package:pollen_tracker/ui/theme/theme.dart';
 
 void main() async {
   // some minor changes for testing CI (delete then)
+  // aa
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();

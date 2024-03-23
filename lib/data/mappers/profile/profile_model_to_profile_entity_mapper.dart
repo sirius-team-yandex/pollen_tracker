@@ -15,9 +15,7 @@ class ProfileModelIsarToEntityMapper {
       name: profileModelIsar.name,
       city: profileModelIsar.city,
       //TODO ПРОВЕРИТЬ РЕАЛИЗАЦИЮ
-      species: profileModelIsar.species
-          .map((e) => stringSpeciesMapper.map(e))
-          .toList(),
+      species: profileModelIsar.species.map((e) => stringSpeciesMapper.map(e)).toList(),
     );
   }
 

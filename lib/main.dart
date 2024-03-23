@@ -72,6 +72,7 @@ class HomePage extends StatelessWidget {
           '${AppLocalizations.of(context).health_check})',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
+        const Text('some text'),
         IconButton(
           onPressed: () {
             GetIt.I<MoodRecordRepository>().insertMoodRecordModel(

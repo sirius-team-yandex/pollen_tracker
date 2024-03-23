@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
 
+@injectable
 class ProfileLocalStorageDatasourceIsar {
   Isar? _isar;
 
@@ -47,8 +49,7 @@ class ProfileLocalStorageDatasourceIsar {
 
   Future<ProfileModelIsar?> fetchProfileModelById(int id) async {
     _isar ??= await _getIsarInstance();
-    final profileModels =
-        await _isar!.profileModelIsars.filter().idEqualTo(id).findFirst();
+    final profileModels = await _isar!.profileModelIsars.filter().idEqualTo(id).findFirst();
     return profileModels;
   }
 
@@ -56,10 +57,7 @@ class ProfileLocalStorageDatasourceIsar {
   Future<int?> updateProfileModelInfo(ProfileModelIsar newInfo) async {
     late int id;
     _isar ??= await _getIsarInstance();
-    final objectToUpdate = await _isar!.profileModelIsars
-        .filter()
-        .idEqualTo(newInfo.id)
-        .findFirst();
+    final objectToUpdate = await _isar!.profileModelIsars.filter().idEqualTo(newInfo.id).findFirst();
     if (objectToUpdate != null) {
       objectToUpdate
         ..name = newInfo.name

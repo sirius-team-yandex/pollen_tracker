@@ -100,13 +100,11 @@ List<IsarLinkBase<dynamic>> _configModelIsarGetLinks(ConfigModelIsar object) {
   return [];
 }
 
-void _configModelIsarAttach(
-    IsarCollection<dynamic> col, Id id, ConfigModelIsar object) {
+void _configModelIsarAttach(IsarCollection<dynamic> col, Id id, ConfigModelIsar object) {
   object.lastId = id;
 }
 
-extension ConfigModelIsarQueryWhereSort
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhere> {
+extension ConfigModelIsarQueryWhereSort on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhere> {
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhere> anyLastId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
@@ -114,10 +112,8 @@ extension ConfigModelIsarQueryWhereSort
   }
 }
 
-extension ConfigModelIsarQueryWhere
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhereClause> {
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdEqualTo(Id lastId) {
+extension ConfigModelIsarQueryWhere on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhereClause> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> lastIdEqualTo(Id lastId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: lastId,
@@ -126,8 +122,7 @@ extension ConfigModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdNotEqualTo(Id lastId) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> lastIdNotEqualTo(Id lastId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -149,8 +144,8 @@ extension ConfigModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdGreaterThan(Id lastId, {bool include = false}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> lastIdGreaterThan(Id lastId,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: lastId, includeLower: include),
@@ -158,8 +153,7 @@ extension ConfigModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdLessThan(Id lastId, {bool include = false}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> lastIdLessThan(Id lastId, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: lastId, includeUpper: include),
@@ -167,8 +161,7 @@ extension ConfigModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdBetween(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> lastIdBetween(
     Id lowerLastId,
     Id upperLastId, {
     bool includeLower = true,
@@ -185,10 +178,8 @@ extension ConfigModelIsarQueryWhere
   }
 }
 
-extension ConfigModelIsarQueryFilter
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      isDarkEqualTo(bool value) {
+extension ConfigModelIsarQueryFilter on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> isDarkEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isDark',
@@ -197,8 +188,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdIsNull() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'lastId',
@@ -206,8 +196,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdIsNotNull() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'lastId',
@@ -215,8 +204,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdEqualTo(Id? value) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdEqualTo(Id? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'lastId',
@@ -225,8 +213,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdGreaterThan(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdGreaterThan(
     Id? value, {
     bool include = false,
   }) {
@@ -239,8 +226,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdLessThan(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdLessThan(
     Id? value, {
     bool include = false,
   }) {
@@ -253,8 +239,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdBetween(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> lastIdBetween(
     Id? lower,
     Id? upper, {
     bool includeLower = true,
@@ -271,8 +256,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeEqualTo(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -285,8 +269,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeGreaterThan(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -301,8 +284,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeLessThan(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -317,8 +299,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeBetween(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -337,8 +318,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeStartsWith(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -351,8 +331,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeEndsWith(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -365,8 +344,8 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeContains(String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'locale',
@@ -376,8 +355,8 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeMatches(String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'locale',
@@ -387,8 +366,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeIsEmpty() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'locale',
@@ -397,8 +375,7 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeIsNotEmpty() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'locale',
@@ -408,22 +385,18 @@ extension ConfigModelIsarQueryFilter
   }
 }
 
-extension ConfigModelIsarQueryObject
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {}
+extension ConfigModelIsarQueryObject on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {}
 
-extension ConfigModelIsarQueryLinks
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {}
+extension ConfigModelIsarQueryLinks on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {}
 
-extension ConfigModelIsarQuerySortBy
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortBy> {
+extension ConfigModelIsarQuerySortBy on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortBy> {
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.asc);
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      sortByIsDarkDesc() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByIsDarkDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.desc);
     });
@@ -435,24 +408,21 @@ extension ConfigModelIsarQuerySortBy
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      sortByLocaleDesc() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByLocaleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'locale', Sort.desc);
     });
   }
 }
 
-extension ConfigModelIsarQuerySortThenBy
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortThenBy> {
+extension ConfigModelIsarQuerySortThenBy on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortThenBy> {
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.asc);
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      thenByIsDarkDesc() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByIsDarkDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.desc);
     });
@@ -464,8 +434,7 @@ extension ConfigModelIsarQuerySortThenBy
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      thenByLastIdDesc() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByLastIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastId', Sort.desc);
     });
@@ -477,32 +446,28 @@ extension ConfigModelIsarQuerySortThenBy
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      thenByLocaleDesc() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByLocaleDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'locale', Sort.desc);
     });
   }
 }
 
-extension ConfigModelIsarQueryWhereDistinct
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> {
+extension ConfigModelIsarQueryWhereDistinct on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> {
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> distinctByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isDark');
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> distinctByLocale(
-      {bool caseSensitive = true}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> distinctByLocale({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'locale', caseSensitive: caseSensitive);
     });
   }
 }
 
-extension ConfigModelIsarQueryProperty
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QQueryProperty> {
+extension ConfigModelIsarQueryProperty on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QQueryProperty> {
   QueryBuilder<ConfigModelIsar, int, QQueryOperations> lastIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'lastId');

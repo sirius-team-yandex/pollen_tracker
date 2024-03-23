@@ -41,12 +41,14 @@ jobs:
         
       - name: Analyze code
         run: flutter analyze
-
-      - name: Format code
-        run: dart format --line-length 120 --set-exit-if-changed .
+      - name: Run localizations gen
+      - run: flutter gen-l10n
+      
       - name: Stop workflow if previous step failed
         if: failure()
         run: exit 1
+      - name: Format code
+        run: dart format --line-length 120 --set-exit-if-changed .
 
 
       # - uses: actions/upload-artifact@v1

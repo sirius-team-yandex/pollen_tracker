@@ -8,11 +8,11 @@ import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
-import 'package:pollen_tracker/domain/repositories/city_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
+import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -77,9 +77,21 @@ class _TestPageState extends State<TestPage> {
 
   // In case of async state
   void loadState() async {
+    final pollenSubject = GetIt.I<PollenSubject>();
+    pollenSubject.observeForecast(DateTime.now()).listen((pollens) {
+      setState(() {
+        state = 'forecast count: ${pollens.length}';
+      });
+    });
+
+    final profileSubject = GetIt.I<ProfileSubject>();
+    profileSubject.observeAll().listen((event) {
+      logger.e('profiles: $event');
+    });
+
     const cityId = 1643318494;
     final profileRepo = GetIt.I<ProfileRepository>();
-    profileRepo.insert(
+    await profileRepo.insert(
       const ProfileEntity(
         profileId: 0,
         cityId: cityId,
@@ -93,13 +105,8 @@ class _TestPageState extends State<TestPage> {
     configRepo.set(defaultConfig.copyWith(currProfileId: 0));
 
     final pollenRepo = GetIt.I<PollenRepository>();
-    pollenRepo.updateForecastData();
-
-    final pollenSubject = GetIt.I<PollenSubject>();
-    pollenSubject.observeForecast(DateTime.now());
-
-    setState(() {
-      kOptions = entity.map((e) => e.name).toList();
+    Future.delayed(const Duration(seconds: 4), () async {
+      pollenRepo.updateForecastData();
     });
   }
 

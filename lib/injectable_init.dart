@@ -10,11 +10,14 @@ import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
 import 'package:pollen_tracker/data/repositories/config_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/mood_record_repository_impl.dart';
+import 'package:pollen_tracker/data/repositories/pollen_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/profile_repository_impl.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -28,8 +31,7 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies({String env = Environment.dev}) =>
-    getIt.init(environment: env);
+void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env);
 
 @module
 abstract class NetworkModule {
@@ -57,8 +59,7 @@ abstract class MoodModule {
   MoodRecordSubject moodSubject(MoodRecordRepositoryIsarImpl impl) => impl;
 
   @injectable
-  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) =>
-      impl;
+  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) => impl;
 }
 
 @module
@@ -67,8 +68,7 @@ abstract class ProfileModule {
   ProfileSubject profileSubject(ProfileRepositoryIsarImpl impl) => impl;
 
   @injectable
-  ProfileRepository profileRepository(ProfileRepositoryIsarImpl impl) =>
-      impl;
+  ProfileRepository profileRepository(ProfileRepositoryIsarImpl impl) => impl;
 }
 
 @module
@@ -78,6 +78,15 @@ abstract class ConfigModule {
 
   @injectable
   ConfigRepository configRepository(ConfigRepositoryIsarImpl impl) => impl;
+}
+
+@module
+abstract class PollenModule {
+  @injectable
+  PollenSubject pollenSubject(PollenRepositoryImpl impl) => impl;
+
+  @injectable
+  PollenRepository pollenRepository(PollenRepositoryImpl impl) => impl;
 }
 
 @module

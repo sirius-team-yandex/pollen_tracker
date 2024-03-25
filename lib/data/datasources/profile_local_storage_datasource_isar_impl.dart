@@ -41,14 +41,14 @@ class ProfileLocalStorageDatasourceIsar {
   }
 
   Stream<List<ProfileModelIsar>> observeAll() async* {
-    yield* isar.profileModelIsars.where().watch();
+    yield* isar.profileModelIsars.where().anyProfileId().watch(fireImmediately: true);
   }
 
   Stream<ProfileModelIsar?> observeById(int id) async* {
     yield* isar.profileModelIsars
         .where()
         .profileIdEqualTo(id)
-        .watch()
+        .watch(fireImmediately: true)
         .map((config) => config.firstOrNull);
   }
 }

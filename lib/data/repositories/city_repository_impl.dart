@@ -17,7 +17,6 @@ class CityRepositoryImpl implements CitiesRepository {
   @override
   Future<List<CityEntity>> getCityEntities() async {
     final asset = await rootBundle.loadString('assets/worldcities.csv');
-    logger.i('Read asset');
     List<List<dynamic>> citiesAsDynamic = const CsvToListConverter().convert(asset);
 
     return listDynamicToCityEntityMapper.map(citiesAsDynamic);
@@ -35,6 +34,7 @@ class CityRepositoryImpl implements CitiesRepository {
       _cache[city.id] = city;
     }
 
+    logger.d('returned city: $city');
     return city;
   }
 }

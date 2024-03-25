@@ -5,7 +5,7 @@ import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/network_pollen_repository.dart';
 
-@Injectable(as: NetworkPollenRepository, env: [Environment.test, Environment.prod])
+@Injectable(as: NetworkPollenRepository, env: [Environment.prod])
 class NetworkPollenRepositoryImpl implements NetworkPollenRepository {
   NetworkPollenRepositoryImpl({
     required this.dio,

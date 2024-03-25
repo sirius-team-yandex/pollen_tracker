@@ -11,8 +11,7 @@ import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
 import 'package:rxdart/transformers.dart';
 
 @injectable
-class MoodRecordRepositoryIsarImpl
-    implements MoodRecordRepository, MoodRecordSubject {
+class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSubject {
   MoodRecordRepositoryIsarImpl({
     required this.datasource,
     required this.configSubject,
@@ -128,6 +127,5 @@ class MoodRecordRepositoryIsarImpl
     return stream;
   }
 
-  Stream<List<MoodRecordModelIsar>> _emptyStream() =>
-      Stream.value(List.empty());
+  Stream<List<MoodRecordModelIsar>> _emptyStream() => Stream.value(List.empty());
 }

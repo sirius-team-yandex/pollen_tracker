@@ -50,7 +50,6 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
                 ),
         )
         .map((models) => pollenModelToPollenEntityMapper.map(models));
-
     return stream;
   }
 
@@ -86,7 +85,8 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
 
     final pollen = await networkPollenRepository.fetchForecast(city.lat, city.lng);
 
-    await datasource.insertAll(pollenEntityToPollenModelMapper.map(pollen));
-    return true;
+    final inserted = await datasource.insertAll(pollenEntityToPollenModelMapper.map(pollen));
+
+    return inserted;
   }
 }

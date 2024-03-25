@@ -34,8 +34,7 @@ mixin _$RiscDto {
 
 /// @nodoc
 abstract class $RiscDtoCopyWith<$Res> {
-  factory $RiscDtoCopyWith(RiscDto value, $Res Function(RiscDto) then) =
-      _$RiscDtoCopyWithImpl<$Res, RiscDto>;
+  factory $RiscDtoCopyWith(RiscDto value, $Res Function(RiscDto) then) = _$RiscDtoCopyWithImpl<$Res, RiscDto>;
   @useResult
   $Res call(
       {@JsonKey(name: 'grass_pollen') String? grassPollen,
@@ -44,8 +43,7 @@ abstract class $RiscDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RiscDtoCopyWithImpl<$Res, $Val extends RiscDto>
-    implements $RiscDtoCopyWith<$Res> {
+class _$RiscDtoCopyWithImpl<$Res, $Val extends RiscDto> implements $RiscDtoCopyWith<$Res> {
   _$RiscDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -79,8 +77,7 @@ class _$RiscDtoCopyWithImpl<$Res, $Val extends RiscDto>
 
 /// @nodoc
 abstract class _$$RiscDtoImplCopyWith<$Res> implements $RiscDtoCopyWith<$Res> {
-  factory _$$RiscDtoImplCopyWith(
-          _$RiscDtoImpl value, $Res Function(_$RiscDtoImpl) then) =
+  factory _$$RiscDtoImplCopyWith(_$RiscDtoImpl value, $Res Function(_$RiscDtoImpl) then) =
       __$$RiscDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -91,12 +88,9 @@ abstract class _$$RiscDtoImplCopyWith<$Res> implements $RiscDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$RiscDtoImplCopyWithImpl<$Res>
-    extends _$RiscDtoCopyWithImpl<$Res, _$RiscDtoImpl>
+class __$$RiscDtoImplCopyWithImpl<$Res> extends _$RiscDtoCopyWithImpl<$Res, _$RiscDtoImpl>
     implements _$$RiscDtoImplCopyWith<$Res> {
-  __$$RiscDtoImplCopyWithImpl(
-      _$RiscDtoImpl _value, $Res Function(_$RiscDtoImpl) _then)
-      : super(_value, _then);
+  __$$RiscDtoImplCopyWithImpl(_$RiscDtoImpl _value, $Res Function(_$RiscDtoImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -130,8 +124,7 @@ class _$RiscDtoImpl implements _RiscDto {
       @JsonKey(name: 'tree_pollen') this.treePollen,
       @JsonKey(name: 'weed_pollen') this.weedPollen});
 
-  factory _$RiscDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RiscDtoImplFromJson(json);
+  factory _$RiscDtoImpl.fromJson(Map<String, dynamic> json) => _$$RiscDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'grass_pollen')
@@ -153,24 +146,19 @@ class _$RiscDtoImpl implements _RiscDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RiscDtoImpl &&
-            (identical(other.grassPollen, grassPollen) ||
-                other.grassPollen == grassPollen) &&
-            (identical(other.treePollen, treePollen) ||
-                other.treePollen == treePollen) &&
-            (identical(other.weedPollen, weedPollen) ||
-                other.weedPollen == weedPollen));
+            (identical(other.grassPollen, grassPollen) || other.grassPollen == grassPollen) &&
+            (identical(other.treePollen, treePollen) || other.treePollen == treePollen) &&
+            (identical(other.weedPollen, weedPollen) || other.weedPollen == weedPollen));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
+  int get hashCode => Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RiscDtoImplCopyWith<_$RiscDtoImpl> get copyWith =>
-      __$$RiscDtoImplCopyWithImpl<_$RiscDtoImpl>(this, _$identity);
+  _$$RiscDtoImplCopyWith<_$RiscDtoImpl> get copyWith => __$$RiscDtoImplCopyWithImpl<_$RiscDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -199,6 +187,5 @@ abstract class _RiscDto implements RiscDto {
   String? get weedPollen;
   @override
   @JsonKey(ignore: true)
-  _$$RiscDtoImplCopyWith<_$RiscDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RiscDtoImplCopyWith<_$RiscDtoImpl> get copyWith => throw _privateConstructorUsedError;
 }

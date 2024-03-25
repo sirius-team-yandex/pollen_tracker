@@ -29,14 +29,12 @@ mixin _$CountDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CountDtoCopyWith<CountDto> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CountDtoCopyWith<CountDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CountDtoCopyWith<$Res> {
-  factory $CountDtoCopyWith(CountDto value, $Res Function(CountDto) then) =
-      _$CountDtoCopyWithImpl<$Res, CountDto>;
+  factory $CountDtoCopyWith(CountDto value, $Res Function(CountDto) then) = _$CountDtoCopyWithImpl<$Res, CountDto>;
   @useResult
   $Res call(
       {@JsonKey(name: 'grass_pollen') int? grassPollen,
@@ -45,8 +43,7 @@ abstract class $CountDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto>
-    implements $CountDtoCopyWith<$Res> {
+class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto> implements $CountDtoCopyWith<$Res> {
   _$CountDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -79,10 +76,8 @@ class _$CountDtoCopyWithImpl<$Res, $Val extends CountDto>
 }
 
 /// @nodoc
-abstract class _$$CountDtoImplCopyWith<$Res>
-    implements $CountDtoCopyWith<$Res> {
-  factory _$$CountDtoImplCopyWith(
-          _$CountDtoImpl value, $Res Function(_$CountDtoImpl) then) =
+abstract class _$$CountDtoImplCopyWith<$Res> implements $CountDtoCopyWith<$Res> {
+  factory _$$CountDtoImplCopyWith(_$CountDtoImpl value, $Res Function(_$CountDtoImpl) then) =
       __$$CountDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -93,12 +88,9 @@ abstract class _$$CountDtoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CountDtoImplCopyWithImpl<$Res>
-    extends _$CountDtoCopyWithImpl<$Res, _$CountDtoImpl>
+class __$$CountDtoImplCopyWithImpl<$Res> extends _$CountDtoCopyWithImpl<$Res, _$CountDtoImpl>
     implements _$$CountDtoImplCopyWith<$Res> {
-  __$$CountDtoImplCopyWithImpl(
-      _$CountDtoImpl _value, $Res Function(_$CountDtoImpl) _then)
-      : super(_value, _then);
+  __$$CountDtoImplCopyWithImpl(_$CountDtoImpl _value, $Res Function(_$CountDtoImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -132,8 +124,7 @@ class _$CountDtoImpl implements _CountDto {
       @JsonKey(name: 'tree_pollen') this.treePollen,
       @JsonKey(name: 'weed_pollen') this.weedPollen});
 
-  factory _$CountDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CountDtoImplFromJson(json);
+  factory _$CountDtoImpl.fromJson(Map<String, dynamic> json) => _$$CountDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'grass_pollen')
@@ -155,18 +146,14 @@ class _$CountDtoImpl implements _CountDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CountDtoImpl &&
-            (identical(other.grassPollen, grassPollen) ||
-                other.grassPollen == grassPollen) &&
-            (identical(other.treePollen, treePollen) ||
-                other.treePollen == treePollen) &&
-            (identical(other.weedPollen, weedPollen) ||
-                other.weedPollen == weedPollen));
+            (identical(other.grassPollen, grassPollen) || other.grassPollen == grassPollen) &&
+            (identical(other.treePollen, treePollen) || other.treePollen == treePollen) &&
+            (identical(other.weedPollen, weedPollen) || other.weedPollen == weedPollen));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
+  int get hashCode => Object.hash(runtimeType, grassPollen, treePollen, weedPollen);
 
   @JsonKey(ignore: true)
   @override
@@ -188,8 +175,7 @@ abstract class _CountDto implements CountDto {
       @JsonKey(name: 'tree_pollen') final int? treePollen,
       @JsonKey(name: 'weed_pollen') final int? weedPollen}) = _$CountDtoImpl;
 
-  factory _CountDto.fromJson(Map<String, dynamic> json) =
-      _$CountDtoImpl.fromJson;
+  factory _CountDto.fromJson(Map<String, dynamic> json) = _$CountDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'grass_pollen')
@@ -202,6 +188,5 @@ abstract class _CountDto implements CountDto {
   int? get weedPollen;
   @override
   @JsonKey(ignore: true)
-  _$$CountDtoImplCopyWith<_$CountDtoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CountDtoImplCopyWith<_$CountDtoImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -44,7 +44,7 @@ class PollenDtoToPollenEntityMappper {
 
       res.add(
         PollenEntity(
-          time: DateTime.fromMillisecondsSinceEpoch(time),
+          time: DateTime.fromMillisecondsSinceEpoch(time * 1000),
           lat: lat,
           lng: lng,
           levels: levels,

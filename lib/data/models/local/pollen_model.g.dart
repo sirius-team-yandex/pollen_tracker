@@ -162,8 +162,22 @@ const PollenModelSchema = CollectionSchema(
   serialize: _pollenModelSerialize,
   deserialize: _pollenModelDeserialize,
   deserializeProp: _pollenModelDeserializeProp,
-  idName: r'id',
-  indexes: {},
+  idName: r'isarId',
+  indexes: {
+    r'time': IndexSchema(
+      id: -2250472054110640942,
+      name: r'time',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'time',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    )
+  },
   links: {},
   embeddedSchemas: {},
   getId: _pollenModelGetId,
@@ -253,7 +267,6 @@ PollenModel _pollenModelDeserialize(
     time: reader.readDateTime(offsets[26]),
     willow: reader.readLongOrNull(offsets[27]) ?? 0,
   );
-  object.id = id;
   return object;
 }
 
@@ -326,100 +339,186 @@ P _pollenModelDeserializeProp<P>(
 }
 
 Id _pollenModelGetId(PollenModel object) {
-  return object.id;
+  return object.isarId;
 }
 
 List<IsarLinkBase<dynamic>> _pollenModelGetLinks(PollenModel object) {
   return [];
 }
 
-void _pollenModelAttach(
-    IsarCollection<dynamic> col, Id id, PollenModel object) {
-  object.id = id;
-}
+void _pollenModelAttach(IsarCollection<dynamic> col, Id id, PollenModel object) {}
 
-extension PollenModelQueryWhereSort
-    on QueryBuilder<PollenModel, PollenModel, QWhere> {
-  QueryBuilder<PollenModel, PollenModel, QAfterWhere> anyId() {
+extension PollenModelQueryWhereSort on QueryBuilder<PollenModel, PollenModel, QWhere> {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhere> anyIsarId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhere> anyTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'time'),
+      );
+    });
+  }
 }
 
-extension PollenModelQueryWhere
-    on QueryBuilder<PollenModel, PollenModel, QWhereClause> {
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idEqualTo(Id id) {
+extension PollenModelQueryWhere on QueryBuilder<PollenModel, PollenModel, QWhereClause> {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> isarIdEqualTo(Id isarId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: id,
-        upper: id,
+        lower: isarId,
+        upper: isarId,
       ));
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idNotEqualTo(
-      Id id) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> isarIdNotEqualTo(Id isarId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
-              IdWhereClause.lessThan(upper: id, includeUpper: false),
+              IdWhereClause.lessThan(upper: isarId, includeUpper: false),
             )
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: id, includeLower: false),
+              IdWhereClause.greaterThan(lower: isarId, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: id, includeLower: false),
+              IdWhereClause.greaterThan(lower: isarId, includeLower: false),
             )
             .addWhereClause(
-              IdWhereClause.lessThan(upper: id, includeUpper: false),
+              IdWhereClause.lessThan(upper: isarId, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idGreaterThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> isarIdGreaterThan(Id isarId, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.greaterThan(lower: id, includeLower: include),
+        IdWhereClause.greaterThan(lower: isarId, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idLessThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> isarIdLessThan(Id isarId, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.lessThan(upper: id, includeUpper: include),
+        IdWhereClause.lessThan(upper: isarId, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> idBetween(
-    Id lowerId,
-    Id upperId, {
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> isarIdBetween(
+    Id lowerIsarId,
+    Id upperIsarId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerId,
+        lower: lowerIsarId,
         includeLower: includeLower,
-        upper: upperId,
+        upper: upperIsarId,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> timeEqualTo(DateTime time) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'time',
+        value: [time],
+      ));
+    });
+  }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> timeNotEqualTo(DateTime time) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [],
+              upper: [time],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [time],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [time],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [],
+              upper: [time],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> timeGreaterThan(
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [time],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> timeLessThan(
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [],
+        upper: [time],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<PollenModel, PollenModel, QAfterWhereClause> timeBetween(
+    DateTime lowerTime,
+    DateTime upperTime, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [lowerTime],
+        includeLower: includeLower,
+        upper: [upperTime],
         includeUpper: includeUpper,
       ));
     });
   }
 }
 
-extension PollenModelQueryFilter
-    on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> acaciaEqualTo(
-      int value) {
+extension PollenModelQueryFilter on QueryBuilder<PollenModel, PollenModel, QFilterCondition> {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> acaciaEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'acacia',
@@ -959,43 +1058,42 @@ extension PollenModelQueryFilter
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idEqualTo(
-      Id value) {
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> isarIdEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'id',
+        property: r'isarId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> isarIdGreaterThan(
     Id value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'id',
+        property: r'isarId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idLessThan(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> isarIdLessThan(
     Id value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'id',
+        property: r'isarId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> idBetween(
+  QueryBuilder<PollenModel, PollenModel, QAfterFilterCondition> isarIdBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -1003,7 +1101,7 @@ extension PollenModelQueryFilter
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'id',
+        property: r'isarId',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -2469,15 +2567,15 @@ extension PollenModelQuerySortThenBy
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterSortBy> thenById() {
+  QueryBuilder<PollenModel, PollenModel, QAfterSortBy> thenByIsarId() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'id', Sort.asc);
+      return query.addSortBy(r'isarId', Sort.asc);
     });
   }
 
-  QueryBuilder<PollenModel, PollenModel, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<PollenModel, PollenModel, QAfterSortBy> thenByIsarIdDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'id', Sort.desc);
+      return query.addSortBy(r'isarId', Sort.desc);
     });
   }
 
@@ -2869,11 +2967,10 @@ extension PollenModelQueryWhereDistinct
   }
 }
 
-extension PollenModelQueryProperty
-    on QueryBuilder<PollenModel, PollenModel, QQueryProperty> {
-  QueryBuilder<PollenModel, int, QQueryOperations> idProperty() {
+extension PollenModelQueryProperty on QueryBuilder<PollenModel, PollenModel, QQueryProperty> {
+  QueryBuilder<PollenModel, int, QQueryOperations> isarIdProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'id');
+      return query.addPropertyName(r'isarId');
     });
   }
 

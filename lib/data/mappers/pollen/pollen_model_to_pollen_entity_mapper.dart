@@ -11,7 +11,7 @@ class PollenModelToPollenEntityMapper {
     for (var record in records) {
       res.add(
         PollenEntity(
-          time: record.time,
+          time: record.time.toLocal(),
           lat: record.lat,
           lng: record.lng,
           levels: {

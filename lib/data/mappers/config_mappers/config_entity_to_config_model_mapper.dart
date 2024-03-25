@@ -6,13 +6,9 @@ import 'package:pollen_tracker/domain/models/config_entity.dart';
 class ConfigEntityToModelIsarMapper {
   ConfigModelIsar map(ConfigEntity configEntity) {
     return ConfigModelIsar(
-      lastId: configEntity.lastId,
+      currProfileId: configEntity.currProfileId,
       locale: configEntity.locale,
       isDark: configEntity.darkTheme,
     );
-  }
-
-  List<ConfigModelIsar> mapList(List<ConfigEntity> configEntity) {
-    return configEntity.map((e) => map(e)).toList();
   }
 }

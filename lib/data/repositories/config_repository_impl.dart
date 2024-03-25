@@ -4,71 +4,38 @@ import 'package:pollen_tracker/data/mappers/config_mappers/config_entity_to_conf
 import 'package:pollen_tracker/data/mappers/config_mappers/config_model_to_config_entity_mapper.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
+import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 
-@Injectable(as: ConfigRepository)
-class ConfigRepositoryIsarImpl implements ConfigRepository {
+@injectable
+class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
   ConfigRepositoryIsarImpl(
-    this.configLocalStorageDatasource,
+    this.datasource,
     this.configModelIsarToEntityMapper,
     this.configEntityToModelIsarMapper,
   );
 
-  final ConfigLocalStorageDatasourceIsar configLocalStorageDatasource;
+  final ConfigLocalStorageDatasourceIsar datasource;
   final ConfigModelIsarToEntityMapper configModelIsarToEntityMapper;
   final ConfigEntityToModelIsarMapper configEntityToModelIsarMapper;
 
   @override
-  Future<ConfigEntity?> fetchConfigModel() async {
-    final profileModel = await configLocalStorageDatasource.fetchConfigModel();
-
-    if (profileModel != null) {
-      return configModelIsarToEntityMapper.map(profileModel);
-    }
-    return null;
+  Future<bool> set(ConfigEntity config) {
+    return datasource.set(configEntityToModelIsarMapper.map(config));
   }
 
   @override
-  Future<bool> updateModelId(int? newId) async {
-    final profileModel = await configLocalStorageDatasource.fetchConfigModel();
-
-    if (profileModel != null) {
-      profileModel.lastId = newId;
-      final success =
-          await configLocalStorageDatasource.updateModel(profileModel);
-      if (success != null) {
-        return true;
-      }
-    }
-    return false;
+  Stream<ConfigEntity> observe() {
+    return datasource.observe().map(
+          (config) => config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig(),
+        );
   }
 
   @override
-  Future<bool> updateModelLocale(String newLocale) async {
-    final profileModel = await configLocalStorageDatasource.fetchConfigModel();
-
-    if (profileModel != null) {
-      profileModel.locale = newLocale;
-      final success =
-          await configLocalStorageDatasource.updateModel(profileModel);
-      if (success != null) {
-        return true;
-      }
-    }
-    return false;
+  Future<ConfigEntity> get() async {
+    final config = await datasource.get();
+    return config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig();
   }
 
-  @override
-  Future<bool> updateModelTheme(bool isDark) async {
-    final profileModel = await configLocalStorageDatasource.fetchConfigModel();
-
-    if (profileModel != null) {
-      profileModel.isDark = isDark;
-      final success =
-          await configLocalStorageDatasource.updateModel(profileModel);
-      if (success != null) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // TODO: get default params from some contant object or from dynamically from the system
+  ConfigEntity _defaultConfig() => const ConfigEntity(currProfileId: null, locale: 'en', darkTheme: false);
 }

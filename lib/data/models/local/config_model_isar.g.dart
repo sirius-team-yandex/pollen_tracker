@@ -17,13 +17,18 @@ const ConfigModelIsarSchema = CollectionSchema(
   name: r'ConfigModelIsar',
   id: 8945637773781902706,
   properties: {
-    r'isDark': PropertySchema(
+    r'currProfileId': PropertySchema(
       id: 0,
+      name: r'currProfileId',
+      type: IsarType.long,
+    ),
+    r'isDark': PropertySchema(
+      id: 1,
       name: r'isDark',
       type: IsarType.bool,
     ),
     r'locale': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'locale',
       type: IsarType.string,
     )
@@ -32,7 +37,7 @@ const ConfigModelIsarSchema = CollectionSchema(
   serialize: _configModelIsarSerialize,
   deserialize: _configModelIsarDeserialize,
   deserializeProp: _configModelIsarDeserializeProp,
-  idName: r'lastId',
+  idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
@@ -58,8 +63,9 @@ void _configModelIsarSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeBool(offsets[0], object.isDark);
-  writer.writeString(offsets[1], object.locale);
+  writer.writeLong(offsets[0], object.currProfileId);
+  writer.writeBool(offsets[1], object.isDark);
+  writer.writeString(offsets[2], object.locale);
 }
 
 ConfigModelIsar _configModelIsarDeserialize(
@@ -69,10 +75,11 @@ ConfigModelIsar _configModelIsarDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = ConfigModelIsar(
-    isDark: reader.readBool(offsets[0]),
-    lastId: id,
-    locale: reader.readString(offsets[1]),
+    currProfileId: reader.readLongOrNull(offsets[0]),
+    isDark: reader.readBool(offsets[1]),
+    locale: reader.readString(offsets[2]),
   );
+  object.id = id;
   return object;
 }
 
@@ -84,8 +91,10 @@ P _configModelIsarDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 1:
+      return (reader.readBool(offset)) as P;
+    case 2:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -93,176 +102,151 @@ P _configModelIsarDeserializeProp<P>(
 }
 
 Id _configModelIsarGetId(ConfigModelIsar object) {
-  return object.lastId ?? Isar.autoIncrement;
+  return object.id;
 }
 
 List<IsarLinkBase<dynamic>> _configModelIsarGetLinks(ConfigModelIsar object) {
   return [];
 }
 
-void _configModelIsarAttach(
-    IsarCollection<dynamic> col, Id id, ConfigModelIsar object) {
-  object.lastId = id;
+void _configModelIsarAttach(IsarCollection<dynamic> col, Id id, ConfigModelIsar object) {
+  object.id = id;
 }
 
-extension ConfigModelIsarQueryWhereSort
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhere> {
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhere> anyLastId() {
+extension ConfigModelIsarQueryWhereSort on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhere> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension ConfigModelIsarQueryWhere
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhereClause> {
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdEqualTo(Id lastId) {
+extension ConfigModelIsarQueryWhere on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QWhereClause> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lastId,
-        upper: lastId,
+        lower: id,
+        upper: id,
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdNotEqualTo(Id lastId) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
-              IdWhereClause.lessThan(upper: lastId, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             )
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: lastId, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: lastId, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             )
             .addWhereClause(
-              IdWhereClause.lessThan(upper: lastId, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdGreaterThan(Id lastId, {bool include = false}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.greaterThan(lower: lastId, includeLower: include),
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdLessThan(Id lastId, {bool include = false}) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.lessThan(upper: lastId, includeUpper: include),
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause>
-      lastIdBetween(
-    Id lowerLastId,
-    Id upperLastId, {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterWhereClause> idBetween(
+    Id lowerId,
+    Id upperId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerLastId,
+        lower: lowerId,
         includeLower: includeLower,
-        upper: upperLastId,
+        upper: upperId,
         includeUpper: includeUpper,
       ));
     });
   }
 }
 
-extension ConfigModelIsarQueryFilter
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      isDarkEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isDark',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdIsNull() {
+extension ConfigModelIsarQueryFilter on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'lastId',
+        property: r'currProfileId',
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdIsNotNull() {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'lastId',
+        property: r'currProfileId',
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdEqualTo(Id? value) {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'lastId',
+        property: r'currProfileId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdGreaterThan(
-    Id? value, {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdGreaterThan(
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'lastId',
+        property: r'currProfileId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdLessThan(
-    Id? value, {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdLessThan(
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'lastId',
+        property: r'currProfileId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      lastIdBetween(
-    Id? lower,
-    Id? upper, {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> currProfileIdBetween(
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'lastId',
+        property: r'currProfileId',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -271,8 +255,68 @@ extension ConfigModelIsarQueryFilter
     });
   }
 
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition>
-      localeEqualTo(
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> idEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> idGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> idLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> idBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> isDarkEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isDark',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterFilterCondition> localeEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -414,8 +458,19 @@ extension ConfigModelIsarQueryObject
 extension ConfigModelIsarQueryLinks
     on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QFilterCondition> {}
 
-extension ConfigModelIsarQuerySortBy
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortBy> {
+extension ConfigModelIsarQuerySortBy on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortBy> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByCurrProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'currProfileId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByCurrProfileIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'currProfileId', Sort.desc);
+    });
+  }
+
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> sortByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.asc);
@@ -443,8 +498,31 @@ extension ConfigModelIsarQuerySortBy
   }
 }
 
-extension ConfigModelIsarQuerySortThenBy
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortThenBy> {
+extension ConfigModelIsarQuerySortThenBy on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QSortThenBy> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByCurrProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'currProfileId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByCurrProfileIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'currProfileId', Sort.desc);
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
+    });
+  }
+
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.asc);
@@ -455,19 +533,6 @@ extension ConfigModelIsarQuerySortThenBy
       thenByIsDarkDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isDark', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy> thenByLastId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QAfterSortBy>
-      thenByLastIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastId', Sort.desc);
     });
   }
 
@@ -485,8 +550,13 @@ extension ConfigModelIsarQuerySortThenBy
   }
 }
 
-extension ConfigModelIsarQueryWhereDistinct
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> {
+extension ConfigModelIsarQueryWhereDistinct on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> {
+  QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> distinctByCurrProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'currProfileId');
+    });
+  }
+
   QueryBuilder<ConfigModelIsar, ConfigModelIsar, QDistinct> distinctByIsDark() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isDark');
@@ -501,11 +571,16 @@ extension ConfigModelIsarQueryWhereDistinct
   }
 }
 
-extension ConfigModelIsarQueryProperty
-    on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QQueryProperty> {
-  QueryBuilder<ConfigModelIsar, int, QQueryOperations> lastIdProperty() {
+extension ConfigModelIsarQueryProperty on QueryBuilder<ConfigModelIsar, ConfigModelIsar, QQueryProperty> {
+  QueryBuilder<ConfigModelIsar, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'lastId');
+      return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<ConfigModelIsar, int?, QQueryOperations> currProfileIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'currProfileId');
     });
   }
 

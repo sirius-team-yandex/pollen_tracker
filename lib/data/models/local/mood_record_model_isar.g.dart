@@ -114,7 +114,6 @@ MoodRecordModelIsar _moodRecordModelIsarDeserialize(
         MoodType.veryBad,
     ownerId: reader.readLong(offsets[3]),
   );
-  object.id = id;
   return object;
 }
 
@@ -162,10 +161,7 @@ List<IsarLinkBase<dynamic>> _moodRecordModelIsarGetLinks(
   return [];
 }
 
-void _moodRecordModelIsarAttach(
-    IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {
-  object.id = id;
-}
+void _moodRecordModelIsarAttach(IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {}
 
 extension MoodRecordModelIsarQueryWhereSort
     on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QWhere> {

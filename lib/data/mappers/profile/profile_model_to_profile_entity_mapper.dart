@@ -11,13 +11,10 @@ class ProfileModelIsarToEntityMapper {
 
   ProfileEntity map(ProfileModelIsar profileModelIsar) {
     return ProfileEntity(
-      id: profileModelIsar.id,
+      profileId: profileModelIsar.profileId,
+      cityId: profileModelIsar.cityId,
       name: profileModelIsar.name,
-      city: profileModelIsar.city,
-      //TODO ПРОВЕРИТЬ РЕАЛИЗАЦИЮ
-      species: profileModelIsar.species
-          .map((e) => stringSpeciesMapper.map(e))
-          .toList(),
+      species: profileModelIsar.species.map((e) => stringSpeciesMapper.map(e)).toList(),
     );
   }
 

@@ -3,15 +3,15 @@ part 'profile_model_isar.g.dart';
 
 @collection
 class ProfileModelIsar {
-  Id id;
+  Id profileId;
+  int cityId;
   String name;
-  String city;
   List<String> species;
 
   ProfileModelIsar({
-    required this.id,
+    required this.profileId,
+    required this.cityId,
     required this.name,
-    required this.city,
     required this.species,
   });
 }

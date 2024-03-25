@@ -161,7 +161,8 @@ List<IsarLinkBase<dynamic>> _moodRecordModelIsarGetLinks(
   return [];
 }
 
-void _moodRecordModelIsarAttach(IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {}
+void _moodRecordModelIsarAttach(
+    IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {}
 
 extension MoodRecordModelIsarQueryWhereSort
     on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QWhere> {

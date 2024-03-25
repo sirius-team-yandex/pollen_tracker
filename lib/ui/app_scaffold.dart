@@ -38,7 +38,8 @@ class _AppScaffoldState extends State<AppScaffold> {
               : BottomNavigationBar(
                   showSelectedLabels: false,
                   showUnselectedLabels: false,
-                  onTap: (index) => context.go(AppState.mapScreen[index] ?? '/home'),
+                  onTap: (index) =>
+                      context.go(AppState.mapScreen[index] ?? '/home'),
                   items: _createNavigationBarItems(context),
                 ),
         );

@@ -114,7 +114,8 @@ class __$$ConfigEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ConfigEntityImpl implements _ConfigEntity {
-  const _$ConfigEntityImpl({this.currProfileId, required this.locale, required this.darkTheme});
+  const _$ConfigEntityImpl(
+      {this.currProfileId, required this.locale, required this.darkTheme});
 
   @override
   final int? currProfileId;
@@ -133,14 +134,16 @@ class _$ConfigEntityImpl implements _ConfigEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfigEntityImpl &&
-            (identical(other.currProfileId, currProfileId) || other.currProfileId == currProfileId) &&
+            (identical(other.currProfileId, currProfileId) ||
+                other.currProfileId == currProfileId) &&
             (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.darkTheme, darkTheme) ||
                 other.darkTheme == darkTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currProfileId, locale, darkTheme);
+  int get hashCode =>
+      Object.hash(runtimeType, currProfileId, locale, darkTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -150,8 +153,10 @@ class _$ConfigEntityImpl implements _ConfigEntity {
 }
 
 abstract class _ConfigEntity implements ConfigEntity {
-  const factory _ConfigEntity({final int? currProfileId, required final String locale, required final bool darkTheme}) =
-      _$ConfigEntityImpl;
+  const factory _ConfigEntity(
+      {final int? currProfileId,
+      required final String locale,
+      required final bool darkTheme}) = _$ConfigEntityImpl;
 
   @override
   int? get currProfileId;

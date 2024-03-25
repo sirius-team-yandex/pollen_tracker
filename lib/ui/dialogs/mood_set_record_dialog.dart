@@ -58,8 +58,7 @@ class MoodSetRecordDialog extends StatelessWidget {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: context.myColors.darkGreen, 
-
+                color: context.myColors.darkGreen,
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: TextButton(

@@ -71,7 +71,12 @@ class PollenLocalStorageDatasource {
     required double lat,
     required double lng,
   }) async* {
-    yield* isar.pollenModels.where().filter().latEqualTo(lat).lngEqualTo(lng).watch(fireImmediately: true);
+    yield* isar.pollenModels
+        .where()
+        .filter()
+        .latEqualTo(lat)
+        .lngEqualTo(lng)
+        .watch(fireImmediately: true);
   }
 
   Stream<List<PollenModel>> observeIn({

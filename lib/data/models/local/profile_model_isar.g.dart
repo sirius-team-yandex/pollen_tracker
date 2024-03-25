@@ -116,11 +116,13 @@ List<IsarLinkBase<dynamic>> _profileModelIsarGetLinks(ProfileModelIsar object) {
   return [];
 }
 
-void _profileModelIsarAttach(IsarCollection<dynamic> col, Id id, ProfileModelIsar object) {
+void _profileModelIsarAttach(
+    IsarCollection<dynamic> col, Id id, ProfileModelIsar object) {
   object.profileId = id;
 }
 
-extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhere> {
+extension ProfileModelIsarQueryWhereSort
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhere> {
   QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhere> anyProfileId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
@@ -128,8 +130,10 @@ extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, Profi
   }
 }
 
-extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhereClause> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdEqualTo(Id profileId) {
+extension ProfileModelIsarQueryWhere
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhereClause> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      profileIdEqualTo(Id profileId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: profileId,
@@ -138,7 +142,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdNotEqualTo(Id profileId) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      profileIdNotEqualTo(Id profileId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -160,8 +165,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdGreaterThan(Id profileId,
-      {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      profileIdGreaterThan(Id profileId, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: profileId, includeLower: include),
@@ -169,8 +174,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdLessThan(Id profileId,
-      {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      profileIdLessThan(Id profileId, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: profileId, includeUpper: include),
@@ -178,7 +183,8 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause>
+      profileIdBetween(
     Id lowerProfileId,
     Id upperProfileId, {
     bool includeLower = true,
@@ -195,8 +201,10 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
   }
 }
 
-extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdEqualTo(int value) {
+extension ProfileModelIsarQueryFilter
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIdEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'cityId',
@@ -205,7 +213,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIdGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -218,7 +227,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIdLessThan(
     int value, {
     bool include = false,
   }) {
@@ -231,7 +241,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      cityIdBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -384,7 +395,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdEqualTo(Id value) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      profileIdEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'profileId',
@@ -393,7 +405,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdGreaterThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      profileIdGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -406,7 +419,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdLessThan(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      profileIdLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -419,7 +433,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdBetween(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      profileIdBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -436,7 +451,8 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> speciesElementEqualTo(
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition>
+      speciesElementEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -667,14 +683,17 @@ extension ProfileModelIsarQueryObject
 extension ProfileModelIsarQueryLinks
     on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
 
-extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortBy> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityId() {
+extension ProfileModelIsarQuerySortBy
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortBy> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      sortByCityId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cityId', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityIdDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      sortByCityIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cityId', Sort.desc);
     });
@@ -694,14 +713,17 @@ extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileM
   }
 }
 
-extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortThenBy> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityId() {
+extension ProfileModelIsarQuerySortThenBy
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortThenBy> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByCityId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cityId', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityIdDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByCityIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'cityId', Sort.desc);
     });
@@ -720,21 +742,25 @@ extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, Prof
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByProfileId() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByProfileId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'profileId', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByProfileIdDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy>
+      thenByProfileIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'profileId', Sort.desc);
     });
   }
 }
 
-extension ProfileModelIsarQueryWhereDistinct on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByCityId() {
+extension ProfileModelIsarQueryWhereDistinct
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct>
+      distinctByCityId() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'cityId');
     });
@@ -755,7 +781,8 @@ extension ProfileModelIsarQueryWhereDistinct on QueryBuilder<ProfileModelIsar, P
   }
 }
 
-extension ProfileModelIsarQueryProperty on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QQueryProperty> {
+extension ProfileModelIsarQueryProperty
+    on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QQueryProperty> {
   QueryBuilder<ProfileModelIsar, int, QQueryOperations> profileIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'profileId');

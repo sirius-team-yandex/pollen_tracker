@@ -27,7 +27,6 @@ class ColorsTheme {
   Color primaryGreen;
   Color background;
   Color primary;
-
 }
 
 extension CustomThemeExtension on BuildContext {

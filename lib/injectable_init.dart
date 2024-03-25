@@ -60,7 +60,8 @@ abstract class MoodModule {
   MoodRecordSubject moodSubject(MoodRecordRepositoryIsarImpl impl) => impl;
 
   @injectable
-  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) => impl;
+  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) =>
+      impl;
 }
 
 @module

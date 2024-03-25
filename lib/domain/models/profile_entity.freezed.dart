@@ -126,7 +126,10 @@ class __$$ProfileEntityImplCopyWithImpl<$Res>
 
 class _$ProfileEntityImpl implements _ProfileEntity {
   const _$ProfileEntityImpl(
-      {required this.profileId, required this.cityId, required this.name, required final List<Species> species})
+      {required this.profileId,
+      required this.cityId,
+      required this.name,
+      required final List<Species> species})
       : _species = species;
 
   @override
@@ -153,14 +156,16 @@ class _$ProfileEntityImpl implements _ProfileEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileEntityImpl &&
-            (identical(other.profileId, profileId) || other.profileId == profileId) &&
+            (identical(other.profileId, profileId) ||
+                other.profileId == profileId) &&
             (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._species, _species));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profileId, cityId, name, const DeepCollectionEquality().hash(_species));
+  int get hashCode => Object.hash(runtimeType, profileId, cityId, name,
+      const DeepCollectionEquality().hash(_species));
 
   @JsonKey(ignore: true)
   @override

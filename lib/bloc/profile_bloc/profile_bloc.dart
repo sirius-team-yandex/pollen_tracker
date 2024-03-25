@@ -48,7 +48,7 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
       }
     })
       ..onError((e) {
-        _error(e, 'Error on _LogOut');
+        _error(e, 'Error on loading profile from stream');
       });
 
     on<_LogOut>(_profileLogOut);
@@ -71,9 +71,9 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
   Future<void> _profileLogIn(_LogIn event, Emitter<ProfileState> emit) async {
     try {
       emit(ProfileState.logedIn(event.profile));
-      logger.i('Emit ProfileStateLogedIn');
+      logger.i('Emit ProfileStateLogedIn from ProfileBloc');
     } catch (e) {
-      _error(e, 'Error on _profile_LogIn', emit);
+      _error(e, 'Error on logging in from ProfileBloc', emit);
     }
   }
 
@@ -83,18 +83,18 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
       configRepository.set(
         config.copyWith(currProfileId: null),
       );
-      logger.i('Set Config.currProfileId to null on _profile_LogOut');
+      logger.i('[LOGOUT] Set Config.currProfileId to null from ProfileBloc');
     } catch (e) {
-      _error(e, 'Error on _profile_LogOut', emit);
+      _error(e, 'Error on logOut from ProfileBloc', emit);
     }
   }
 
   Future<void> _changeProfile(_ChangeProfile event, Emitter<ProfileState> emit) async {
     try {
       await profileRepository.insert(event.newProfile);
-      logger.i('Update profile from _changeProfile');
+      logger.i('Update profile from ProfileBloc');
     } catch (e) {
-      _error(e, 'Error on _changeProfile', emit);
+      _error(e, 'Error on changing profile from ProfileBloc', emit);
     }
   }
 

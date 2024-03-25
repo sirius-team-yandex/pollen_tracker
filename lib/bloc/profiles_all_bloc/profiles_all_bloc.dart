@@ -63,9 +63,9 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
   Future<void> _loadProfiles(_LoadProfiles event, Emitter<ProfilesAllState> emit) async {
     try {
       emit(ProfilesAllState.loaded(event.profiles));
-      logger.i('Emit _LoadedProfilesState');
+      logger.i('Emit loaded state from ProfilesAllBloc');
     } catch (e) {
-      _error(e, 'Error on _loadProfiles', emit);
+      _error(e, 'Error on loading profile from ProfilesAllBloc', emit);
     }
   }
 
@@ -75,27 +75,27 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
       await configRepository.set(
         config.copyWith(currProfileId: event.id),
       );
-      logger.i('Set Config.currProfileId to ${event.id} on _selectProfile');
+      logger.i('Set Config.currProfileId to ${event.id} from ProfilesAllBloc');
     } catch (e) {
-      _error(e, 'Error on _selectProfile', emit);
+      _error(e, 'Error on selecting profile from ProfilesAllBloc', emit);
     }
   }
 
   Future<void> _addProfile(_AddProfile event, Emitter<ProfilesAllState> emit) async {
     try {
       await profileRepository.insert(event.profile);
-      logger.i('Update profile from _changeProfile');
+      logger.i('Add new profile from ProfillesAllBloc');
     } catch (e) {
-      _error(e, 'Error on _addProfile', emit);
+      _error(e, 'Error on Adding new profile from ProfillesAllBloc', emit);
     }
   }
 
   Future<void> _deleteProfile(_DeleteProfile event, Emitter<ProfilesAllState> emit) async {
     try {
       await profileRepository.delete(event.id);
-      logger.i('Delete profile from _deleteProfile');
+      logger.i('Delete profile ${event.id} from ProfillesAllBloc');
     } catch (e) {
-      _error(e, 'Error on deleting profilesAll', emit);
+      _error(e, 'Error on deleting ${event.id} profile from ProfillesAllBloc', emit);
     }
   }
 

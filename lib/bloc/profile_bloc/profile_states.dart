@@ -2,13 +2,9 @@ part of 'profile_bloc.dart';
 
 @freezed
 class ProfileState with _$ProfileState {
-  const factory ProfileState.loading() = LoadingProfileState;
+  const factory ProfileState.logedOut() = _LogedOutProfileState;
 
-  const factory ProfileState.noProfile(List<ProfileEntity> profiles) = NoProfileState;
+  const factory ProfileState.logedIn(ProfileEntity profile) = _LogedInProfileState;
 
-  const factory ProfileState.registration() = ProfileStateRegistaration;
-
-  const factory ProfileState.inProfile(ProfileEntity profile) = InProfileState;
-
-  const factory ProfileState.error() = ErrorProfileState;
+  const factory ProfileState.error() = _ErrorProfileState;
 }

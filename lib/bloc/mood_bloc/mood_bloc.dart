@@ -19,7 +19,7 @@ extension MoodRecordsBuilder on BuildContext {
 
 @injectable
 class MoodRecordsBloc extends Bloc<MoodRecordsEvent, MoodRecordsState> {
-  final MoodRecordsRepository moodRecordsRepository;
+  final MoodRecordRepository moodRecordsRepository;
 
   //final SomeOtherBloc someOtherBloc;
   //late StreamSubscription streamSubscription;

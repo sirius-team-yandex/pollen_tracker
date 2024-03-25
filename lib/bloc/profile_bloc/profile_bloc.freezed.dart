@@ -15,80 +15,62 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProfileEvent {
+mixin _$ProfilesAllEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
+    required TResult Function(ProfileEntity profile) logIn,
     required TResult Function() logOut,
     required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
+    TResult? Function(ProfileEntity profile)? logIn,
     TResult? Function()? logOut,
     TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
+    TResult Function(ProfileEntity profile)? logIn,
     TResult Function()? logOut,
     TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
+    required TResult Function(_LogIn value) logIn,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeProfile value) changeProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
+    TResult? Function(_LogIn value)? logIn,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeProfile value)? changeProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
+    TResult Function(_LogIn value)? logIn,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeProfile value)? changeProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileEventCopyWith<$Res> {
-  factory $ProfileEventCopyWith(ProfileEvent value, $Res Function(ProfileEvent) then) =
-      _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
+abstract class $ProfilesAllEventCopyWith<$Res> {
+  factory $ProfilesAllEventCopyWith(ProfilesAllEvent value, $Res Function(ProfilesAllEvent) then) =
+      _$ProfilesAllEventCopyWithImpl<$Res, ProfilesAllEvent>;
 }
 
 /// @nodoc
-class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent> implements $ProfileEventCopyWith<$Res> {
-  _$ProfileEventCopyWithImpl(this._value, this._then);
+class _$ProfilesAllEventCopyWithImpl<$Res, $Val extends ProfilesAllEvent> implements $ProfilesAllEventCopyWith<$Res> {
+  _$ProfilesAllEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,313 +79,8 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent> implements $Pr
 }
 
 /// @nodoc
-abstract class _$$LoadProfileImplCopyWith<$Res> {
-  factory _$$LoadProfileImplCopyWith(_$LoadProfileImpl value, $Res Function(_$LoadProfileImpl) then) =
-      __$$LoadProfileImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? id});
-}
-
-/// @nodoc
-class __$$LoadProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$LoadProfileImpl>
-    implements _$$LoadProfileImplCopyWith<$Res> {
-  __$$LoadProfileImplCopyWithImpl(_$LoadProfileImpl _value, $Res Function(_$LoadProfileImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_$LoadProfileImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadProfileImpl implements LoadProfile {
-  const _$LoadProfileImpl({this.id});
-
-  @override
-  final int? id;
-
-  @override
-  String toString() {
-    return 'ProfileEvent.load(id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadProfileImpl && (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadProfileImplCopyWith<_$LoadProfileImpl> get copyWith =>
-      __$$LoadProfileImplCopyWithImpl<_$LoadProfileImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
-    required TResult Function() logOut,
-    required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
-  }) {
-    return load(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
-    TResult? Function()? logOut,
-    TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
-  }) {
-    return load?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
-    TResult Function()? logOut,
-    TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
-  }) {
-    return load(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
-  }) {
-    return load?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadProfile implements ProfileEvent {
-  const factory LoadProfile({final int? id}) = _$LoadProfileImpl;
-
-  int? get id;
-  @JsonKey(ignore: true)
-  _$$LoadProfileImplCopyWith<_$LoadProfileImpl> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SelectProfileImplCopyWith<$Res> {
-  factory _$$SelectProfileImplCopyWith(_$SelectProfileImpl value, $Res Function(_$SelectProfileImpl) then) =
-      __$$SelectProfileImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? id});
-}
-
-/// @nodoc
-class __$$SelectProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$SelectProfileImpl>
-    implements _$$SelectProfileImplCopyWith<$Res> {
-  __$$SelectProfileImplCopyWithImpl(_$SelectProfileImpl _value, $Res Function(_$SelectProfileImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_$SelectProfileImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelectProfileImpl implements SelectProfile {
-  const _$SelectProfileImpl({this.id});
-
-  @override
-  final int? id;
-
-  @override
-  String toString() {
-    return 'ProfileEvent.select(id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelectProfileImpl &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelectProfileImplCopyWith<_$SelectProfileImpl> get copyWith =>
-      __$$SelectProfileImplCopyWithImpl<_$SelectProfileImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
-    required TResult Function() logOut,
-    required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
-  }) {
-    return select(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
-    TResult? Function()? logOut,
-    TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
-  }) {
-    return select?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
-    TResult Function()? logOut,
-    TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (select != null) {
-      return select(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
-  }) {
-    return select(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
-  }) {
-    return select?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (select != null) {
-      return select(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SelectProfile implements ProfileEvent {
-  const factory SelectProfile({final int? id}) = _$SelectProfileImpl;
-
-  int? get id;
-  @JsonKey(ignore: true)
-  _$$SelectProfileImplCopyWith<_$SelectProfileImpl> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EndRegistrationImplCopyWith<$Res> {
-  factory _$$EndRegistrationImplCopyWith(_$EndRegistrationImpl value, $Res Function(_$EndRegistrationImpl) then) =
-      __$$EndRegistrationImplCopyWithImpl<$Res>;
+abstract class _$$LogInImplCopyWith<$Res> {
+  factory _$$LogInImplCopyWith(_$LogInImpl value, $Res Function(_$LogInImpl) then) = __$$LogInImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileEntity profile});
 
@@ -411,17 +88,16 @@ abstract class _$$EndRegistrationImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$EndRegistrationImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$EndRegistrationImpl>
-    implements _$$EndRegistrationImplCopyWith<$Res> {
-  __$$EndRegistrationImplCopyWithImpl(_$EndRegistrationImpl _value, $Res Function(_$EndRegistrationImpl) _then)
-      : super(_value, _then);
+class __$$LogInImplCopyWithImpl<$Res> extends _$ProfilesAllEventCopyWithImpl<$Res, _$LogInImpl>
+    implements _$$LogInImplCopyWith<$Res> {
+  __$$LogInImplCopyWithImpl(_$LogInImpl _value, $Res Function(_$LogInImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? profile = null,
   }) {
-    return _then(_$EndRegistrationImpl(
+    return _then(_$LogInImpl(
       null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -440,22 +116,22 @@ class __$$EndRegistrationImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithIm
 
 /// @nodoc
 
-class _$EndRegistrationImpl implements EndRegistration {
-  const _$EndRegistrationImpl(this.profile);
+class _$LogInImpl implements _LogIn {
+  const _$LogInImpl(this.profile);
 
   @override
   final ProfileEntity profile;
 
   @override
   String toString() {
-    return 'ProfileEvent.endRegistration(profile: $profile)';
+    return 'ProfilesAllEvent.logIn(profile: $profile)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EndRegistrationImpl &&
+            other is _$LogInImpl &&
             (identical(other.profile, profile) || other.profile == profile));
   }
 
@@ -465,48 +141,38 @@ class _$EndRegistrationImpl implements EndRegistration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EndRegistrationImplCopyWith<_$EndRegistrationImpl> get copyWith =>
-      __$$EndRegistrationImplCopyWithImpl<_$EndRegistrationImpl>(this, _$identity);
+  _$$LogInImplCopyWith<_$LogInImpl> get copyWith => __$$LogInImplCopyWithImpl<_$LogInImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
+    required TResult Function(ProfileEntity profile) logIn,
     required TResult Function() logOut,
     required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
   }) {
-    return endRegistration(profile);
+    return logIn(profile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
+    TResult? Function(ProfileEntity profile)? logIn,
     TResult? Function()? logOut,
     TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
   }) {
-    return endRegistration?.call(profile);
+    return logIn?.call(profile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
+    TResult Function(ProfileEntity profile)? logIn,
     TResult Function()? logOut,
     TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
     required TResult orElse(),
   }) {
-    if (endRegistration != null) {
-      return endRegistration(profile);
+    if (logIn != null) {
+      return logIn(profile);
     }
     return orElse();
   }
@@ -514,53 +180,44 @@ class _$EndRegistrationImpl implements EndRegistration {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
+    required TResult Function(_LogIn value) logIn,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeProfile value) changeProfile,
   }) {
-    return endRegistration(this);
+    return logIn(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
+    TResult? Function(_LogIn value)? logIn,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeProfile value)? changeProfile,
   }) {
-    return endRegistration?.call(this);
+    return logIn?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
+    TResult Function(_LogIn value)? logIn,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeProfile value)? changeProfile,
     required TResult orElse(),
   }) {
-    if (endRegistration != null) {
-      return endRegistration(this);
+    if (logIn != null) {
+      return logIn(this);
     }
     return orElse();
   }
 }
 
-abstract class EndRegistration implements ProfileEvent {
-  const factory EndRegistration(final ProfileEntity profile) = _$EndRegistrationImpl;
+abstract class _LogIn implements ProfilesAllEvent {
+  const factory _LogIn(final ProfileEntity profile) = _$LogInImpl;
 
   ProfileEntity get profile;
   @JsonKey(ignore: true)
-  _$$EndRegistrationImplCopyWith<_$EndRegistrationImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$LogInImplCopyWith<_$LogInImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -570,19 +227,19 @@ abstract class _$$LogOutImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$LogOutImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$LogOutImpl>
+class __$$LogOutImplCopyWithImpl<$Res> extends _$ProfilesAllEventCopyWithImpl<$Res, _$LogOutImpl>
     implements _$$LogOutImplCopyWith<$Res> {
   __$$LogOutImplCopyWithImpl(_$LogOutImpl _value, $Res Function(_$LogOutImpl) _then) : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LogOutImpl implements LogOut {
+class _$LogOutImpl implements _LogOut {
   const _$LogOutImpl();
 
   @override
   String toString() {
-    return 'ProfileEvent.logOut()';
+    return 'ProfilesAllEvent.logOut()';
   }
 
   @override
@@ -596,12 +253,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
+    required TResult Function(ProfileEntity profile) logIn,
     required TResult Function() logOut,
     required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
   }) {
     return logOut();
   }
@@ -609,12 +263,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
+    TResult? Function(ProfileEntity profile)? logIn,
     TResult? Function()? logOut,
     TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
   }) {
     return logOut?.call();
   }
@@ -622,12 +273,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
+    TResult Function(ProfileEntity profile)? logIn,
     TResult Function()? logOut,
     TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -639,12 +287,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
+    required TResult Function(_LogIn value) logIn,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeProfile value) changeProfile,
   }) {
     return logOut(this);
   }
@@ -652,12 +297,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
+    TResult? Function(_LogIn value)? logIn,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeProfile value)? changeProfile,
   }) {
     return logOut?.call(this);
   }
@@ -665,12 +307,9 @@ class _$LogOutImpl implements LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
+    TResult Function(_LogIn value)? logIn,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeProfile value)? changeProfile,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -680,8 +319,8 @@ class _$LogOutImpl implements LogOut {
   }
 }
 
-abstract class LogOut implements ProfileEvent {
-  const factory LogOut() = _$LogOutImpl;
+abstract class _LogOut implements ProfilesAllEvent {
+  const factory _LogOut() = _$LogOutImpl;
 }
 
 /// @nodoc
@@ -695,7 +334,7 @@ abstract class _$$ChangeProfileImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ChangeProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$ChangeProfileImpl>
+class __$$ChangeProfileImplCopyWithImpl<$Res> extends _$ProfilesAllEventCopyWithImpl<$Res, _$ChangeProfileImpl>
     implements _$$ChangeProfileImplCopyWith<$Res> {
   __$$ChangeProfileImplCopyWithImpl(_$ChangeProfileImpl _value, $Res Function(_$ChangeProfileImpl) _then)
       : super(_value, _then);
@@ -724,7 +363,7 @@ class __$$ChangeProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl
 
 /// @nodoc
 
-class _$ChangeProfileImpl implements ChangeProfile {
+class _$ChangeProfileImpl implements _ChangeProfile {
   const _$ChangeProfileImpl(this.newProfile);
 
   @override
@@ -732,7 +371,7 @@ class _$ChangeProfileImpl implements ChangeProfile {
 
   @override
   String toString() {
-    return 'ProfileEvent.changeProfile(newProfile: $newProfile)';
+    return 'ProfilesAllEvent.changeProfile(newProfile: $newProfile)';
   }
 
   @override
@@ -755,12 +394,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
+    required TResult Function(ProfileEntity profile) logIn,
     required TResult Function() logOut,
     required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
   }) {
     return changeProfile(newProfile);
   }
@@ -768,12 +404,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
+    TResult? Function(ProfileEntity profile)? logIn,
     TResult? Function()? logOut,
     TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
   }) {
     return changeProfile?.call(newProfile);
   }
@@ -781,12 +414,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
+    TResult Function(ProfileEntity profile)? logIn,
     TResult Function()? logOut,
     TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
     required TResult orElse(),
   }) {
     if (changeProfile != null) {
@@ -798,12 +428,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
+    required TResult Function(_LogIn value) logIn,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeProfile value) changeProfile,
   }) {
     return changeProfile(this);
   }
@@ -811,12 +438,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
+    TResult? Function(_LogIn value)? logIn,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeProfile value)? changeProfile,
   }) {
     return changeProfile?.call(this);
   }
@@ -824,12 +448,9 @@ class _$ChangeProfileImpl implements ChangeProfile {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
+    TResult Function(_LogIn value)? logIn,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeProfile value)? changeProfile,
     required TResult orElse(),
   }) {
     if (changeProfile != null) {
@@ -839,8 +460,8 @@ class _$ChangeProfileImpl implements ChangeProfile {
   }
 }
 
-abstract class ChangeProfile implements ProfileEvent {
-  const factory ChangeProfile(final ProfileEntity newProfile) = _$ChangeProfileImpl;
+abstract class _ChangeProfile implements ProfilesAllEvent {
+  const factory _ChangeProfile(final ProfileEntity newProfile) = _$ChangeProfileImpl;
 
   ProfileEntity get newProfile;
   @JsonKey(ignore: true)
@@ -848,213 +469,48 @@ abstract class ChangeProfile implements ProfileEvent {
 }
 
 /// @nodoc
-abstract class _$$DeleteProfileImplCopyWith<$Res> {
-  factory _$$DeleteProfileImplCopyWith(_$DeleteProfileImpl value, $Res Function(_$DeleteProfileImpl) then) =
-      __$$DeleteProfileImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id});
-}
-
-/// @nodoc
-class __$$DeleteProfileImplCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res, _$DeleteProfileImpl>
-    implements _$$DeleteProfileImplCopyWith<$Res> {
-  __$$DeleteProfileImplCopyWithImpl(_$DeleteProfileImpl _value, $Res Function(_$DeleteProfileImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$DeleteProfileImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DeleteProfileImpl implements DeleteProfile {
-  const _$DeleteProfileImpl({required this.id});
-
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'ProfileEvent.deleteProfile(id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteProfileImpl &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteProfileImplCopyWith<_$DeleteProfileImpl> get copyWith =>
-      __$$DeleteProfileImplCopyWithImpl<_$DeleteProfileImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int? id) load,
-    required TResult Function(int? id) select,
-    required TResult Function(ProfileEntity profile) endRegistration,
-    required TResult Function() logOut,
-    required TResult Function(ProfileEntity newProfile) changeProfile,
-    required TResult Function(int id) deleteProfile,
-  }) {
-    return deleteProfile(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? id)? load,
-    TResult? Function(int? id)? select,
-    TResult? Function(ProfileEntity profile)? endRegistration,
-    TResult? Function()? logOut,
-    TResult? Function(ProfileEntity newProfile)? changeProfile,
-    TResult? Function(int id)? deleteProfile,
-  }) {
-    return deleteProfile?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? id)? load,
-    TResult Function(int? id)? select,
-    TResult Function(ProfileEntity profile)? endRegistration,
-    TResult Function()? logOut,
-    TResult Function(ProfileEntity newProfile)? changeProfile,
-    TResult Function(int id)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (deleteProfile != null) {
-      return deleteProfile(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadProfile value) load,
-    required TResult Function(SelectProfile value) select,
-    required TResult Function(EndRegistration value) endRegistration,
-    required TResult Function(LogOut value) logOut,
-    required TResult Function(ChangeProfile value) changeProfile,
-    required TResult Function(DeleteProfile value) deleteProfile,
-  }) {
-    return deleteProfile(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadProfile value)? load,
-    TResult? Function(SelectProfile value)? select,
-    TResult? Function(EndRegistration value)? endRegistration,
-    TResult? Function(LogOut value)? logOut,
-    TResult? Function(ChangeProfile value)? changeProfile,
-    TResult? Function(DeleteProfile value)? deleteProfile,
-  }) {
-    return deleteProfile?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadProfile value)? load,
-    TResult Function(SelectProfile value)? select,
-    TResult Function(EndRegistration value)? endRegistration,
-    TResult Function(LogOut value)? logOut,
-    TResult Function(ChangeProfile value)? changeProfile,
-    TResult Function(DeleteProfile value)? deleteProfile,
-    required TResult orElse(),
-  }) {
-    if (deleteProfile != null) {
-      return deleteProfile(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DeleteProfile implements ProfileEvent {
-  const factory DeleteProfile({required final int id}) = _$DeleteProfileImpl;
-
-  int get id;
-  @JsonKey(ignore: true)
-  _$$DeleteProfileImplCopyWith<_$DeleteProfileImpl> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
+    required TResult Function() logedOut,
+    required TResult Function(ProfileEntity profile) logedIn,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
+    TResult? Function()? logedOut,
+    TResult? Function(ProfileEntity profile)? logedIn,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
+    TResult Function()? logedOut,
+    TResult Function(ProfileEntity profile)? logedIn,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
+    required TResult Function(_LogedOutProfileState value) logedOut,
+    required TResult Function(_LogedInProfileState value) logedIn,
+    required TResult Function(_ErrorProfileState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
+    TResult? Function(_LogedOutProfileState value)? logedOut,
+    TResult? Function(_LogedInProfileState value)? logedIn,
+    TResult? Function(_ErrorProfileState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
+    TResult Function(_LogedOutProfileState value)? logedOut,
+    TResult Function(_LogedInProfileState value)? logedIn,
+    TResult Function(_ErrorProfileState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1077,33 +533,34 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState> implements $Pr
 }
 
 /// @nodoc
-abstract class _$$LoadingProfileStateImplCopyWith<$Res> {
-  factory _$$LoadingProfileStateImplCopyWith(
-          _$LoadingProfileStateImpl value, $Res Function(_$LoadingProfileStateImpl) then) =
-      __$$LoadingProfileStateImplCopyWithImpl<$Res>;
+abstract class _$$LogedOutProfileStateImplCopyWith<$Res> {
+  factory _$$LogedOutProfileStateImplCopyWith(
+          _$LogedOutProfileStateImpl value, $Res Function(_$LogedOutProfileStateImpl) then) =
+      __$$LogedOutProfileStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$LoadingProfileStateImpl>
-    implements _$$LoadingProfileStateImplCopyWith<$Res> {
-  __$$LoadingProfileStateImplCopyWithImpl(
-      _$LoadingProfileStateImpl _value, $Res Function(_$LoadingProfileStateImpl) _then)
+class __$$LogedOutProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$LogedOutProfileStateImpl>
+    implements _$$LogedOutProfileStateImplCopyWith<$Res> {
+  __$$LogedOutProfileStateImplCopyWithImpl(
+      _$LogedOutProfileStateImpl _value, $Res Function(_$LogedOutProfileStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingProfileStateImpl implements LoadingProfileState {
-  const _$LoadingProfileStateImpl();
+class _$LogedOutProfileStateImpl implements _LogedOutProfileState {
+  const _$LogedOutProfileStateImpl();
 
   @override
   String toString() {
-    return 'ProfileState.loading()';
+    return 'ProfileState.logedOut()';
   }
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LoadingProfileStateImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$LogedOutProfileStateImpl);
   }
 
   @override
@@ -1112,39 +569,33 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
+    required TResult Function() logedOut,
+    required TResult Function(ProfileEntity profile) logedIn,
     required TResult Function() error,
   }) {
-    return loading();
+    return logedOut();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
+    TResult? Function()? logedOut,
+    TResult? Function(ProfileEntity profile)? logedIn,
     TResult? Function()? error,
   }) {
-    return loading?.call();
+    return logedOut?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
+    TResult Function()? logedOut,
+    TResult Function(ProfileEntity profile)? logedIn,
     TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (logedOut != null) {
+      return logedOut();
     }
     return orElse();
   }
@@ -1152,320 +603,47 @@ class _$LoadingProfileStateImpl implements LoadingProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
+    required TResult Function(_LogedOutProfileState value) logedOut,
+    required TResult Function(_LogedInProfileState value) logedIn,
+    required TResult Function(_ErrorProfileState value) error,
   }) {
-    return loading(this);
+    return logedOut(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
+    TResult? Function(_LogedOutProfileState value)? logedOut,
+    TResult? Function(_LogedInProfileState value)? logedIn,
+    TResult? Function(_ErrorProfileState value)? error,
   }) {
-    return loading?.call(this);
+    return logedOut?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
+    TResult Function(_LogedOutProfileState value)? logedOut,
+    TResult Function(_LogedInProfileState value)? logedIn,
+    TResult Function(_ErrorProfileState value)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (logedOut != null) {
+      return logedOut(this);
     }
     return orElse();
   }
 }
 
-abstract class LoadingProfileState implements ProfileState {
-  const factory LoadingProfileState() = _$LoadingProfileStateImpl;
+abstract class _LogedOutProfileState implements ProfileState {
+  const factory _LogedOutProfileState() = _$LogedOutProfileStateImpl;
 }
 
 /// @nodoc
-abstract class _$$NoProfileStateImplCopyWith<$Res> {
-  factory _$$NoProfileStateImplCopyWith(_$NoProfileStateImpl value, $Res Function(_$NoProfileStateImpl) then) =
-      __$$NoProfileStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<ProfileEntity> profiles});
-}
-
-/// @nodoc
-class __$$NoProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$NoProfileStateImpl>
-    implements _$$NoProfileStateImplCopyWith<$Res> {
-  __$$NoProfileStateImplCopyWithImpl(_$NoProfileStateImpl _value, $Res Function(_$NoProfileStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? profiles = null,
-  }) {
-    return _then(_$NoProfileStateImpl(
-      null == profiles
-          ? _value._profiles
-          : profiles // ignore: cast_nullable_to_non_nullable
-              as List<ProfileEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$NoProfileStateImpl implements NoProfileState {
-  const _$NoProfileStateImpl(final List<ProfileEntity> profiles) : _profiles = profiles;
-
-  final List<ProfileEntity> _profiles;
-  @override
-  List<ProfileEntity> get profiles {
-    if (_profiles is EqualUnmodifiableListView) return _profiles;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_profiles);
-  }
-
-  @override
-  String toString() {
-    return 'ProfileState.noProfile(profiles: $profiles)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoProfileStateImpl);
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_profiles));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NoProfileStateImplCopyWith<_$NoProfileStateImpl> get copyWith =>
-      __$$NoProfileStateImplCopyWithImpl<_$NoProfileStateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
-    required TResult Function() error,
-  }) {
-    return noProfile(profiles);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
-    TResult? Function()? error,
-  }) {
-    return noProfile?.call(profiles);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (noProfile != null) {
-      return noProfile(profiles);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
-  }) {
-    return noProfile(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
-  }) {
-    return noProfile?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
-    required TResult orElse(),
-  }) {
-    if (noProfile != null) {
-      return noProfile(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NoProfileState implements ProfileState {
-  const factory NoProfileState(final List<ProfileEntity> profiles) = _$NoProfileStateImpl;
-
-  List<ProfileEntity> get profiles;
-  @JsonKey(ignore: true)
-  _$$NoProfileStateImplCopyWith<_$NoProfileStateImpl> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ProfileStateRegistarationImplCopyWith<$Res> {
-  factory _$$ProfileStateRegistarationImplCopyWith(
-          _$ProfileStateRegistarationImpl value, $Res Function(_$ProfileStateRegistarationImpl) then) =
-      __$$ProfileStateRegistarationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ProfileStateRegistarationImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateRegistarationImpl>
-    implements _$$ProfileStateRegistarationImplCopyWith<$Res> {
-  __$$ProfileStateRegistarationImplCopyWithImpl(
-      _$ProfileStateRegistarationImpl _value, $Res Function(_$ProfileStateRegistarationImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ProfileStateRegistarationImpl implements ProfileStateRegistaration {
-  const _$ProfileStateRegistarationImpl();
-
-  @override
-  String toString() {
-    return 'ProfileState.registration()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ProfileStateRegistarationImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
-    required TResult Function() error,
-  }) {
-    return registration();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
-    TResult? Function()? error,
-  }) {
-    return registration?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (registration != null) {
-      return registration();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
-  }) {
-    return registration(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
-  }) {
-    return registration?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
-    required TResult orElse(),
-  }) {
-    if (registration != null) {
-      return registration(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ProfileStateRegistaration implements ProfileState {
-  const factory ProfileStateRegistaration() = _$ProfileStateRegistarationImpl;
-}
-
-/// @nodoc
-abstract class _$$InProfileStateImplCopyWith<$Res> {
-  factory _$$InProfileStateImplCopyWith(_$InProfileStateImpl value, $Res Function(_$InProfileStateImpl) then) =
-      __$$InProfileStateImplCopyWithImpl<$Res>;
+abstract class _$$LogedInProfileStateImplCopyWith<$Res> {
+  factory _$$LogedInProfileStateImplCopyWith(
+          _$LogedInProfileStateImpl value, $Res Function(_$LogedInProfileStateImpl) then) =
+      __$$LogedInProfileStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProfileEntity profile});
 
@@ -1473,9 +651,10 @@ abstract class _$$InProfileStateImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$InProfileStateImpl>
-    implements _$$InProfileStateImplCopyWith<$Res> {
-  __$$InProfileStateImplCopyWithImpl(_$InProfileStateImpl _value, $Res Function(_$InProfileStateImpl) _then)
+class __$$LogedInProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImpl<$Res, _$LogedInProfileStateImpl>
+    implements _$$LogedInProfileStateImplCopyWith<$Res> {
+  __$$LogedInProfileStateImplCopyWithImpl(
+      _$LogedInProfileStateImpl _value, $Res Function(_$LogedInProfileStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1483,7 +662,7 @@ class __$$InProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImp
   $Res call({
     Object? profile = null,
   }) {
-    return _then(_$InProfileStateImpl(
+    return _then(_$LogedInProfileStateImpl(
       null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -1502,22 +681,22 @@ class __$$InProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWithImp
 
 /// @nodoc
 
-class _$InProfileStateImpl implements InProfileState {
-  const _$InProfileStateImpl(this.profile);
+class _$LogedInProfileStateImpl implements _LogedInProfileState {
+  const _$LogedInProfileStateImpl(this.profile);
 
   @override
   final ProfileEntity profile;
 
   @override
   String toString() {
-    return 'ProfileState.inProfile(profile: $profile)';
+    return 'ProfileState.logedIn(profile: $profile)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InProfileStateImpl &&
+            other is _$LogedInProfileStateImpl &&
             (identical(other.profile, profile) || other.profile == profile));
   }
 
@@ -1527,45 +706,39 @@ class _$InProfileStateImpl implements InProfileState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InProfileStateImplCopyWith<_$InProfileStateImpl> get copyWith =>
-      __$$InProfileStateImplCopyWithImpl<_$InProfileStateImpl>(this, _$identity);
+  _$$LogedInProfileStateImplCopyWith<_$LogedInProfileStateImpl> get copyWith =>
+      __$$LogedInProfileStateImplCopyWithImpl<_$LogedInProfileStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
+    required TResult Function() logedOut,
+    required TResult Function(ProfileEntity profile) logedIn,
     required TResult Function() error,
   }) {
-    return inProfile(profile);
+    return logedIn(profile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
+    TResult? Function()? logedOut,
+    TResult? Function(ProfileEntity profile)? logedIn,
     TResult? Function()? error,
   }) {
-    return inProfile?.call(profile);
+    return logedIn?.call(profile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
+    TResult Function()? logedOut,
+    TResult Function(ProfileEntity profile)? logedIn,
     TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (inProfile != null) {
-      return inProfile(profile);
+    if (logedIn != null) {
+      return logedIn(profile);
     }
     return orElse();
   }
@@ -1573,50 +746,44 @@ class _$InProfileStateImpl implements InProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
+    required TResult Function(_LogedOutProfileState value) logedOut,
+    required TResult Function(_LogedInProfileState value) logedIn,
+    required TResult Function(_ErrorProfileState value) error,
   }) {
-    return inProfile(this);
+    return logedIn(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
+    TResult? Function(_LogedOutProfileState value)? logedOut,
+    TResult? Function(_LogedInProfileState value)? logedIn,
+    TResult? Function(_ErrorProfileState value)? error,
   }) {
-    return inProfile?.call(this);
+    return logedIn?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
+    TResult Function(_LogedOutProfileState value)? logedOut,
+    TResult Function(_LogedInProfileState value)? logedIn,
+    TResult Function(_ErrorProfileState value)? error,
     required TResult orElse(),
   }) {
-    if (inProfile != null) {
-      return inProfile(this);
+    if (logedIn != null) {
+      return logedIn(this);
     }
     return orElse();
   }
 }
 
-abstract class InProfileState implements ProfileState {
-  const factory InProfileState(final ProfileEntity profile) = _$InProfileStateImpl;
+abstract class _LogedInProfileState implements ProfileState {
+  const factory _LogedInProfileState(final ProfileEntity profile) = _$LogedInProfileStateImpl;
 
   ProfileEntity get profile;
   @JsonKey(ignore: true)
-  _$$InProfileStateImplCopyWith<_$InProfileStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$LogedInProfileStateImplCopyWith<_$LogedInProfileStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1634,7 +801,7 @@ class __$$ErrorProfileStateImplCopyWithImpl<$Res> extends _$ProfileStateCopyWith
 
 /// @nodoc
 
-class _$ErrorProfileStateImpl implements ErrorProfileState {
+class _$ErrorProfileStateImpl implements _ErrorProfileState {
   const _$ErrorProfileStateImpl();
 
   @override
@@ -1653,10 +820,8 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<ProfileEntity> profiles) noProfile,
-    required TResult Function() registration,
-    required TResult Function(ProfileEntity profile) inProfile,
+    required TResult Function() logedOut,
+    required TResult Function(ProfileEntity profile) logedIn,
     required TResult Function() error,
   }) {
     return error();
@@ -1665,10 +830,8 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<ProfileEntity> profiles)? noProfile,
-    TResult? Function()? registration,
-    TResult? Function(ProfileEntity profile)? inProfile,
+    TResult? Function()? logedOut,
+    TResult? Function(ProfileEntity profile)? logedIn,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -1677,10 +840,8 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<ProfileEntity> profiles)? noProfile,
-    TResult Function()? registration,
-    TResult Function(ProfileEntity profile)? inProfile,
+    TResult Function()? logedOut,
+    TResult Function(ProfileEntity profile)? logedIn,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -1693,11 +854,9 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(LoadingProfileState value) loading,
-    required TResult Function(NoProfileState value) noProfile,
-    required TResult Function(ProfileStateRegistaration value) registration,
-    required TResult Function(InProfileState value) inProfile,
-    required TResult Function(ErrorProfileState value) error,
+    required TResult Function(_LogedOutProfileState value) logedOut,
+    required TResult Function(_LogedInProfileState value) logedIn,
+    required TResult Function(_ErrorProfileState value) error,
   }) {
     return error(this);
   }
@@ -1705,11 +864,9 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingProfileState value)? loading,
-    TResult? Function(NoProfileState value)? noProfile,
-    TResult? Function(ProfileStateRegistaration value)? registration,
-    TResult? Function(InProfileState value)? inProfile,
-    TResult? Function(ErrorProfileState value)? error,
+    TResult? Function(_LogedOutProfileState value)? logedOut,
+    TResult? Function(_LogedInProfileState value)? logedIn,
+    TResult? Function(_ErrorProfileState value)? error,
   }) {
     return error?.call(this);
   }
@@ -1717,11 +874,9 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingProfileState value)? loading,
-    TResult Function(NoProfileState value)? noProfile,
-    TResult Function(ProfileStateRegistaration value)? registration,
-    TResult Function(InProfileState value)? inProfile,
-    TResult Function(ErrorProfileState value)? error,
+    TResult Function(_LogedOutProfileState value)? logedOut,
+    TResult Function(_LogedInProfileState value)? logedIn,
+    TResult Function(_ErrorProfileState value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1731,6 +886,6 @@ class _$ErrorProfileStateImpl implements ErrorProfileState {
   }
 }
 
-abstract class ErrorProfileState implements ProfileState {
-  const factory ErrorProfileState() = _$ErrorProfileStateImpl;
+abstract class _ErrorProfileState implements ProfileState {
+  const factory _ErrorProfileState() = _$ErrorProfileStateImpl;
 }

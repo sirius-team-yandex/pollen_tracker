@@ -34,15 +34,9 @@ const MoodRecordModelIsarSchema = CollectionSchema(
       type: IsarType.byte,
       enumMap: _MoodRecordModelIsarmoodTypeEnumValueMap,
     ),
-<<<<<<< HEAD
-    r'profileId': PropertySchema(
-      id: 3,
-      name: r'profileId',
-=======
     r'ownerId': PropertySchema(
       id: 3,
       name: r'ownerId',
->>>>>>> develop
       type: IsarType.long,
     )
   },
@@ -103,11 +97,7 @@ void _moodRecordModelIsarSerialize(
   writer.writeString(offsets[0], object.comment);
   writer.writeDateTime(offsets[1], object.date);
   writer.writeByte(offsets[2], object.moodType.index);
-<<<<<<< HEAD
-  writer.writeLong(offsets[3], object.profileId);
-=======
   writer.writeLong(offsets[3], object.ownerId);
->>>>>>> develop
 }
 
 MoodRecordModelIsar _moodRecordModelIsarDeserialize(
@@ -121,13 +111,7 @@ MoodRecordModelIsar _moodRecordModelIsarDeserialize(
     date: reader.readDateTime(offsets[1]),
 <<<<<<< HEAD
     moodType: _MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offsets[2])] ?? MoodType.veryBad,
-    profileId: reader.readLong(offsets[3]),
-=======
-    moodType: _MoodRecordModelIsarmoodTypeValueEnumMap[
-            reader.readByteOrNull(offsets[2])] ??
-        MoodType.veryBad,
     ownerId: reader.readLong(offsets[3]),
->>>>>>> develop
   );
   return object;
 }
@@ -146,11 +130,6 @@ P _moodRecordModelIsarDeserializeProp<P>(
     case 2:
 <<<<<<< HEAD
       return (_MoodRecordModelIsarmoodTypeValueEnumMap[reader.readByteOrNull(offset)] ?? MoodType.veryBad) as P;
-=======
-      return (_MoodRecordModelIsarmoodTypeValueEnumMap[
-              reader.readByteOrNull(offset)] ??
-          MoodType.veryBad) as P;
->>>>>>> develop
     case 3:
       return (reader.readLong(offset)) as P;
     default:
@@ -180,8 +159,7 @@ List<IsarLinkBase<dynamic>> _moodRecordModelIsarGetLinks(
   return [];
 }
 
-void _moodRecordModelIsarAttach(
-    IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {}
+void _moodRecordModelIsarAttach(IsarCollection<dynamic> col, Id id, MoodRecordModelIsar object) {}
 
 extension MoodRecordModelIsarQueryWhereSort
     on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QWhere> {
@@ -191,8 +169,7 @@ extension MoodRecordModelIsarQueryWhereSort
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhere>
-      anyOwnerIdDate() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhere> anyOwnerIdDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'ownerId_date'),
@@ -271,8 +248,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdEqualToAnyDate(int ownerId) {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdEqualToAnyDate(int ownerId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'ownerId_date',
@@ -281,8 +257,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdNotEqualToAnyDate(int ownerId) {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdNotEqualToAnyDate(int ownerId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -316,8 +291,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdGreaterThanAnyDate(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdGreaterThanAnyDate(
     int ownerId, {
     bool include = false,
   }) {
@@ -331,8 +305,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdLessThanAnyDate(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdLessThanAnyDate(
     int ownerId, {
     bool include = false,
   }) {
@@ -346,8 +319,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdBetweenAnyDate(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdBetweenAnyDate(
     int lowerOwnerId,
     int upperOwnerId, {
     bool includeLower = true,
@@ -364,8 +336,8 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdDateEqualTo(int ownerId, DateTime date) {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdDateEqualTo(
+      int ownerId, DateTime date) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'ownerId_date',
@@ -374,8 +346,8 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdEqualToDateNotEqualTo(int ownerId, DateTime date) {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdEqualToDateNotEqualTo(
+      int ownerId, DateTime date) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -409,8 +381,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdEqualToDateGreaterThan(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdEqualToDateGreaterThan(
     int ownerId,
     DateTime date, {
     bool include = false,
@@ -425,8 +396,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdEqualToDateLessThan(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdEqualToDateLessThan(
     int ownerId,
     DateTime date, {
     bool include = false,
@@ -441,8 +411,7 @@ extension MoodRecordModelIsarQueryWhere
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause>
-      ownerIdEqualToDateBetween(
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterWhereClause> ownerIdEqualToDateBetween(
     int ownerId,
     DateTime lowerDate,
     DateTime upperDate, {
@@ -461,10 +430,8 @@ extension MoodRecordModelIsarQueryWhere
   }
 }
 
-extension MoodRecordModelIsarQueryFilter on QueryBuilder<MoodRecordModelIsar,
-    MoodRecordModelIsar, QFilterCondition> {
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition>
-      commentIsNull() {
+extension MoodRecordModelIsarQueryFilter on QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QFilterCondition> {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> commentIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'comment',
@@ -785,73 +752,42 @@ extension MoodRecordModelIsarQueryFilter on QueryBuilder<MoodRecordModelIsar,
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdEqualTo(int value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'profileId',
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition>
-      ownerIdEqualTo(int value) {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> ownerIdEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'ownerId',
->>>>>>> develop
         value: value,
       ));
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdGreaterThan(
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition>
-      ownerIdGreaterThan(
->>>>>>> develop
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> ownerIdGreaterThan(
     int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-<<<<<<< HEAD
-        property: r'profileId',
-=======
         property: r'ownerId',
->>>>>>> develop
         value: value,
       ));
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdLessThan(
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition>
-      ownerIdLessThan(
->>>>>>> develop
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> ownerIdLessThan(
     int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-<<<<<<< HEAD
-        property: r'profileId',
-=======
         property: r'ownerId',
->>>>>>> develop
         value: value,
       ));
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> profileIdBetween(
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition>
-      ownerIdBetween(
->>>>>>> develop
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterFilterCondition> ownerIdBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -859,11 +795,7 @@ extension MoodRecordModelIsarQueryFilter on QueryBuilder<MoodRecordModelIsar,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-<<<<<<< HEAD
-        property: r'profileId',
-=======
         property: r'ownerId',
->>>>>>> develop
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -923,29 +855,15 @@ extension MoodRecordModelIsarQuerySortBy
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByProfileId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'profileId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByProfileIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'profileId', Sort.desc);
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy>
-      sortByOwnerId() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByOwnerId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'ownerId', Sort.asc);
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy>
-      sortByOwnerIdDesc() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> sortByOwnerIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'ownerId', Sort.desc);
->>>>>>> develop
     });
   }
 }
@@ -1008,29 +926,15 @@ extension MoodRecordModelIsarQuerySortThenBy
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByProfileId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'profileId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByProfileIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'profileId', Sort.desc);
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy>
-      thenByOwnerId() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByOwnerId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'ownerId', Sort.asc);
     });
   }
 
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy>
-      thenByOwnerIdDesc() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QAfterSortBy> thenByOwnerIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'ownerId', Sort.desc);
->>>>>>> develop
     });
   }
 }
@@ -1058,16 +962,9 @@ extension MoodRecordModelIsarQueryWhereDistinct
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct> distinctByProfileId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'profileId');
-=======
-  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct>
-      distinctByOwnerId() {
+  QueryBuilder<MoodRecordModelIsar, MoodRecordModelIsar, QDistinct> distinctByOwnerId() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'ownerId');
->>>>>>> develop
     });
   }
 }
@@ -1100,15 +997,9 @@ extension MoodRecordModelIsarQueryProperty
     });
   }
 
-<<<<<<< HEAD
-  QueryBuilder<MoodRecordModelIsar, int, QQueryOperations> profileIdProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'profileId');
-=======
   QueryBuilder<MoodRecordModelIsar, int, QQueryOperations> ownerIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'ownerId');
->>>>>>> develop
     });
   }
 }

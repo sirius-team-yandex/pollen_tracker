@@ -13,7 +13,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:isar/isar.dart' as _i6;
 
-import 'bloc/profile_bloc/profile_bloc.dart' as _i37;
+import 'bloc/profile_bloc/profile_bloc.dart' as _i36;
 import 'data/datasources/config_local_storage_datasource_isar_impl.dart' as _i20;
 import 'data/datasources/mood_local_storage_datasource_isar_impl.dart' as _i8;
 import 'data/datasources/pollen_local_storage_datasource.dart' as _i12;
@@ -31,21 +31,21 @@ import 'data/mappers/profile/profile_model_to_profile_entity_mapper.dart' as _i2
 import 'data/mappers/string_to_species_mapper.dart' as _i17;
 import 'data/repositories/city_repository_impl.dart' as _i19;
 import 'data/repositories/config_repository_impl.dart' as _i21;
-import 'data/repositories/mood_record_repository_impl.dart' as _i26;
-import 'data/repositories/network_pollen_repository_impl.dart' as _i29;
-import 'data/repositories/network_pollen_repository_mock.dart' as _i30;
-import 'data/repositories/pollen_repository_impl.dart' as _i35;
-import 'data/repositories/profile_repository_impl.dart' as _i31;
+import 'data/repositories/mood_record_repository_impl.dart' as _i32;
+import 'data/repositories/network_pollen_repository_impl.dart' as _i28;
+import 'data/repositories/network_pollen_repository_mock.dart' as _i27;
+import 'data/repositories/pollen_repository_impl.dart' as _i34;
+import 'data/repositories/profile_repository_impl.dart' as _i29;
 import 'domain/repositories/city_repository.dart' as _i18;
 import 'domain/repositories/config_repository.dart' as _i25;
 import 'domain/repositories/config_subject.dart' as _i22;
-import 'domain/repositories/mood_record_repository.dart' as _i33;
-import 'domain/repositories/mood_record_subject.dart' as _i27;
-import 'domain/repositories/network_pollen_repository.dart' as _i28;
+import 'domain/repositories/mood_record_repository.dart' as _i37;
+import 'domain/repositories/mood_record_subject.dart' as _i33;
+import 'domain/repositories/network_pollen_repository.dart' as _i26;
 import 'domain/repositories/pollen_repository.dart' as _i38;
-import 'domain/repositories/pollen_subject.dart' as _i36;
-import 'domain/repositories/profile_repository.dart' as _i34;
-import 'domain/repositories/profile_subject.dart' as _i32;
+import 'domain/repositories/pollen_subject.dart' as _i35;
+import 'domain/repositories/profile_repository.dart' as _i31;
+import 'domain/repositories/profile_subject.dart' as _i30;
 import 'domain/usecases/risc_evaluator_usecase.dart' as _i16;
 import 'injectable_init.dart' as _i39;
 
@@ -67,8 +67,8 @@ extension GetItInjectableX on _i1.GetIt {
     final networkModule = _$NetworkModule();
     final isarModule = _$IsarModule();
     final configModule = _$ConfigModule();
-    final moodModule = _$MoodModule();
     final profileModule = _$ProfileModule();
+    final moodModule = _$MoodModule();
     final pollenModule = _$PollenModule();
     gh.factory<_i3.ConfigEntityToModelIsarMapper>(() => _i3.ConfigEntityToModelIsarMapper());
     gh.factory<_i4.ConfigModelIsarToEntityMapper>(() => _i4.ConfigModelIsarToEntityMapper());
@@ -104,53 +104,53 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i24.ProfileModelIsarToEntityMapper>(
         () => _i24.ProfileModelIsarToEntityMapper(stringSpeciesMapper: gh<_i17.StringSpeciesMapper>()));
     gh.factory<_i25.ConfigRepository>(() => configModule.configRepository(gh<_i21.ConfigRepositoryIsarImpl>()));
-    gh.factory<_i26.MoodRecordRepositoryIsarImpl>(() => _i26.MoodRecordRepositoryIsarImpl(
-          datasource: gh<_i8.MoodLocalStorageDatasourceIsar>(),
-          configSubject: gh<_i22.ConfigSubject>(),
-          configRepository: gh<_i25.ConfigRepository>(),
-          moodRecordModelIsarToEntityMapper: gh<_i10.MoodRecordModelIsarToEntityMapper>(),
-          moodRecordEntityToModelIsarMapper: gh<_i9.MoodRecordEntityToModelIsarMapper>(),
-        ));
-    gh.factory<_i27.MoodRecordSubject>(() => moodModule.moodSubject(gh<_i26.MoodRecordRepositoryIsarImpl>()));
-    gh.factory<_i28.NetworkPollenRepository>(
-      () => _i29.NetworkPollenRepositoryImpl(
-        dio: gh<_i5.Dio>(),
-        pollenDtoToPollenEntityMapper: gh<_i23.PollenDtoToPollenEntityMappper>(),
-      ),
-      registerFor: {_prod},
-    );
-    gh.factory<_i28.NetworkPollenRepository>(
-      () => _i30.NetworkPollenRepositoryMock(mapper: gh<_i23.PollenDtoToPollenEntityMappper>()),
+    gh.factory<_i26.NetworkPollenRepository>(
+      () => _i27.NetworkPollenRepositoryMock(mapper: gh<_i23.PollenDtoToPollenEntityMappper>()),
       registerFor: {
         _dev,
         _test,
       },
     );
-    gh.factory<_i31.ProfileRepositoryIsarImpl>(() => _i31.ProfileRepositoryIsarImpl(
+    gh.factory<_i26.NetworkPollenRepository>(
+      () => _i28.NetworkPollenRepositoryImpl(
+        dio: gh<_i5.Dio>(),
+        pollenDtoToPollenEntityMapper: gh<_i23.PollenDtoToPollenEntityMappper>(),
+      ),
+      registerFor: {_prod},
+    );
+    gh.factory<_i29.ProfileRepositoryIsarImpl>(() => _i29.ProfileRepositoryIsarImpl(
           datasource: gh<_i15.ProfileLocalStorageDatasourceIsar>(),
           configRepository: gh<_i25.ConfigRepository>(),
           configSubject: gh<_i22.ConfigSubject>(),
           profileModelIsarToEntityMapper: gh<_i24.ProfileModelIsarToEntityMapper>(),
           profileEntityToModelIsarMapper: gh<_i14.ProfileEntityToModelIsarMapper>(),
         ));
-    gh.factory<_i32.ProfileSubject>(() => profileModule.profileSubject(gh<_i31.ProfileRepositoryIsarImpl>()));
-    gh.factory<_i33.MoodRecordRepository>(() => moodModule.moodRepository(gh<_i26.MoodRecordRepositoryIsarImpl>()));
-    gh.factory<_i34.ProfileRepository>(() => profileModule.profileRepository(gh<_i31.ProfileRepositoryIsarImpl>()));
-    gh.factory<_i35.PollenRepositoryImpl>(() => _i35.PollenRepositoryImpl(
-          profileSubject: gh<_i32.ProfileSubject>(),
-          profileRepository: gh<_i34.ProfileRepository>(),
+    gh.factory<_i30.ProfileSubject>(() => profileModule.profileSubject(gh<_i29.ProfileRepositoryIsarImpl>()));
+    gh.factory<_i31.ProfileRepository>(() => profileModule.profileRepository(gh<_i29.ProfileRepositoryIsarImpl>()));
+    gh.factory<_i32.MoodRecordRepositoryIsarImpl>(() => _i32.MoodRecordRepositoryIsarImpl(
+          datasource: gh<_i8.MoodLocalStorageDatasourceIsar>(),
+          profileRepository: gh<_i31.ProfileRepository>(),
+          profileSubject: gh<_i30.ProfileSubject>(),
+          moodRecordModelIsarToEntityMapper: gh<_i10.MoodRecordModelIsarToEntityMapper>(),
+          moodRecordEntityToModelIsarMapper: gh<_i9.MoodRecordEntityToModelIsarMapper>(),
+        ));
+    gh.factory<_i33.MoodRecordSubject>(() => moodModule.moodSubject(gh<_i32.MoodRecordRepositoryIsarImpl>()));
+    gh.factory<_i34.PollenRepositoryImpl>(() => _i34.PollenRepositoryImpl(
+          profileSubject: gh<_i30.ProfileSubject>(),
+          profileRepository: gh<_i31.ProfileRepository>(),
           citiesRepository: gh<_i18.CitiesRepository>(),
-          networkPollenRepository: gh<_i28.NetworkPollenRepository>(),
+          networkPollenRepository: gh<_i26.NetworkPollenRepository>(),
           datasource: gh<_i12.PollenLocalStorageDatasource>(),
           pollenModelToPollenEntityMapper: gh<_i13.PollenModelToPollenEntityMapper>(),
           pollenEntityToPollenModelMapper: gh<_i11.PollenEntityToPollenModelMapper>(),
         ));
-    gh.factory<_i36.PollenSubject>(() => pollenModule.pollenSubject(gh<_i35.PollenRepositoryImpl>()));
-    gh.factory<_i37.ProfileBloc>(() => _i37.ProfileBloc(
-          profileRepository: gh<_i34.ProfileRepository>(),
+    gh.factory<_i35.PollenSubject>(() => pollenModule.pollenSubject(gh<_i34.PollenRepositoryImpl>()));
+    gh.factory<_i36.ProfileBloc>(() => _i36.ProfileBloc(
+          profileRepository: gh<_i31.ProfileRepository>(),
           configRepository: gh<_i25.ConfigRepository>(),
         ));
-    gh.factory<_i38.PollenRepository>(() => pollenModule.pollenRepository(gh<_i35.PollenRepositoryImpl>()));
+    gh.factory<_i37.MoodRecordRepository>(() => moodModule.moodRepository(gh<_i32.MoodRecordRepositoryIsarImpl>()));
+    gh.factory<_i38.PollenRepository>(() => pollenModule.pollenRepository(gh<_i34.PollenRepositoryImpl>()));
     return this;
   }
 }
@@ -161,8 +161,8 @@ class _$IsarModule extends _i39.IsarModule {}
 
 class _$ConfigModule extends _i39.ConfigModule {}
 
-class _$MoodModule extends _i39.MoodModule {}
-
 class _$ProfileModule extends _i39.ProfileModule {}
+
+class _$MoodModule extends _i39.MoodModule {}
 
 class _$PollenModule extends _i39.PollenModule {}

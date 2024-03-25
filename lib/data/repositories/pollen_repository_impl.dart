@@ -46,7 +46,7 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
                   lat: city.lat,
                   lng: city.lng,
                   lowerTime: startDate.toUtc(),
-                  upperTime: startDate.toUtc().add(const Duration(days: 2)),
+                  upperTime: startDate.toUtc().add(const Duration(days: 365)),
                 ),
         )
         .map((models) => pollenModelToPollenEntityMapper.map(models));

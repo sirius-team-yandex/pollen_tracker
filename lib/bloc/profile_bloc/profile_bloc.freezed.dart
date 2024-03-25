@@ -1242,10 +1242,7 @@ class _$NoProfileStateImpl implements NoProfileState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoProfileStateImpl &&
-            const DeepCollectionEquality().equals(other._profiles, _profiles));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoProfileStateImpl);
   }
 
   @override

@@ -1,74 +1,82 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 
 @singleton
+// WARNING: We should use only UTC time as arguments to avoid possible errors!!
 class MoodLocalStorageDatasourceIsar {
-  Isar? _isar;
+  MoodLocalStorageDatasourceIsar({required this.isar});
 
-  MoodLocalStorageDatasourceIsar();
-  Future<Isar> _getIsarInstance() async {
-    if (_isar != null) {
-      return _isar!;
+  Isar isar;
+
+  // Return true if we inserted model
+  Future<bool> insert(
+    MoodRecordModelIsar model,
+  ) async {
+    if (!model.date.isUtc) {
+      throw ArgumentError('Date should be UTC!');
     }
-    final dir = await getApplicationDocumentsDirectory();
-    return Isar.open(
-      [MoodRecordModelIsarSchema],
-      directory: dir.path,
-    );
-  }
 
-  Future<bool> deleteMoodRecord(int id) async {
-    late bool deleted;
-    _isar ??= await _getIsarInstance();
-    await _isar?.writeTxn(
+    await isar.writeTxn(
       () async {
-        deleted = await _isar!.moodRecordModelIsars.delete(id);
+        await isar.moodRecordModelIsars.put(model);
       },
     );
+
+    // Exception would be thrown otherwise
+    return true;
+  }
+
+  Future<bool> insertAll(
+    List<MoodRecordModelIsar> models,
+  ) async {
+    if (models.any(
+      (model) => !model.date.isUtc,
+    )) {
+      throw ArgumentError('Date should be UTC!');
+    }
+
+    await isar.writeTxn(
+      () async {
+        isar.moodRecordModelIsars.putAll(models);
+      },
+    );
+
+    return true;
+  }
+
+  Future<bool> delete(int ownerId, DateTime date) async {
+    if (!date.isUtc) {
+      throw ArgumentError('Date should be UTC!');
+    }
+    bool deleted = false;
+
+    await isar.writeTxn(
+      () async {
+        deleted = await isar.moodRecordModelIsars.delete(
+          MoodRecordModelIsar.getIsarId(
+            id: MoodRecordModelIsar.getId(ownerId, date),
+          ),
+        );
+      },
+    );
+
     return deleted;
   }
 
-  Future<List<MoodRecordModelIsar>> fetchAllmoodRecordModels(
-    int profileId,
-    DateTime firstDayOfMonth,
-    DateTime lastDayOfMonth,
-  ) async {
-    _isar ??= await _getIsarInstance();
-    final moodRecordModels = await _isar!.moodRecordModelIsars
-        .filter()
-        .dateBetween(firstDayOfMonth, lastDayOfMonth)
-        .and()
-        .profileIdEqualTo(profileId)
-        .findAll();
-    return moodRecordModels;
+  Stream<List<MoodRecordModelIsar>> observeAll(int ownerId) async* {
+    yield* isar.moodRecordModelIsars.where().ownerIdEqualToAnyDate(ownerId).watch(fireImmediately: true);
   }
 
-  Future<int?> insertMoodRecordModel(
-    MoodRecordModelIsar moodRecordModel,
-  ) async {
-    late int id;
-    _isar ??= await _getIsarInstance();
-    await _isar?.writeTxn(
-      () async {
-        id = await _isar!.moodRecordModelIsars.put(moodRecordModel);
-      },
-    );
-    return id;
-  }
+  Stream<List<MoodRecordModelIsar>> observeIn(
+    int ownerId,
+    DateTime lowerDate,
+    DateTime upperDate,
+  ) async* {
+    if (!lowerDate.isUtc || !upperDate.isUtc) {
+      throw ArgumentError('Date should be UTC!');
+    }
 
-  //TODO Проверить реализацию
-  Future<int?> updateMoodRecordModel(
-    MoodRecordModelIsar moodRecordModel,
-  ) async {
-    late int id;
-    _isar ??= await _getIsarInstance();
-    await _isar?.writeTxn(
-      () async {
-        id = await _isar!.moodRecordModelIsars.put(moodRecordModel);
-      },
-    );
-    return id;
+    yield* isar.moodRecordModelIsars.where().ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate).watch();
   }
 }

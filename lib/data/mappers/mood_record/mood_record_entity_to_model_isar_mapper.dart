@@ -4,16 +4,19 @@ import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 
 @injectable
 class MoodRecordEntityToModelIsarMapper {
-  MoodRecordModelIsar map(MoodRecordEntity entity) {
+  MoodRecordModelIsar map(MoodRecordEntity moodRecordEntity, int ownerId) {
     return MoodRecordModelIsar(
-      moodType: entity.moodType,
-      comment: entity.comment,
-      date: entity.date,
-      profileId: entity.profileId,
+      ownerId: ownerId,
+      date: moodRecordEntity.date.toUtc(),
+      moodType: moodRecordEntity.moodType,
+      comment: moodRecordEntity.comment,
     );
   }
 
-  List<MoodRecordModelIsar> mapList(List<MoodRecordEntity> moodRecordEntity) {
-    return moodRecordEntity.map((e) => map(e)).toList();
+  List<MoodRecordModelIsar> mapList(
+    List<MoodRecordEntity> moodRecordEntity,
+    int ownerId,
+  ) {
+    return moodRecordEntity.map((e) => map(e, ownerId)).toList();
   }
 }

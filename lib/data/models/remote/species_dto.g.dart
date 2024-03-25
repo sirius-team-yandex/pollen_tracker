@@ -6,7 +6,8 @@ part of 'species_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SpeciesDtoImpl _$$SpeciesDtoImplFromJson(Map<String, dynamic> json) => _$SpeciesDtoImpl(
+_$SpeciesDtoImpl _$$SpeciesDtoImplFromJson(Map<String, dynamic> json) =>
+    _$SpeciesDtoImpl(
       grass: (json['Grass'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as int?),
       ),
@@ -19,7 +20,8 @@ _$SpeciesDtoImpl _$$SpeciesDtoImplFromJson(Map<String, dynamic> json) => _$Speci
       ),
     );
 
-Map<String, dynamic> _$$SpeciesDtoImplToJson(_$SpeciesDtoImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$SpeciesDtoImplToJson(_$SpeciesDtoImpl instance) =>
+    <String, dynamic>{
       'Grass': instance.grass,
       'Others': instance.others,
       'Tree': instance.tree,

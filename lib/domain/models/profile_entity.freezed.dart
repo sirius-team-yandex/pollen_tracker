@@ -16,25 +16,28 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileEntity {
-  int get id => throw _privateConstructorUsedError;
+  int get profileId => throw _privateConstructorUsedError;
+  int get cityId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
   List<Species> get species => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProfileEntityCopyWith<ProfileEntity> get copyWith => throw _privateConstructorUsedError;
+  $ProfileEntityCopyWith<ProfileEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileEntityCopyWith<$Res> {
-  factory $ProfileEntityCopyWith(ProfileEntity value, $Res Function(ProfileEntity) then) =
+  factory $ProfileEntityCopyWith(
+          ProfileEntity value, $Res Function(ProfileEntity) then) =
       _$ProfileEntityCopyWithImpl<$Res, ProfileEntity>;
   @useResult
-  $Res call({int id, String name, String city, List<Species> species});
+  $Res call({int profileId, int cityId, String name, List<Species> species});
 }
 
 /// @nodoc
-class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity> implements $ProfileEntityCopyWith<$Res> {
+class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
+    implements $ProfileEntityCopyWith<$Res> {
   _$ProfileEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -45,23 +48,23 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity> implements $
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? profileId = null,
+    Object? cityId = null,
     Object? name = null,
-    Object? city = null,
     Object? species = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      profileId: null == profileId
+          ? _value.profileId
+          : profileId // ignore: cast_nullable_to_non_nullable
+              as int,
+      cityId: null == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
               as String,
       species: null == species
           ? _value.species
@@ -72,40 +75,44 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity> implements $
 }
 
 /// @nodoc
-abstract class _$$ProfileEntityImplCopyWith<$Res> implements $ProfileEntityCopyWith<$Res> {
-  factory _$$ProfileEntityImplCopyWith(_$ProfileEntityImpl value, $Res Function(_$ProfileEntityImpl) then) =
+abstract class _$$ProfileEntityImplCopyWith<$Res>
+    implements $ProfileEntityCopyWith<$Res> {
+  factory _$$ProfileEntityImplCopyWith(
+          _$ProfileEntityImpl value, $Res Function(_$ProfileEntityImpl) then) =
       __$$ProfileEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String city, List<Species> species});
+  $Res call({int profileId, int cityId, String name, List<Species> species});
 }
 
 /// @nodoc
-class __$$ProfileEntityImplCopyWithImpl<$Res> extends _$ProfileEntityCopyWithImpl<$Res, _$ProfileEntityImpl>
+class __$$ProfileEntityImplCopyWithImpl<$Res>
+    extends _$ProfileEntityCopyWithImpl<$Res, _$ProfileEntityImpl>
     implements _$$ProfileEntityImplCopyWith<$Res> {
-  __$$ProfileEntityImplCopyWithImpl(_$ProfileEntityImpl _value, $Res Function(_$ProfileEntityImpl) _then)
+  __$$ProfileEntityImplCopyWithImpl(
+      _$ProfileEntityImpl _value, $Res Function(_$ProfileEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? profileId = null,
+    Object? cityId = null,
     Object? name = null,
-    Object? city = null,
     Object? species = null,
   }) {
     return _then(_$ProfileEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      profileId: null == profileId
+          ? _value.profileId
+          : profileId // ignore: cast_nullable_to_non_nullable
+              as int,
+      cityId: null == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
               as String,
       species: null == species
           ? _value._species
@@ -119,15 +126,18 @@ class __$$ProfileEntityImplCopyWithImpl<$Res> extends _$ProfileEntityCopyWithImp
 
 class _$ProfileEntityImpl implements _ProfileEntity {
   const _$ProfileEntityImpl(
-      {required this.id, required this.name, required this.city, required final List<Species> species})
+      {required this.profileId,
+      required this.cityId,
+      required this.name,
+      required final List<Species> species})
       : _species = species;
 
   @override
-  final int id;
+  final int profileId;
+  @override
+  final int cityId;
   @override
   final String name;
-  @override
-  final String city;
   final List<Species> _species;
   @override
   List<Species> get species {
@@ -138,7 +148,7 @@ class _$ProfileEntityImpl implements _ProfileEntity {
 
   @override
   String toString() {
-    return 'ProfileEntity(id: $id, name: $name, city: $city, species: $species)';
+    return 'ProfileEntity(profileId: $profileId, cityId: $cityId, name: $name, species: $species)';
   }
 
   @override
@@ -146,14 +156,16 @@ class _$ProfileEntityImpl implements _ProfileEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileEntityImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.profileId, profileId) ||
+                other.profileId == profileId) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.city, city) || other.city == city) &&
             const DeepCollectionEquality().equals(other._species, _species));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, city, const DeepCollectionEquality().hash(_species));
+  int get hashCode => Object.hash(runtimeType, profileId, cityId, name,
+      const DeepCollectionEquality().hash(_species));
 
   @JsonKey(ignore: true)
   @override
@@ -164,20 +176,21 @@ class _$ProfileEntityImpl implements _ProfileEntity {
 
 abstract class _ProfileEntity implements ProfileEntity {
   const factory _ProfileEntity(
-      {required final int id,
+      {required final int profileId,
+      required final int cityId,
       required final String name,
-      required final String city,
       required final List<Species> species}) = _$ProfileEntityImpl;
 
   @override
-  int get id;
+  int get profileId;
+  @override
+  int get cityId;
   @override
   String get name;
-  @override
-  String get city;
   @override
   List<Species> get species;
   @override
   @JsonKey(ignore: true)
-  _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

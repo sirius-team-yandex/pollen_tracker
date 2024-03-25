@@ -1,69 +1,133 @@
+import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/data/datasources/mood_local_storage_datasource_isar_impl.dart';
 import 'package:pollen_tracker/data/mappers/mood_record/mood_record_entity_to_model_isar_mapper.dart';
 import 'package:pollen_tracker/data/mappers/mood_record/mood_record_model_isar_to_entity_mapper.dart';
+import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
+import 'package:pollen_tracker/domain/repositories/config_repository.dart';
+import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:rxdart/transformers.dart';
 
-class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSubject {
+@injectable
+class MoodRecordRepositoryIsarImpl
+    implements MoodRecordRepository, MoodRecordSubject {
   MoodRecordRepositoryIsarImpl({
     required this.datasource,
+    required this.configSubject,
+    required this.configRepository,
     required this.moodRecordModelIsarToEntityMapper,
     required this.moodRecordEntityToModelIsarMapper,
-  }) {
-    _subscribeToDatasource();
-  }
+  });
 
   MoodLocalStorageDatasourceIsar datasource;
   MoodRecordModelIsarToEntityMapper moodRecordModelIsarToEntityMapper;
   MoodRecordEntityToModelIsarMapper moodRecordEntityToModelIsarMapper;
-  // Constant ownerId at the time, should be provided dynamicly later!!
-  final _ownerId = 0;
-
-  final BehaviorSubject<List<MoodRecordEntity>> _subject = BehaviorSubject();
+  ConfigSubject configSubject;
+  ConfigRepository configRepository;
 
   @override
-  Future<bool> deleteByDate(DateTime date) {
-    return datasource.delete(_ownerId, date);
-  }
+  Future<bool> deleteByDate(DateTime date) async {
+    final config = await configRepository.get();
+    final id = config.currProfileId;
 
-  @override
-  Future<List<MoodRecordEntity>> getAll() async {
-    return moodRecordModelIsarToEntityMapper.mapList(await datasource.getAll());
-  }
-
-  @override
-  Future<MoodRecordEntity?> getByDate(DateTime date) async {
-    final model = await datasource.get(_ownerId, date);
-    if (model == null) {
-      return null;
+    if (id == null) {
+      return false;
+    } else {
+      return datasource.delete(id, date.toUtc());
     }
-    return moodRecordModelIsarToEntityMapper.map(model);
   }
 
   @override
-  Future<bool> insert(MoodRecordEntity entity) {
-    final model = moodRecordEntityToModelIsarMapper.map(entity, _ownerId);
-    return datasource.insert(model);
+  Future<bool> insert(MoodRecordEntity entity) async {
+    final config = await configRepository.get();
+    final id = config.currProfileId;
+
+    if (id == null) {
+      return false;
+    } else {
+      final model = moodRecordEntityToModelIsarMapper.map(entity, id);
+      return datasource.insert(model);
+    }
   }
 
   @override
-  Future<bool> insertAll(List<MoodRecordEntity> entities) {
-    final models = moodRecordEntityToModelIsarMapper.mapList(entities, _ownerId);
-    return datasource.insertAll(models);
+  Future<bool> insertAll(List<MoodRecordEntity> entities) async {
+    final config = await configRepository.get();
+    final id = config.currProfileId;
+
+    if (id == null) {
+      return false;
+    } else {
+      final models = moodRecordEntityToModelIsarMapper.mapList(entities, id);
+      return datasource.insertAll(models);
+    }
   }
 
   @override
-  Stream<List<MoodRecordEntity>> observe() {
-    throw UnimplementedError();
+  Stream<List<MoodRecordEntity>> observeAll() {
+    final stream = configSubject
+        .observe()
+        .map((config) => config.currProfileId)
+        .switchMap(
+          (id) => id == null ? _emptyStream() : datasource.observeAll(id),
+        )
+        .map(
+          (model) => moodRecordModelIsarToEntityMapper.mapList(model),
+        );
+
+    return stream;
   }
 
-  void _subscribeToDatasource() async {
-    final stream = await datasource.observeAll();
+  @override
+  Stream<MoodRecordEntity?> observeDay(DateTime date) {
+    final lowerDate = date
+        .copyWith(
+          hour: 0,
+          minute: 0,
+          second: 0,
+          millisecond: 0,
+          microsecond: 0,
+        )
+        .toUtc();
+    final upperDate = date
+        .copyWith(
+          hour: 23,
+          minute: 59,
+          second: 59,
+          millisecond: 0,
+          microsecond: 0,
+        )
+        .toUtc();
 
-    stream.listen((models) {
-      _subject.add(moodRecordModelIsarToEntityMapper.mapList(models));
-    });
+    return observeIn(lowerDate, upperDate).map((models) => models.firstOrNull);
   }
+
+  @override
+  Stream<List<MoodRecordEntity>> observeIn(
+    DateTime lowerDate,
+    DateTime upperDate,
+  ) {
+    final stream = configSubject
+        .observe()
+        .map((config) => config.currProfileId)
+        .switchMap(
+          (id) => id == null
+              ? _emptyStream()
+              : datasource.observeIn(
+                  id,
+                  lowerDate.toUtc(),
+                  upperDate.toUtc(),
+                ),
+        )
+        .map(
+          (model) => moodRecordModelIsarToEntityMapper.mapList(model),
+        );
+
+    return stream;
+  }
+
+  Stream<List<MoodRecordModelIsar>> _emptyStream() =>
+      Stream.value(List.empty());
 }

@@ -1,73 +1,54 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
 
-@injectable
+@singleton
 class ProfileLocalStorageDatasourceIsar {
-  Isar? _isar;
+  ProfileLocalStorageDatasourceIsar({required this.isar});
 
-  ProfileLocalStorageDatasourceIsar();
-  Future<Isar> _getIsarInstance() async {
-    if (_isar != null) {
-      return _isar!;
-    }
-    final dir = await getApplicationDocumentsDirectory();
-    return Isar.open(
-      [ProfileModelIsarSchema],
-      directory: dir.path,
-    );
-  }
+  Isar isar;
 
-  Future<List<ProfileModelIsar>> fetchAllProfileModels() async {
-    _isar ??= await _getIsarInstance();
-    final profileModels = await _isar!.profileModelIsars.where().findAll();
+  Future<List<ProfileModelIsar>> getAll() async {
+    final profileModels = await isar.profileModelIsars.where().findAll();
     return profileModels;
   }
 
-  Future<int?> addNewProfileModel(ProfileModelIsar profileModel) async {
-    late int id;
-    _isar ??= await _getIsarInstance();
-    await _isar?.writeTxn(
+  Future<ProfileModelIsar?> get(int id) async {
+    final profileModel = await isar.profileModelIsars.get(id);
+
+    return profileModel;
+  }
+
+  Future<bool> insert(ProfileModelIsar profileModel) async {
+    await isar.writeTxn(
       () async {
-        id = await _isar!.profileModelIsars.put(profileModel);
+        await isar.profileModelIsars.put(profileModel);
       },
     );
-    return id;
+
+    // return true if everything is okay, Isar will throw otherwise
+    return true;
   }
 
   Future<bool> deleteProfile(int id) async {
-    late bool deleted;
-    _isar ??= await _getIsarInstance();
-    await _isar?.writeTxn(
+    bool deleted = false;
+    await isar.writeTxn(
       () async {
-        deleted = await _isar!.profileModelIsars.delete(id);
+        deleted = await isar.profileModelIsars.delete(id);
       },
     );
     return deleted;
   }
 
-  Future<ProfileModelIsar?> fetchProfileModelById(int id) async {
-    _isar ??= await _getIsarInstance();
-    final profileModels = await _isar!.profileModelIsars.filter().idEqualTo(id).findFirst();
-    return profileModels;
+  Stream<List<ProfileModelIsar>> observeAll() async* {
+    yield* isar.profileModelIsars.where().watch();
   }
 
-  // TODO Проверить реализацию
-  Future<int?> updateProfileModelInfo(ProfileModelIsar newInfo) async {
-    late int id;
-    _isar ??= await _getIsarInstance();
-    final objectToUpdate = await _isar!.profileModelIsars.filter().idEqualTo(newInfo.id).findFirst();
-    if (objectToUpdate != null) {
-      objectToUpdate
-        ..name = newInfo.name
-        ..city = newInfo.city
-        ..species = newInfo.species;
-
-      await _isar?.writeTxn(() async {
-        id = await _isar!.profileModelIsars.put(objectToUpdate);
-      });
-    }
-    return id;
+  Stream<ProfileModelIsar?> observeById(int id) async* {
+    yield* isar.profileModelIsars
+        .where()
+        .profileIdEqualTo(id)
+        .watch()
+        .map((config) => config.firstOrNull);
   }
 }

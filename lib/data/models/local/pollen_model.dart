@@ -4,8 +4,10 @@ part 'pollen_model.g.dart';
 
 @collection
 class PollenModel {
-  Id id = Isar.autoIncrement;
+  Id get isarId => getIsarId(id: getId(lat: lat, lng: lng, time: time));
   // Meta
+  // Index by time for easier internal search
+  @Index()
   DateTime time;
   double lat;
   double lng;
@@ -73,4 +75,29 @@ class PollenModel {
     // Others
     this.others = 0,
   });
+
+  static String getId({
+    required double lng,
+    required double lat,
+    required DateTime time,
+  }) =>
+      '${time.toUtc()}-$lat-$lng';
+
+  static int getIsarId({required String id}) => _fastHash(id);
+
+  /// FNV-1a 64bit hash algorithm optimized for Dart Strings
+  static int _fastHash(String string) {
+    var hash = 0xcbf29ce484222325;
+
+    var i = 0;
+    while (i < string.length) {
+      final codeUnit = string.codeUnitAt(i++);
+      hash ^= codeUnit >> 8;
+      hash *= 0x100000001b3;
+      hash ^= codeUnit & 0xFF;
+      hash *= 0x100000001b3;
+    }
+
+    return hash;
+  }
 }

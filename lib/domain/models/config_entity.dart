@@ -5,10 +5,8 @@ part 'config_entity.freezed.dart';
 @freezed
 class ConfigEntity with _$ConfigEntity {
   const factory ConfigEntity({
-    int? lastId,
-    @Default('en') String locale,
-    @Default(false) bool darkTheme,
+    int? currProfileId,
+    required String locale,
+    required bool darkTheme,
   }) = _ConfigEntity;
 }
-//
-//

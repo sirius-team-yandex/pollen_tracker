@@ -88,13 +88,46 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ru')
+  ];
 
   /// No description provided for @health_check.
   ///
   /// In en, this message translates to:
   /// **'Enter your today feeling of health'**
   String get health_check;
+
+  /// No description provided for @welcome_description_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollen Tracker is a simple application that allows you to track your daily mood. We are here to help you keep track of your mood.'**
+  String get welcome_description_1;
+
+  /// No description provided for @welcome_description_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your health for detailed statistics.'**
+  String get welcome_description_2;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @how_are_you_feeling.
+  ///
+  /// In en, this message translates to:
+  /// **'How are you feeling?'**
+  String get how_are_you_feeling;
+
+  /// No description provided for @write_a_comment.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment'**
+  String get write_a_comment;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -113,16 +146,18 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'ru':
-      return AppLocalizationsRu();
+    case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
   }
 
-  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+  throw FlutterError(
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

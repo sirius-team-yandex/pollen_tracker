@@ -22,19 +22,22 @@ mixin _$ProfileEntity {
   List<Species> get species => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProfileEntityCopyWith<ProfileEntity> get copyWith => throw _privateConstructorUsedError;
+  $ProfileEntityCopyWith<ProfileEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileEntityCopyWith<$Res> {
-  factory $ProfileEntityCopyWith(ProfileEntity value, $Res Function(ProfileEntity) then) =
+  factory $ProfileEntityCopyWith(
+          ProfileEntity value, $Res Function(ProfileEntity) then) =
       _$ProfileEntityCopyWithImpl<$Res, ProfileEntity>;
   @useResult
   $Res call({int id, String name, String city, List<Species> species});
 }
 
 /// @nodoc
-class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity> implements $ProfileEntityCopyWith<$Res> {
+class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity>
+    implements $ProfileEntityCopyWith<$Res> {
   _$ProfileEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,8 +75,10 @@ class _$ProfileEntityCopyWithImpl<$Res, $Val extends ProfileEntity> implements $
 }
 
 /// @nodoc
-abstract class _$$ProfileEntityImplCopyWith<$Res> implements $ProfileEntityCopyWith<$Res> {
-  factory _$$ProfileEntityImplCopyWith(_$ProfileEntityImpl value, $Res Function(_$ProfileEntityImpl) then) =
+abstract class _$$ProfileEntityImplCopyWith<$Res>
+    implements $ProfileEntityCopyWith<$Res> {
+  factory _$$ProfileEntityImplCopyWith(
+          _$ProfileEntityImpl value, $Res Function(_$ProfileEntityImpl) then) =
       __$$ProfileEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -81,9 +86,11 @@ abstract class _$$ProfileEntityImplCopyWith<$Res> implements $ProfileEntityCopyW
 }
 
 /// @nodoc
-class __$$ProfileEntityImplCopyWithImpl<$Res> extends _$ProfileEntityCopyWithImpl<$Res, _$ProfileEntityImpl>
+class __$$ProfileEntityImplCopyWithImpl<$Res>
+    extends _$ProfileEntityCopyWithImpl<$Res, _$ProfileEntityImpl>
     implements _$$ProfileEntityImplCopyWith<$Res> {
-  __$$ProfileEntityImplCopyWithImpl(_$ProfileEntityImpl _value, $Res Function(_$ProfileEntityImpl) _then)
+  __$$ProfileEntityImplCopyWithImpl(
+      _$ProfileEntityImpl _value, $Res Function(_$ProfileEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +126,10 @@ class __$$ProfileEntityImplCopyWithImpl<$Res> extends _$ProfileEntityCopyWithImp
 
 class _$ProfileEntityImpl implements _ProfileEntity {
   const _$ProfileEntityImpl(
-      {required this.id, required this.name, required this.city, required final List<Species> species})
+      {required this.id,
+      required this.name,
+      required this.city,
+      required final List<Species> species})
       : _species = species;
 
   @override
@@ -153,7 +163,8 @@ class _$ProfileEntityImpl implements _ProfileEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, city, const DeepCollectionEquality().hash(_species));
+  int get hashCode => Object.hash(runtimeType, id, name, city,
+      const DeepCollectionEquality().hash(_species));
 
   @JsonKey(ignore: true)
   @override
@@ -179,5 +190,6 @@ abstract class _ProfileEntity implements ProfileEntity {
   List<Species> get species;
   @override
   @JsonKey(ignore: true)
-  _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ProfileEntityImplCopyWith<_$ProfileEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -14,7 +14,10 @@ class MoodRecordEntityToModelIsarMapper {
     );
   }
 
-  List<MoodRecordModelIsar> mapList(List<MoodRecordEntity> moodRecordEntity, int ownerId) {
+  List<MoodRecordModelIsar> mapList(
+    List<MoodRecordEntity> moodRecordEntity,
+    int ownerId,
+  ) {
     return moodRecordEntity.map((e) => map(e, ownerId)).toList();
   }
 }

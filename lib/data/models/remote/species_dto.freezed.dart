@@ -31,12 +31,14 @@ mixin _$SpeciesDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SpeciesDtoCopyWith<SpeciesDto> get copyWith => throw _privateConstructorUsedError;
+  $SpeciesDtoCopyWith<SpeciesDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SpeciesDtoCopyWith<$Res> {
-  factory $SpeciesDtoCopyWith(SpeciesDto value, $Res Function(SpeciesDto) then) =
+  factory $SpeciesDtoCopyWith(
+          SpeciesDto value, $Res Function(SpeciesDto) then) =
       _$SpeciesDtoCopyWithImpl<$Res, SpeciesDto>;
   @useResult
   $Res call(
@@ -47,7 +49,8 @@ abstract class $SpeciesDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SpeciesDtoCopyWithImpl<$Res, $Val extends SpeciesDto> implements $SpeciesDtoCopyWith<$Res> {
+class _$SpeciesDtoCopyWithImpl<$Res, $Val extends SpeciesDto>
+    implements $SpeciesDtoCopyWith<$Res> {
   _$SpeciesDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -85,8 +88,10 @@ class _$SpeciesDtoCopyWithImpl<$Res, $Val extends SpeciesDto> implements $Specie
 }
 
 /// @nodoc
-abstract class _$$SpeciesDtoImplCopyWith<$Res> implements $SpeciesDtoCopyWith<$Res> {
-  factory _$$SpeciesDtoImplCopyWith(_$SpeciesDtoImpl value, $Res Function(_$SpeciesDtoImpl) then) =
+abstract class _$$SpeciesDtoImplCopyWith<$Res>
+    implements $SpeciesDtoCopyWith<$Res> {
+  factory _$$SpeciesDtoImplCopyWith(
+          _$SpeciesDtoImpl value, $Res Function(_$SpeciesDtoImpl) then) =
       __$$SpeciesDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -98,9 +103,12 @@ abstract class _$$SpeciesDtoImplCopyWith<$Res> implements $SpeciesDtoCopyWith<$R
 }
 
 /// @nodoc
-class __$$SpeciesDtoImplCopyWithImpl<$Res> extends _$SpeciesDtoCopyWithImpl<$Res, _$SpeciesDtoImpl>
+class __$$SpeciesDtoImplCopyWithImpl<$Res>
+    extends _$SpeciesDtoCopyWithImpl<$Res, _$SpeciesDtoImpl>
     implements _$$SpeciesDtoImplCopyWith<$Res> {
-  __$$SpeciesDtoImplCopyWithImpl(_$SpeciesDtoImpl _value, $Res Function(_$SpeciesDtoImpl) _then) : super(_value, _then);
+  __$$SpeciesDtoImplCopyWithImpl(
+      _$SpeciesDtoImpl _value, $Res Function(_$SpeciesDtoImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -143,7 +151,8 @@ class _$SpeciesDtoImpl implements _SpeciesDto {
         _tree = tree,
         _weed = weed;
 
-  factory _$SpeciesDtoImpl.fromJson(Map<String, dynamic> json) => _$$SpeciesDtoImplFromJson(json);
+  factory _$SpeciesDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpeciesDtoImplFromJson(json);
 
   final Map<String, int?>? _grass;
   @override
@@ -199,8 +208,12 @@ class _$SpeciesDtoImpl implements _SpeciesDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_grass), others,
-      const DeepCollectionEquality().hash(_tree), const DeepCollectionEquality().hash(_weed));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_grass),
+      others,
+      const DeepCollectionEquality().hash(_tree),
+      const DeepCollectionEquality().hash(_weed));
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +236,8 @@ abstract class _SpeciesDto implements SpeciesDto {
       @JsonKey(name: 'Tree') final Map<String, int?>? tree,
       @JsonKey(name: 'Weed') final Map<String, int?>? weed}) = _$SpeciesDtoImpl;
 
-  factory _SpeciesDto.fromJson(Map<String, dynamic> json) = _$SpeciesDtoImpl.fromJson;
+  factory _SpeciesDto.fromJson(Map<String, dynamic> json) =
+      _$SpeciesDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'Grass')
@@ -239,5 +253,6 @@ abstract class _SpeciesDto implements SpeciesDto {
   Map<String, int?>? get weed;
   @override
   @JsonKey(ignore: true)
-  _$$SpeciesDtoImplCopyWith<_$SpeciesDtoImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$SpeciesDtoImplCopyWith<_$SpeciesDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

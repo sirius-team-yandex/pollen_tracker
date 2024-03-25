@@ -43,7 +43,8 @@ class MoodLocalStorageDatasourceIsar {
     List<MoodRecordModelIsar> models,
   ) async {
     if (models.any(
-      (model) => !model.date.isAtSameMomentAs(model.date.noon()) || !model.date.isUtc,
+      (model) =>
+          !model.date.isAtSameMomentAs(model.date.noon()) || !model.date.isUtc,
     )) {
       throw ArgumentError('Date should be UTC at the noon!');
     }
@@ -80,7 +81,10 @@ class MoodLocalStorageDatasourceIsar {
   Future<MoodRecordModelIsar?> get(int ownerId, DateTime date) async {
     final isar = await _getInstance();
 
-    final model = await isar.moodRecordModelIsars.where().ownerIdDateEqualTo(ownerId, date.toUtc().noon()).findFirst();
+    final model = await isar.moodRecordModelIsars
+        .where()
+        .ownerIdDateEqualTo(ownerId, date.toUtc().noon())
+        .findFirst();
     return model;
   }
 
@@ -90,8 +94,10 @@ class MoodLocalStorageDatasourceIsar {
 
     await isar.writeTxn(
       () async {
-        final count =
-            await isar.moodRecordModelIsars.where().ownerIdDateEqualTo(ownerId, date.toUtc().noon()).deleteAll();
+        final count = await isar.moodRecordModelIsars
+            .where()
+            .ownerIdDateEqualTo(ownerId, date.toUtc().noon())
+            .deleteAll();
         deleted = count > 0;
       },
     );
@@ -121,6 +127,12 @@ class MoodLocalStorageDatasourceIsar {
 // Convert given DateTime to noon for the comparison purposes
 extension DateManipulation on DateTime {
   DateTime noon() {
-    return copyWith(hour: 12, minute: 0, second: 0, millisecond: 0, microsecond: 0);
+    return copyWith(
+      hour: 12,
+      minute: 0,
+      second: 0,
+      millisecond: 0,
+      microsecond: 0,
+    );
   }
 }

@@ -6,7 +6,8 @@ import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSubject {
+class MoodRecordRepositoryIsarImpl
+    implements MoodRecordRepository, MoodRecordSubject {
   MoodRecordRepositoryIsarImpl({
     required this.datasource,
     required this.moodRecordModelIsarToEntityMapper,
@@ -50,7 +51,8 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSu
 
   @override
   Future<bool> insertAll(List<MoodRecordEntity> entities) {
-    final models = moodRecordEntityToModelIsarMapper.mapList(entities, _ownerId);
+    final models =
+        moodRecordEntityToModelIsarMapper.mapList(entities, _ownerId);
     return datasource.insertAll(models);
   }
 

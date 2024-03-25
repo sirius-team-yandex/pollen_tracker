@@ -65,10 +65,7 @@ class MoodLocalStorageDatasourceIsar {
   }
 
   Stream<List<MoodRecordModelIsar>> observeAll(int ownerId) async* {
-    yield* isar.moodRecordModelIsars
-        .where()
-        .ownerIdEqualToAnyDate(ownerId)
-        .watch(fireImmediately: true);
+    yield* isar.moodRecordModelIsars.where().ownerIdEqualToAnyDate(ownerId).watch(fireImmediately: true);
   }
 
   Stream<List<MoodRecordModelIsar>> observeIn(
@@ -80,9 +77,6 @@ class MoodLocalStorageDatasourceIsar {
       throw ArgumentError('Date should be UTC!');
     }
 
-    yield* isar.moodRecordModelIsars
-        .where()
-        .ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate)
-        .watch();
+    yield* isar.moodRecordModelIsars.where().ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate).watch();
   }
 }

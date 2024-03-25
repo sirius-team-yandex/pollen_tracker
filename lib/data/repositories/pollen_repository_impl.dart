@@ -37,9 +37,7 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
     final stream = profileSubject
         .observeCurrent()
         .flatMap(
-          (profile) => profile == null
-              ? Stream.value(null)
-              : citiesRepository.getCityById(profile.cityId).asStream(),
+          (profile) => profile == null ? Stream.value(null) : citiesRepository.getCityById(profile.cityId).asStream(),
         )
         .switchMap(
           (city) => city == null
@@ -60,9 +58,7 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
     final stream = profileSubject
         .observeCurrent()
         .flatMap(
-          (profile) => profile == null
-              ? Stream.value(null)
-              : citiesRepository.getCityById(profile.cityId).asStream(),
+          (profile) => profile == null ? Stream.value(null) : citiesRepository.getCityById(profile.cityId).asStream(),
         )
         .switchMap(
           (city) => city == null
@@ -87,11 +83,9 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
     final city = await citiesRepository.getCityById(profile.cityId);
     if (city == null) return false;
 
-    final pollen =
-        await networkPollenRepository.fetchForecast(city.lat, city.lng);
+    final pollen = await networkPollenRepository.fetchForecast(city.lat, city.lng);
 
-    final inserted =
-        await datasource.insertAll(pollenEntityToPollenModelMapper.map(pollen));
+    final inserted = await datasource.insertAll(pollenEntityToPollenModelMapper.map(pollen));
 
     return inserted;
   }

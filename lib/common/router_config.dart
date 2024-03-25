@@ -7,8 +7,7 @@ import 'package:pollen_tracker/ui/features/introduction/welcome_page.dart';
 import 'package:pollen_tracker/ui/features/profile/profile_page.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 abstract class RouteName {
   static const String root = '/';

@@ -48,9 +48,7 @@ class ProfileRepositoryIsarImpl implements ProfileRepository, ProfileSubject {
 
   @override
   Stream<List<ProfileEntity>> observeAll() {
-    return datasource
-        .observeAll()
-        .map((models) => profileModelIsarToEntityMapper.mapList(models));
+    return datasource.observeAll().map((models) => profileModelIsarToEntityMapper.mapList(models));
   }
 
   @override
@@ -62,8 +60,7 @@ class ProfileRepositoryIsarImpl implements ProfileRepository, ProfileSubject {
           (id) => id == null ? Stream.value(null) : datasource.observeById(id),
         )
         .map(
-          (model) =>
-              model == null ? null : profileModelIsarToEntityMapper.map(model),
+          (model) => model == null ? null : profileModelIsarToEntityMapper.map(model),
         );
 
     return stream;

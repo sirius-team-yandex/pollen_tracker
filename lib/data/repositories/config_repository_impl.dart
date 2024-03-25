@@ -26,21 +26,16 @@ class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
   @override
   Stream<ConfigEntity> observe() {
     return datasource.observe().map(
-          (config) => config != null
-              ? configModelIsarToEntityMapper.map(config)
-              : _defaultConfig(),
+          (config) => config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig(),
         );
   }
 
   @override
   Future<ConfigEntity> get() async {
     final config = await datasource.get();
-    return config != null
-        ? configModelIsarToEntityMapper.map(config)
-        : _defaultConfig();
+    return config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig();
   }
 
   // TODO: get default params from some contant object or from dynamically from the system
-  ConfigEntity _defaultConfig() =>
-      const ConfigEntity(currProfileId: null, locale: 'en', darkTheme: false);
+  ConfigEntity _defaultConfig() => const ConfigEntity(currProfileId: null, locale: 'en', darkTheme: false);
 }

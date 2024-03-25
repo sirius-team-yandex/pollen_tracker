@@ -73,9 +73,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: _currentPage == index
-                          ? context.myColors.darkGreen
-                          : context.myColors.primaryGreen,
+                      color: _currentPage == index ? context.myColors.darkGreen : context.myColors.primaryGreen,
                     ),
                   ),
                 );

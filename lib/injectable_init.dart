@@ -31,7 +31,8 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env);
+void configureDependencies({String env = Environment.dev}) =>
+    getIt.init(environment: env);
 
 @module
 abstract class NetworkModule {
@@ -59,7 +60,8 @@ abstract class MoodModule {
   MoodRecordSubject moodSubject(MoodRecordRepositoryIsarImpl impl) => impl;
 
   @injectable
-  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) => impl;
+  MoodRecordRepository moodRepository(MoodRecordRepositoryIsarImpl impl) =>
+      impl;
 }
 
 @module

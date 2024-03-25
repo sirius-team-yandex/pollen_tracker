@@ -9,7 +9,10 @@ class ConfigLocalStorageDatasourceIsar {
   Isar isar;
 
   Stream<ConfigModelIsar?> observe() async* {
-    yield* isar.configModelIsars.where().watch(fireImmediately: true).map((config) => config.firstOrNull);
+    yield* isar.configModelIsars
+        .where()
+        .watch(fireImmediately: true)
+        .map((config) => config.firstOrNull);
   }
 
   Future<ConfigModelIsar?> get() async {

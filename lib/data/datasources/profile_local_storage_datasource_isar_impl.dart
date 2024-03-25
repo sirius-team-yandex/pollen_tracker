@@ -41,7 +41,10 @@ class ProfileLocalStorageDatasourceIsar {
   }
 
   Stream<List<ProfileModelIsar>> observeAll() async* {
-    yield* isar.profileModelIsars.where().anyProfileId().watch(fireImmediately: true);
+    yield* isar.profileModelIsars
+        .where()
+        .anyProfileId()
+        .watch(fireImmediately: true);
   }
 
   Stream<ProfileModelIsar?> observeById(int id) async* {

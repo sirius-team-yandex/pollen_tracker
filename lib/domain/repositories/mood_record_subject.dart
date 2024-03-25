@@ -4,5 +4,6 @@ abstract interface class MoodRecordSubject {
   Stream<List<MoodRecordEntity>> observeAll();
   // We use only local time in domain layer!
   Stream<MoodRecordEntity?> observeDay(DateTime date);
-  Stream<List<MoodRecordEntity>> observeIn(DateTime lowerDate, DateTime upperDate);
+  Stream<List<MoodRecordEntity>> observeIn(
+      DateTime lowerDate, DateTime upperDate);
 }

@@ -13,5 +13,6 @@ class CityEntity with _$CityEntity {
     required String country,
     required int id,
   }) = _CityEntity;
-  factory CityEntity.fromJson(Map<String, Object?> json) => _$CityEntityFromJson(json);
+  factory CityEntity.fromJson(Map<String, Object?> json) =>
+      _$CityEntityFromJson(json);
 }

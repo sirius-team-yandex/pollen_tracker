@@ -14,9 +14,7 @@ class ProfileModelIsarToEntityMapper {
       profileId: profileModelIsar.profileId,
       cityId: profileModelIsar.cityId,
       name: profileModelIsar.name,
-      species: profileModelIsar.species
-          .map((e) => stringSpeciesMapper.map(e))
-          .toList(),
+      species: profileModelIsar.species.map((e) => stringSpeciesMapper.map(e)).toList(),
     );
   }
 

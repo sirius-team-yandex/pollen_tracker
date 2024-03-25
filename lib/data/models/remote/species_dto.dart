@@ -11,6 +11,5 @@ class SpeciesDto with _$SpeciesDto {
     @JsonKey(name: 'Weed') Map<String, int?>? weed,
   }) = _SpeciesDto;
 
-  factory SpeciesDto.fromJson(Map<String, Object?> json) =>
-      _$SpeciesDtoFromJson(json);
+  factory SpeciesDto.fromJson(Map<String, Object?> json) => _$SpeciesDtoFromJson(json);
 }

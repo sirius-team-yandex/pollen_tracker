@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 extension MyThemeBuilder on BuildContext {
   MyColors get myColors =>
       Theme.of(this).extension<MyColors>() ??
-      const MyColors(
-          background: Colors.red,
-          primary: Colors.red,
-          primaryGreen: Colors.red,
-          darkGreen: Colors.red);
+      const MyColors(background: Colors.red, primary: Colors.red, primaryGreen: Colors.red, darkGreen: Colors.red);
 }
 
 class MyColors extends ThemeExtension<MyColors> {
@@ -35,8 +31,7 @@ class MyColors extends ThemeExtension<MyColors> {
   }
 
   @override
-  ThemeExtension<MyColors> lerp(
-      covariant ThemeExtension<MyColors>? other, double t) {
+  ThemeExtension<MyColors> lerp(covariant ThemeExtension<MyColors>? other, double t) {
     return this;
   }
 }

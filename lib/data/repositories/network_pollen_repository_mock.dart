@@ -6,8 +6,7 @@ import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/network_pollen_repository.dart';
 
-@Injectable(
-    as: NetworkPollenRepository, env: [Environment.dev, Environment.test])
+@Injectable(as: NetworkPollenRepository, env: [Environment.dev, Environment.test])
 class NetworkPollenRepositoryMock implements NetworkPollenRepository {
   NetworkPollenRepositoryMock({required this.mapper});
 

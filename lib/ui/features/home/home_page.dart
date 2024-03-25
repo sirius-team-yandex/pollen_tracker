@@ -35,8 +35,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () async {
                     await showDialog<void>(
                       context: context,
-                      builder: (BuildContext context) =>
-                          const MoodSetRecordDialog(),
+                      builder: (BuildContext context) => const MoodSetRecordDialog(),
                     );
                   },
                   child: Text(

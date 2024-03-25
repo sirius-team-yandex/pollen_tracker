@@ -10,8 +10,7 @@ class ProfileEntityToModelIsarMapper {
       profileId: profileEntity.profileId,
       name: profileEntity.name,
       cityId: profileEntity.cityId,
-      species:
-          speciesName.map((e) => e[0].toUpperCase() + e.substring(1)).toList(),
+      species: speciesName.map((e) => e[0].toUpperCase() + e.substring(1)).toList(),
     );
   }
 

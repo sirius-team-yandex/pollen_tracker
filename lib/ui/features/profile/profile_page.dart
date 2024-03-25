@@ -8,8 +8,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Profile', style: context.theme.textTheme.displayMedium)),
+      appBar: AppBar(title: Text('Profile', style: context.theme.textTheme.displayMedium)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

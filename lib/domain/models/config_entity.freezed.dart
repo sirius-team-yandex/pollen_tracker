@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConfigEntity {
-  int? get lastId => throw _privateConstructorUsedError;
+  int? get currProfileId => throw _privateConstructorUsedError;
   String get locale => throw _privateConstructorUsedError;
   bool get darkTheme => throw _privateConstructorUsedError;
 
@@ -29,7 +29,7 @@ abstract class $ConfigEntityCopyWith<$Res> {
   factory $ConfigEntityCopyWith(ConfigEntity value, $Res Function(ConfigEntity) then) =
       _$ConfigEntityCopyWithImpl<$Res, ConfigEntity>;
   @useResult
-  $Res call({int? lastId, String locale, bool darkTheme});
+  $Res call({int? currProfileId, String locale, bool darkTheme});
 }
 
 /// @nodoc
@@ -44,14 +44,14 @@ class _$ConfigEntityCopyWithImpl<$Res, $Val extends ConfigEntity> implements $Co
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastId = freezed,
+    Object? currProfileId = freezed,
     Object? locale = null,
     Object? darkTheme = null,
   }) {
     return _then(_value.copyWith(
-      lastId: freezed == lastId
-          ? _value.lastId
-          : lastId // ignore: cast_nullable_to_non_nullable
+      currProfileId: freezed == currProfileId
+          ? _value.currProfileId
+          : currProfileId // ignore: cast_nullable_to_non_nullable
               as int?,
       locale: null == locale
           ? _value.locale
@@ -71,7 +71,7 @@ abstract class _$$ConfigEntityImplCopyWith<$Res> implements $ConfigEntityCopyWit
       __$$ConfigEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? lastId, String locale, bool darkTheme});
+  $Res call({int? currProfileId, String locale, bool darkTheme});
 }
 
 /// @nodoc
@@ -83,14 +83,14 @@ class __$$ConfigEntityImplCopyWithImpl<$Res> extends _$ConfigEntityCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastId = freezed,
+    Object? currProfileId = freezed,
     Object? locale = null,
     Object? darkTheme = null,
   }) {
     return _then(_$ConfigEntityImpl(
-      lastId: freezed == lastId
-          ? _value.lastId
-          : lastId // ignore: cast_nullable_to_non_nullable
+      currProfileId: freezed == currProfileId
+          ? _value.currProfileId
+          : currProfileId // ignore: cast_nullable_to_non_nullable
               as int?,
       locale: null == locale
           ? _value.locale
@@ -107,20 +107,18 @@ class __$$ConfigEntityImplCopyWithImpl<$Res> extends _$ConfigEntityCopyWithImpl<
 /// @nodoc
 
 class _$ConfigEntityImpl implements _ConfigEntity {
-  const _$ConfigEntityImpl({this.lastId, this.locale = 'en', this.darkTheme = false});
+  const _$ConfigEntityImpl({this.currProfileId, required this.locale, required this.darkTheme});
 
   @override
-  final int? lastId;
+  final int? currProfileId;
   @override
-  @JsonKey()
   final String locale;
   @override
-  @JsonKey()
   final bool darkTheme;
 
   @override
   String toString() {
-    return 'ConfigEntity(lastId: $lastId, locale: $locale, darkTheme: $darkTheme)';
+    return 'ConfigEntity(currProfileId: $currProfileId, locale: $locale, darkTheme: $darkTheme)';
   }
 
   @override
@@ -128,13 +126,13 @@ class _$ConfigEntityImpl implements _ConfigEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfigEntityImpl &&
-            (identical(other.lastId, lastId) || other.lastId == lastId) &&
+            (identical(other.currProfileId, currProfileId) || other.currProfileId == currProfileId) &&
             (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.darkTheme, darkTheme) || other.darkTheme == darkTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lastId, locale, darkTheme);
+  int get hashCode => Object.hash(runtimeType, currProfileId, locale, darkTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -144,10 +142,11 @@ class _$ConfigEntityImpl implements _ConfigEntity {
 }
 
 abstract class _ConfigEntity implements ConfigEntity {
-  const factory _ConfigEntity({final int? lastId, final String locale, final bool darkTheme}) = _$ConfigEntityImpl;
+  const factory _ConfigEntity({final int? currProfileId, required final String locale, required final bool darkTheme}) =
+      _$ConfigEntityImpl;
 
   @override
-  int? get lastId;
+  int? get currProfileId;
   @override
   String get locale;
   @override

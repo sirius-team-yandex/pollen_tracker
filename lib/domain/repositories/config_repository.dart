@@ -1,8 +1,9 @@
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 
-abstract class ConfigRepository {
-  Future<ConfigEntity?> fetchConfigModel();
-  Future<bool> updateModelId(int? newId);
-  Future<bool> updateModelLocale(String newLocale);
-  Future<bool> updateModelTheme(bool isDark);
+abstract interface class ConfigRepository {
+  Future<bool> set(ConfigEntity config);
+  // Think twice before using this method!!
+  // Are you sure you want get config and not subscribe to it?
+  // Always consider ConfigSubject first!
+  Future<ConfigEntity> get();
 }

@@ -17,10 +17,10 @@ const ProfileModelIsarSchema = CollectionSchema(
   name: r'ProfileModelIsar',
   id: 3858967291642688718,
   properties: {
-    r'city': PropertySchema(
+    r'cityId': PropertySchema(
       id: 0,
-      name: r'city',
-      type: IsarType.string,
+      name: r'cityId',
+      type: IsarType.long,
     ),
     r'name': PropertySchema(
       id: 1,
@@ -37,7 +37,7 @@ const ProfileModelIsarSchema = CollectionSchema(
   serialize: _profileModelIsarSerialize,
   deserialize: _profileModelIsarDeserialize,
   deserializeProp: _profileModelIsarDeserializeProp,
-  idName: r'id',
+  idName: r'profileId',
   indexes: {},
   links: {},
   embeddedSchemas: {},
@@ -53,7 +53,6 @@ int _profileModelIsarEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.city.length * 3;
   bytesCount += 3 + object.name.length * 3;
   bytesCount += 3 + object.species.length * 3;
   {
@@ -71,7 +70,7 @@ void _profileModelIsarSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.city);
+  writer.writeLong(offsets[0], object.cityId);
   writer.writeString(offsets[1], object.name);
   writer.writeStringList(offsets[2], object.species);
 }
@@ -83,9 +82,9 @@ ProfileModelIsar _profileModelIsarDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = ProfileModelIsar(
-    city: reader.readString(offsets[0]),
-    id: id,
+    cityId: reader.readLong(offsets[0]),
     name: reader.readString(offsets[1]),
+    profileId: id,
     species: reader.readStringList(offsets[2]) ?? [],
   );
   return object;
@@ -99,7 +98,7 @@ P _profileModelIsarDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 1:
       return (reader.readString(offset)) as P;
     case 2:
@@ -110,7 +109,7 @@ P _profileModelIsarDeserializeProp<P>(
 }
 
 Id _profileModelIsarGetId(ProfileModelIsar object) {
-  return object.id;
+  return object.profileId;
 }
 
 List<IsarLinkBase<dynamic>> _profileModelIsarGetLinks(ProfileModelIsar object) {
@@ -118,11 +117,11 @@ List<IsarLinkBase<dynamic>> _profileModelIsarGetLinks(ProfileModelIsar object) {
 }
 
 void _profileModelIsarAttach(IsarCollection<dynamic> col, Id id, ProfileModelIsar object) {
-  object.id = id;
+  object.profileId = id;
 }
 
 extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhere> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhere> anyId() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhere> anyProfileId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
@@ -130,64 +129,66 @@ extension ProfileModelIsarQueryWhereSort on QueryBuilder<ProfileModelIsar, Profi
 }
 
 extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QWhereClause> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idEqualTo(Id id) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdEqualTo(Id profileId) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: id,
-        upper: id,
+        lower: profileId,
+        upper: profileId,
       ));
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdNotEqualTo(Id profileId) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
-              IdWhereClause.lessThan(upper: id, includeUpper: false),
+              IdWhereClause.lessThan(upper: profileId, includeUpper: false),
             )
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: id, includeLower: false),
+              IdWhereClause.greaterThan(lower: profileId, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
-              IdWhereClause.greaterThan(lower: id, includeLower: false),
+              IdWhereClause.greaterThan(lower: profileId, includeLower: false),
             )
             .addWhereClause(
-              IdWhereClause.lessThan(upper: id, includeUpper: false),
+              IdWhereClause.lessThan(upper: profileId, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdGreaterThan(Id profileId,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.greaterThan(lower: id, includeLower: include),
+        IdWhereClause.greaterThan(lower: profileId, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdLessThan(Id profileId,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.lessThan(upper: id, includeUpper: include),
+        IdWhereClause.lessThan(upper: profileId, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> idBetween(
-    Id lowerId,
-    Id upperId, {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterWhereClause> profileIdBetween(
+    Id lowerProfileId,
+    Id upperProfileId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerId,
+        lower: lowerProfileId,
         includeLower: includeLower,
-        upper: upperId,
+        upper: upperProfileId,
         includeUpper: includeUpper,
       ));
     });
@@ -195,178 +196,50 @@ extension ProfileModelIsarQueryWhere on QueryBuilder<ProfileModelIsar, ProfileMo
 }
 
 extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'city',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityContains(String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'city',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityMatches(String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'city',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'city',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'city',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idEqualTo(Id value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'id',
+        property: r'cityId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idGreaterThan(
-    Id value, {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdGreaterThan(
+    int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'id',
+        property: r'cityId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idLessThan(
-    Id value, {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdLessThan(
+    int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'id',
+        property: r'cityId',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> idBetween(
-    Id lower,
-    Id upper, {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> cityIdBetween(
+    int lower,
+    int upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'id',
+        property: r'cityId',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -499,6 +372,58 @@ extension ProfileModelIsarQueryFilter on QueryBuilder<ProfileModelIsar, ProfileM
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
         value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'profileId',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterFilterCondition> profileIdBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'profileId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -720,15 +645,15 @@ extension ProfileModelIsarQueryObject on QueryBuilder<ProfileModelIsar, ProfileM
 extension ProfileModelIsarQueryLinks on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QFilterCondition> {}
 
 extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortBy> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCity() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityId() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'city', Sort.asc);
+      return query.addSortBy(r'cityId', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> sortByCityIdDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'city', Sort.desc);
+      return query.addSortBy(r'cityId', Sort.desc);
     });
   }
 
@@ -746,27 +671,15 @@ extension ProfileModelIsarQuerySortBy on QueryBuilder<ProfileModelIsar, ProfileM
 }
 
 extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QSortThenBy> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCity() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityId() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'city', Sort.asc);
+      return query.addSortBy(r'cityId', Sort.asc);
     });
   }
 
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityDesc() {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByCityIdDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'city', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenById() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'id', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'id', Sort.desc);
+      return query.addSortBy(r'cityId', Sort.desc);
     });
   }
 
@@ -781,12 +694,24 @@ extension ProfileModelIsarQuerySortThenBy on QueryBuilder<ProfileModelIsar, Prof
       return query.addSortBy(r'name', Sort.desc);
     });
   }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByProfileId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QAfterSortBy> thenByProfileIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'profileId', Sort.desc);
+    });
+  }
 }
 
 extension ProfileModelIsarQueryWhereDistinct on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> {
-  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByCity({bool caseSensitive = true}) {
+  QueryBuilder<ProfileModelIsar, ProfileModelIsar, QDistinct> distinctByCityId() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'city', caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'cityId');
     });
   }
 
@@ -804,15 +729,15 @@ extension ProfileModelIsarQueryWhereDistinct on QueryBuilder<ProfileModelIsar, P
 }
 
 extension ProfileModelIsarQueryProperty on QueryBuilder<ProfileModelIsar, ProfileModelIsar, QQueryProperty> {
-  QueryBuilder<ProfileModelIsar, int, QQueryOperations> idProperty() {
+  QueryBuilder<ProfileModelIsar, int, QQueryOperations> profileIdProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'id');
+      return query.addPropertyName(r'profileId');
     });
   }
 
-  QueryBuilder<ProfileModelIsar, String, QQueryOperations> cityProperty() {
+  QueryBuilder<ProfileModelIsar, int, QQueryOperations> cityIdProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'city');
+      return query.addPropertyName(r'cityId');
     });
   }
 

@@ -6,7 +6,7 @@ import 'package:pollen_tracker/domain/models/config_entity.dart';
 class ConfigModelIsarToEntityMapper {
   ConfigEntity map(ConfigModelIsar configModelIsar) {
     return ConfigEntity(
-      lastId: configModelIsar.lastId,
+      currProfileId: configModelIsar.currProfileId,
       locale: configModelIsar.locale,
       darkTheme: configModelIsar.isDark,
     );

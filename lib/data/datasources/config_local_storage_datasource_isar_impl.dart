@@ -1,46 +1,28 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pollen_tracker/data/models/local/config_model_isar.dart';
 
-@injectable
+@singleton
 class ConfigLocalStorageDatasourceIsar {
-  Isar? _isar;
+  ConfigLocalStorageDatasourceIsar({required this.isar});
 
-  ConfigLocalStorageDatasourceIsar();
-  Future<Isar> _getIsarInstance() async {
-    if (_isar != null) {
-      return _isar!;
-    }
-    final dir = await getApplicationDocumentsDirectory();
-    return Isar.open(
-      [ConfigModelIsarSchema],
-      directory: dir.path,
-    );
+  Isar isar;
+
+  Stream<ConfigModelIsar?> observe() async* {
+    yield* isar.configModelIsars.where().watch(fireImmediately: true).map((config) => config.firstOrNull);
   }
 
-  Future<ConfigModelIsar?> fetchConfigModel() async {
-    _isar ??= await _getIsarInstance();
-    final configModels = await _isar!.configModelIsars.where().findFirst();
-    return configModels;
+  Future<ConfigModelIsar?> get() async {
+    return isar.configModelIsars.where().findFirst();
   }
 
-  // TODO Проверить реализацию
-  Future<int?> updateModel(ConfigModelIsar newConfig) async {
-    late int id;
-    _isar ??= await _getIsarInstance();
-    //TODO goliksim: Иммутабельность
-    final objectToUpdate = await _isar!.configModelIsars.where().findFirst();
-    if (objectToUpdate != null) {
-      objectToUpdate
-        ..lastId = newConfig.lastId
-        ..locale = newConfig.locale
-        ..isDark = newConfig.isDark;
+  Future<bool> set(ConfigModelIsar config) async {
+    await isar.writeTxn(() async {
+      await isar.configModelIsars.put(config);
+    });
 
-      await _isar?.writeTxn(() async {
-        id = await _isar!.configModelIsars.put(objectToUpdate);
-      });
-    }
-    return id;
+    // We return true if everything is okay
+    // Otherwise exception from isar will be throwm I think
+    return true;
   }
 }

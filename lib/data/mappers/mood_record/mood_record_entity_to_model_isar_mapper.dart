@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:pollen_tracker/data/datasources/mood_local_storage_datasource_isar_impl.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
 
@@ -8,7 +7,7 @@ class MoodRecordEntityToModelIsarMapper {
   MoodRecordModelIsar map(MoodRecordEntity moodRecordEntity, int ownerId) {
     return MoodRecordModelIsar(
       ownerId: ownerId,
-      date: moodRecordEntity.date.toUtc().noon(),
+      date: moodRecordEntity.date.toUtc(),
       moodType: moodRecordEntity.moodType,
       comment: moodRecordEntity.comment,
     );

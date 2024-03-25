@@ -106,4 +106,10 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
     logger.e('$message: $error');
     emit?.call(const ProfileState.error());
   }
+
+  @override
+  Future<void> close() async {
+    profileSubscription.cancel();
+    return super.close();
+  }
 }

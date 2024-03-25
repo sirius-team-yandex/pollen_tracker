@@ -81,4 +81,10 @@ class CurrentMoodBloc extends Bloc<CurrentMoodEvent, CurrentMoodState> {
     logger.e('$message: $error');
     emit?.call(const CurrentMoodState.error());
   }
+
+  @override
+  Future<void> close() async {
+    moodSubscription.cancel();
+    return super.close();
+  }
 }

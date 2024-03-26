@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
+import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -41,6 +43,11 @@ class PollenAppState extends State<PollenApp> {
 
   @override
   Widget build(BuildContext context) {
+    final rep = GetIt.I<ProfileSubject>();
+    final st = rep.observeCurrent().listen((event) {});
+
+    st.cancel();
+
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(

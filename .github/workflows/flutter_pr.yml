@@ -39,6 +39,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
         
+      - name: flutter packages pub get
+        run: flutter packages pub get
+
       - name: Build gen
         run: dart run build_runner build --delete-conflicting-outputs
 
@@ -48,12 +51,10 @@ jobs:
       - name: Analyze code
         run: flutter analyze
 
-      - name: flutter packages pub get
-        run: flutter packages pub get
-      
       - name: Stop workflow if previous step failed
         if: failure()
         run: exit 1
+
       - name: Format code
         run: find . -name "*.dart" ! -name "firebase_options.dart" -exec dart format {} +
 

@@ -7,4 +7,19 @@
     "write_a_comment": "Write a comment",
     "atmospheric_pollution": "Atmospheric pollution",
     "profile": "Profile"
+
+    "hazel": "Hazel",
+    "elm": "Elm",
+    "pine": "Pine",
+    "alder": "Alder",
+    "poplar_cottonwood": "Poplar / Cottonwood",
+    "oak": "Oak",
+    "plane": "Plane",
+    "birch": "Birch",
+    "cypress": "Cypress",
+    "mugwort": "Mugwort",
+    "chenopod": "Chenopod",
+    "ragweed": "Ragweed",
+    "nettle": "Nettle",
+    "grass_poaceae": "Grass / Poaceae"
 }

@@ -7,4 +7,19 @@
     "write_a_comment": "Напишите комментарий",
     "atmospheric_pollution": "Прогноз пыльцы в атмосфере",
     "profile": "Профиль"
+
+    "hazel": "Лещина",
+    "elm": "Вяз",
+    "pine": "Сосна",
+    "alder": "Ольха",
+    "poplar_cottonwood": "Тополь / Тополиная древесина",
+    "oak": "Дуб",
+    "plane": "Платан",
+    "birch": "Береза",
+    "cypress": "Кипарис",
+    "mugwort": "Полынь",
+    "chenopod": "Ченопод",
+    "ragweed": "Амброзия",
+    "nettle": "Крапива",
+    "grass_poaceae": "Трава / Злаки"
 }

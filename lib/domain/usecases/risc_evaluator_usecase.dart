@@ -19,8 +19,7 @@ class RiscEvaluatorUseCase {
     Map<SpeciesType, int> counts = {};
 
     for (var species in targets) {
-      counts[species.type] =
-          (levels[species] ?? 0) + (counts[species.type] ?? 0);
+      counts[species.type] = (levels[species] ?? 0) + (counts[species.type] ?? 0);
     }
 
     Map<SpeciesType, RiscLevel> res = {};

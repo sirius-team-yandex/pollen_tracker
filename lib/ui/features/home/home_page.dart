@@ -96,19 +96,22 @@ class HomePage extends StatelessWidget {
                               const SizedBox(
                                 width: 20,
                               ),
-                              Text('75 %',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium
-                                      ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold)),
+                              Text(
+                                '75 %',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold),
+                              ),
                             ],
                           ),
-                          Text('Состояние воздуха: \n Неблагоприятное',
-                              style: Theme.of(context).textTheme.displayMedium),
+                          Text(
+                            'Состояние воздуха: \n Неблагоприятное',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
                         ],
                       ),
                     ),
-
                     Column(
                       children: [
                         Container(
@@ -134,9 +137,9 @@ class HomePage extends StatelessWidget {
                             color: context.myColors.primaryGreen,
                           ),
                           child: Text('Тимофеевка', style: Theme.of(context).textTheme.displayMedium),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ],

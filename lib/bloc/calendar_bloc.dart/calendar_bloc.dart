@@ -43,8 +43,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     on<_ShowMoodLevelCalendarEvent>(
       (event, _) => typeSubject.add(_EmitType.mood),
     );
-    add(const CalendarEvent._init());
-    add(CalendarEvent._selectDay(day: DateTime.now().toUtc()));
+    add(const CalendarEvent.init());
+    add(CalendarEvent.selectDay(day: DateTime.now().toUtc()));
   }
 
   @override
@@ -56,23 +56,22 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   }
 
   void selectDay(DateTime date) {
-    add(CalendarEvent._selectDay(day: date.toUtc()));
+    add(CalendarEvent.selectDay(day: date.toUtc()));
   }
 
   void showRisc() {
-    add(const CalendarEvent._showRiscLevel());
+    add(const CalendarEvent.showRiscLevel());
   }
 
   void showMood() {
-    add(const CalendarEvent._showMoodLevel());
+    add(const CalendarEvent.showMoodLevel());
   }
 
   Future<void> _init(
     _InitCalendarEvent event,
     Emitter<CalendarState> emit,
   ) async {
-    final Stream<Stream<CalendarState>> statesStreams =
-        Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
+    final Stream<Stream<CalendarState>> statesStreams = Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
       if (type == _EmitType.mood) {
         return _loadMoodStream(date);
       } else {
@@ -80,8 +79,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       }
     });
 
-    _streamHolder =
-        statesStreams.switchMap((streams) => streams).listen((state) {
+    _streamHolder = statesStreams.switchMap((streams) => streams).listen((state) {
       emit(state);
     });
   }
@@ -106,8 +104,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           final currDay = pollen.time.copyWith(hour: 0, minute: 0, second: 0);
           final levels = monthLevels[currDay] ?? {};
 
-          monthLevels[currDay] =
-              _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
+          monthLevels[currDay] = _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
         }
 
         final Map<DateTime, RiscLevel> monthRisc = {};
@@ -122,14 +119,13 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         final RiscLevel dayRisc;
 
         if (dayPollen.isEmpty) {
-          final dayLevel =
-              dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
-                    (value, element) => _join(
-                      value,
-                      element,
-                      (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
-                    ),
-                  );
+          final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
+                (value, element) => _join(
+                  value,
+                  element,
+                  (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
+                ),
+              );
 
           dayRisc = riscEvaluatorUseCase.evaluateType(
             dayLevel,
@@ -177,14 +173,13 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         final RiscLevel dayRisc;
 
         if (dayPollen.isEmpty) {
-          final dayLevel =
-              dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
-                    (value, element) => _join(
-                      value,
-                      element,
-                      (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
-                    ),
-                  );
+          final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
+                (value, element) => _join(
+                  value,
+                  element,
+                  (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
+                ),
+              );
 
           dayRisc = riscEvaluatorUseCase.evaluateType(
             dayLevel,

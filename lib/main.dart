@@ -7,7 +7,6 @@ import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
-import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
@@ -33,7 +32,7 @@ class PollenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rep = GetIt.I<ProfileSubject>();
-    final st = rep.observeCurrent().listen((event) { });
+    final st = rep.observeCurrent().listen((event) {});
 
     st.cancel();
 

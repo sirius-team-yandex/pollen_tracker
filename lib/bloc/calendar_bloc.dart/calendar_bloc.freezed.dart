@@ -70,14 +70,12 @@ mixin _$CalendarEvent {
 
 /// @nodoc
 abstract class $CalendarEventCopyWith<$Res> {
-  factory $CalendarEventCopyWith(
-          CalendarEvent value, $Res Function(CalendarEvent) then) =
+  factory $CalendarEventCopyWith(CalendarEvent value, $Res Function(CalendarEvent) then) =
       _$CalendarEventCopyWithImpl<$Res, CalendarEvent>;
 }
 
 /// @nodoc
-class _$CalendarEventCopyWithImpl<$Res, $Val extends CalendarEvent>
-    implements $CalendarEventCopyWith<$Res> {
+class _$CalendarEventCopyWithImpl<$Res, $Val extends CalendarEvent> implements $CalendarEventCopyWith<$Res> {
   _$CalendarEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,17 +86,14 @@ class _$CalendarEventCopyWithImpl<$Res, $Val extends CalendarEvent>
 
 /// @nodoc
 abstract class _$$InitCalendarEventImplCopyWith<$Res> {
-  factory _$$InitCalendarEventImplCopyWith(_$InitCalendarEventImpl value,
-          $Res Function(_$InitCalendarEventImpl) then) =
+  factory _$$InitCalendarEventImplCopyWith(_$InitCalendarEventImpl value, $Res Function(_$InitCalendarEventImpl) then) =
       __$$InitCalendarEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitCalendarEventImplCopyWithImpl<$Res>
-    extends _$CalendarEventCopyWithImpl<$Res, _$InitCalendarEventImpl>
+class __$$InitCalendarEventImplCopyWithImpl<$Res> extends _$CalendarEventCopyWithImpl<$Res, _$InitCalendarEventImpl>
     implements _$$InitCalendarEventImplCopyWith<$Res> {
-  __$$InitCalendarEventImplCopyWithImpl(_$InitCalendarEventImpl _value,
-      $Res Function(_$InitCalendarEventImpl) _then)
+  __$$InitCalendarEventImplCopyWithImpl(_$InitCalendarEventImpl _value, $Res Function(_$InitCalendarEventImpl) _then)
       : super(_value, _then);
 }
 
@@ -114,8 +109,7 @@ class _$InitCalendarEventImpl implements _InitCalendarEvent {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitCalendarEventImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InitCalendarEventImpl);
   }
 
   @override
@@ -203,8 +197,7 @@ abstract class _InitCalendarEvent implements CalendarEvent {
 /// @nodoc
 abstract class _$$SelectDayCalendarEventImplCopyWith<$Res> {
   factory _$$SelectDayCalendarEventImplCopyWith(
-          _$SelectDayCalendarEventImpl value,
-          $Res Function(_$SelectDayCalendarEventImpl) then) =
+          _$SelectDayCalendarEventImpl value, $Res Function(_$SelectDayCalendarEventImpl) then) =
       __$$SelectDayCalendarEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime day});
@@ -215,8 +208,7 @@ class __$$SelectDayCalendarEventImplCopyWithImpl<$Res>
     extends _$CalendarEventCopyWithImpl<$Res, _$SelectDayCalendarEventImpl>
     implements _$$SelectDayCalendarEventImplCopyWith<$Res> {
   __$$SelectDayCalendarEventImplCopyWithImpl(
-      _$SelectDayCalendarEventImpl _value,
-      $Res Function(_$SelectDayCalendarEventImpl) _then)
+      _$SelectDayCalendarEventImpl _value, $Res Function(_$SelectDayCalendarEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -260,9 +252,8 @@ class _$SelectDayCalendarEventImpl implements _SelectDayCalendarEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SelectDayCalendarEventImplCopyWith<_$SelectDayCalendarEventImpl>
-      get copyWith => __$$SelectDayCalendarEventImplCopyWithImpl<
-          _$SelectDayCalendarEventImpl>(this, _$identity);
+  _$$SelectDayCalendarEventImplCopyWith<_$SelectDayCalendarEventImpl> get copyWith =>
+      __$$SelectDayCalendarEventImplCopyWithImpl<_$SelectDayCalendarEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -340,20 +331,18 @@ class _$SelectDayCalendarEventImpl implements _SelectDayCalendarEvent {
 }
 
 abstract class _SelectDayCalendarEvent implements CalendarEvent {
-  const factory _SelectDayCalendarEvent({required final DateTime day}) =
-      _$SelectDayCalendarEventImpl;
+  const factory _SelectDayCalendarEvent({required final DateTime day}) = _$SelectDayCalendarEventImpl;
 
   DateTime get day;
   @JsonKey(ignore: true)
-  _$$SelectDayCalendarEventImplCopyWith<_$SelectDayCalendarEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SelectDayCalendarEventImplCopyWith<_$SelectDayCalendarEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ShowRiscLevelCalendarEventImplCopyWith<$Res> {
   factory _$$ShowRiscLevelCalendarEventImplCopyWith(
-          _$ShowRiscLevelCalendarEventImpl value,
-          $Res Function(_$ShowRiscLevelCalendarEventImpl) then) =
+          _$ShowRiscLevelCalendarEventImpl value, $Res Function(_$ShowRiscLevelCalendarEventImpl) then) =
       __$$ShowRiscLevelCalendarEventImplCopyWithImpl<$Res>;
 }
 
@@ -362,8 +351,7 @@ class __$$ShowRiscLevelCalendarEventImplCopyWithImpl<$Res>
     extends _$CalendarEventCopyWithImpl<$Res, _$ShowRiscLevelCalendarEventImpl>
     implements _$$ShowRiscLevelCalendarEventImplCopyWith<$Res> {
   __$$ShowRiscLevelCalendarEventImplCopyWithImpl(
-      _$ShowRiscLevelCalendarEventImpl _value,
-      $Res Function(_$ShowRiscLevelCalendarEventImpl) _then)
+      _$ShowRiscLevelCalendarEventImpl _value, $Res Function(_$ShowRiscLevelCalendarEventImpl) _then)
       : super(_value, _then);
 }
 
@@ -379,9 +367,7 @@ class _$ShowRiscLevelCalendarEventImpl implements _ShowRiscLevelCalendarEvent {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ShowRiscLevelCalendarEventImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ShowRiscLevelCalendarEventImpl);
   }
 
   @override
@@ -463,15 +449,13 @@ class _$ShowRiscLevelCalendarEventImpl implements _ShowRiscLevelCalendarEvent {
 }
 
 abstract class _ShowRiscLevelCalendarEvent implements CalendarEvent {
-  const factory _ShowRiscLevelCalendarEvent() =
-      _$ShowRiscLevelCalendarEventImpl;
+  const factory _ShowRiscLevelCalendarEvent() = _$ShowRiscLevelCalendarEventImpl;
 }
 
 /// @nodoc
 abstract class _$$ShowMoodLevelCalendarEventImplCopyWith<$Res> {
   factory _$$ShowMoodLevelCalendarEventImplCopyWith(
-          _$ShowMoodLevelCalendarEventImpl value,
-          $Res Function(_$ShowMoodLevelCalendarEventImpl) then) =
+          _$ShowMoodLevelCalendarEventImpl value, $Res Function(_$ShowMoodLevelCalendarEventImpl) then) =
       __$$ShowMoodLevelCalendarEventImplCopyWithImpl<$Res>;
 }
 
@@ -480,8 +464,7 @@ class __$$ShowMoodLevelCalendarEventImplCopyWithImpl<$Res>
     extends _$CalendarEventCopyWithImpl<$Res, _$ShowMoodLevelCalendarEventImpl>
     implements _$$ShowMoodLevelCalendarEventImplCopyWith<$Res> {
   __$$ShowMoodLevelCalendarEventImplCopyWithImpl(
-      _$ShowMoodLevelCalendarEventImpl _value,
-      $Res Function(_$ShowMoodLevelCalendarEventImpl) _then)
+      _$ShowMoodLevelCalendarEventImpl _value, $Res Function(_$ShowMoodLevelCalendarEventImpl) _then)
       : super(_value, _then);
 }
 
@@ -497,9 +480,7 @@ class _$ShowMoodLevelCalendarEventImpl implements _ShowMoodLevelCalendarEvent {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ShowMoodLevelCalendarEventImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ShowMoodLevelCalendarEventImpl);
   }
 
   @override
@@ -581,8 +562,7 @@ class _$ShowMoodLevelCalendarEventImpl implements _ShowMoodLevelCalendarEvent {
 }
 
 abstract class _ShowMoodLevelCalendarEvent implements CalendarEvent {
-  const factory _ShowMoodLevelCalendarEvent() =
-      _$ShowMoodLevelCalendarEventImpl;
+  const factory _ShowMoodLevelCalendarEvent() = _$ShowMoodLevelCalendarEventImpl;
 }
 
 /// @nodoc
@@ -590,33 +570,27 @@ mixin _$CalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedRisc,
-    required TResult Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedMood,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult? Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood,
-            RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
     required TResult orElse(),
   }) =>
@@ -647,14 +621,12 @@ mixin _$CalendarState {
 
 /// @nodoc
 abstract class $CalendarStateCopyWith<$Res> {
-  factory $CalendarStateCopyWith(
-          CalendarState value, $Res Function(CalendarState) then) =
+  factory $CalendarStateCopyWith(CalendarState value, $Res Function(CalendarState) then) =
       _$CalendarStateCopyWithImpl<$Res, CalendarState>;
 }
 
 /// @nodoc
-class _$CalendarStateCopyWithImpl<$Res, $Val extends CalendarState>
-    implements $CalendarStateCopyWith<$Res> {
+class _$CalendarStateCopyWithImpl<$Res, $Val extends CalendarState> implements $CalendarStateCopyWith<$Res> {
   _$CalendarStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -665,17 +637,14 @@ class _$CalendarStateCopyWithImpl<$Res, $Val extends CalendarState>
 
 /// @nodoc
 abstract class _$$InitCalendarStateImplCopyWith<$Res> {
-  factory _$$InitCalendarStateImplCopyWith(_$InitCalendarStateImpl value,
-          $Res Function(_$InitCalendarStateImpl) then) =
+  factory _$$InitCalendarStateImplCopyWith(_$InitCalendarStateImpl value, $Res Function(_$InitCalendarStateImpl) then) =
       __$$InitCalendarStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitCalendarStateImplCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$InitCalendarStateImpl>
+class __$$InitCalendarStateImplCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res, _$InitCalendarStateImpl>
     implements _$$InitCalendarStateImplCopyWith<$Res> {
-  __$$InitCalendarStateImplCopyWithImpl(_$InitCalendarStateImpl _value,
-      $Res Function(_$InitCalendarStateImpl) _then)
+  __$$InitCalendarStateImplCopyWithImpl(_$InitCalendarStateImpl _value, $Res Function(_$InitCalendarStateImpl) _then)
       : super(_value, _then);
 }
 
@@ -691,8 +660,7 @@ class _$InitCalendarStateImpl implements InitCalendarState {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitCalendarStateImpl);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$InitCalendarStateImpl);
   }
 
   @override
@@ -702,11 +670,9 @@ class _$InitCalendarStateImpl implements InitCalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedRisc,
-    required TResult Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedMood,
   }) {
     return init();
@@ -716,11 +682,9 @@ class _$InitCalendarStateImpl implements InitCalendarState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult? Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
   }) {
     return init?.call();
@@ -730,11 +694,9 @@ class _$InitCalendarStateImpl implements InitCalendarState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood,
-            RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
     required TResult orElse(),
   }) {
@@ -785,22 +747,16 @@ abstract class InitCalendarState implements CalendarState {
 
 /// @nodoc
 abstract class _$$LoadedRiscStateImplCopyWith<$Res> {
-  factory _$$LoadedRiscStateImplCopyWith(_$LoadedRiscStateImpl value,
-          $Res Function(_$LoadedRiscStateImpl) then) =
+  factory _$$LoadedRiscStateImplCopyWith(_$LoadedRiscStateImpl value, $Res Function(_$LoadedRiscStateImpl) then) =
       __$$LoadedRiscStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {Map<DateTime, RiscLevel> heatmap,
-      MoodType? selectedDayMood,
-      RiscLevel? selectedDayRisc});
+  $Res call({Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc});
 }
 
 /// @nodoc
-class __$$LoadedRiscStateImplCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$LoadedRiscStateImpl>
+class __$$LoadedRiscStateImplCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res, _$LoadedRiscStateImpl>
     implements _$$LoadedRiscStateImplCopyWith<$Res> {
-  __$$LoadedRiscStateImplCopyWithImpl(
-      _$LoadedRiscStateImpl _value, $Res Function(_$LoadedRiscStateImpl) _then)
+  __$$LoadedRiscStateImplCopyWithImpl(_$LoadedRiscStateImpl _value, $Res Function(_$LoadedRiscStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -831,9 +787,7 @@ class __$$LoadedRiscStateImplCopyWithImpl<$Res>
 
 class _$LoadedRiscStateImpl implements LoadedRiscState {
   const _$LoadedRiscStateImpl(
-      {required final Map<DateTime, RiscLevel> heatmap,
-      required this.selectedDayMood,
-      required this.selectedDayRisc})
+      {required final Map<DateTime, RiscLevel> heatmap, required this.selectedDayMood, required this.selectedDayRisc})
       : _heatmap = heatmap;
 
   final Map<DateTime, RiscLevel> _heatmap;
@@ -860,35 +814,27 @@ class _$LoadedRiscStateImpl implements LoadedRiscState {
         (other.runtimeType == runtimeType &&
             other is _$LoadedRiscStateImpl &&
             const DeepCollectionEquality().equals(other._heatmap, _heatmap) &&
-            (identical(other.selectedDayMood, selectedDayMood) ||
-                other.selectedDayMood == selectedDayMood) &&
-            (identical(other.selectedDayRisc, selectedDayRisc) ||
-                other.selectedDayRisc == selectedDayRisc));
+            (identical(other.selectedDayMood, selectedDayMood) || other.selectedDayMood == selectedDayMood) &&
+            (identical(other.selectedDayRisc, selectedDayRisc) || other.selectedDayRisc == selectedDayRisc));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_heatmap),
-      selectedDayMood,
-      selectedDayRisc);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_heatmap), selectedDayMood, selectedDayRisc);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedRiscStateImplCopyWith<_$LoadedRiscStateImpl> get copyWith =>
-      __$$LoadedRiscStateImplCopyWithImpl<_$LoadedRiscStateImpl>(
-          this, _$identity);
+      __$$LoadedRiscStateImplCopyWithImpl<_$LoadedRiscStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedRisc,
-    required TResult Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedMood,
   }) {
     return loadedRisc(heatmap, selectedDayMood, selectedDayRisc);
@@ -898,11 +844,9 @@ class _$LoadedRiscStateImpl implements LoadedRiscState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult? Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
   }) {
     return loadedRisc?.call(heatmap, selectedDayMood, selectedDayRisc);
@@ -912,11 +856,9 @@ class _$LoadedRiscStateImpl implements LoadedRiscState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood,
-            RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
     required TResult orElse(),
   }) {
@@ -971,28 +913,21 @@ abstract class LoadedRiscState implements CalendarState {
   MoodType? get selectedDayMood;
   RiscLevel? get selectedDayRisc;
   @JsonKey(ignore: true)
-  _$$LoadedRiscStateImplCopyWith<_$LoadedRiscStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoadedRiscStateImplCopyWith<_$LoadedRiscStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadedMoodStateImplCopyWith<$Res> {
-  factory _$$LoadedMoodStateImplCopyWith(_$LoadedMoodStateImpl value,
-          $Res Function(_$LoadedMoodStateImpl) then) =
+  factory _$$LoadedMoodStateImplCopyWith(_$LoadedMoodStateImpl value, $Res Function(_$LoadedMoodStateImpl) then) =
       __$$LoadedMoodStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {Map<DateTime, MoodType> heatmap,
-      MoodType? selectedDayMood,
-      RiscLevel? selectedDayRisc});
+  $Res call({Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc});
 }
 
 /// @nodoc
-class __$$LoadedMoodStateImplCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res, _$LoadedMoodStateImpl>
+class __$$LoadedMoodStateImplCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res, _$LoadedMoodStateImpl>
     implements _$$LoadedMoodStateImplCopyWith<$Res> {
-  __$$LoadedMoodStateImplCopyWithImpl(
-      _$LoadedMoodStateImpl _value, $Res Function(_$LoadedMoodStateImpl) _then)
+  __$$LoadedMoodStateImplCopyWithImpl(_$LoadedMoodStateImpl _value, $Res Function(_$LoadedMoodStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1023,9 +958,7 @@ class __$$LoadedMoodStateImplCopyWithImpl<$Res>
 
 class _$LoadedMoodStateImpl implements LoadedMoodState {
   const _$LoadedMoodStateImpl(
-      {required final Map<DateTime, MoodType> heatmap,
-      required this.selectedDayMood,
-      required this.selectedDayRisc})
+      {required final Map<DateTime, MoodType> heatmap, required this.selectedDayMood, required this.selectedDayRisc})
       : _heatmap = heatmap;
 
   final Map<DateTime, MoodType> _heatmap;
@@ -1052,35 +985,27 @@ class _$LoadedMoodStateImpl implements LoadedMoodState {
         (other.runtimeType == runtimeType &&
             other is _$LoadedMoodStateImpl &&
             const DeepCollectionEquality().equals(other._heatmap, _heatmap) &&
-            (identical(other.selectedDayMood, selectedDayMood) ||
-                other.selectedDayMood == selectedDayMood) &&
-            (identical(other.selectedDayRisc, selectedDayRisc) ||
-                other.selectedDayRisc == selectedDayRisc));
+            (identical(other.selectedDayMood, selectedDayMood) || other.selectedDayMood == selectedDayMood) &&
+            (identical(other.selectedDayRisc, selectedDayRisc) || other.selectedDayRisc == selectedDayRisc));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_heatmap),
-      selectedDayMood,
-      selectedDayRisc);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_heatmap), selectedDayMood, selectedDayRisc);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedMoodStateImplCopyWith<_$LoadedMoodStateImpl> get copyWith =>
-      __$$LoadedMoodStateImplCopyWithImpl<_$LoadedMoodStateImpl>(
-          this, _$identity);
+      __$$LoadedMoodStateImplCopyWithImpl<_$LoadedMoodStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedRisc,
-    required TResult Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
+    required TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)
         loadedMood,
   }) {
     return loadedMood(heatmap, selectedDayMood, selectedDayRisc);
@@ -1090,11 +1015,9 @@ class _$LoadedMoodStateImpl implements LoadedMoodState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult? Function(Map<DateTime, MoodType> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult? Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
   }) {
     return loadedMood?.call(heatmap, selectedDayMood, selectedDayRisc);
@@ -1104,11 +1027,9 @@ class _$LoadedMoodStateImpl implements LoadedMoodState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Map<DateTime, RiscLevel> heatmap,
-            MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, RiscLevel> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedRisc,
-    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood,
-            RiscLevel? selectedDayRisc)?
+    TResult Function(Map<DateTime, MoodType> heatmap, MoodType? selectedDayMood, RiscLevel? selectedDayRisc)?
         loadedMood,
     required TResult orElse(),
   }) {
@@ -1163,6 +1084,5 @@ abstract class LoadedMoodState implements CalendarState {
   MoodType? get selectedDayMood;
   RiscLevel? get selectedDayRisc;
   @JsonKey(ignore: true)
-  _$$LoadedMoodStateImplCopyWith<_$LoadedMoodStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoadedMoodStateImplCopyWith<_$LoadedMoodStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

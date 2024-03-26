@@ -24,21 +24,18 @@ mixin _$CityModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CityModelCopyWith<CityModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CityModelCopyWith<CityModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CityModelCopyWith<$Res> {
-  factory $CityModelCopyWith(CityModel value, $Res Function(CityModel) then) =
-      _$CityModelCopyWithImpl<$Res, CityModel>;
+  factory $CityModelCopyWith(CityModel value, $Res Function(CityModel) then) = _$CityModelCopyWithImpl<$Res, CityModel>;
   @useResult
   $Res call({dynamic params});
 }
 
 /// @nodoc
-class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
-    implements $CityModelCopyWith<$Res> {
+class _$CityModelCopyWithImpl<$Res, $Val extends CityModel> implements $CityModelCopyWith<$Res> {
   _$CityModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -61,10 +58,8 @@ class _$CityModelCopyWithImpl<$Res, $Val extends CityModel>
 }
 
 /// @nodoc
-abstract class _$$CityModelImplCopyWith<$Res>
-    implements $CityModelCopyWith<$Res> {
-  factory _$$CityModelImplCopyWith(
-          _$CityModelImpl value, $Res Function(_$CityModelImpl) then) =
+abstract class _$$CityModelImplCopyWith<$Res> implements $CityModelCopyWith<$Res> {
+  factory _$$CityModelImplCopyWith(_$CityModelImpl value, $Res Function(_$CityModelImpl) then) =
       __$$CityModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -72,12 +67,9 @@ abstract class _$$CityModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CityModelImplCopyWithImpl<$Res>
-    extends _$CityModelCopyWithImpl<$Res, _$CityModelImpl>
+class __$$CityModelImplCopyWithImpl<$Res> extends _$CityModelCopyWithImpl<$Res, _$CityModelImpl>
     implements _$$CityModelImplCopyWith<$Res> {
-  __$$CityModelImplCopyWithImpl(
-      _$CityModelImpl _value, $Res Function(_$CityModelImpl) _then)
-      : super(_value, _then);
+  __$$CityModelImplCopyWithImpl(_$CityModelImpl _value, $Res Function(_$CityModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -95,8 +87,7 @@ class __$$CityModelImplCopyWithImpl<$Res>
 class _$CityModelImpl with DiagnosticableTreeMixin implements _CityModel {
   const _$CityModelImpl({this.params});
 
-  factory _$CityModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CityModelImplFromJson(json);
+  factory _$CityModelImpl.fromJson(Map<String, dynamic> json) => _$$CityModelImplFromJson(json);
 
   @override
   final dynamic params;
@@ -124,8 +115,7 @@ class _$CityModelImpl with DiagnosticableTreeMixin implements _CityModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(params));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(params));
 
   @JsonKey(ignore: true)
   @override
@@ -144,13 +134,11 @@ class _$CityModelImpl with DiagnosticableTreeMixin implements _CityModel {
 abstract class _CityModel implements CityModel {
   const factory _CityModel({final dynamic params}) = _$CityModelImpl;
 
-  factory _CityModel.fromJson(Map<String, dynamic> json) =
-      _$CityModelImpl.fromJson;
+  factory _CityModel.fromJson(Map<String, dynamic> json) = _$CityModelImpl.fromJson;
 
   @override
   dynamic get params;
   @override
   @JsonKey(ignore: true)
-  _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CityModelImplCopyWith<_$CityModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

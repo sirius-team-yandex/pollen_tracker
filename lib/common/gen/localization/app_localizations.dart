@@ -131,6 +131,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Atmospheric pollution'**
   String get atmospheric_pollution;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

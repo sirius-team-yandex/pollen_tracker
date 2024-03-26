@@ -24,8 +24,20 @@ void main() async {
   );
 }
 
-class PollenApp extends StatelessWidget {
+class PollenApp extends StatefulWidget {
   const PollenApp({super.key});
+
+  @override
+  State<PollenApp> createState() => PollenAppState();
+}
+
+class PollenAppState extends State<PollenApp> {
+  ThemeMode selectedThemeMode = ThemeMode.system;
+  void updateThemeMode(ThemeMode mode) {
+    setState(() {
+      selectedThemeMode = mode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +46,7 @@ class PollenApp extends StatelessWidget {
     return AppTheme(
       data: AppThemeData.light(),
       child: MaterialApp.router(
+        themeMode: selectedThemeMode,
         debugShowCheckedModeBanner: false,
         routerConfig: routerConfig,
         theme: materialThemeFromAppTheme(lightAppThemeData),

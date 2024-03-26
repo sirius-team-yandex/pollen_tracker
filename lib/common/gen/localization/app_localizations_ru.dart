@@ -25,4 +25,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get atmospheric_pollution => 'Прогноз пыльцы в атмосфере';
+
+  @override
+  String get profile => 'Профиль';
 }

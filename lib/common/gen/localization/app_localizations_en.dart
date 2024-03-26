@@ -25,4 +25,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atmospheric_pollution => 'Atmospheric pollution';
+
+  @override
+  String get profile => 'Profile';
 }

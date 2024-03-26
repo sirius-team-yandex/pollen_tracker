@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/enums/mood_type.dart';
+import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/ui/features/profile/wiidgets/theme_switching_button.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
+import 'package:pollen_tracker/ui/widgets/city_location_widget.dart';
+import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -8,7 +13,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Profile', style: context.theme.textTheme.displayMedium)),
+      appBar: AppBar(title: Text(AppLocalizations.of(context).profile, style: context.theme.textTheme.displayMedium)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -20,7 +25,22 @@ class ProfilePage extends StatelessWidget {
                 color: context.myColors.primaryGreen,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: const Placeholder(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const MoodSvgWidget(moodType: MoodType.good),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Column(
+                    children: [
+                      Text('Name Surname', style: context.theme.textTheme.displayMedium),
+                      const CityLocationWidget(location: 'Санкт-Петербург, Россия'),
+                      const ThemeSwitchingButton(),
+                    ],
+                  )
+                ],
+              ),
             ),
             const SizedBox(
               height: 66,

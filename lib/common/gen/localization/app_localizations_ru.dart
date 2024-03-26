@@ -8,7 +8,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get health_check => 'Выберите сегодняшнее ощущение здоровья';
 
   @override
-  String get welcome_description_1 => 'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
+  String get welcome_description_1 =>
+      'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
 
   @override
   String get welcome_description_2 => 'Сохраняйте состояние своего здоровья для подробной статистики.';
@@ -24,4 +25,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get atmospheric_pollution => 'Прогноз пыльцы в атмосфере';
+
+  @override
+  String get profile => 'Профиль';
 }

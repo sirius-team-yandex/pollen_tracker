@@ -11,7 +11,13 @@ class CityLocationWidget extends StatelessWidget {
       children: [
         const Icon(Icons.location_on),
         const SizedBox(width: 12.0),
-        Text(location, style: Theme.of(context).textTheme.displayMedium),
+        SizedBox(
+            width: 200,
+            child: Text(
+              location,
+              style: Theme.of(context).textTheme.displayMedium,
+              overflow: TextOverflow.ellipsis,
+            )),
       ],
     );
   }

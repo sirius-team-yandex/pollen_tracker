@@ -108,7 +108,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Column(
                       children: [
                         Container(

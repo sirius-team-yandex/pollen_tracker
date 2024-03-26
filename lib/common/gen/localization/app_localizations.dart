@@ -128,6 +128,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Write a comment'**
   String get write_a_comment;
+
+  /// No description provided for @atmospheric_pollution.
+  ///
+  /// In en, this message translates to:
+  /// **'Atmospheric pollution'**
+  String get atmospheric_pollution;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -21,4 +21,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get write_a_comment => 'Напишите комментарий';
+
+  @override
+  String get atmospheric_pollution => 'Прогноз пыльцы в атмосфере';
 }

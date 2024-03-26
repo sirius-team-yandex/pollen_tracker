@@ -21,4 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get write_a_comment => 'Write a comment';
+
+  @override
+  String get atmospheric_pollution => 'Atmospheric pollution';
 }

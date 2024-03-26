@@ -137,6 +137,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @hazel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hazel'**
+  String get hazel;
+
+  /// No description provided for @elm.
+  ///
+  /// In en, this message translates to:
+  /// **'Elm'**
+  String get elm;
+
+  /// No description provided for @pine.
+  ///
+  /// In en, this message translates to:
+  /// **'Pine'**
+  String get pine;
+
+  /// No description provided for @alder.
+  ///
+  /// In en, this message translates to:
+  /// **'Alder'**
+  String get alder;
+
+  /// No description provided for @poplar_cottonwood.
+  ///
+  /// In en, this message translates to:
+  /// **'Poplar / Cottonwood'**
+  String get poplar_cottonwood;
+
+  /// No description provided for @oak.
+  ///
+  /// In en, this message translates to:
+  /// **'Oak'**
+  String get oak;
+
+  /// No description provided for @plane.
+  ///
+  /// In en, this message translates to:
+  /// **'Plane'**
+  String get plane;
+
+  /// No description provided for @birch.
+  ///
+  /// In en, this message translates to:
+  /// **'Birch'**
+  String get birch;
+
+  /// No description provided for @cypress.
+  ///
+  /// In en, this message translates to:
+  /// **'Cypress'**
+  String get cypress;
+
+  /// No description provided for @mugwort.
+  ///
+  /// In en, this message translates to:
+  /// **'Mugwort'**
+  String get mugwort;
+
+  /// No description provided for @chenopod.
+  ///
+  /// In en, this message translates to:
+  /// **'Chenopod'**
+  String get chenopod;
+
+  /// No description provided for @ragweed.
+  ///
+  /// In en, this message translates to:
+  /// **'Ragweed'**
+  String get ragweed;
+
+  /// No description provided for @nettle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nettle'**
+  String get nettle;
+
+  /// No description provided for @grass_poaceae.
+  ///
+  /// In en, this message translates to:
+  /// **'Grass / Poaceae'**
+  String get grass_poaceae;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

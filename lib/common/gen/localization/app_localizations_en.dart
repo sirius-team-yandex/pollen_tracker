@@ -28,4 +28,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get hazel => 'Hazel';
+
+  @override
+  String get elm => 'Elm';
+
+  @override
+  String get pine => 'Pine';
+
+  @override
+  String get alder => 'Alder';
+
+  @override
+  String get poplar_cottonwood => 'Poplar / Cottonwood';
+
+  @override
+  String get oak => 'Oak';
+
+  @override
+  String get plane => 'Plane';
+
+  @override
+  String get birch => 'Birch';
+
+  @override
+  String get cypress => 'Cypress';
+
+  @override
+  String get mugwort => 'Mugwort';
+
+  @override
+  String get chenopod => 'Chenopod';
+
+  @override
+  String get ragweed => 'Ragweed';
+
+  @override
+  String get nettle => 'Nettle';
+
+  @override
+  String get grass_poaceae => 'Grass / Poaceae';
 }

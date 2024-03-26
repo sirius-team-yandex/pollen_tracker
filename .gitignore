@@ -11,6 +11,7 @@
 **/*.freezed.dart
 **/*.g.dart
 migrate_working_dir/
+lib/injectable_init.config.dart
 
 # IntelliJ related
 *.iml

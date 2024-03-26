@@ -108,7 +108,6 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
     emit?.call(const ProfilesAllState.error());
   }
 
-  
   @override
   Future<void> close() async {
     profilesAllSubscription.cancel();

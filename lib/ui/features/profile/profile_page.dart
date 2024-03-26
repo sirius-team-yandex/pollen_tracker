@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                       const CityLocationWidget(location: 'Санкт-Петербург, Россия'),
                       const ThemeSwitchingButton(),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

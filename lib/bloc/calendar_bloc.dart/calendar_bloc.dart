@@ -109,17 +109,29 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       profileSubject.observeCurrent().mapNotNull((profile) => profile?.species),
       (monthPollen, dayPollen, moodDay, targets) {
         final Map<DateTime, Map<Species, int>> monthLevels = {};
+        final Map<DateTime, int> counter = {};
         for (final pollen in monthPollen) {
           final currDay = pollen.time.copyWith(hour: 0, minute: 0, second: 0);
           final levels = monthLevels[currDay] ?? {};
 
+          counter[currDay] = (counter[currDay] ?? 0) + 1;
           monthLevels[currDay] =
               _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
         }
 
+        final monthLevelsAveraged = monthLevels.map(
+          (date, value) => MapEntry(
+            date,
+            value.map(
+              (species, level) =>
+                  MapEntry(species, level ~/ (counter[date] ?? 1)),
+            ),
+          ),
+        );
+
         final Map<DateTime, RiscLevel> monthRisc = {};
 
-        for (var entry in monthLevels.entries) {
+        for (var entry in monthLevelsAveraged.entries) {
           monthRisc[entry.key] = riscEvaluatorUseCase.evaluateType(
             entry.value,
             targets,

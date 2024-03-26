@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
@@ -17,6 +19,11 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 enum _EmitType { risc, mood }
+
+extension ProfileBuilder on BuildContext {
+  CalendarState? get profileState => BlocProvider.of<CalendarBloc>(this).state;
+  CalendarBloc? get profileBloc => BlocProvider.of<CalendarBloc>(this);
+}
 
 @injectable
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
@@ -71,7 +78,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     _InitCalendarEvent event,
     Emitter<CalendarState> emit,
   ) async {
-    final Stream<Stream<CalendarState>> statesStreams = Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
+    final Stream<Stream<CalendarState>> statesStreams =
+        Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
       if (type == _EmitType.mood) {
         return _loadMoodStream(date);
       } else {
@@ -79,7 +87,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       }
     });
 
-    _streamHolder = statesStreams.switchMap((streams) => streams).listen((state) {
+    _streamHolder =
+        statesStreams.switchMap((streams) => streams).listen((state) {
       emit(state);
     });
   }
@@ -104,7 +113,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           final currDay = pollen.time.copyWith(hour: 0, minute: 0, second: 0);
           final levels = monthLevels[currDay] ?? {};
 
-          monthLevels[currDay] = _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
+          monthLevels[currDay] =
+              _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
         }
 
         final Map<DateTime, RiscLevel> monthRisc = {};
@@ -116,30 +126,11 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
             SpeciesType.tree,
           );
         }
-        final RiscLevel dayRisc;
-
-        if (dayPollen.isEmpty) {
-          final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
-                (value, element) => _join(
-                  value,
-                  element,
-                  (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
-                ),
-              );
-
-          dayRisc = riscEvaluatorUseCase.evaluateType(
-            dayLevel,
-            targets,
-            SpeciesType.tree,
-          );
-        } else {
-          dayRisc = RiscLevel.low;
-        }
 
         return CalendarState.loadedRisc(
           heatmap: monthRisc,
           selectedDayMood: moodDay?.moodType,
-          selectedDayRisc: dayRisc,
+          selectedDayRisc: _evaluateRisc(dayPollen, targets),
         );
       },
     );
@@ -170,10 +161,21 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
               )] = mood.moodType;
         }
 
-        final RiscLevel dayRisc;
+        return CalendarState.loadedMood(
+          heatmap: monthDaysMood,
+          selectedDayMood: moodDay?.moodType,
+          selectedDayRisc: _evaluateRisc(dayPollen, targets),
+        );
+      },
+    );
+  }
 
-        if (dayPollen.isEmpty) {
-          final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
+  RiscLevel _evaluateRisc(List<PollenEntity> dayPollen, List<Species> targets) {
+    final RiscLevel dayRisc;
+
+    if (dayPollen.isEmpty) {
+      final dayLevel =
+          dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
                 (value, element) => _join(
                   value,
                   element,
@@ -181,22 +183,16 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
                 ),
               );
 
-          dayRisc = riscEvaluatorUseCase.evaluateType(
-            dayLevel,
-            targets,
-            SpeciesType.tree,
-          );
-        } else {
-          dayRisc = RiscLevel.low;
-        }
+      dayRisc = riscEvaluatorUseCase.evaluateType(
+        dayLevel,
+        targets,
+        SpeciesType.tree,
+      );
+    } else {
+      dayRisc = RiscLevel.low;
+    }
 
-        return CalendarState.loadedMood(
-          heatmap: monthDaysMood,
-          selectedDayMood: moodDay?.moodType,
-          selectedDayRisc: dayRisc,
-        );
-      },
-    );
+    return dayRisc;
   }
 
   Map<K, V> _join<K, V>(

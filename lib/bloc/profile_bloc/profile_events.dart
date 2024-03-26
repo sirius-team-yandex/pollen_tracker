@@ -1,4 +1,4 @@
-part of 'profile_bloc.dart'
+part of 'profile_bloc.dart';
 
 @freezed
 abstract class ProfilesAllEvent with _$ProfilesAllEvent {

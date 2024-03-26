@@ -1,4 +1,5 @@
 import 'package:isar/isar.dart';
+import 'package:pollen_tracker/common/enums/locale_enum.dart';
 
 part 'config_model_isar.g.dart';
 
@@ -7,7 +8,8 @@ class ConfigModelIsar {
   // We have only ONE config with all of the setting in there, we do not need any other ids
   Id id = 0;
   int? currProfileId;
-  String locale;
+  @enumerated
+  LocaleEnum locale;
   bool isDark;
 
   ConfigModelIsar({

@@ -33,9 +33,10 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
           onChanged: (bool value) {
             // This is called when the user toggles the switch.
             if (value) {
-              (context.findAncestorStateOfType<PollenAppState>())?.updateThemeMode(ThemeMode.dark);
+              // TODO: call dark theme in config
             } else {
-              (context.findAncestorStateOfType<PollenAppState>())?.updateThemeMode(ThemeMode.light);
+              // TODO: call dark theme in config
+
             }
             setState(
               () {

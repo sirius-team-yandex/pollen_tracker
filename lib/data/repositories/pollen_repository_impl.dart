@@ -49,7 +49,8 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
                   upperTime: startDate.toUtc().add(const Duration(days: 365)),
                 ),
         )
-        .map((models) => pollenModelToPollenEntityMapper.map(models));
+        .map((models) => pollenModelToPollenEntityMapper.map(models))
+        .distinct();
     return stream;
   }
 
@@ -70,7 +71,8 @@ class PollenRepositoryImpl implements PollenSubject, PollenRepository {
                   upperTime: upperDate.toUtc(),
                 ),
         )
-        .map((models) => pollenModelToPollenEntityMapper.map(models));
+        .map((models) => pollenModelToPollenEntityMapper.map(models))
+        .distinct();
     return stream;
   }
 

@@ -21,19 +21,22 @@ mixin _$ConfigEntity {
   bool get darkTheme => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ConfigEntityCopyWith<ConfigEntity> get copyWith => throw _privateConstructorUsedError;
+  $ConfigEntityCopyWith<ConfigEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ConfigEntityCopyWith<$Res> {
-  factory $ConfigEntityCopyWith(ConfigEntity value, $Res Function(ConfigEntity) then) =
+  factory $ConfigEntityCopyWith(
+          ConfigEntity value, $Res Function(ConfigEntity) then) =
       _$ConfigEntityCopyWithImpl<$Res, ConfigEntity>;
   @useResult
   $Res call({int? currProfileId, String locale, bool darkTheme});
 }
 
 /// @nodoc
-class _$ConfigEntityCopyWithImpl<$Res, $Val extends ConfigEntity> implements $ConfigEntityCopyWith<$Res> {
+class _$ConfigEntityCopyWithImpl<$Res, $Val extends ConfigEntity>
+    implements $ConfigEntityCopyWith<$Res> {
   _$ConfigEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -66,8 +69,10 @@ class _$ConfigEntityCopyWithImpl<$Res, $Val extends ConfigEntity> implements $Co
 }
 
 /// @nodoc
-abstract class _$$ConfigEntityImplCopyWith<$Res> implements $ConfigEntityCopyWith<$Res> {
-  factory _$$ConfigEntityImplCopyWith(_$ConfigEntityImpl value, $Res Function(_$ConfigEntityImpl) then) =
+abstract class _$$ConfigEntityImplCopyWith<$Res>
+    implements $ConfigEntityCopyWith<$Res> {
+  factory _$$ConfigEntityImplCopyWith(
+          _$ConfigEntityImpl value, $Res Function(_$ConfigEntityImpl) then) =
       __$$ConfigEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -75,9 +80,11 @@ abstract class _$$ConfigEntityImplCopyWith<$Res> implements $ConfigEntityCopyWit
 }
 
 /// @nodoc
-class __$$ConfigEntityImplCopyWithImpl<$Res> extends _$ConfigEntityCopyWithImpl<$Res, _$ConfigEntityImpl>
+class __$$ConfigEntityImplCopyWithImpl<$Res>
+    extends _$ConfigEntityCopyWithImpl<$Res, _$ConfigEntityImpl>
     implements _$$ConfigEntityImplCopyWith<$Res> {
-  __$$ConfigEntityImplCopyWithImpl(_$ConfigEntityImpl _value, $Res Function(_$ConfigEntityImpl) _then)
+  __$$ConfigEntityImplCopyWithImpl(
+      _$ConfigEntityImpl _value, $Res Function(_$ConfigEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +114,8 @@ class __$$ConfigEntityImplCopyWithImpl<$Res> extends _$ConfigEntityCopyWithImpl<
 /// @nodoc
 
 class _$ConfigEntityImpl implements _ConfigEntity {
-  const _$ConfigEntityImpl({this.currProfileId, required this.locale, required this.darkTheme});
+  const _$ConfigEntityImpl(
+      {this.currProfileId, required this.locale, required this.darkTheme});
 
   @override
   final int? currProfileId;
@@ -126,13 +134,16 @@ class _$ConfigEntityImpl implements _ConfigEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfigEntityImpl &&
-            (identical(other.currProfileId, currProfileId) || other.currProfileId == currProfileId) &&
+            (identical(other.currProfileId, currProfileId) ||
+                other.currProfileId == currProfileId) &&
             (identical(other.locale, locale) || other.locale == locale) &&
-            (identical(other.darkTheme, darkTheme) || other.darkTheme == darkTheme));
+            (identical(other.darkTheme, darkTheme) ||
+                other.darkTheme == darkTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currProfileId, locale, darkTheme);
+  int get hashCode =>
+      Object.hash(runtimeType, currProfileId, locale, darkTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -142,8 +153,10 @@ class _$ConfigEntityImpl implements _ConfigEntity {
 }
 
 abstract class _ConfigEntity implements ConfigEntity {
-  const factory _ConfigEntity({final int? currProfileId, required final String locale, required final bool darkTheme}) =
-      _$ConfigEntityImpl;
+  const factory _ConfigEntity(
+      {final int? currProfileId,
+      required final String locale,
+      required final bool darkTheme}) = _$ConfigEntityImpl;
 
   @override
   int? get currProfileId;
@@ -153,5 +166,6 @@ abstract class _ConfigEntity implements ConfigEntity {
   bool get darkTheme;
   @override
   @JsonKey(ignore: true)
-  _$$ConfigEntityImplCopyWith<_$ConfigEntityImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$ConfigEntityImplCopyWith<_$ConfigEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

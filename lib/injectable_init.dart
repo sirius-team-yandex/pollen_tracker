@@ -93,6 +93,7 @@ abstract class PollenModule {
 abstract class IsarModule {
   // We presolve future so we should have Isar, not Future<Isar> in our dependency graph
   @preResolve
+  @singleton
   Future<Isar> get isar async {
     final dir = await getApplicationDocumentsDirectory();
 

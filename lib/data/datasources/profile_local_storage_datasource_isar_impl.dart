@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
 
-@singleton
+@injectable
 class ProfileLocalStorageDatasourceIsar {
   ProfileLocalStorageDatasourceIsar({required this.isar});
 
@@ -41,7 +41,10 @@ class ProfileLocalStorageDatasourceIsar {
   }
 
   Stream<List<ProfileModelIsar>> observeAll() async* {
-    yield* isar.profileModelIsars.where().anyProfileId().watch(fireImmediately: true);
+    yield* isar.profileModelIsars
+        .where()
+        .anyProfileId()
+        .watch(fireImmediately: true);
   }
 
   Stream<ProfileModelIsar?> observeById(int id) async* {

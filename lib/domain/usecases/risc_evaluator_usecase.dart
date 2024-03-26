@@ -1,26 +1,26 @@
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
-import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 
 @injectable
 class RiscEvaluatorUseCase {
   RiscLevel evaluateType(
-    PollenEntity dm,
+    Map<Species, int> levels,
     List<Species> targets,
     SpeciesType targetType,
   ) {
-    return evaluate(dm, targets)[targetType] ?? RiscLevel.low;
+    return evaluate(levels, targets)[targetType] ?? RiscLevel.low;
   }
 
   Map<SpeciesType, RiscLevel> evaluate(
-    PollenEntity dm,
+    Map<Species, int> levels,
     List<Species> targets,
   ) {
     Map<SpeciesType, int> counts = {};
 
     for (var species in targets) {
-      counts[species.type] = (dm.levels[species] ?? 0) + (counts[species.type] ?? 0);
+      counts[species.type] =
+          (levels[species] ?? 0) + (counts[species.type] ?? 0);
     }
 
     Map<SpeciesType, RiscLevel> res = {};

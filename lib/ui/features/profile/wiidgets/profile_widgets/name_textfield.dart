@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class NameTextField extends StatefulWidget {
@@ -26,10 +27,13 @@ class _NameTextFieldState extends State<NameTextField> {
         onFieldSubmitted: (value) => {
           if (value.trim() != '')
             {
-              print(value),
+              //TODO добавить ивент на смену имени
+              logger.i(value),
             }
           else
-            {controller.text = widget.name}
+            {
+              controller.text = widget.name,
+            },
         },
         style: context.T.displayLarge,
         textAlign: TextAlign.center,

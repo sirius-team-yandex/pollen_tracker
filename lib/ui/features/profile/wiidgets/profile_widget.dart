@@ -32,7 +32,8 @@ class ProfileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 NameTextField(
-                  name: "Default value",
+                  //TODO ПРОКИНУТЬ ИМЯ ПОЛЬЗОВАТЕЛЯ
+                  name: 'Default value',
                 ),
                 IconSurround(
                   icon: Icons.location_on_outlined,

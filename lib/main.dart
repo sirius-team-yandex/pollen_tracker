@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';

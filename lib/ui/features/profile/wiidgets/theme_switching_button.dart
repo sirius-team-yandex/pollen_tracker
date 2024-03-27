@@ -25,8 +25,10 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(Theme.of(context).brightness == Brightness.dark ? 'Dark mode' : 'Light mode',
-            style: context.theme.textTheme.displayMedium),
+        Text(
+          Theme.of(context).brightness == Brightness.dark ? 'Dark mode' : 'Light mode',
+          style: context.theme.textTheme.displayMedium,
+        ),
         Switch(
           // This bool value toggles the switch.
           value: Theme.of(context).brightness == Brightness.dark,

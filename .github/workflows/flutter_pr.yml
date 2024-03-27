@@ -39,9 +39,6 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
         
-      - name: Analyze code
-        run: flutter analyze
-
       - name: flutter packages pub get
         run: flutter packages pub get
 
@@ -50,10 +47,14 @@ jobs:
 
       - name: Run localizations gen
         run: flutter gen-l10n
-      
+
+      - name: Analyze code
+        run: flutter analyze
+
       - name: Stop workflow if previous step failed
         if: failure()
         run: exit 1
+
       - name: Format code
         run: find . -name "*.dart" ! -name "firebase_options.dart" -exec dart format {} +
 

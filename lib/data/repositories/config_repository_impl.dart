@@ -29,9 +29,12 @@ class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
 
   @override
   Stream<ConfigEntity> observe() {
-    return datasource.observe().map(
+    return datasource
+        .observe()
+        .map(
           (config) => config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig(),
-        );
+        )
+        .distinct();
   }
 
   @override

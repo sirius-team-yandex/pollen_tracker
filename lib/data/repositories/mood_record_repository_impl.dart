@@ -74,7 +74,8 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSu
         )
         .map(
           (model) => moodRecordModelIsarToEntityMapper.mapList(model),
-        );
+        )
+        .distinct();
 
     return stream;
   }
@@ -100,7 +101,7 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSu
         )
         .toUtc();
 
-    return observeIn(lowerDate, upperDate).map((models) => models.firstOrNull);
+    return observeIn(lowerDate, upperDate).map((models) => models.firstOrNull).distinct();
   }
 
   @override
@@ -122,7 +123,8 @@ class MoodRecordRepositoryIsarImpl implements MoodRecordRepository, MoodRecordSu
         )
         .map(
           (model) => moodRecordModelIsarToEntityMapper.mapList(model),
-        );
+        )
+        .distinct();
 
     return stream;
   }

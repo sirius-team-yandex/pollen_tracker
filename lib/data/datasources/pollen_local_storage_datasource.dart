@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 
-@singleton
+@injectable
 class PollenLocalStorageDatasource {
   PollenLocalStorageDatasource({required this.isar});
 

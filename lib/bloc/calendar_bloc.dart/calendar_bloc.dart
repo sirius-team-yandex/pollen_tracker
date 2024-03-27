@@ -78,8 +78,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     _InitCalendarEvent event,
     Emitter<CalendarState> emit,
   ) async {
-    final Stream<Stream<CalendarState>> statesStreams =
-        Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
+    final Stream<Stream<CalendarState>> statesStreams = Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
       if (type == _EmitType.mood) {
         return _loadMoodStream(date);
       } else {
@@ -87,8 +86,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       }
     });
 
-    _streamHolder =
-        statesStreams.switchMap((streams) => streams).listen((state) {
+    _streamHolder = statesStreams.switchMap((streams) => streams).listen((state) {
       emit(state);
     });
   }
@@ -115,16 +113,14 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           final levels = monthLevels[currDay] ?? {};
 
           counter[currDay] = (counter[currDay] ?? 0) + 1;
-          monthLevels[currDay] =
-              _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
+          monthLevels[currDay] = _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
         }
 
         final monthLevelsAveraged = monthLevels.map(
           (date, value) => MapEntry(
             date,
             value.map(
-              (species, level) =>
-                  MapEntry(species, level ~/ (counter[date] ?? 1)),
+              (species, level) => MapEntry(species, level ~/ (counter[date] ?? 1)),
             ),
           ),
         );
@@ -186,14 +182,13 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     final RiscLevel dayRisc;
 
     if (dayPollen.isEmpty) {
-      final dayLevel =
-          dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
-                (value, element) => _join(
-                  value,
-                  element,
-                  (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
-                ),
-              );
+      final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
+            (value, element) => _join(
+              value,
+              element,
+              (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
+            ),
+          );
 
       dayRisc = riscEvaluatorUseCase.evaluateType(
         dayLevel,

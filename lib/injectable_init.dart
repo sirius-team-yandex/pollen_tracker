@@ -31,7 +31,7 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env);
+Future<void> configureDependencies({String env = Environment.dev}) async => await getIt.init(environment: env);
 
 @module
 abstract class NetworkModule {

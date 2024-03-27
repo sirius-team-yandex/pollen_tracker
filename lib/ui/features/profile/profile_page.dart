@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/theme_switching_button.dart';
@@ -44,6 +46,11 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(
               height: 66,
+            ),
+            BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                return Text('state: $state');
+              },
             ),
             Container(
               padding: const EdgeInsets.all(16.0),

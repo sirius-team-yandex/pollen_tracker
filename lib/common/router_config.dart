@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pollen_tracker/ui/app_scaffold.dart';
+import 'package:pollen_tracker/ui/features/select_profile/select_profile.dart';
+import 'package:pollen_tracker/ui/logged_in_app_scaffold.dart';
 import 'package:pollen_tracker/ui/features/calendar/calendar_page.dart';
 import 'package:pollen_tracker/ui/features/home/home_page.dart';
 import 'package:pollen_tracker/ui/features/introduction/welcome_page.dart';
@@ -15,6 +16,7 @@ abstract class RouteName {
   static const String profile = '/profile';
   static const String calendar = '/calendar';
   static const String welcome = '/welcome';
+  static const String selectProfile = '/selectProfile';
 }
 
 final routerConfig = GoRouter(
@@ -24,7 +26,7 @@ final routerConfig = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        return AppScaffold(child: child);
+        return LoggedInAppScaffoldWrapper(child: child);
       },
       routes: <RouteBase>[
         GoRoute(
@@ -50,6 +52,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: RouteName.welcome,
       builder: (context, state) => const WelcomePage(),
+    ),
+    GoRoute(
+      path: RouteName.selectProfile,
+      builder: (context, state) => const SelectProfileWrapper(),
     ),
   ],
 );

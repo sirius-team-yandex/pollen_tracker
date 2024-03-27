@@ -2,12 +2,13 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get_it/get_it.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
+import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
-import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
+import 'package:pollen_tracker/domain/models/config_entity.dart';
+import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -16,38 +17,69 @@ void main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      configureDependencies();
+      await configureDependencies();
       await initFirebase();
 
       logger.i('Starting app in main.dart');
-      runApp(const PollenApp());
+      runApp(
+        const PollenAppWrapper(),
+      );
     },
     (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),
   );
 }
 
-class PollenApp extends StatefulWidget {
-  const PollenApp({super.key});
+// TODO: все таки нужен inherited widget
+
+class PollenAppWrapper extends StatefulWidget {
+  const PollenAppWrapper({super.key});
 
   @override
-  State<PollenApp> createState() => PollenAppState();
+  State<PollenAppWrapper> createState() => _PollenAppWrapperState();
 }
 
-class PollenAppState extends State<PollenApp> {
-  ThemeMode selectedThemeMode = ThemeMode.system;
-  void updateThemeMode(ThemeMode mode) {
-    setState(() {
-      selectedThemeMode = mode;
-    });
+class _PollenAppWrapperState extends State<PollenAppWrapper> {
+  late final ConfigSubject configSubject;
+  late final StreamSubscription configSubscription;
+  late ConfigEntity configEntity;
+  @override
+  void initState() {
+    super.initState();
+    configSubject = getIt<ConfigSubject>();
+    configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: ThemeMode.dark);
+    configSubscription = configSubject.observe().listen(
+      (value) {
+        logger.d('listened $configEntity : oldValue $value');
+        setState(
+          () {
+            configEntity = value;
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    configSubscription.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final rep = GetIt.I<ProfileSubject>();
-    final st = rep.observeCurrent().listen((event) {});
+    return PollenApp(config: configEntity);
+  }
+}
 
-    st.cancel();
+class PollenApp extends StatelessWidget {
+  const PollenApp({super.key, required this.config});
 
+  final ConfigEntity? config;
+  final ThemeMode selectedThemeMode = ThemeMode.system;
+
+  @override
+  Widget build(BuildContext context) {
+    final selectedThemeMode = config?.darkTheme ?? ThemeMode.dark;
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
@@ -64,10 +96,10 @@ class PollenAppState extends State<PollenApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        locale: const Locale('ru'), // change it later
-        supportedLocales: const [
-          Locale('en'), // English
-          Locale('ru'), // Russian
+        locale: Locale(config?.locale.name ?? LocaleEnum.en.name), // change it later
+        supportedLocales: [
+          Locale(LocaleEnum.en.name), // English
+          Locale(LocaleEnum.ru.name), // Russian
         ],
       ),
     );

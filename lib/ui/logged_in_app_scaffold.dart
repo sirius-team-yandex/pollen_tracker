@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pollen_tracker/bloc/current_mood_bloc/current_mood_bloc.dart';
+import 'package:pollen_tracker/bloc/current_pollen_bloc/current_pollen_bloc.dart';
+import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/router_config.dart';
+
+import '../injectable_init.dart';
 
 class AppState {
   static Map<int, String> mapScreen = {
@@ -11,16 +17,42 @@ class AppState {
   static ValueNotifier<bool> showNavBar = ValueNotifier(true);
 }
 
-class AppScaffold extends StatefulWidget {
-  const AppScaffold({super.key, required this.child});
+class LoggedInAppScaffoldWrapper extends StatelessWidget {
+  const LoggedInAppScaffoldWrapper({super.key, required this.child});
+
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    // write multiblocprovider with value
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(
+          value: getIt<ProfileBloc>(),
+        ),
+        BlocProvider.value(
+          value: getIt<CurrentMoodBloc>(),
+        ),
+        BlocProvider.value(
+          value: getIt<CurrentPollenBloc>(),
+        ),
+      ],
+      child: LoggedInAppScaffold(
+        child: child,
+      ),
+    );
+  }
+}
+
+class LoggedInAppScaffold extends StatefulWidget {
+  const LoggedInAppScaffold({super.key, required this.child});
 
   final Widget child;
 
   @override
-  State<AppScaffold> createState() => _AppScaffoldState();
+  State<LoggedInAppScaffold> createState() => _LoggedInAppScaffoldState();
 }
 
-class _AppScaffoldState extends State<AppScaffold> {
+class _LoggedInAppScaffoldState extends State<LoggedInAppScaffold> {
   @override
   void initState() {
     super.initState();

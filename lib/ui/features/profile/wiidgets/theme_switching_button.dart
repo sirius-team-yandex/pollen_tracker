@@ -27,8 +27,10 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(context.theme.brightness == Brightness.dark ? context.S.dark_mode : context.S.light_mode,
-            style: context.T.displayMedium),
+        Text(
+          context.theme.brightness == Brightness.dark ? context.S.dark_mode : context.S.light_mode,
+          style: context.T.displayMedium,
+        ),
         const SizedBox(
           width: 4,
         ),

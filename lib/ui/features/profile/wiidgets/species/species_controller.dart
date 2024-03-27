@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
 
 class SpeciesController extends StatelessWidget {
@@ -16,7 +17,8 @@ class SpeciesController extends StatelessWidget {
           (i) => SpeciesWidget(
             text: userSpecies[i],
             action: () {
-              print(userSpecies[i]);
+              //TODO ивент
+              logger.i('ГОРОД');
             },
           ),
         ),

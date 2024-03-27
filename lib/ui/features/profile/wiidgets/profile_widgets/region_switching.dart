@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class RegionSwitcher extends StatelessWidget {
@@ -21,7 +22,8 @@ class RegionSwitcher extends StatelessWidget {
         splashFactory: NoSplash.splashFactory,
       ),
       onPressed: () {
-        print('ГОРОД');
+        //TODO ивент на смену города
+        logger.i('ГОРОД');
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

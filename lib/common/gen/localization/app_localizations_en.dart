@@ -70,4 +70,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get grass_poaceae => 'Grass / Poaceae';
+
+  @override
+  String get history => 'Record history';
+
+  @override
+  String get dark_mode => 'Dark mode';
+
+  @override
+  String get light_mode => 'Light mode';
+
+  @override
+  String get change_profile => 'Change profile';
 }

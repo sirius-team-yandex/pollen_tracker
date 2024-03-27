@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
@@ -24,10 +25,14 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          Theme.of(context).brightness == Brightness.dark ? 'Dark mode' : 'Light mode',
-          style: context.theme.textTheme.displayMedium,
+          context.theme.brightness == Brightness.dark ? context.S.dark_mode : context.S.light_mode,
+          style: context.T.displayMedium,
+        ),
+        const SizedBox(
+          width: 4,
         ),
         Switch(
           // This bool value toggles the switch.

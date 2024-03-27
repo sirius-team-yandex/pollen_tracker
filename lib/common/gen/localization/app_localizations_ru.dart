@@ -70,4 +70,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get grass_poaceae => 'Трава / Злаки';
+
+  @override
+  String get history => 'История записей';
+
+  @override
+  String get dark_mode => 'Темная тема';
+
+  @override
+  String get light_mode => 'Светлая тема';
+
+  @override
+  String get change_profile => 'Сменить профиль';
 }

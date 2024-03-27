@@ -221,6 +221,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Grass / Poaceae'**
   String get grass_poaceae;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'Record history'**
+  String get history;
+
+  /// No description provided for @dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get dark_mode;
+
+  /// No description provided for @light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get light_mode;
+
+  /// No description provided for @change_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Change profile'**
+  String get change_profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

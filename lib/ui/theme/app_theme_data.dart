@@ -40,6 +40,7 @@ ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
       brightness: theme.isDarkMode ? Brightness.dark : Brightness.light,
       scaffoldBackgroundColor: theme.main.background,
       appBarTheme: AppBarTheme(
+        toolbarHeight: 42,
         backgroundColor: theme.main.background,
         foregroundColor: theme.main.background,
         centerTitle: true,
@@ -83,21 +84,45 @@ class AppThemeData {
     );
   }
 
+  TextStyle get headlineLarge => create(
+        fontSize: 24,
+        figmaHeight: 30,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
+      );
+
+  TextStyle get headlineMedium => create(
+        fontSize: 18,
+        figmaHeight: 22,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
+      );
+
   TextStyle get displayLarge => create(
-        fontSize: 22,
-        figmaHeight: 32,
-        fontWeight: FontWeight.w700,
+        fontSize: 20,
+        figmaHeight: 24,
+        fontWeight: FontWeight.w500,
         color: main.primary,
       );
   TextStyle get displayMedium => create(
-        fontSize: 20,
-        figmaHeight: 32,
-        fontWeight: FontWeight.w300,
+        fontSize: 16,
+        figmaHeight: 20,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
+      );
+
+  TextStyle get displaySmall => create(
+        fontSize: 14,
+        figmaHeight: 16,
+        fontWeight: FontWeight.w400,
         color: main.primary,
       );
 
   TextTheme get textTheme => TextTheme(
-        displayMedium: displayMedium,
+        headlineLarge: headlineLarge,
+        headlineMedium: headlineMedium,
         displayLarge: displayLarge,
+        displayMedium: displayMedium,
+        displaySmall: displaySmall,
       );
 }

@@ -21,5 +21,9 @@
     "chenopod": "Ченопод",
     "ragweed": "Амброзия",
     "nettle": "Крапива",
-    "grass_poaceae": "Трава / Злаки"
+    "grass_poaceae": "Трава / Злаки",
+    "history": "История записей",
+    "dark_mode": "Темная тема",
+    "light_mode":"Светлая тема",
+    "change_profile":"Сменить профиль"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/ui/widgets/pages_appbar.dart';
 
 class CityLocationWidget extends StatelessWidget {
   const CityLocationWidget({super.key, required this.location});
@@ -6,20 +7,9 @@ class CityLocationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.location_on),
-        const SizedBox(width: 12.0),
-        SizedBox(
-          width: 200,
-          child: Text(
-            location,
-            style: Theme.of(context).textTheme.displayMedium,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
+    return PagesAppBar(
+      title: location,
+      icon: Icons.location_on,
     );
   }
 }

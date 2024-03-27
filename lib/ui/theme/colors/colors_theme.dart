@@ -31,4 +31,5 @@ class ColorsTheme {
 
 extension CustomThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
+  TextTheme get T => Theme.of(this).textTheme;
 }

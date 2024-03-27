@@ -18,7 +18,6 @@ extension CurrentPollenBuilder on BuildContext {
   CurrentPollenBloc? get currentPollenBloc => BlocProvider.of<CurrentPollenBloc>(this);
 }
 
-// TODO: зарегать в DI
 @injectable
 class CurrentPollenBloc extends Bloc<CurrentPollenEvent, CurrentPollenState> {
   final PollenSubject pollenRecordSubject;
@@ -29,7 +28,7 @@ class CurrentPollenBloc extends Bloc<CurrentPollenEvent, CurrentPollenState> {
   CurrentPollenBloc({required this.pollenRecordSubject, required this.currentPollenRepository})
       : super(const CurrentPollenState.init()) {
     final DateTime startDate = DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
-    final DateTime endDate = startDate.copyWith(hour: 23, minute: 59, second: 59); // TODO
+    final DateTime endDate = startDate.copyWith(hour: 23, minute: 59, second: 59);
     pollenSubscription = pollenRecordSubject.observeIn(startDate, endDate).listen(
       (pollens) {
         add(

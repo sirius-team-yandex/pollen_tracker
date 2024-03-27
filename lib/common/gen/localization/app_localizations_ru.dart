@@ -8,8 +8,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get health_check => 'Выберите сегодняшнее ощущение здоровья';
 
   @override
-  String get welcome_description_1 =>
-      'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
+  String get welcome_description_1 => 'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
 
   @override
   String get welcome_description_2 => 'Сохраняйте состояние своего здоровья для подробной статистики.';
@@ -70,4 +69,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get grass_poaceae => 'Трава / Злаки';
+
+  @override
+  String get history => 'История записей';
+
+  @override
+  String get dark_mode => 'Темная тема';
+
+  @override
+  String get light_mode => 'Светлая тема';
+
+  @override
+  String get change_profile => 'Сменить профиль';
 }

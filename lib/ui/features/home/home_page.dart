@@ -5,10 +5,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
-import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/dialogs/mood_set_record_dialog.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/widgets/city_location_widget.dart';
+import 'package:pollen_tracker/ui/widgets/custom_button.dart';
 import 'package:pollen_tracker/ui/widgets/custom_circle_status_painter.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,6 +18,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const CityLocationWidget(location: 'Sirius, Russia'),
+      ),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -25,7 +29,6 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CityLocationWidget(location: 'Sirius, Russia'),
                 const SizedBox(height: 32.0),
                 Stack(
                   alignment: Alignment.center,
@@ -43,28 +46,22 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 32.0),
-                Container(
+                CustomButton(
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32.0),
-                    color: context.myColors.primaryGreen,
+                  child: Text(
+                    context.S.how_are_you_feeling,
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  child: TextButton(
-                    onPressed: () async {
-                      await showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) => const MoodSetRecordDialog(),
-                      );
-                    },
-                    child: Text(
-                      AppLocalizations.of(context).how_are_you_feeling,
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
+                  onPressed: () async {
+                    await showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) => const MoodSetRecordDialog(),
+                    );
+                  },
                 ),
                 Text(
-                  AppLocalizations.of(context).atmospheric_pollution,
-                  style: Theme.of(context).textTheme.displayMedium,
+                  context.S.atmospheric_pollution,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

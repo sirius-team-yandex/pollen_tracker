@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/ui/widgets/pages_appbar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -34,9 +36,9 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Heatmap Calendar',
-          style: Theme.of(context).textTheme.displayMedium,
+        title: PagesAppBar(
+          title: context.S.history,
+          icon: Icons.history,
         ),
       ),
       body: TableCalendar(

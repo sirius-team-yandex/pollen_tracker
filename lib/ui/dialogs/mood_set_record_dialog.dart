@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class MoodSetRecordDialog extends StatelessWidget {
@@ -30,7 +30,7 @@ class MoodSetRecordDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              AppLocalizations.of(context).how_are_you_feeling,
+              context.S.how_are_you_feeling,
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(height: 24.0),
@@ -38,7 +38,7 @@ class MoodSetRecordDialog extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               decoration: BoxDecoration(
-                color: context.myColors.darkGreen, // TODO: UI color
+                color: context.myColors.darkGreen,
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(color: Colors.grey.shade300),
               ),
@@ -48,7 +48,7 @@ class MoodSetRecordDialog extends StatelessWidget {
                 maxLines: null,
                 style: Theme.of(context).textTheme.displayMedium,
                 decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context).write_a_comment,
+                  hintText: context.S.write_a_comment,
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.all(16.0),
                 ),
@@ -66,7 +66,7 @@ class MoodSetRecordDialog extends StatelessWidget {
                   // TODO: implement BLoC logic for saving
                   Navigator.of(context).pop();
                 },
-                child: Text(AppLocalizations.of(context).save),
+                child: Text(context.S.save),
               ),
             ),
             const SizedBox(height: 30.0),

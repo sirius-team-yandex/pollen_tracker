@@ -21,5 +21,9 @@
     "chenopod": "Chenopod",
     "ragweed": "Ragweed",
     "nettle": "Nettle",
-    "grass_poaceae": "Grass / Poaceae"
+    "grass_poaceae": "Grass / Poaceae",
+    "history": "Record history",
+    "dark_mode": "Dark mode",
+    "light_mode":"Light mode",
+    "change_profile":"Change profile"
 }

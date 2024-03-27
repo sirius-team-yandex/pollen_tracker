@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -32,11 +32,11 @@ class _WelcomePageState extends State<WelcomePage> {
               // Your pages go here:
               _SubPageView(
                 assetSvgName: 'doctor_and_patien',
-                description: AppLocalizations.of(context).welcome_description_1,
+                description: context.S.welcome_description_1,
               ),
               _SubPageView(
                 assetSvgName: 'woman_with_allergen',
-                description: AppLocalizations.of(context).welcome_description_2,
+                description: context.S.welcome_description_2,
               ),
               // TODO:
               Center(

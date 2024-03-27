@@ -10,12 +10,19 @@ class RegionSwitcher extends StatelessWidget {
     return TextButton(
       //TODO Настроить сплеш
       style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(6),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         padding: EdgeInsets.zero,
         splashFactory: NoSplash.splashFactory,
       ),
-      onPressed: () {},
+      onPressed: () {
+        print('ГОРОД');
+      },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -46,7 +46,7 @@ class ProfileWidget extends StatelessWidget {
                 IconSurround(
                   icon: Icons.bookmark_border,
                   padding: EdgeInsets.only(bottom: 8),
-                  child: TagController(
+                  child: SpeciesController(
                     userSpecies: ['Бибааааааа', 'Бобаааааа', 'Ваня', 'Руслан'],
                   ),
                 ),

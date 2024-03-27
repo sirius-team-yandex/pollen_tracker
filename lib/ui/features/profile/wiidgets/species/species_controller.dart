@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
 
-class TagController extends StatelessWidget {
+class SpeciesController extends StatelessWidget {
   final List<String> userSpecies;
-  const TagController({super.key, required this.userSpecies});
+  const SpeciesController({super.key, required this.userSpecies});
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 8,
-      runSpacing: 6,
+      spacing: 12,
+      runSpacing: 4,
       children: [
         ...List.generate(
           userSpecies.length,
-          (i) => SpeciesWidget(text: userSpecies[i]),
+          (i) => SpeciesWidget(
+            text: userSpecies[i],
+            action: () {
+              print('${userSpecies[i]}');
+            },
+          ),
         ),
+        const SpeciesWidget(
+          child: Icon(Icons.add),
+        )
       ],
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 
 class CustomButton extends StatelessWidget {
   final BorderRadius? borderRadius;

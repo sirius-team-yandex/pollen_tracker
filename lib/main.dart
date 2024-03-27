@@ -86,7 +86,7 @@ class PollenApp extends StatelessWidget {
     return AppTheme(
       data: AppThemeData.light(),
       child: MaterialApp.router(
-        themeMode: ThemeMode.dark,
+        themeMode: selectedThemeMode,
         debugShowCheckedModeBanner: false,
         routerConfig: routerConfig,
         theme: materialThemeFromAppTheme(lightAppThemeData),

@@ -15,6 +15,7 @@ import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
+import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 void main() async {
@@ -56,11 +57,69 @@ class PollenApp extends StatelessWidget {
         ],
         home: const Scaffold(
           body: Center(
-            child: TestPage(),
+            child: ColoredColumn(
+              width: 48,
+              height: 48 * 4,
+              percent: 0.74,
+            ),
           ),
         ),
       ),
     );
+  }
+}
+
+class ColoredColumn extends StatelessWidget {
+  const ColoredColumn({
+    required this.width,
+    required this.height,
+    required this.percent,
+    this.caption,
+    super.key,
+  });
+
+  final double width;
+  final double height;
+  final double percent;
+  final String? caption;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('12:00'),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(width / 2),
+          child: Container(
+            color: context.myColors.primaryGreen,
+            width: width,
+            height: height,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(width / 2),
+                child: SizedBox(
+                  width: width,
+                  height: height * percent,
+                  child: ColoredBox(
+                    color: _calculateColor(percent),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Color _calculateColor(double percent) {
+    if (percent <= 0.25) {
+      return MyColors.greenForecast;
+    } else if (percent < 0.75) {
+      return MyColors.yellowForecast;
+    } else {
+      return MyColors.redForecast;
+    }
   }
 }
 

@@ -29,7 +29,7 @@ class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
 
   @override
   Stream<ConfigEntity> observe() {
-    return datasource.observe().doOnEach((notification) { logger.d('$notification');}).map(
+    return datasource.observe().map(
           (config) => config != null ? configModelIsarToEntityMapper.map(config) : _defaultConfig(),
         );
   }

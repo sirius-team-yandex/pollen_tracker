@@ -22,55 +22,93 @@ void main() async {
 
       logger.i('Starting app in main.dart');
       runApp(
-        ConfigInheritedWidget(
-          configSubject: getIt<ConfigSubject>(),
-          child: const PollenApp(),
-        ),
+        const PollenAppWrapper(),
       );
     },
     (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),
   );
 }
 
-class ConfigInheritedWidget extends InheritedWidget {
-  final ConfigSubject configSubject;
-  late StreamSubscription configSubscription;
-  late ConfigEntity configEntity;
+// TODO: все таки нужен inherited widget
 
-  ConfigInheritedWidget({
-    super.key,
-    required this.configSubject,
-    required super.child,
-  }) {
+class PollenAppWrapper extends StatefulWidget {
+  const PollenAppWrapper({super.key});
+
+  @override
+  State<PollenAppWrapper> createState() => _PollenAppWrapperState();
+}
+
+class _PollenAppWrapperState extends State<PollenAppWrapper> {
+  late final ConfigSubject configSubject;
+  late final StreamSubscription configSubscription;
+  late ConfigEntity configEntity;
+  @override
+  void initState() {
+    super.initState();
+    configSubject = getIt<ConfigSubject>();
     configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: true);
     configSubscription = configSubject.observe().listen(
       (value) {
-        logger.d('listened $configEntity');
-        configEntity = value;
+        logger.d('listened $configEntity : oldValue $value');
+        setState(
+          () {
+            configEntity = value;
+          },
+        );
       },
     );
   }
 
-  static ConfigInheritedWidget? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ConfigInheritedWidget>();
+  @override
+  void dispose() {
+    configSubscription.cancel();
+    super.dispose();
   }
 
   @override
-  bool updateShouldNotify(ConfigInheritedWidget oldWidget) {
-    logger.d('updateShouldNotify');
-    return configEntity != oldWidget.configEntity;
+  Widget build(BuildContext context) {
+    return PollenApp(config: configEntity);
   }
 }
 
-class PollenApp extends StatelessWidget {
-  const PollenApp({super.key});
+// class ConfigInheritedWidget extends InheritedWidget {
+//   final ConfigSubject configSubject;
+//   final StreamSubscription configSubscription;
+//   final ConfigEntity configEntity;
 
+//   ConfigInheritedWidget({
+//     super.key,
+//     required this.configSubject,
+//     required super.child,
+//   }) {
+//     configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: true);
+//     configSubscription = configSubject.observe().listen(
+//       (value) {
+//         logger.d('listened $configEntity : oldValue $value');
+//         configEntity = value;
+//       },
+//     );
+//   }
+
+//   static ConfigInheritedWidget? of(BuildContext context) {
+//     return context.dependOnInheritedWidgetOfExactType<ConfigInheritedWidget>();
+//   }
+
+//   @override
+//   bool updateShouldNotify(ConfigInheritedWidget oldWidget) {
+//     logger.d('updateShouldNotify');
+//     return configEntity != oldWidget.configEntity;
+//   }
+// }
+
+class PollenApp extends StatelessWidget {
+  const PollenApp({super.key, required this.config});
+
+  final ConfigEntity? config;
   final ThemeMode selectedThemeMode = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
-    final configInheritedWidget = ConfigInheritedWidget.of(context);
-    final ConfigEntity? config = configInheritedWidget?.configEntity; // TODO: invoke
     logger.e('REBUILD $config');
     final selectedThemeMode = config?.darkTheme ?? false ? ThemeMode.dark : ThemeMode.light;
     final lightAppThemeData = AppThemeData.light();

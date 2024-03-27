@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
+import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
+import 'package:pollen_tracker/domain/models/config_entity.dart';
+import 'package:pollen_tracker/domain/repositories/config_repository.dart';
+import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/theme_switching_button.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -21,6 +25,7 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+         
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(

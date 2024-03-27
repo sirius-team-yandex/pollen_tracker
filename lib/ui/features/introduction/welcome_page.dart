@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pollen_tracker/common/config.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/router_config.dart';
-import 'package:pollen_tracker/data/repositories/config_repository_impl.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
@@ -67,11 +65,21 @@ class _WelcomePageState extends State<WelcomePage> {
 
                  TextButton(
                   onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
+                    locale: LocaleEnum.ru,
+                    darkTheme: false,
+                  ),),
+                  child: Text(
+                    'set RU LIGHT',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
                     locale: LocaleEnum.en,
                     darkTheme: true,
                   ),),
                   child: Text(
-                    'Change config ',
+                    'set RU DARK ${AppLocalizations.of(context).alder} ',
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ),

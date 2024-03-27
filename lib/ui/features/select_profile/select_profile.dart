@@ -17,23 +17,25 @@ class SelectProfileWrapper extends StatelessWidget {
 }
 
 class _SelectProfile extends StatelessWidget {
-  const _SelectProfile({super.key});
+  const _SelectProfile();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfilesAllBloc, ProfilesAllState>(builder: (context, state) {
-      return Scaffold(
+    return BlocBuilder<ProfilesAllBloc, ProfilesAllState>(
+      builder: (context, state) {
+        return Scaffold(
           body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('state $state'),
-          TextButton(
-            onPressed: () => context.goNamed('example', extra:context.read<ProfilesAllBloc>()),
-            child: const Text('example'),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('state $state'),
+              TextButton(
+                onPressed: () => context.goNamed('example', extra: context.read<ProfilesAllBloc>()),
+                child: const Text('example'),
+              ),
+            ],
           ),
-        ],
-      ));
-    });
+        );
+      },
+    );
   }
 }
-

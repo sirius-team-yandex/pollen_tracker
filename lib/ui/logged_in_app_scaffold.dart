@@ -17,7 +17,6 @@ class AppState {
   static ValueNotifier<bool> showNavBar = ValueNotifier(true);
 }
 
-
 class LoggedInAppScaffoldWrapper extends StatelessWidget {
   const LoggedInAppScaffoldWrapper({super.key, required this.child});
 
@@ -30,14 +29,16 @@ class LoggedInAppScaffoldWrapper extends StatelessWidget {
         BlocProvider.value(
           value: getIt<ProfileBloc>(),
         ),
-         BlocProvider.value(
+        BlocProvider.value(
           value: getIt<CurrentMoodBloc>(),
         ),
-         BlocProvider.value(
+        BlocProvider.value(
           value: getIt<CurrentPollenBloc>(),
         ),
       ],
-      child: LoggedInAppScaffold(child: child,),
+      child: LoggedInAppScaffold(
+        child: child,
+      ),
     );
   }
 }

@@ -56,37 +56,39 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                     ),
                     TextButton(
-                  onPressed: () => context.go(RouteName.selectProfile),
-                  child: Text(
-                    'please move me to select profile',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ),
-
-                 TextButton(
-                  onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
-                    locale: LocaleEnum.ru,
-                    darkTheme: ThemeMode.dark,
-                  ),),
-                  child: Text(
-                    'set RU LIGHT',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
-                    locale: LocaleEnum.en,
-                    darkTheme: ThemeMode.light,
-                  ),),
-                  child: Text(
-                    'set RU DARK ${AppLocalizations.of(context).alder} ',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ),
+                      onPressed: () => context.go(RouteName.selectProfile),
+                      child: Text(
+                        'please move me to select profile',
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => getIt<ConfigRepository>().set(
+                        const ConfigEntity(
+                          locale: LocaleEnum.ru,
+                          darkTheme: ThemeMode.dark,
+                        ),
+                      ),
+                      child: Text(
+                        'set RU LIGHT',
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => getIt<ConfigRepository>().set(
+                        const ConfigEntity(
+                          locale: LocaleEnum.en,
+                          darkTheme: ThemeMode.light,
+                        ),
+                      ),
+                      child: Text(
+                        'set RU DARK ${AppLocalizations.of(context).alder} ',
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ),
                   ],
                 ),
               ),
-               
             ],
           ),
           Positioned(

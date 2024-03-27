@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
@@ -26,7 +25,8 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(Theme.of(context).brightness == Brightness.dark ? 'Dark mode' : 'Light mode', style: context.theme.textTheme.displayMedium),
+        Text(Theme.of(context).brightness == Brightness.dark ? 'Dark mode' : 'Light mode',
+            style: context.theme.textTheme.displayMedium),
         Switch(
           // This bool value toggles the switch.
           value: Theme.of(context).brightness == Brightness.dark,
@@ -42,7 +42,6 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
                   darkTheme: ThemeMode.dark,
                 ),
               );
-             
             } else {
               getIt<ConfigRepository>().set(
                 ConfigEntity(
@@ -50,7 +49,6 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
                   darkTheme: ThemeMode.light,
                 ),
               );
-         
             }
             setState(
               () {

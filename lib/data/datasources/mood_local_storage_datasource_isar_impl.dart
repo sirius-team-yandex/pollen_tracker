@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 
-@singleton
+@injectable
 // WARNING: We should use only UTC time as arguments to avoid possible errors!!
 class MoodLocalStorageDatasourceIsar {
   MoodLocalStorageDatasourceIsar({required this.isar});

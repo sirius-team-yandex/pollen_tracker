@@ -16,13 +16,13 @@ class SpeciesController extends StatelessWidget {
           (i) => SpeciesWidget(
             text: userSpecies[i],
             action: () {
-              print('${userSpecies[i]}');
+              print(userSpecies[i]);
             },
           ),
         ),
         const SpeciesWidget(
           child: Icon(Icons.add),
-        )
+        ),
       ],
     );
   }

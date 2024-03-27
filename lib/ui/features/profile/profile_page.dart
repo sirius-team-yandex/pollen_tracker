@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widget.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widget.dart' as v2;
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
@@ -36,7 +35,7 @@ class ProfilePage extends StatelessWidget {
               color: context.myColors.darkGreen,
               child: IconSurround(
                 icon: Icons.cached_rounded,
-                child: Text('Сменить профиль', style: context.T.headlineMedium),
+                child: Text(context.S.change_profile, style: context.T.headlineMedium),
               ),
             ),
           ],

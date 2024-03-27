@@ -5,7 +5,6 @@ import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/name
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/region_switching.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_controller.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/theme_switching_button.dart';
-import 'package:pollen_tracker/ui/theme/theme.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 

@@ -21,7 +21,7 @@ class SpeciesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: (text != null) ? EdgeInsets.symmetric(horizontal: 12) : EdgeInsets.zero,
+        padding: (text != null) ? const EdgeInsets.symmetric(horizontal: 12) : EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.circular(36),
         ),

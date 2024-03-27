@@ -31,7 +31,7 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies({String env = Environment.dev}) => getIt.init(environment: env);
+Future<void> configureDependencies({String env = Environment.dev}) async => await getIt.init(environment: env);
 
 @module
 abstract class NetworkModule {
@@ -93,6 +93,7 @@ abstract class PollenModule {
 abstract class IsarModule {
   // We presolve future so we should have Isar, not Future<Isar> in our dependency graph
   @preResolve
+  @singleton
   Future<Isar> get isar async {
     final dir = await getApplicationDocumentsDirectory();
 

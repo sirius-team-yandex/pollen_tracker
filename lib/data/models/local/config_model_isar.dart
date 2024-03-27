@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 
@@ -10,7 +11,8 @@ class ConfigModelIsar {
   int? currProfileId;
   @enumerated
   LocaleEnum locale;
-  bool isDark;
+  @enumerated
+  ThemeMode isDark;
 
   ConfigModelIsar({
     required this.currProfileId,

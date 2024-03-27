@@ -46,7 +46,7 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
   void initState() {
     super.initState();
     configSubject = getIt<ConfigSubject>();
-    configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: true);
+    configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: ThemeMode.dark);
     configSubscription = configSubject.observe().listen(
       (value) {
         logger.d('listened $configEntity : oldValue $value');
@@ -71,36 +71,6 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
   }
 }
 
-// class ConfigInheritedWidget extends InheritedWidget {
-//   final ConfigSubject configSubject;
-//   final StreamSubscription configSubscription;
-//   final ConfigEntity configEntity;
-
-//   ConfigInheritedWidget({
-//     super.key,
-//     required this.configSubject,
-//     required super.child,
-//   }) {
-//     configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: true);
-//     configSubscription = configSubject.observe().listen(
-//       (value) {
-//         logger.d('listened $configEntity : oldValue $value');
-//         configEntity = value;
-//       },
-//     );
-//   }
-
-//   static ConfigInheritedWidget? of(BuildContext context) {
-//     return context.dependOnInheritedWidgetOfExactType<ConfigInheritedWidget>();
-//   }
-
-//   @override
-//   bool updateShouldNotify(ConfigInheritedWidget oldWidget) {
-//     logger.d('updateShouldNotify');
-//     return configEntity != oldWidget.configEntity;
-//   }
-// }
-
 class PollenApp extends StatelessWidget {
   const PollenApp({super.key, required this.config});
 
@@ -110,13 +80,13 @@ class PollenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logger.e('REBUILD $config');
-    final selectedThemeMode = config?.darkTheme ?? false ? ThemeMode.dark : ThemeMode.light;
+    final selectedThemeMode = config?.darkTheme ?? ThemeMode.dark;
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
       data: AppThemeData.light(),
       child: MaterialApp.router(
-        themeMode: selectedThemeMode,
+        themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
         routerConfig: routerConfig,
         theme: materialThemeFromAppTheme(lightAppThemeData),

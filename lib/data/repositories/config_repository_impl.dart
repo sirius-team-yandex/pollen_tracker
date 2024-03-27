@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/logger.dart';
@@ -7,7 +8,6 @@ import 'package:pollen_tracker/data/mappers/config_mappers/config_model_to_confi
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_subject.dart';
-import 'package:rxdart/transformers.dart';
 
 @injectable
 class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
@@ -41,5 +41,5 @@ class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
   }
 
   // TODO: get default params from some contant object or from dynamically from the system
-  ConfigEntity _defaultConfig() => const ConfigEntity(currProfileId: null, locale: LocaleEnum.ru, darkTheme: false);
+  ConfigEntity _defaultConfig() => const ConfigEntity(currProfileId: null, locale: LocaleEnum.ru, darkTheme: ThemeMode.system);
 }

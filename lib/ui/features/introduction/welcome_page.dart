@@ -66,7 +66,7 @@ class _WelcomePageState extends State<WelcomePage> {
                  TextButton(
                   onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
                     locale: LocaleEnum.ru,
-                    darkTheme: false,
+                    darkTheme: ThemeMode.dark,
                   ),),
                   child: Text(
                     'set RU LIGHT',
@@ -76,7 +76,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 TextButton(
                   onPressed: () => getIt<ConfigRepository>().set(const ConfigEntity(
                     locale: LocaleEnum.en,
-                    darkTheme: true,
+                    darkTheme: ThemeMode.light,
                   ),),
                   child: Text(
                     'set RU DARK ${AppLocalizations.of(context).alder} ',

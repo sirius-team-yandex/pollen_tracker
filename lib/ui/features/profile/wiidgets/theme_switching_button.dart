@@ -39,7 +39,7 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
               getIt<ConfigRepository>().set(
                 ConfigEntity(
                   locale: Localizations.localeOf(context).languageCode == 'en' ? LocaleEnum.en : LocaleEnum.ru,
-                  darkTheme: true,
+                  darkTheme: ThemeMode.dark,
                 ),
               );
              
@@ -47,7 +47,7 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
               getIt<ConfigRepository>().set(
                 ConfigEntity(
                   locale: Localizations.localeOf(context).languageCode == 'en' ? LocaleEnum.en : LocaleEnum.ru,
-                  darkTheme: false,
+                  darkTheme: ThemeMode.light,
                 ),
               );
          

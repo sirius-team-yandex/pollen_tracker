@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 
@@ -8,6 +9,6 @@ class ConfigEntity with _$ConfigEntity {
   const factory ConfigEntity({
     int? currProfileId,
     required LocaleEnum locale,
-    required bool darkTheme,
+    required ThemeMode darkTheme,
   }) = _ConfigEntity;
 }

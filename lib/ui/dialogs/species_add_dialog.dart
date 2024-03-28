@@ -7,7 +7,8 @@ import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widg
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class SpeciesAddDialog extends StatelessWidget {
-  SpeciesAddDialog({super.key, required this.actualSpecies});
+  SpeciesAddDialog({super.key, required this.actualSpecies, this.callback});
+  final void Function(Species)? callback;
   final List<Species> actualSpecies;
   final List<Species> allSpecies = Species.values.where((element) => element.type == SpeciesType.tree).toList();
   @override
@@ -53,7 +54,7 @@ class SpeciesAddDialog extends StatelessWidget {
                           text: e.name,
                           action: () {
                             getIt<ProfileBloc>().addSpecies(e);
-
+                            callback?.call(e);
                             Navigator.of(context).pop();
                           },
                         ),

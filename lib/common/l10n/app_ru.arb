@@ -33,5 +33,8 @@
     "add_species": "Добавить аллерген",    
     "species_added": "Аллерген добавлен. Не болейте",
     "species_deleted": "Аллерген удален",
-    "your_city_changed_on": "Ваш город изменен на"
+    "your_city_changed_on": "Ваш город изменен на",
+    "your_profile_deleted": "Ваш профиль удален",
+    "long_press_for_remove": "Нажмите и удерживайте, чтобы убрать",
+    "language": "Сменить язык"
 }

@@ -88,10 +88,7 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('ru')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru')];
 
   /// No description provided for @health_check.
   ///
@@ -294,8 +291,26 @@ abstract class AppLocalizations {
   /// No description provided for @your_city_changed_on.
   ///
   /// In en, this message translates to:
-  /// **'Ваш город изменен на'**
+  /// **'Your city changed on'**
   String get your_city_changed_on;
+
+  /// No description provided for @your_profile_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile deleted'**
+  String get your_profile_deleted;
+
+  /// No description provided for @long_press_for_remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press for remove'**
+  String get long_press_for_remove;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -314,18 +329,16 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'ru': return AppLocalizationsRu();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'ru':
+      return AppLocalizationsRu();
   }
 
-  throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

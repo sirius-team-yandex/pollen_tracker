@@ -105,4 +105,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get your_city_changed_on => 'Ваш город изменен на';
+
+  @override
+  String get your_profile_deleted => 'Ваш профиль удален';
+
+  @override
+  String get long_press_for_remove => 'Нажмите и удерживайте, чтобы убрать';
 }

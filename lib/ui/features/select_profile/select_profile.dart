@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/bloc/profiles_all_bloc/profiles_all_bloc.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/localization.dart';
@@ -14,9 +15,11 @@ import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
+import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_controller.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 import 'package:pollen_tracker/ui/widgets/input_text_field_widget.dart';
+import 'package:pollen_tracker/ui/widgets/notification_toast.dart';
 import 'package:pollen_tracker/ui/widgets/search_text_field_and_result_widget.dart';
 
 class SelectProfileWrapper extends StatelessWidget {
@@ -61,11 +64,6 @@ class _SelectProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO!: REMOVE
-    List<ProfileEntity> profilesMock = [
-      const ProfileEntity(name: 'profile 1', species: [], profileId: 1, cityId: 1),
-      const ProfileEntity(name: 'profile 2', species: [], profileId: 2, cityId: 2),
-    ];
     return BlocBuilder<ProfilesAllBloc, ProfilesAllState>(
       builder: (context, state) {
         return Scaffold(
@@ -83,11 +81,6 @@ class _SelectProfile extends StatelessWidget {
                     return const CircularProgressIndicator(); // TODO: show error
                   },
                   loaded: (profiles) {
-                    if (profiles.isEmpty) {
-                      profiles = profilesMock; // TODO!: REMOVE
-                    }
-
-                    //  Text(profiles[index].name, style: context.T.headlineMedium)
                     return ListView.separated(
                       padding: const EdgeInsets.all(32),
                       itemCount: profiles.length + 1,
@@ -187,12 +180,28 @@ class CreateProfileDialog extends StatefulWidget {
 class _CreateProfileDialogState extends State<CreateProfileDialog> {
   String profileName = '';
   late CityEntity selectedCity;
-  late List<Species> selectedSpecies;
+  List<Species> selectedSpecies = [];
   void _setCity(CityEntity city) => setState(() => selectedCity = city);
   void _setName(String name) => setState(() => profileName = name);
 
   int _getUniqueId() {
     return Random().nextInt(10000);
+  }
+
+  void _addToSelectedSpecies(Species species) {
+    setState(() {
+      if (!selectedSpecies.contains(species)) {
+        selectedSpecies.add(species);
+      }
+    });
+  }
+
+  void _removeFromSelectedSpecies(Species species) {
+    setState(() {
+      if (selectedSpecies.contains(species)) {
+        selectedSpecies.remove(species);
+      }
+    });
   }
 
   @override
@@ -239,6 +248,12 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
               onSelectCityCallback: _setCity,
             ),
             const SizedBox(height: 30.0),
+            SpeciesController(
+              userSpecies: selectedSpecies,
+              callback: _addToSelectedSpecies,
+              removeCallback: _removeFromSelectedSpecies,
+            ),
+            const SizedBox(height: 30.0),
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -247,10 +262,9 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
               ),
               child: TextButton(
                 onPressed: () {
-                  // TODO: SPECIES ADDD
                   widget.selectProfileCallback(
                     context,
-                    ProfileEntity(name: profileName, species: [], profileId: _getUniqueId(), cityId: selectedCity.id),
+                    ProfileEntity(name: profileName, species: selectedSpecies, profileId: _getUniqueId(), cityId: selectedCity.id),
                   );
                   Navigator.of(context).pop();
                 },
@@ -308,6 +322,14 @@ class DeleteProfileDialog extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   removeProfileCallback(context, profile);
+                  showOverlayNotification(
+                    duration: const Duration(seconds: 5),
+                    (context) {
+                      return NotificationToast(
+                        message: context.S.your_profile_deleted,
+                      );
+                    },
+                  );
                   Navigator.of(context).pop();
                 },
                 child: const Text('Удалить'),

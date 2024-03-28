@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
+import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/name_textfield.dart';
@@ -64,6 +65,7 @@ class ProfileWidget extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 8),
                               child: SpeciesController(
                                 userSpecies: value.profile.species,
+                                removeCallback: getIt<ProfileBloc>().removeSpecies,
                               ),
                             ),
                           ],

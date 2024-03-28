@@ -33,5 +33,7 @@
     "add_species": "Add Species",
     "species_added": "Species added",
     "species_deleted": "Species deleted",
-    "your_city_changed_on": "Ваш город изменен на"
+    "your_city_changed_on": "Your city changed on",
+    "your_profile_deleted": "Your profile deleted",
+    "long_press_for_remove": "Long press for remove"
 }

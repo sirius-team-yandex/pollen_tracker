@@ -294,8 +294,20 @@ abstract class AppLocalizations {
   /// No description provided for @your_city_changed_on.
   ///
   /// In en, this message translates to:
-  /// **'Ваш город изменен на'**
+  /// **'Your city changed on'**
   String get your_city_changed_on;
+
+  /// No description provided for @your_profile_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile deleted'**
+  String get your_profile_deleted;
+
+  /// No description provided for @long_press_for_remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press for remove'**
+  String get long_press_for_remove;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

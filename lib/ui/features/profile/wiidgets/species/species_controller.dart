@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/dialogs/species_add_dialog.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
+import 'package:pollen_tracker/ui/widgets/notification_toast.dart';
 
 class SpeciesController extends StatelessWidget {
   final List<Species> userSpecies;
-  const SpeciesController({super.key, required this.userSpecies});
-
+  const SpeciesController({super.key, required this.userSpecies, this.callback, this.removeCallback});
+  final void Function(Species)? callback;
+  final void Function(Species)? removeCallback;
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => SpeciesAddDialog(
         actualSpecies: userSpecies,
+        callback: callback,
       ),
     );
   }
@@ -30,11 +35,18 @@ class SpeciesController extends StatelessWidget {
           (i) => SpeciesWidget(
             text: userSpecies[i].name,
             action: () {
-              //TODO ивент
-              logger.i('ГОРОД');
+              showOverlayNotification(
+                duration: const Duration(seconds: 5),
+                (context) {
+                  return NotificationToast(
+                    message: context.S.long_press_for_remove,
+                    needShowSmile: true,
+                  );
+                },
+              );
             },
             longPressAction: () => {
-              getIt<ProfileBloc>().removeSpecies(userSpecies[i]),
+              removeCallback?.call(userSpecies[i]),
             },
           ),
         ),

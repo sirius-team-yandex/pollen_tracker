@@ -30,6 +30,7 @@ import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/ui/features/splash_screen.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
@@ -99,7 +100,7 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
   @override
   Widget build(BuildContext context) {
     if (configEntity == null) {
-      return const CircularProgressIndicator(); // TODO: show splash
+      return const SplashScreen(); // TODO: show splash
     }
     return CitiesInherited(
       cities: cities ?? [],
@@ -206,13 +207,13 @@ Future<void> _prepopulate() async {
     ),
     ProfileEntity(
       profileId: 1,
-      cityId: 1392685764,
+      cityId: 1360771077,
       name: 'Indonesia name',
       species: [Species.elm, Species.birch, Species.oak],
     ),
     ProfileEntity(
       profileId: 2,
-      cityId: 1392685764,
+      cityId: 1356872604,
       name: 'Indian name',
       species: [Species.elm, Species.birch, Species.acacia],
     ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pollen_tracker/bloc/current_mood_bloc/current_mood_bloc.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/dialogs/mood_set_record_dialog.dart';
 import 'package:pollen_tracker/ui/features/home/home_widgets/current_mood_widgets/not_loaded_mood/allergy_particals.dart';
@@ -24,7 +26,10 @@ class NewMoodWidget extends StatelessWidget {
           onPressed: () async {
             await showDialog<void>(
               context: context,
-              builder: (BuildContext context) => const MoodSetRecordDialog(),
+              builder: (BuildContext contextDialog) => BlocProvider.value(
+                value: context.currentMoodBloc!,
+                child: const MoodSetRecordDialog(),
+              ),
             );
           },
         ),

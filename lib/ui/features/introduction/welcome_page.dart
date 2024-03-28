@@ -42,7 +42,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 assetSvgName: 'woman_with_allergen',
                 description: context.S.welcome_description_2,
               ),
-              // TODO:
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -57,9 +56,18 @@ class _WelcomePageState extends State<WelcomePage> {
                         }
                         context.go(RouteName.selectProfile);
                       },
-                      child: Text(
-                        'REGIsTER',
-                        style: Theme.of(context).textTheme.displayMedium,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: context.myColors.primaryGreen,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            '${context.S.create_profile} ',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -119,7 +127,13 @@ class _SubPageView extends StatelessWidget {
             'assets/images/svg/$assetSvgName.svg',
             semanticsLabel: assetSvgName,
           ),
-          Text(description, style: Theme.of(context).textTheme.displayMedium),
+          Text(
+            description,
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24.0,
+                ),
+          ),
         ],
       ),
     );

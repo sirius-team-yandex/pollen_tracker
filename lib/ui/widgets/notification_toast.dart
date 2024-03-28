@@ -46,11 +46,9 @@ class NotificationToast extends StatelessWidget {
                 Flexible(
                   child: Text(
                     message,
-                    style: context.T.bodyMedium?.copyWith(
-                      fontFamily: 'Gotham Pro',
+                    style: context.T.headlineMedium?.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -58,7 +56,7 @@ class NotificationToast extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       text: emoji,
-                      style: context.T.bodyMedium?.copyWith(
+                      style: context.T.headlineMedium?.copyWith(
                         // fontFamily: 'Gotham Pro',
                         fontSize: 24,
                         fontWeight: FontWeight.w400,

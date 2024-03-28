@@ -118,4 +118,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get add_new_comment => 'You can add your comment about the mood here';
+
+  @override
+  String get air_pollution => 'Air pollution';
+
+  @override
+  String get risk_level_high => 'High';
+
+  @override
+  String get risk_level_low => 'Low';
+
+  @override
+  String get risk_level_medium => 'Medium';
+
+  @override
+  String get risk_level_very_high => 'Very high';
+
+  @override
+  String get create_a_new_profile => 'Create a new profile';
+
+  @override
+  String get select_city => 'Select city';
+
+  @override
+  String get select_species => 'Select species';
 }

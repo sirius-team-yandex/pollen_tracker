@@ -16,7 +16,7 @@ class CitySetDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(40.0),
       ),
       child: Container(
         padding: const EdgeInsets.all(16.0),

@@ -317,6 +317,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can add your comment about the mood here'**
   String get add_new_comment;
+
+  /// No description provided for @air_pollution.
+  ///
+  /// In en, this message translates to:
+  /// **'Air pollution'**
+  String get air_pollution;
+
+  /// No description provided for @risk_level_high.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get risk_level_high;
+
+  /// No description provided for @risk_level_low.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get risk_level_low;
+
+  /// No description provided for @risk_level_medium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get risk_level_medium;
+
+  /// No description provided for @risk_level_very_high.
+  ///
+  /// In en, this message translates to:
+  /// **'Very high'**
+  String get risk_level_very_high;
+
+  /// No description provided for @create_a_new_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new profile'**
+  String get create_a_new_profile;
+
+  /// No description provided for @select_city.
+  ///
+  /// In en, this message translates to:
+  /// **'Select city'**
+  String get select_city;
+
+  /// No description provided for @select_species.
+  ///
+  /// In en, this message translates to:
+  /// **'Select species'**
+  String get select_species;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

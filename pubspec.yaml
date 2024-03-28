@@ -47,6 +47,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   table_calendar: ^3.0.9
   collection: ^1.18.0
+  overlay_support: ^2.1.0
 
 dev_dependencies:
   injectable_generator: ^2.4.2

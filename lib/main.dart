@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
@@ -157,25 +158,27 @@ class PollenApp extends StatelessWidget {
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(
       data: AppThemeData.light(),
-      child: MaterialApp.router(
-        themeMode: selectedThemeMode,
-        debugShowCheckedModeBanner: false,
-        routerConfig: routerConfig,
-        theme: materialThemeFromAppTheme(lightAppThemeData),
-        darkTheme: materialThemeFromAppTheme(darkAppThemeData),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        locale: Locale(
-          config?.locale.name ?? LocaleEnum.en.name,
-        ), // change it later
-        supportedLocales: [
-          Locale(LocaleEnum.en.name), // English
-          Locale(LocaleEnum.ru.name), // Russian
-        ],
+      child: OverlaySupport.global(
+        child: MaterialApp.router(
+          themeMode: selectedThemeMode,
+          debugShowCheckedModeBanner: false,
+          routerConfig: routerConfig,
+          theme: materialThemeFromAppTheme(lightAppThemeData),
+          darkTheme: materialThemeFromAppTheme(darkAppThemeData),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: Locale(
+            config?.locale.name ?? LocaleEnum.en.name,
+          ), // change it later
+          supportedLocales: [
+            Locale(LocaleEnum.en.name), // English
+            Locale(LocaleEnum.ru.name), // Russian
+          ],
+        ),
       ),
     );
   }

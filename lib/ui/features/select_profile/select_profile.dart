@@ -76,60 +76,66 @@ class _SelectProfile extends StatelessWidget {
             ),
           ),
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('state $state'),
-                BlocBuilder<ProfilesAllBloc, ProfilesAllState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                      orElse: () {
-                        return const CircularProgressIndicator(); // TODO: show error
-                      },
-                      loaded: (profiles) {
-                        if (profiles.isEmpty) {
-                          profiles = profilesMock; // TODO!: REMOVE
-                        }
+            child: BlocBuilder<ProfilesAllBloc, ProfilesAllState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return const CircularProgressIndicator(); // TODO: show error
+                  },
+                  loaded: (profiles) {
+                    if (profiles.isEmpty) {
+                      profiles = profilesMock; // TODO!: REMOVE
+                    }
 
-                        //  Text(profiles[index].name, style: context.T.headlineMedium)
-                        return Wrap(
-                          spacing: 16,
-                          runSpacing: 16,
-                          children: [
-                            ...List.generate(
-                              profiles.length,
-                              (index) => ProfilePanelItemWidget(
-                                onTap: () => _selectProfile(context, profiles[index]),
-                                onLongPress: () => showDialog(
-                                  context: context,
-                                  builder: (context) => DeleteProfileDialog(
-                                    removeProfileCallback: _removeProfile,
-                                    profile: profiles[index],
-                                  ),
-                                ),
-                                color: context.myColors.darkGreen,
-                                child: Text(profiles[index].name, style: context.T.headlineMedium),
+                    //  Text(profiles[index].name, style: context.T.headlineMedium)
+                    return ListView.separated(
+                      padding: const EdgeInsets.all(32),
+                      itemCount: profiles.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return ProfilePanelItemWidget(
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (context) => CreateProfileDialog(
+                                selectProfileCallback: _selectProfile,
+                                cities: CitiesInherited.of(context).cities,
                               ),
                             ),
-                            ProfilePanelItemWidget(
-                              onTap: () => showDialog(
-                                context: context,
-                                builder: (context) => CreateProfileDialog(
-                                  selectProfileCallback: _selectProfile,
-                                  cities: CitiesInherited.of(context).cities,
-                                ),
+                            color: context.myColors.primaryGreen,
+                            onLongPress: () {},
+                            child: Text('+', style: context.T.headlineMedium),
+                          );
+                        }
+                        return Dismissible(
+                          key: UniqueKey(),
+                          confirmDismiss: (_) {
+                            return showDialog(
+                              context: context,
+                              builder: (context) => DeleteProfileDialog(
+                                removeProfileCallback: _removeProfile,
+                                profile: profiles[index - 1],
                               ),
-                              color: context.myColors.primaryGreen,
-                              onLongPress: () {},
-                              child: Text('+', style: context.T.headlineMedium),
+                            );
+                          },
+                          child: ProfilePanelItemWidget(
+                            onTap: () => _selectProfile(context, profiles[index - 1]),
+                            onLongPress: () => showDialog(
+                              context: context,
+                              builder: (context) => DeleteProfileDialog(
+                                removeProfileCallback: _removeProfile,
+                                profile: profiles[index - 1],
+                              ),
                             ),
-                          ],
+                            color: context.myColors.darkGreen,
+                            child: Text(profiles[index - 1].name, style: context.T.headlineMedium),
+                          ),
                         );
                       },
+                      separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 32),
                     );
                   },
-                ),
-              ],
+                );
+              },
             ),
           ),
         );
@@ -288,7 +294,8 @@ class DeleteProfileDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Вы уверены что хотите удалить профиль? ${profile.name}',
+              '${context.S.did_you_sure_for_deleting_profile} ${profile.name} ?',
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(height: 30.0),

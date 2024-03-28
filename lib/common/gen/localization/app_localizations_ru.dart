@@ -90,4 +90,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get change_city => 'Сменить город';
+
+  @override
+  String get did_you_sure_for_deleting_profile => 'Вы уверены что хотите удалить профиль';
+
+  @override
+  String get add_species => 'Добавить аллерген';
+
+  @override
+  String get species_added => 'Аллерген добавлен. Не болейте';
+
+  @override
+  String get species_deleted => 'Аллерген удален';
+
+  @override
+  String get your_city_changed_on => 'Ваш город изменен на';
 }

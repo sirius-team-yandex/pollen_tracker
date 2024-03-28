@@ -266,6 +266,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change city'**
   String get change_city;
+
+  /// No description provided for @did_you_sure_for_deleting_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this profile'**
+  String get did_you_sure_for_deleting_profile;
+
+  /// No description provided for @add_species.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Species'**
+  String get add_species;
+
+  /// No description provided for @species_added.
+  ///
+  /// In en, this message translates to:
+  /// **'Species added'**
+  String get species_added;
+
+  /// No description provided for @species_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Species deleted'**
+  String get species_deleted;
+
+  /// No description provided for @your_city_changed_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Ваш город изменен на'**
+  String get your_city_changed_on;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class SpeciesAddDialog extends StatelessWidget {
-  const SpeciesAddDialog({super.key, required this.actualSpecies});
+  SpeciesAddDialog({super.key, required this.actualSpecies});
   final List<Species> actualSpecies;
-  final List<Species> allSpecies = Species.values;
+  final List<Species> allSpecies = Species.values.where((element) => element.type == SpeciesType.tree).toList();
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -33,10 +34,14 @@ class SpeciesAddDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Add species LALALA',
-              style: Theme.of(context).textTheme.displayMedium,
+              context.S.add_species,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
+            const SizedBox(height: 30.0),
             Wrap(
+              alignment: WrapAlignment.start,
+              spacing: 12.0,
+              runSpacing: 12.0,
               children: [
                 ...List.from(
                   allSpecies

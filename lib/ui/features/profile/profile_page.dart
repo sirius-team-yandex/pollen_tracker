@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/router_config.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
@@ -58,32 +55,41 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            if (kDebugMode)
-              TextButton(
-                onPressed: () {
-                  final config = ConfigInherited.of(context).configEntity;
-                  if (config != null) {
-                    getIt<ConfigRepository>().set(
-                      config.copyWith(isFirstLaunch: true, currProfileId: null),
-                    );
-                  }
-                },
-                child: Text('${ConfigInherited.of(context).configEntity}', style: context.T.headlineMedium),
-              ),
-            if (kDebugMode)
-              BlocBuilder<ProfileBloc, ProfileState>(
-                builder: (context, state) {
-                  return state.maybeWhen(
-                    logedIn: (value) => Text('$value', style: context.T.headlineMedium),
-                    orElse: () {
-                      return const Text(''); // TODO: (error)
-                    },
-                  );
-                },
-              ),
+            // if (kDebugMode)
+            //   TextButton(
+            //     onPressed: () {
+            //       final config = ConfigInherited.of(context).configEntity;
+            //       if (config != null) {
+            //         getIt<ConfigRepository>().set(
+            //           config.copyWith(isFirstLaunch: true, currProfileId: null),
+            //         );
+            //       }
+            //     },
+            //     child: Text('${ConfigInherited.of(context).configEntity}', style: context.T.headlineMedium),
+            //   ),
+            // if (kDebugMode)
+            //   BlocBuilder<ProfileBloc, ProfileState>(
+            //     builder: (context, state) {
+            //       return state.maybeWhen(
+            //         logedIn: (value) => Text('$value', style: context.T.headlineMedium),
+            //         orElse: () {
+            //           return const Text(''); // TODO: (error)
+            //         },
+            //       );
+            //     },
+            //   ),
             CustomButton(
               onPressed: () {
                 context.go(RouteName.selectProfile);
+                final config = ConfigInherited.of(context).configEntity;
+                if (config == null) {
+                  return;
+                }
+                getIt<ConfigRepository>().set(
+                  config.copyWith(
+                    currProfileId: null,
+                  ),
+                );
               },
               width: double.infinity,
               color: context.myColors.darkGreen,

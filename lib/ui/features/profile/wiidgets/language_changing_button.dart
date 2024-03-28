@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
@@ -36,7 +34,7 @@ class _LanguageChangingButtonState extends State<LanguageChangingButton> {
                 context.S.language,
                 style: context.T.displayMedium,
               ),
-              Icon( isOpened? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down),
+              Icon(isOpened ? Icons.keyboard_double_arrow_up : Icons.keyboard_double_arrow_down),
             ],
           ),
         ),
@@ -54,7 +52,8 @@ class _LanguageChangingButtonState extends State<LanguageChangingButton> {
                   ...List.generate(
                     LocaleEnum.values.length,
                     (index) {
-                      bool isSelectedLocale = ConfigInherited.of(context).configEntity?.locale == LocaleEnum.values[index];
+                      bool isSelectedLocale =
+                          ConfigInherited.of(context).configEntity?.locale == LocaleEnum.values[index];
                       return GestureDetector(
                         onTap: () {
                           getIt<ConfigRepository>().set(
@@ -79,7 +78,7 @@ class _LanguageChangingButtonState extends State<LanguageChangingButton> {
                         ),
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ],

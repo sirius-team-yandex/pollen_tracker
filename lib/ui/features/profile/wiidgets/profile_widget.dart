@@ -81,7 +81,7 @@ class ProfileWidget extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 8),
                   child: ThemeSwitchingButton(),
                 ),
-                   const IconSurround(
+                const IconSurround(
                   iconPosition: IconPosition.center,
                   icon: Icons.language,
                   padding: EdgeInsets.only(bottom: 8),

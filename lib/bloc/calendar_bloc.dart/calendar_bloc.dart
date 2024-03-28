@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
@@ -31,7 +32,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   MoodRecordSubject moodRecordSubject;
   ProfileSubject profileSubject;
   RiscFormatter riscFormatter;
-  StreamSubscription<CalendarState>? _streamHolder;
+  StreamSubscription<CalendarEvent>? _streamHolder;
 
   BehaviorSubject dateSubject = BehaviorSubject<DateTime>();
   BehaviorSubject typeSubject = BehaviorSubject<_EmitType>();
@@ -42,6 +43,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     required this.profileSubject,
     required this.riscFormatter,
   }) : super(const CalendarState.init()) {
+    typeSubject.add(_EmitType.mood);
     on<_InitCalendarEvent>(_init);
     on<_SelectDayCalendarEvent>((event, _) => dateSubject.add(event.day));
     on<_ShowRiscLevelCalendarEvent>(
@@ -50,6 +52,27 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     on<_ShowMoodLevelCalendarEvent>(
       (event, _) => typeSubject.add(_EmitType.mood),
     );
+
+    on<_LoadedRiscCalendarEvent>(
+      (event, emit) => emit(
+        CalendarState.loadedRisc(
+          heatmap: event.heatmap,
+          selectedDayMood: event.selectedDayMood,
+          selectedDayRisc: event.selectedDayRisc,
+        ),
+      ),
+    );
+
+    on<_LoadedMoodCalendarEvent>(
+      (event, emit) => emit(
+        CalendarState.loadedMood(
+          heatmap: event.heatmap,
+          selectedDayMood: event.selectedDayMood,
+          selectedDayRisc: event.selectedDayRisc,
+        ),
+      ),
+    );
+
     add(const CalendarEvent.init());
     add(CalendarEvent.selectDay(day: DateTime.now().toUtc()));
   }
@@ -78,20 +101,30 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     _InitCalendarEvent event,
     Emitter<CalendarState> emit,
   ) async {
-    final Stream<Stream<CalendarState>> statesStreams = Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
+    final Stream<Stream<CalendarEvent>> statesStreams =
+        Rx.combineLatest2(dateSubject, typeSubject, (date, type) {
+      logger.d("AAAAAAAAAAAAAAAAAAAAAA");
       if (type == _EmitType.mood) {
+        logger.d('LOAD MOOD');
         return _loadMoodStream(date);
       } else {
+        logger.d('LOAD RISC');
         return _loadRiscStream(date);
       }
     });
 
-    _streamHolder = statesStreams.switchMap((streams) => streams).listen((state) {
-      emit(state);
+    _streamHolder = statesStreams.switchMap((stream) => stream).listen((event) {
+      logger.d('EMIIIIIIIIIIIIIIIIIT: $event');
+      try {
+        add(event);
+      } catch (e) {
+        logger.e('EXCEPTION: $e');
+      }
+      logger.d('EMITED');
     });
   }
 
-  Stream<CalendarState> _loadRiscStream(
+  Stream<CalendarEvent> _loadRiscStream(
     DateTime day,
   ) {
     final lowerDate = day.copyWith(day: 1);
@@ -113,14 +146,16 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           final levels = monthLevels[currDay] ?? {};
 
           counter[currDay] = (counter[currDay] ?? 0) + 1;
-          monthLevels[currDay] = _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
+          monthLevels[currDay] =
+              _join(levels, pollen.levels, (s1, s2) => (s1 ?? 0) + (s2 ?? 0));
         }
 
         final monthLevelsAveraged = monthLevels.map(
           (date, value) => MapEntry(
             date,
             value.map(
-              (species, level) => MapEntry(species, level ~/ (counter[date] ?? 1)),
+              (species, level) =>
+                  MapEntry(species, level ~/ (counter[date] ?? 1)),
             ),
           ),
         );
@@ -135,7 +170,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           );
         }
 
-        return CalendarState.loadedRisc(
+        return CalendarEvent.loadedRisc(
           heatmap: monthRisc,
           selectedDayMood: moodDay?.moodType,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
@@ -144,7 +179,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     );
   }
 
-  Stream<CalendarState> _loadMoodStream(DateTime day) {
+  Stream<CalendarEvent> _loadMoodStream(DateTime day) {
     final lowerDate = day.copyWith(day: 1);
     final upperDate = day.copyWith(month: day.month + 1, day: 0);
 
@@ -169,7 +204,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
               )] = mood.moodType;
         }
 
-        return CalendarState.loadedMood(
+        logger.d('MOOD LOADEEEEEED');
+        return CalendarEvent.loadedMood(
           heatmap: monthDaysMood,
           selectedDayMood: moodDay?.moodType,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
@@ -182,13 +218,14 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     final RiscLevel dayRisc;
 
     if (dayPollen.isEmpty) {
-      final dayLevel = dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
-            (value, element) => _join(
-              value,
-              element,
-              (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
-            ),
-          );
+      final dayLevel =
+          dayPollen.map((pollenEntity) => pollenEntity.levels).reduce(
+                (value, element) => _join(
+                  value,
+                  element,
+                  (s1, s2) => (s1 ?? 0) + (s2 ?? 0),
+                ),
+              );
 
       dayRisc = riscFormatter.evaluateType(
         dayLevel,
@@ -199,6 +236,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       dayRisc = RiscLevel.low;
     }
 
+    logger.d('RISC EVALUATED');
     return dayRisc;
   }
 

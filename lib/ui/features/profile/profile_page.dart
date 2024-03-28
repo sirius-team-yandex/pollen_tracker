@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/localization.dart';
+import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/repositories/city_repository.dart';
@@ -36,7 +37,7 @@ class _ProfilePageWrapperState extends State<ProfilePageWrapper> {
     getIt<CitiesRepository>().getCityEntities().then(
           (value) => setState(() {
             cities = value;
-            print('aasdasdasd');
+            logger.d('aasdasdasd');
           }),
         );
   }
@@ -49,7 +50,7 @@ class _ProfilePageWrapperState extends State<ProfilePageWrapper> {
 
 class CitiesInherited extends InheritedWidget {
   final List<CityEntity> cities;
-  final a= 1;
+  final a = 1;
 
   const CitiesInherited({super.key, required super.child, required this.cities});
 
@@ -82,7 +83,7 @@ class ProfilePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             //const ProfileWidget(),
-            v2.ProfileWidget(),
+            const v2.ProfileWidget(),
             const SizedBox(
               height: 16,
             ),

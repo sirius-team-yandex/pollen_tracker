@@ -8,7 +8,11 @@ import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class CitySetDialog extends StatelessWidget {
-  const CitySetDialog({super.key, required this.regionName,required this.cities, });
+  const CitySetDialog({
+    super.key,
+    required this.regionName,
+    required this.cities,
+  });
   final List<CityEntity> cities;
   final String regionName;
   @override
@@ -50,7 +54,7 @@ class CitySetDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(color: Colors.grey.shade300),
               ),
-              child: _SearchTextFieldAndResultWidget( cities: cities),
+              child: _SearchTextFieldAndResultWidget(cities: cities),
             ),
             const SizedBox(height: 30.0),
           ],
@@ -61,7 +65,7 @@ class CitySetDialog extends StatelessWidget {
 }
 
 class _SearchTextFieldAndResultWidget extends StatefulWidget {
-  const _SearchTextFieldAndResultWidget( {required this.cities});
+  const _SearchTextFieldAndResultWidget({required this.cities});
 
   final List<CityEntity> cities;
 
@@ -70,14 +74,14 @@ class _SearchTextFieldAndResultWidget extends StatefulWidget {
 }
 
 class __SearchTextFieldAndResultWidgetState extends State<_SearchTextFieldAndResultWidget> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<CityEntity> searchedCities = [];
   @override
   void initState() {
     super.initState();
     _searchController.addListener(_search);
-
   }
+
   @override
   void dispose() {
     _searchController.removeListener(_search);
@@ -100,7 +104,7 @@ class __SearchTextFieldAndResultWidgetState extends State<_SearchTextFieldAndRes
     setState(
       () {
         searchedCities =
-            widget.cities.where((element) => element.name.startsWith(searchValue)).toList();
+            widget.cities.where((element) => element.name.toLowerCase().startsWith(searchValue.toLowerCase())).toList();
       },
     );
   }
@@ -111,22 +115,25 @@ class __SearchTextFieldAndResultWidgetState extends State<_SearchTextFieldAndRes
       children: [
         TextFormField(
           controller: _searchController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Search',
           ),
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         ListView.builder(
           shrinkWrap: true,
           itemCount: searchedCities.length >= 4 ? 4 : searchedCities.length,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 getIt<ProfileBloc>().changeCity(searchedCities[index]);
                 context.pop();
               },
               child: ListTile(
-                title: Text('${searchedCities[index].name}, ${searchedCities[index].country} ', style: Theme.of(context).textTheme.titleMedium,),
+                title: Text(
+                  '${searchedCities[index].name}, ${searchedCities[index].country} ',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 // subtitle: Text('Stars: ${star.stars}'),
               ),
             );

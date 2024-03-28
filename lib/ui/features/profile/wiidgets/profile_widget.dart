@@ -38,30 +38,31 @@ class ProfileWidget extends StatelessWidget {
                 BlocBuilder<ProfileBloc, ProfileState>(
                   builder: (context, state) {
                     return state.map(
-                        error: (value) => const Text(''), // TODO:
-                        logedOut: (value) => const Text(''), // TODO:
-                        logedIn: (value) {
-                          final cityEntity = CitiesInherited.of(context)
-                              .cities
-                              .firstWhereOrNull((element) => element.id == value.profile.cityId);
-                          final regionText =
-                              cityEntity == null ? 'Не указан' : '${cityEntity.name}, ${cityEntity.country}';
-                          return Column(
-                            children: [
-                              NameTextField(
-                                profile: value.profile,
+                      error: (value) => const Text(''), // TODO:
+                      logedOut: (value) => const Text(''), // TODO:
+                      logedIn: (value) {
+                        final cityEntity = CitiesInherited.of(context)
+                            .cities
+                            .firstWhereOrNull((element) => element.id == value.profile.cityId);
+                        final regionText =
+                            cityEntity == null ? 'Не указан' : '${cityEntity.name}, ${cityEntity.country}';
+                        return Column(
+                          children: [
+                            NameTextField(
+                              profile: value.profile,
+                            ),
+                            IconSurround(
+                              icon: Icons.location_on_outlined,
+                              iconPosition: IconPosition.center,
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: RegionSwitcher(
+                                regionName: regionText,
                               ),
-                              IconSurround(
-                                icon: Icons.location_on_outlined,
-                                iconPosition: IconPosition.center,
-                                padding: EdgeInsets.only(bottom: 8),
-                                child: RegionSwitcher(
-                                  regionName: regionText,
-                                ),
-                              ),
-                            ],
-                          );
-                        });
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                 ),
                 const IconSurround(

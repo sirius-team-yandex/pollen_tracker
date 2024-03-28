@@ -25,7 +25,12 @@ class RegionSwitcher extends StatelessWidget {
       ),
       onPressed: () {
         //TODO ивент на смену города
-        showDialog(context: context, builder: (contextInner) =>  CitySetDialog(cities: CitiesInherited.of(context).cities, regionName: regionName,));
+        showDialog(
+            context: context,
+            builder: (contextInner) => CitySetDialog(
+                  cities: CitiesInherited.of(context).cities,
+                  regionName: regionName,
+                ));
         logger.i('ГОРОД');
       },
       child: Row(

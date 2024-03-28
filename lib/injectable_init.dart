@@ -8,10 +8,12 @@ import 'package:pollen_tracker/data/models/local/config_model_isar.dart';
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 import 'package:pollen_tracker/data/models/local/profile_model_isar.dart';
+import 'package:pollen_tracker/data/repositories/city_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/config_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/mood_record_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/pollen_repository_impl.dart';
 import 'package:pollen_tracker/data/repositories/profile_repository_impl.dart';
+import 'package:pollen_tracker/domain/repositories/city_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_subject.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_repository.dart';
@@ -20,6 +22,7 @@ import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
+import 'package:pollen_tracker/domain/repositories/sync_city_repository.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'injectable_init.config.dart';
@@ -31,7 +34,11 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-Future<void> configureDependencies({String env = Environment.dev}) async => await getIt.init(environment: env);
+Future<void> configureDependencies({String env = Environment.dev}) async {
+  await getIt.init(environment: env);
+  // Load all of the available cities to memory from CSV
+  GetIt.I<SyncCitiesRepository>().loadCache();
+}
 
 @module
 abstract class NetworkModule {
@@ -87,6 +94,15 @@ abstract class PollenModule {
 
   @injectable
   PollenRepository pollenRepository(PollenRepositoryImpl impl) => impl;
+}
+
+@module
+abstract class CityModule {
+  @injectable
+  CitiesRepository citiesRepository(CityRepositoryImpl impl) => impl;
+
+  @injectable
+  SyncCitiesRepository syncCitiesRepository(CityRepositoryImpl impl) => impl;
 }
 
 @module

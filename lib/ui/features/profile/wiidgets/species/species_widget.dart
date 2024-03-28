@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/ui/dialogs/species_add_dialog.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
@@ -6,6 +7,7 @@ class SpeciesWidget extends StatelessWidget {
   final String? text;
   final Color? color;
   final BorderRadius? borderRadius;
+  final void Function()? longPressAction;
   final void Function()? action;
   final Widget? child;
   const SpeciesWidget({
@@ -13,6 +15,7 @@ class SpeciesWidget extends StatelessWidget {
     this.text,
     this.color,
     this.borderRadius,
+    this.longPressAction,
     this.action,
     this.child,
   }) : assert((text != null) ^ (child != null));
@@ -29,8 +32,8 @@ class SpeciesWidget extends StatelessWidget {
         elevation: 0,
         shadowColor: Colors.transparent,
       ),
-      onPressed: () {},
-      onLongPress: action,
+      onPressed: action,
+      onLongPress: longPressAction,
       child: child ??
           Text(
             text ?? '',

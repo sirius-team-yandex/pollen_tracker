@@ -19,6 +19,7 @@ import 'package:pollen_tracker/data/mappers/pollen/pollen_entity_to_pollen_model
 import 'package:pollen_tracker/data/models/local/mood_record_model_isar.dart';
 import 'package:pollen_tracker/data/models/local/pollen_model.dart';
 import 'package:pollen_tracker/data/models/remote/ambee_dto.dart';
+import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
@@ -58,9 +59,11 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
   late final ConfigSubject configSubject;
   late final StreamSubscription configSubscription;
   ConfigEntity? configEntity;
+  List<CityEntity>? cities;
   @override
   void initState() {
     super.initState();
+    _initCities();
     configSubject = getIt<ConfigSubject>();
     configSubscription = configSubject.observe().listen(
       (value) {
@@ -74,6 +77,17 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
     );
   }
 
+
+  void _initCities() {
+    getIt<CitiesRepository>().getCityEntities().then(
+          (value) => setState(
+            () {
+              cities = value;
+            },
+          ),
+        );
+  }
+
   @override
   void dispose() {
     configSubscription.cancel();
@@ -85,10 +99,29 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
     if (configEntity == null) {
       return const CircularProgressIndicator(); // TODO: show splash
     }
-    return ConfigInherited(
-      configEntity: configEntity,
-      child: const PollenApp(),
+    return CitiesInherited(
+      cities: cities ?? [],
+      child: ConfigInherited(
+        configEntity: configEntity,
+        child: const PollenApp(),
+      ),
     );
+  }
+}
+
+class CitiesInherited extends InheritedWidget {
+  final List<CityEntity> cities;
+
+  const CitiesInherited({super.key, required super.child, required this.cities});
+
+  static CitiesInherited of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<CitiesInherited>()!;
+  }
+
+  @override
+  bool updateShouldNotify(covariant CitiesInherited oldWidget) {
+    // You can implement custom logic here to determine when to notify listeners
+    return oldWidget.cities != cities;
   }
 }
 

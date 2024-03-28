@@ -4,10 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/localization.dart';
-import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
-import 'package:pollen_tracker/domain/repositories/city_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
@@ -30,40 +28,15 @@ class _ProfilePageWrapperState extends State<ProfilePageWrapper> {
   @override
   void initState() {
     super.initState();
-    _initCities();
-  }
-
-  void _initCities() {
-    getIt<CitiesRepository>().getCityEntities().then(
-          (value) => setState(() {
-            cities = value;
-            logger.d('aasdasdasd');
-          }),
-        );
   }
 
   @override
   Widget build(BuildContext context) {
-    return CitiesInherited(cities: cities ?? [], child: const ProfilePage());
+    return const ProfilePage();
   }
 }
 
-class CitiesInherited extends InheritedWidget {
-  final List<CityEntity> cities;
-  final a = 1;
 
-  const CitiesInherited({super.key, required super.child, required this.cities});
-
-  static CitiesInherited of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<CitiesInherited>()!;
-  }
-
-  @override
-  bool updateShouldNotify(covariant CitiesInherited oldWidget) {
-    // You can implement custom logic here to determine when to notify listeners
-    return oldWidget.cities != cities;
-  }
-}
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

@@ -11,7 +11,7 @@ import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/mood_record_subject.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
-import 'package:pollen_tracker/domain/usecases/risc_evaluator_usecase.dart';
+import 'package:pollen_tracker/ui/formatters/risc_formatter.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'calendar_bloc.freezed.dart';
@@ -30,7 +30,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   PollenSubject pollenSubject;
   MoodRecordSubject moodRecordSubject;
   ProfileSubject profileSubject;
-  RiscEvaluatorUseCase riscEvaluatorUseCase;
+  RiscFormatter riscFormatter;
   StreamSubscription<CalendarState>? _streamHolder;
 
   BehaviorSubject dateSubject = BehaviorSubject<DateTime>();
@@ -40,7 +40,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     required this.pollenSubject,
     required this.moodRecordSubject,
     required this.profileSubject,
-    required this.riscEvaluatorUseCase,
+    required this.riscFormatter,
   }) : super(const CalendarState.init()) {
     on<_InitCalendarEvent>(_init);
     on<_SelectDayCalendarEvent>((event, _) => dateSubject.add(event.day));
@@ -128,7 +128,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         final Map<DateTime, RiscLevel> monthRisc = {};
 
         for (var entry in monthLevelsAveraged.entries) {
-          monthRisc[entry.key] = riscEvaluatorUseCase.evaluateType(
+          monthRisc[entry.key] = riscFormatter.evaluateType(
             entry.value,
             targets,
             SpeciesType.tree,
@@ -190,7 +190,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
             ),
           );
 
-      dayRisc = riscEvaluatorUseCase.evaluateType(
+      dayRisc = riscFormatter.evaluateType(
         dayLevel,
         targets,
         SpeciesType.tree,

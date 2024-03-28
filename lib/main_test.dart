@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
+import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/gen/localization/app_localizations.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
@@ -14,6 +15,8 @@ import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/ui/features/home/widgets/forecast_view.dart';
+import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
@@ -54,9 +57,29 @@ class PollenApp extends StatelessWidget {
           Locale('en'), // English
           Locale('ru'), // Russian
         ],
-        home: const Scaffold(
+        home: Scaffold(
           body: Center(
-            child: TestPage(),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: ForecastView(
+                vos: [
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.low),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.moderate),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.high),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                  ForecastVo(time: DateTime.now(), level: RiscLevel.veryHigh),
+                ],
+              ),
+            ),
           ),
         ),
       ),

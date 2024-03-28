@@ -5,9 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pollen_tracker/domain/models/pollen_entity.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
+import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
+import 'package:pollen_tracker/ui/formatters/pollen_entity_to_pollen_vo_formatter.dart';
+import 'package:pollen_tracker/ui/models/forecast_vo.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'current_pollen_bloc.freezed.dart';
 part 'current_pollen_events.dart';
@@ -20,23 +23,42 @@ extension CurrentPollenBuilder on BuildContext {
 
 @singleton
 class CurrentPollenBloc extends Bloc<CurrentPollenEvent, CurrentPollenState> {
+  final ProfileSubject profileSubject;
   final PollenSubject pollenRecordSubject;
   final PollenRepository currentPollenRepository;
-
+  final PollenEntityToForecastVoFormatter pollenEntityToForecastVoFormatter;
   late StreamSubscription pollenSubscription;
 
-  CurrentPollenBloc({required this.pollenRecordSubject, required this.currentPollenRepository})
-      : super(const CurrentPollenState.init()) {
-    final DateTime startDate = DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
-    final DateTime endDate = startDate.copyWith(hour: 23, minute: 59, second: 59);
-    pollenSubscription = pollenRecordSubject.observeIn(startDate, endDate).listen(
-      (pollens) {
-        add(
-          CurrentPollenEvent.load(pollens),
-        );
-        logger.i('Call load Event on CurrentPollenBloc from stream');
+  CurrentPollenBloc({
+    required this.profileSubject,
+    required this.pollenRecordSubject,
+    required this.currentPollenRepository,
+    required this.pollenEntityToForecastVoFormatter,
+  }) : super(const CurrentPollenState.init()) {
+    // In case if we want to load all records for the day we can use these bounds
+    // final DateTime startDate = DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
+    // final DateTime endDate = startDate.copyWith(hour: 23, minute: 59, second: 59);
+
+    profileSubject.observeCurrent();
+
+    pollenSubscription = Rx.combineLatest2(
+      profileSubject.observeCurrent(),
+      pollenRecordSubject.observeForecast(DateTime.now()),
+      (profile, pollen) {
+        if (profile == null) {
+          return null;
+        } else {
+          final vos = pollenEntityToForecastVoFormatter.mapList(
+            pollen,
+            profile.species,
+          );
+          return vos;
+        }
       },
-    )..onError(
+    ).whereNotNull().listen((vos) {
+      add(CurrentPollenEvent.load(vos));
+    })
+      ..onError(
         (e) {
           _error(e, 'Error on CurrentPollenBloc from stream');
         },
@@ -45,13 +67,13 @@ class CurrentPollenBloc extends Bloc<CurrentPollenEvent, CurrentPollenState> {
     on<_LoadCurrentPollen>(_loadPollenRecord);
   }
 
-  Future<void> _loadPollenRecord(_LoadCurrentPollen event, Emitter<CurrentPollenState> emit) async {
+  Future<void> _loadPollenRecord(
+    _LoadCurrentPollen event,
+    Emitter<CurrentPollenState> emit,
+  ) async {
     try {
-      final List<PollenEntity>? pollens = event.pollen;
-      if (pollens != null) {
-        emit(CurrentPollenState.loaded(pollens));
-        logger.i('Emit CurrentPollenLoadedState from CurrentPollenBloc');
-      }
+      emit(CurrentPollenState.loaded(event.pollen));
+      logger.i('Emit CurrentPollenLoadedState from CurrentPollenBloc');
     } catch (e) {
       _error(e, 'Error on loadCurrentPollen', emit);
     }

@@ -3,7 +3,7 @@ import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 
 @injectable
-class RiscEvaluatorUseCase {
+class RiscFormatter {
   RiscLevel evaluateType(
     Map<Species, int> levels,
     List<Species> targets,

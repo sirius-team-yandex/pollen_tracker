@@ -88,16 +88,229 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('ru')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru')];
 
   /// No description provided for @health_check.
   ///
   /// In en, this message translates to:
   /// **'Enter your today feeling of health'**
   String get health_check;
+
+  /// No description provided for @welcome_description_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollen Tracker is a simple application that allows you to track your daily mood. We are here to help you keep track of your mood.'**
+  String get welcome_description_1;
+
+  /// No description provided for @welcome_description_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your health for detailed statistics.'**
+  String get welcome_description_2;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @how_are_you_feeling.
+  ///
+  /// In en, this message translates to:
+  /// **'How are you feeling?'**
+  String get how_are_you_feeling;
+
+  /// No description provided for @write_a_comment.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment'**
+  String get write_a_comment;
+
+  /// No description provided for @atmospheric_pollution.
+  ///
+  /// In en, this message translates to:
+  /// **'Atmospheric pollution'**
+  String get atmospheric_pollution;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @hazel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hazel'**
+  String get hazel;
+
+  /// No description provided for @elm.
+  ///
+  /// In en, this message translates to:
+  /// **'Elm'**
+  String get elm;
+
+  /// No description provided for @pine.
+  ///
+  /// In en, this message translates to:
+  /// **'Pine'**
+  String get pine;
+
+  /// No description provided for @alder.
+  ///
+  /// In en, this message translates to:
+  /// **'Alder'**
+  String get alder;
+
+  /// No description provided for @poplar_cottonwood.
+  ///
+  /// In en, this message translates to:
+  /// **'Poplar / Cottonwood'**
+  String get poplar_cottonwood;
+
+  /// No description provided for @oak.
+  ///
+  /// In en, this message translates to:
+  /// **'Oak'**
+  String get oak;
+
+  /// No description provided for @plane.
+  ///
+  /// In en, this message translates to:
+  /// **'Plane'**
+  String get plane;
+
+  /// No description provided for @birch.
+  ///
+  /// In en, this message translates to:
+  /// **'Birch'**
+  String get birch;
+
+  /// No description provided for @cypress.
+  ///
+  /// In en, this message translates to:
+  /// **'Cypress'**
+  String get cypress;
+
+  /// No description provided for @mugwort.
+  ///
+  /// In en, this message translates to:
+  /// **'Mugwort'**
+  String get mugwort;
+
+  /// No description provided for @chenopod.
+  ///
+  /// In en, this message translates to:
+  /// **'Chenopod'**
+  String get chenopod;
+
+  /// No description provided for @ragweed.
+  ///
+  /// In en, this message translates to:
+  /// **'Ragweed'**
+  String get ragweed;
+
+  /// No description provided for @nettle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nettle'**
+  String get nettle;
+
+  /// No description provided for @grass_poaceae.
+  ///
+  /// In en, this message translates to:
+  /// **'Grass / Poaceae'**
+  String get grass_poaceae;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'Record history'**
+  String get history;
+
+  /// No description provided for @dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get dark_mode;
+
+  /// No description provided for @light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get light_mode;
+
+  /// No description provided for @change_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Change profile'**
+  String get change_profile;
+
+  /// No description provided for @create_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create profile'**
+  String get create_profile;
+
+  /// No description provided for @enter_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter name'**
+  String get enter_name;
+
+  /// No description provided for @change_city.
+  ///
+  /// In en, this message translates to:
+  /// **'Change city'**
+  String get change_city;
+
+  /// No description provided for @did_you_sure_for_deleting_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this profile'**
+  String get did_you_sure_for_deleting_profile;
+
+  /// No description provided for @add_species.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Species'**
+  String get add_species;
+
+  /// No description provided for @species_added.
+  ///
+  /// In en, this message translates to:
+  /// **'Species added'**
+  String get species_added;
+
+  /// No description provided for @species_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Species deleted'**
+  String get species_deleted;
+
+  /// No description provided for @your_city_changed_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Your city changed on'**
+  String get your_city_changed_on;
+
+  /// No description provided for @your_profile_deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile deleted'**
+  String get your_profile_deleted;
+
+  /// No description provided for @long_press_for_remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press for remove'**
+  String get long_press_for_remove;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -116,18 +329,16 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'ru': return AppLocalizationsRu();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'ru':
+      return AppLocalizationsRu();
   }
 
-  throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

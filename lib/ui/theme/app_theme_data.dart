@@ -3,41 +3,50 @@
 part of 'theme.dart';
 
 ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
-      textTheme: theme.textTheme,
       colorScheme: ColorScheme(
         brightness: Brightness.light,
         background: theme.main.background,
-        primary: theme.main.background,
-        secondary: theme.main.background,
+        primary: theme.main.primary,
+        secondary: theme.main.primaryGreen,
+        surface: theme.main.darkGreen,
         tertiary: theme.main.background,
         onSecondary: theme.main.background,
         onError: theme.main.background,
-        surface: theme.main.textSecondary,
-        onPrimary: theme.main.background,
-        onSurface: theme.main.background,
+        onPrimary: theme.main.primary,
+        onSurface: theme.main.primary,
         onBackground: theme.main.background,
         error: theme.main.background,
       ),
     ).copyWith(
+      extensions: <ThemeExtension<MyColors>>[
+        MyColors(
+          primaryGreen: theme.main.primaryGreen,
+          darkGreen: theme.main.darkGreen,
+          background: theme.main.background,
+          primary: theme.main.primary,
+        ),
+      ],
+      primaryColorDark: theme.main.darkGreen,
+      iconTheme: const IconThemeData().copyWith(
+        color: theme.main.primary,
+      ),
+      textTheme: theme.textTheme,
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         },
       ),
-      brightness: Brightness.dark,
+      brightness: theme.isDarkMode ? Brightness.dark : Brightness.light,
       scaffoldBackgroundColor: theme.main.background,
       appBarTheme: AppBarTheme(
+        toolbarHeight: 42,
         backgroundColor: theme.main.background,
         foregroundColor: theme.main.background,
         centerTitle: true,
         titleTextStyle: theme.textTheme.headline3,
       ),
-    );
-
-CupertinoThemeData cupertinoThemeFromAppTheme(AppThemeData theme) =>
-    MaterialBasedCupertinoThemeData(materialTheme: materialThemeFromAppTheme(theme)).copyWith(
-      scaffoldBackgroundColor: theme.main.background,
+      splashColor: Colors.transparent,
     );
 
 class AppThemeData {
@@ -47,22 +56,22 @@ class AppThemeData {
   });
 
   factory AppThemeData.dark() => AppThemeData(
-        main: Colors.dark(),
+        main: ColorsTheme.dark(),
         isDarkMode: true,
       );
 
   factory AppThemeData.light() => AppThemeData(
-        main: Colors.light(),
+        main: ColorsTheme.light(),
         isDarkMode: false,
       );
 
   final bool isDarkMode;
-  final Colors main;
+  final ColorsTheme main;
 
   TextStyle create({
     double fontSize = 14,
     FontWeight fontWeight = FontWeight.normal,
-    Color? color,
+    Color? color = Colors.blue,
     double? figmaHeight,
   }) {
     final height = (figmaHeight ?? fontSize) / fontSize;
@@ -70,24 +79,50 @@ class AppThemeData {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
-      color: color ?? main.textPrymary,
+      color: color ?? main.primary,
       height: height,
     );
   }
 
-  TextStyle get h1 => create(
-        fontSize: 22,
-        figmaHeight: 32,
-        fontWeight: FontWeight.w700,
+  TextStyle get headlineLarge => create(
+        fontSize: 24,
+        figmaHeight: 30,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
       );
-  TextStyle get h2 => create(
+
+  TextStyle get headlineMedium => create(
+        fontSize: 18,
+        figmaHeight: 22,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
+      );
+
+  TextStyle get displayLarge => create(
+        fontSize: 20,
+        figmaHeight: 24,
+        fontWeight: FontWeight.w500,
+        color: main.primary,
+      );
+  TextStyle get displayMedium => create(
+        fontSize: 16,
+        figmaHeight: 20,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
+      );
+
+  TextStyle get displaySmall => create(
         fontSize: 14,
-        figmaHeight: 32,
-        fontWeight: FontWeight.w700,
+        figmaHeight: 16,
+        fontWeight: FontWeight.w400,
+        color: main.primary,
       );
 
   TextTheme get textTheme => TextTheme(
-        headline1: h1,
-        headline2: h2,
+        headlineLarge: headlineLarge,
+        headlineMedium: headlineMedium,
+        displayLarge: displayLarge,
+        displayMedium: displayMedium,
+        displaySmall: displaySmall,
       );
 }

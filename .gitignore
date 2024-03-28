@@ -8,7 +8,10 @@
 .buildlog/
 .history
 .svn/
+**/*.freezed.dart
+**/*.g.dart
 migrate_working_dir/
+lib/injectable_init.config.dart
 
 # IntelliJ related
 *.iml
@@ -41,3 +44,18 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# VS CODE
+/.vscode
+
+# Neovim config
+/.nvim.lua
+
+# Taskfile 
+/Taskfile.yml
+
+#Firebase
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+ios/firebase_app_id_file.json
+lib/firebase_options.dart

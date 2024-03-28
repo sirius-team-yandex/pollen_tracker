@@ -76,4 +76,11 @@ class ProfileRepositoryIsarImpl implements ProfileRepository, ProfileSubject {
 
     return get(id);
   }
+
+  @override
+  Future<List<ProfileEntity>> getAll() async {
+    final models = await datasource.getAll();
+
+    return profileModelIsarToEntityMapper.mapList(models);
+  }
 }

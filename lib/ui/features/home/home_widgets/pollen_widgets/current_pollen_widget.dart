@@ -28,8 +28,10 @@ class CurrentPollenWidget extends StatelessWidget {
                 builder: (context, state) {
                   return state.maybeWhen(
                     logedIn: (profile) => DecoratedBox(
-                      decoration:
-                          BoxDecoration(color: context.myColors.primaryGreen, borderRadius: BorderRadius.circular(16.0)),
+                      decoration: BoxDecoration(
+                        color: context.myColors.primaryGreen,
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
                       child: Column(
                         children: List.generate(
                           3,
@@ -43,7 +45,7 @@ class CurrentPollenWidget extends StatelessWidget {
                     orElse: () => const SizedBox.shrink(),
                   );
                 },
-              )
+              ),
             ],
           ),
         ),

@@ -23,7 +23,7 @@ class PollenAirStatus extends StatelessWidget {
     }
   }
 
-   String _riskLevelStringTo100(BuildContext context,RiscLevel risc) {
+  String _riskLevelStringTo100(BuildContext context, RiscLevel risc) {
     switch (risc) {
       case RiscLevel.low:
         return context.S.risk_level_low;

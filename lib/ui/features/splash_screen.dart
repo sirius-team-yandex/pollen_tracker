@@ -9,10 +9,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
-        child: MoodSvgWidget(
-          moodType: MoodType.good,
-        ),
-      );
+    return const Center(
+      child: MoodSvgWidget(
+        moodType: MoodType.good,
+      ),
+    );
   }
 }

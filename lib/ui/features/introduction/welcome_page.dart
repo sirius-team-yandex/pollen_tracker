@@ -61,7 +61,6 @@ class _WelcomePageState extends State<WelcomePage> {
                           borderRadius: BorderRadius.circular(25),
                           color: context.myColors.primaryGreen,
                         ),
-
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(

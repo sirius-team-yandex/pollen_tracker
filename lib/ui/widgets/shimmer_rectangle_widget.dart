@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,7 +18,7 @@ class ShimmerRectangleWidget extends StatelessWidget {
           width: width,
           child: const ColoredBox(
             color: Colors.white,
-            child: SizedBox.shrink()
+            child: SizedBox.shrink(),
           ),
         ),
       ),

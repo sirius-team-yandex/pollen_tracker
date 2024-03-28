@@ -17,7 +17,7 @@ class MoodSetRecordDialog extends StatefulWidget {
 class _MoodSetRecordDialogState extends State<MoodSetRecordDialog> {
   String comment = '';
 
-   MoodType mood = MoodType.good ;
+  MoodType mood = MoodType.good;
   void _setMoodType(MoodType moodType) {
     setState(() {
       mood = moodType;
@@ -126,13 +126,10 @@ class SvgGridView extends StatelessWidget {
           onTap: () => callback(MoodType.values[index]),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: selectedMoodType == MoodType.values[index]
-                  ? context.myColors.primaryGreen
-                  : Colors.transparent,
+              color: selectedMoodType == MoodType.values[index] ? context.myColors.primaryGreen : Colors.transparent,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
-
               padding: const EdgeInsets.all(8.0),
               child: MoodSvgWidget(
                 moodType: MoodType.values[index],

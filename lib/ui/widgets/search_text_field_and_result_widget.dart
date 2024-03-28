@@ -64,7 +64,7 @@ class _SearchTextFieldAndResultWidgetState extends State<SearchTextFieldAndResul
             filled: true,
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(24)
+              borderRadius: BorderRadius.circular(24),
             ),
             labelText: context.S.select_city,
           ),

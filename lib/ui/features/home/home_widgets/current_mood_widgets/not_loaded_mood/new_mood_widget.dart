@@ -28,7 +28,8 @@ class NewMoodWidget extends StatelessWidget {
               context: context,
               builder: (BuildContext contextDialog) => BlocProvider.value(
                 value: context.currentMoodBloc!,
-                child: const MoodSetRecordDialog()),
+                child: const MoodSetRecordDialog(),
+              ),
             );
           },
         ),

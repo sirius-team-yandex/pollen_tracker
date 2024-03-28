@@ -253,7 +253,6 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(height: 16.0),
-              
             SpeciesController(
               userSpecies: selectedSpecies,
               callback: _addToSelectedSpecies,

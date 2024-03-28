@@ -35,5 +35,6 @@
     "species_deleted": "Species deleted",
     "your_city_changed_on": "Your city changed on",
     "your_profile_deleted": "Your profile deleted",
-    "long_press_for_remove": "Long press for remove"
+    "long_press_for_remove": "Long press for remove",
+    "language": "Change language"
 }

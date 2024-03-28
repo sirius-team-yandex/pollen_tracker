@@ -8,8 +8,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get health_check => 'Enter your today feeling of health';
 
   @override
-  String get welcome_description_1 =>
-      'Pollen Tracker is a simple application that allows you to track your daily mood. We are here to help you keep track of your mood.';
+  String get welcome_description_1 => 'Pollen Tracker is a simple application that allows you to track your daily mood. We are here to help you keep track of your mood.';
 
   @override
   String get welcome_description_2 => 'Keep your health for detailed statistics.';
@@ -112,4 +111,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get long_press_for_remove => 'Long press for remove';
+
+  @override
+  String get language => 'Change language';
 }

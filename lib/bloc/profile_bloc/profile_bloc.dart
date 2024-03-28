@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
@@ -66,6 +67,13 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
 
   void changeProfile(ProfileEntity newProfile) {
     add(ProfilesAllEvent.changeProfile(newProfile));
+  }
+
+  void changeCity(CityEntity newCity) {
+    state.maybeWhen(
+      logedIn: (value) => add(ProfilesAllEvent.changeProfile(value.copyWith(cityId: newCity.id))),
+      orElse: () {},
+    );
   }
 
   Future<void> _profileLogIn(_LogIn event, Emitter<ProfileState> emit) async {

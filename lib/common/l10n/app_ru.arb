@@ -27,5 +27,6 @@
     "light_mode":"Светлая тема",
     "change_profile":"Сменить профиль",
     "create_profile":"Создать профиль",
-    "enter_name":"Enter name"
+    "enter_name":"Ввести имя",
+    "change_city": "Сменить город"
 }

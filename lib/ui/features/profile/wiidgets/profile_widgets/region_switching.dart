@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/ui/dialogs/city_set_dialog.dart';
+import 'package:pollen_tracker/ui/features/profile/profile_page.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class RegionSwitcher extends StatelessWidget {
@@ -23,6 +25,13 @@ class RegionSwitcher extends StatelessWidget {
       ),
       onPressed: () {
         //TODO ивент на смену города
+        showDialog(
+          context: context,
+          builder: (contextInner) => CitySetDialog(
+            cities: CitiesInherited.of(context).cities,
+            regionName: regionName,
+          ),
+        );
         logger.i('ГОРОД');
       },
       child: Row(
@@ -30,7 +39,7 @@ class RegionSwitcher extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              'Санкт-Петербург, Россия',
+              regionName,
               style: context.T.displayMedium,
             ),
           ),

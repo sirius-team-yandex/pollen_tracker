@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
-import 'package:pollen_tracker/ui/features/profile/profile_page.dart';
+import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/name_textfield.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/region_switching.dart';
@@ -59,18 +59,18 @@ class ProfileWidget extends StatelessWidget {
                                 regionName: regionText,
                               ),
                             ),
+                            IconSurround(
+                              icon: Icons.bookmark_border,
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: SpeciesController(
+                                userSpecies: value.profile.species,
+                              ),
+                            ),
                           ],
                         );
                       },
                     );
                   },
-                ),
-                const IconSurround(
-                  icon: Icons.bookmark_border,
-                  padding: EdgeInsets.only(bottom: 8),
-                  child: SpeciesController(
-                    userSpecies: ['Бибааааааа', 'Бобаааааа', 'Ваня', 'Руслан'],
-                  ),
                 ),
                 const IconSurround(
                   iconPosition: IconPosition.center,

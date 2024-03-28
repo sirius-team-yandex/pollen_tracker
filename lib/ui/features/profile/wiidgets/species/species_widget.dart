@@ -6,6 +6,7 @@ class SpeciesWidget extends StatelessWidget {
   final String? text;
   final Color? color;
   final BorderRadius? borderRadius;
+  final void Function()? longPressAction;
   final void Function()? action;
   final Widget? child;
   const SpeciesWidget({
@@ -13,6 +14,7 @@ class SpeciesWidget extends StatelessWidget {
     this.text,
     this.color,
     this.borderRadius,
+    this.longPressAction,
     this.action,
     this.child,
   }) : assert((text != null) ^ (child != null));
@@ -29,8 +31,8 @@ class SpeciesWidget extends StatelessWidget {
         elevation: 0,
         shadowColor: Colors.transparent,
       ),
-      onPressed: () {},
-      onLongPress: action,
+      onPressed: action,
+      onLongPress: longPressAction,
       child: child ??
           Text(
             text ?? '',

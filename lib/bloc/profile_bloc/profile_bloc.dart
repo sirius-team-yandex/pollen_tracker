@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
@@ -67,6 +68,31 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
 
   void changeProfile(ProfileEntity newProfile) {
     add(ProfilesAllEvent.changeProfile(newProfile));
+  }
+
+  void addSpecies(Species species) {
+    state.maybeWhen(
+      logedIn: (value) {
+        final speciesList = value.species;
+        if (!speciesList.contains(species)) {
+          add(ProfilesAllEvent.changeProfile(value.copyWith(species: [...speciesList, species])));
+        }
+      },
+      orElse: () {},
+    );
+  }
+
+  void removeSpecies(Species species) {
+    state.maybeWhen(
+      logedIn: (value) {
+        var speciesList = value.species;
+        int index = speciesList.indexWhere((e) => e == species);
+        if (index != -1) {
+          add(ProfilesAllEvent.changeProfile(value.copyWith(species: List.from(speciesList)..removeAt(index))));
+        }
+      },
+      orElse: () {},
+    );
   }
 
   void changeCity(CityEntity newCity) {

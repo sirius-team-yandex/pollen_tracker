@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pollen_tracker/bloc/profiles_all_bloc/profiles_all_bloc.dart';
+import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/common/router_config.dart';
+import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
@@ -13,6 +17,7 @@ import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 import 'package:pollen_tracker/ui/widgets/input_text_field_widget.dart';
+import 'package:pollen_tracker/ui/widgets/search_text_field_and_result_widget.dart';
 
 class SelectProfileWrapper extends StatelessWidget {
   const SelectProfileWrapper({super.key});
@@ -99,6 +104,7 @@ class _SelectProfile extends StatelessWidget {
                                   context: context,
                                   builder: (context) => DeleteProfileDialog(
                                     removeProfileCallback: _removeProfile,
+                                    profile: profiles[index],
                                   ),
                                 ),
                                 color: context.myColors.darkGreen,
@@ -110,6 +116,7 @@ class _SelectProfile extends StatelessWidget {
                                 context: context,
                                 builder: (context) => CreateProfileDialog(
                                   selectProfileCallback: _selectProfile,
+                                  cities: CitiesInherited.of(context).cities,
                                 ),
                               ),
                               color: context.myColors.primaryGreen,
@@ -163,14 +170,27 @@ class ProfilePanelItemWidget extends StatelessWidget {
   }
 }
 
-class CreateProfileDialog extends StatelessWidget {
-  const CreateProfileDialog({super.key, required this.selectProfileCallback});
+class CreateProfileDialog extends StatefulWidget {
+  const CreateProfileDialog({super.key, required this.selectProfileCallback, required this.cities});
   final Function(BuildContext context, ProfileEntity profile) selectProfileCallback;
+  final List<CityEntity> cities;
+  @override
+  State<CreateProfileDialog> createState() => _CreateProfileDialogState();
+}
+
+class _CreateProfileDialogState extends State<CreateProfileDialog> {
+  String profileName = '';
+  late CityEntity selectedCity;
+  late List<Species> selectedSpecies;
+  void _setCity(CityEntity city) => setState(() => selectedCity = city);
+  void _setName(String name) => setState(() => profileName = name);
+
+  int _getUniqueId() {
+    return Random().nextInt(10000);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // String profileName;
-
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
@@ -204,11 +224,13 @@ class CreateProfileDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: InputTextFieldFilledWidget(
-                onInputed: (value) {
-                  logger.d(value);
-                },
+                onInputed: _setName,
                 hint: context.S.enter_name,
               ),
+            ),
+            SearchTextFieldAndResultWidget(
+              cities: widget.cities,
+              onSelectCityCallback: _setCity,
             ),
             const SizedBox(height: 30.0),
             Container(
@@ -219,11 +241,10 @@ class CreateProfileDialog extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  // TODO: impl NOT MOCKING
-
-                  selectProfileCallback(
+                  // TODO: SPECIES ADDD
+                  widget.selectProfileCallback(
                     context,
-                    const ProfileEntity(name: 'mockProfile 3', species: [], profileId: 3, cityId: 3),
+                    ProfileEntity(name: profileName, species: [], profileId: _getUniqueId(), cityId: selectedCity.id),
                   );
                   Navigator.of(context).pop();
                 },
@@ -239,8 +260,10 @@ class CreateProfileDialog extends StatelessWidget {
 }
 
 class DeleteProfileDialog extends StatelessWidget {
-  const DeleteProfileDialog({super.key, required this.removeProfileCallback});
+  const DeleteProfileDialog({super.key, required this.removeProfileCallback, required this.profile});
   final Function(BuildContext context, ProfileEntity profile) removeProfileCallback;
+  final ProfileEntity profile;
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -265,7 +288,7 @@ class DeleteProfileDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Вы уверены что хотите удалить профиль?',
+              'Вы уверены что хотите удалить профиль? ${profile.name}',
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(height: 30.0),
@@ -277,11 +300,7 @@ class DeleteProfileDialog extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  // TODO: impl NOT MOCKING
-                  removeProfileCallback(
-                    context,
-                    const ProfileEntity(name: 'mockProfile 3', species: [], profileId: 3, cityId: 3),
-                  );
+                  removeProfileCallback(context, profile);
                   Navigator.of(context).pop();
                 },
                 child: const Text('Удалить'),

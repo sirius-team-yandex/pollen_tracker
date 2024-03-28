@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/dialogs/city_set_dialog.dart';
-import 'package:pollen_tracker/ui/features/profile/profile_page.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class RegionSwitcher extends StatelessWidget {

@@ -39,7 +39,11 @@ class SpeciesAddDialog extends StatelessWidget {
             Wrap(
               children: [
                 ...List.from(
-                  allSpecies.where((element) => !actualSpecies.contains(element)).map(
+                  allSpecies
+                      .where(
+                        (element) => !actualSpecies.contains(element),
+                      )
+                      .map(
                         (e) => SpeciesWidget(
                           text: e.name,
                           action: () {

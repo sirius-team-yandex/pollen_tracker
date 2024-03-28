@@ -61,7 +61,7 @@ class ProfileWidget extends StatelessWidget {
                             ),
                             IconSurround(
                               icon: Icons.bookmark_border,
-                              padding: EdgeInsets.only(bottom: 8),
+                              padding: const EdgeInsets.only(bottom: 8),
                               child: SpeciesController(
                                 userSpecies: value.profile.species,
                               ),

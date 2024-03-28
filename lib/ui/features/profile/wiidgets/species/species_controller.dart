@@ -39,7 +39,7 @@ class SpeciesController extends StatelessWidget {
           ),
         ),
         SpeciesWidget(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           action: () => _showDialog(context),
         ),
       ],

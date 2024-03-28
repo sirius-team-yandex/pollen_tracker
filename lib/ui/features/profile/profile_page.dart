@@ -36,8 +36,6 @@ class _ProfilePageWrapperState extends State<ProfilePageWrapper> {
   }
 }
 
-
-
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 

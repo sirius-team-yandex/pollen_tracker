@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pollen_tracker/ui/dialogs/species_add_dialog.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 

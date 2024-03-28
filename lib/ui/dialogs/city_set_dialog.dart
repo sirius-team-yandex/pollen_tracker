@@ -51,10 +51,13 @@ class CitySetDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(color: Colors.grey.shade300),
               ),
-              child: SearchTextFieldAndResultWidget(cities: cities, onSelectCityCallback: (city) {
-                // TODO: check
-                Navigator.of(context).pop(city);
-              }),
+              child: SearchTextFieldAndResultWidget(
+                cities: cities,
+                onSelectCityCallback: (city) {
+                  // TODO: check
+                  Navigator.of(context).pop(city);
+                },
+              ),
             ),
             const SizedBox(height: 30.0),
           ],

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/injectable_init.dart';
-
 
 class SearchTextFieldAndResultWidget extends StatefulWidget {
   const SearchTextFieldAndResultWidget({super.key, required this.cities, required this.onSelectCityCallback});

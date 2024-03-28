@@ -77,7 +77,6 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
     );
   }
 
-
   void _initCities() {
     getIt<CitiesRepository>().getCityEntities().then(
           (value) => setState(

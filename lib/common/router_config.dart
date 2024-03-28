@@ -38,7 +38,7 @@ final routerConfig = GoRouter(
         GoRoute(
           path: RouteName.calendar,
           builder: (BuildContext context, GoRouterState state) {
-            return const CalendarPage();
+            return const CalendarPageWrapper();
           },
         ),
         GoRoute(

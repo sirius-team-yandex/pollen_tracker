@@ -27,6 +27,7 @@ import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/city_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_subject.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
@@ -39,6 +40,7 @@ void main() async {
       await configureDependencies();
       await initFirebase();
       await _prepopulate();
+      getIt<PollenRepository>().updateForecastData();
 
       logger.i('Starting app in main.dart');
       runApp(

@@ -77,6 +77,9 @@ class MoodLocalStorageDatasourceIsar {
       throw ArgumentError('Date should be UTC!');
     }
 
-    yield* isar.moodRecordModelIsars.where().ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate).watch();
+    yield* isar.moodRecordModelIsars
+        .where()
+        .ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate)
+        .watch(fireImmediately: true);
   }
 }

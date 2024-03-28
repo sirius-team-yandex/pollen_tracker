@@ -15,7 +15,7 @@ import 'package:pollen_tracker/domain/repositories/pollen_subject.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
 import 'package:pollen_tracker/injectable_init.dart';
-import 'package:pollen_tracker/ui/features/home/widgets/forecast_view.dart';
+import 'package:pollen_tracker/ui/features/home/home_widgets/pollen_widgets/pollen_forecast/forecast_view.dart';
 import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';

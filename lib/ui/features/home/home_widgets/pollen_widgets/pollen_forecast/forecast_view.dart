@@ -11,6 +11,7 @@ class ForecastView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemCount: vos.length,
       itemBuilder: (context, index) {
@@ -53,7 +54,7 @@ class ColoredColumn extends StatelessWidget {
   });
 
   static const width = 48.0;
-  static const height = 48 * 4.5;
+  static const height = 40 * 4.5;
 
   final double percent;
   final String caption;

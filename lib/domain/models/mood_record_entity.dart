@@ -1,14 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 
-class MoodRecordEntity {
+part 'mood_record_entity.freezed.dart';
+
+@freezed
+class MoodRecordEntity with _$MoodRecordEntity {
   // date is the effective id of entity in the domain layer.
   // date should be in local time and presented in UI as is.
-  DateTime date;
-  MoodType moodType;
-  String? comment;
-  MoodRecordEntity({
-    required this.date,
-    required this.moodType,
-    this.comment,
-  });
+  const factory MoodRecordEntity({
+    required DateTime date,
+    required MoodType moodType,
+    String? comment,
+  }) = _MoodRecordEntity;
 }

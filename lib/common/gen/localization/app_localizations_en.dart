@@ -115,4 +115,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'Change language';
+
+  @override
+  String get add_new_comment => 'You can add your comment about the mood here';
 }

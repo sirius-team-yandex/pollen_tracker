@@ -5,9 +5,9 @@ import 'package:pollen_tracker/common/enums/mood_type.dart';
 class MoodSvgWidget extends StatelessWidget {
   final double size;
 
-  const MoodSvgWidget({super.key, required this.moodType, this.size = 90.0});
+  const MoodSvgWidget({super.key, this.moodType, this.size = 90.0});
 
-  final MoodType moodType;
+  final MoodType? moodType;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MoodSvgWidget extends StatelessWidget {
       case MoodType.veryBad:
         moodAsset = SvgPicture.asset('assets/images/svg/mood_4.svg');
       default:
-        moodAsset = SvgPicture.asset('assets/images/svg/mood_2.svg');
+        moodAsset = SvgPicture.asset('assets/images/svg/mood_1.svg');
     }
 
     return SizedBox(height: size, width: size, child: moodAsset);

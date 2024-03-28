@@ -10,7 +10,7 @@ class PollenEntityToPollenModelMapper {
     for (var entity in entities) {
       res.add(
         PollenModel(
-          time: entity.time.toUtc(),
+          time: entity.time.toUtc().copyWith(microsecond: 0, millisecond: 0),
           lat: entity.lat,
           lng: entity.lng,
           // Trees

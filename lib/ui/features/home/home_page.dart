@@ -42,11 +42,10 @@ class HomePage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CurrentMoodWidget(),
-                SizedBox(height: 40.0),
                 CurrentPollenWidgetBuilder(),
               ],
             ),

@@ -40,7 +40,7 @@ class PollenAirStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      height: 150,
+      height: 148,
       width: 200,
       backgroundColor: context.myColors.primaryGreen,
       padding: const EdgeInsets.all(16.0),
@@ -57,9 +57,10 @@ class PollenAirStatus extends StatelessWidget {
                 height: 60,
                 child: CustomPaint(
                   painter: CustomCircleStatusPainter(
-                    MyColors.redForecast,
-                    MyColors.greenForecast,
-                    _riskLevelTo100(pollenForecast.level),
+                    strokeThickness: 7,
+                    colorGood: MyColors.greenForecast,
+                    colorBad: MyColors.redForecast,
+                    riskLevel: _riskLevelTo100(pollenForecast.level),
                   ),
                   child: Container(),
                 ),
@@ -68,7 +69,7 @@ class PollenAirStatus extends StatelessWidget {
                 width: 20,
               ),
               Text(
-                '${_riskLevelTo100(pollenForecast.level)}',
+                '${_riskLevelTo100(pollenForecast.level)} %',
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge

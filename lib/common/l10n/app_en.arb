@@ -27,5 +27,6 @@
     "light_mode":"Light mode",
     "change_profile":"Change profile",
     "create_profile":"Create profile",
-    "enter_name":"Enter name"
+    "enter_name":"Enter name",
+    "change_city": "Change city"
 }

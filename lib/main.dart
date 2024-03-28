@@ -83,7 +83,7 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
   @override
   Widget build(BuildContext context) {
     if (configEntity == null) {
-      return const CircularProgressIndicator();
+      return const CircularProgressIndicator(); // TODO: show splash
     }
     return ConfigInherited(
       configEntity: configEntity,

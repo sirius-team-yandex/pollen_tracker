@@ -50,7 +50,7 @@ final routerConfig = GoRouter(
         GoRoute(
           path: RouteName.profile,
           builder: (BuildContext context, GoRouterState state) {
-            return const ProfilePage();
+            return const ProfilePageWrapper();
           },
         ),
       ],

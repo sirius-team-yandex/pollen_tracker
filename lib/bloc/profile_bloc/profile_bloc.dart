@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
@@ -12,6 +14,7 @@ import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
+import 'package:pollen_tracker/ui/widgets/notification_toast.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_events.dart';
@@ -80,6 +83,15 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
       },
       orElse: () {},
     );
+    showOverlayNotification(
+      duration: const Duration(seconds: 5),
+      (context) {
+        return NotificationToast(
+          message: context.S.species_added,
+          needShowSmile: true,
+        );
+      },
+    );
   }
 
   void removeSpecies(Species species) {
@@ -93,12 +105,32 @@ class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
       },
       orElse: () {},
     );
+    showOverlayNotification(
+      duration: const Duration(seconds: 5),
+      (context) {
+        return NotificationToast(
+          message: context.S.species_deleted,
+          emoji: '✅',
+          needShowSmile: true,
+        );
+      },
+    );
   }
 
   void changeCity(CityEntity newCity) {
     state.maybeWhen(
       logedIn: (value) => add(ProfilesAllEvent.changeProfile(value.copyWith(cityId: newCity.id))),
       orElse: () {},
+    );
+    showOverlayNotification(
+      duration: const Duration(seconds: 5),
+      (context) {
+        return NotificationToast(
+          message: '${context.S.your_city_changed_on} ${newCity.name}',
+          emoji: '🏡',
+          needShowSmile: true,
+        );
+      },
     );
   }
 

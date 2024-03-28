@@ -28,5 +28,10 @@
     "change_profile":"Сменить профиль",
     "create_profile":"Создать профиль",
     "enter_name":"Ввести имя",
-    "change_city": "Сменить город"
+    "change_city": "Сменить город",
+    "did_you_sure_for_deleting_profile": "Вы уверены что хотите удалить профиль",
+    "add_species": "Добавить аллерген",    
+    "species_added": "Аллерген добавлен. Не болейте",
+    "species_deleted": "Аллерген удален",
+    "your_city_changed_on": "Ваш город изменен на"
 }

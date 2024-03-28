@@ -90,4 +90,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get change_city => 'Change city';
+
+  @override
+  String get did_you_sure_for_deleting_profile => 'Are you sure you want to delete this profile';
+
+  @override
+  String get add_species => 'Add Species';
+
+  @override
+  String get species_added => 'Species added';
+
+  @override
+  String get species_deleted => 'Species deleted';
+
+  @override
+  String get your_city_changed_on => 'Ваш город изменен на';
 }

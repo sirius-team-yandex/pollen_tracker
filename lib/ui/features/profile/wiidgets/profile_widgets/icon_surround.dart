@@ -23,7 +23,7 @@ class IconSurround extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: (iconPosition == IconPosition.up)
-            ? CrossAxisAlignment.start
+            ? CrossAxisAlignment.center
             : ((iconPosition == IconPosition.center) ? CrossAxisAlignment.center : CrossAxisAlignment.end),
         children: [
           Icon(icon),

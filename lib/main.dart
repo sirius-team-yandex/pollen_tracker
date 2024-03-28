@@ -247,10 +247,8 @@ List<MoodRecordModelIsar> _generateMoodRecords(int ownerId) {
 Future<List<PollenModel>> _generatePollenModel(double lat, double lng) async {
   logger.i('loadin bundle...');
   final asset = await rootBundle.loadString('assets/SiriusPollen.json');
-  final pollenEntityToPollenModelMapper =
-      GetIt.I<PollenEntityToPollenModelMapper>();
-  final pollenDtoToPollenEntityMappper =
-      GetIt.I<PollenDtoToPollenEntityMappper>();
+  final pollenEntityToPollenModelMapper = GetIt.I<PollenEntityToPollenModelMapper>();
+  final pollenDtoToPollenEntityMappper = GetIt.I<PollenDtoToPollenEntityMappper>();
   final data = await json.decode(asset);
   final entities = pollenDtoToPollenEntityMappper.map(AmbeeDto.fromJson(data));
 
@@ -260,8 +258,7 @@ Future<List<PollenModel>> _generatePollenModel(double lat, double lng) async {
   for (var i = 0; i < 24 * 30; i++) {
     final currValue = i % entities.length;
     final currDate = DateTime.now().subtract(Duration(hours: i));
-    mappedEntities
-        .add(entities[currValue].copyWith(lat: lat, lng: lng, time: currDate));
+    mappedEntities.add(entities[currValue].copyWith(lat: lat, lng: lng, time: currDate));
   }
 
   final models = pollenEntityToPollenModelMapper.map(mappedEntities);

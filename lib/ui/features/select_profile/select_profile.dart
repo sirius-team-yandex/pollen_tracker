@@ -46,8 +46,11 @@ class _SelectProfile extends StatelessWidget {
   void _removeProfile(BuildContext context, ProfileEntity profile) {
     final config = ConfigInherited.of(context).configEntity;
     if (config == null) {
+      logger.i('Config is null, deletion aborted!');
       return;
     }
+
+    logger.i('Config is $config, perform deletion of $profile!');
     getIt<ProfileRepository>().delete(profile.profileId);
   }
 

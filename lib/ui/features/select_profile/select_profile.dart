@@ -264,7 +264,12 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
                 onPressed: () {
                   widget.selectProfileCallback(
                     context,
-                    ProfileEntity(name: profileName, species: selectedSpecies, profileId: _getUniqueId(), cityId: selectedCity.id),
+                    ProfileEntity(
+                      name: profileName,
+                      species: selectedSpecies,
+                      profileId: _getUniqueId(),
+                      cityId: selectedCity.id,
+                    ),
                   );
                   Navigator.of(context).pop();
                 },

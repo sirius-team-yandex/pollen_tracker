@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/localization.dart';
-import 'package:pollen_tracker/common/logger.dart';
-import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/dialogs/species_add_dialog.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
 import 'package:pollen_tracker/ui/widgets/notification_toast.dart';

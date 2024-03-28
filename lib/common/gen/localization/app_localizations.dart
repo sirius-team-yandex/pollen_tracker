@@ -245,6 +245,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change profile'**
   String get change_profile;
+
+  /// No description provided for @create_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create profile'**
+  String get create_profile;
+
+  /// No description provided for @enter_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter name'**
+  String get enter_name;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

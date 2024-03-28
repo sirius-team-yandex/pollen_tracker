@@ -18,7 +18,7 @@ extension CurrentPollenBuilder on BuildContext {
   CurrentPollenBloc? get currentPollenBloc => BlocProvider.of<CurrentPollenBloc>(this);
 }
 
-@injectable
+@singleton
 class CurrentPollenBloc extends Bloc<CurrentPollenEvent, CurrentPollenState> {
   final PollenSubject pollenRecordSubject;
   final PollenRepository currentPollenRepository;

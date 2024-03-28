@@ -29,8 +29,6 @@ void main() async {
   );
 }
 
-// TODO: все таки нужен inherited widget
-
 class PollenAppWrapper extends StatefulWidget {
   const PollenAppWrapper({super.key});
 
@@ -41,15 +39,14 @@ class PollenAppWrapper extends StatefulWidget {
 class _PollenAppWrapperState extends State<PollenAppWrapper> {
   late final ConfigSubject configSubject;
   late final StreamSubscription configSubscription;
-  late ConfigEntity configEntity;
+  ConfigEntity? configEntity;
   @override
   void initState() {
     super.initState();
     configSubject = getIt<ConfigSubject>();
-    configEntity = const ConfigEntity(locale: LocaleEnum.en, darkTheme: ThemeMode.dark);
     configSubscription = configSubject.observe().listen(
       (value) {
-        logger.d('listened $configEntity : oldValue $value');
+        logger.d('listened $value : oldValue $configEntity');
         setState(
           () {
             configEntity = value;
@@ -67,19 +64,45 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return PollenApp(config: configEntity);
+    if (configEntity == null) {
+      return const CircularProgressIndicator();
+    }
+    return ConfigInherited(
+      configEntity: configEntity,
+      child: const PollenApp(),
+    );
+  }
+}
+
+class ConfigInherited extends InheritedWidget {
+  final ConfigEntity? configEntity;
+
+  const ConfigInherited({
+    super.key,
+    required this.configEntity,
+    required super.child,
+  });
+
+  static ConfigInherited of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ConfigInherited>()!;
+  }
+
+  @override
+  bool updateShouldNotify(covariant ConfigInherited oldWidget) {
+    // You can implement custom logic here to determine when to notify listeners
+    return oldWidget.configEntity != configEntity;
   }
 }
 
 class PollenApp extends StatelessWidget {
-  const PollenApp({super.key, required this.config});
+  const PollenApp({super.key});
 
-  final ConfigEntity? config;
   final ThemeMode selectedThemeMode = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
-    final selectedThemeMode = config?.darkTheme ?? ThemeMode.dark;
+    final config = ConfigInherited.of(context).configEntity;
+    final selectedThemeMode = config?.darkTheme ?? ThemeMode.system;
     final lightAppThemeData = AppThemeData.light();
     final darkAppThemeData = AppThemeData.dark();
     return AppTheme(

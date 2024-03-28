@@ -82,4 +82,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get change_profile => 'Change profile';
+
+  @override
+  String get create_profile => 'Create profile';
+
+  @override
+  String get enter_name => 'Enter name';
 }

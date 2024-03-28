@@ -44,6 +44,10 @@ class ConfigRepositoryIsarImpl implements ConfigRepository, ConfigSubject {
   }
 
   // TODO: get default params from some contant object or from dynamically from the system
-  ConfigEntity _defaultConfig() =>
-      const ConfigEntity(currProfileId: null, locale: LocaleEnum.ru, darkTheme: ThemeMode.system);
+  ConfigEntity _defaultConfig() => const ConfigEntity(
+        currProfileId: null,
+        locale: LocaleEnum.ru,
+        darkTheme: ThemeMode.system,
+        isFirstLaunch: true,
+      );
 }

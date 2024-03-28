@@ -25,5 +25,7 @@
     "history": "История записей",
     "dark_mode": "Темная тема",
     "light_mode":"Светлая тема",
-    "change_profile":"Сменить профиль"
+    "change_profile":"Сменить профиль",
+    "create_profile":"Создать профиль",
+    "enter_name":"Enter name"
 }

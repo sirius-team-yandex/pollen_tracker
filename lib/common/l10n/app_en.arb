@@ -25,5 +25,7 @@
     "history": "Record history",
     "dark_mode": "Dark mode",
     "light_mode":"Light mode",
-    "change_profile":"Change profile"
+    "change_profile":"Change profile",
+    "create_profile":"Create profile",
+    "enter_name":"Enter name"
 }

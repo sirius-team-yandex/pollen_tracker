@@ -9,6 +9,7 @@ class ConfigEntityToModelIsarMapper {
       currProfileId: configEntity.currProfileId,
       locale: configEntity.locale,
       isDark: configEntity.darkTheme,
+      isFirstLaunch: configEntity.isFirstLaunch,
     );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class NameTextField extends StatefulWidget {
-  final String name;
-  const NameTextField({super.key, required this.name});
+  final ProfileEntity profile;
+  const NameTextField({super.key, required this.profile});
 
   @override
   State<NameTextField> createState() => _NameTextFieldState();
@@ -15,7 +17,7 @@ class _NameTextFieldState extends State<NameTextField> {
 
   @override
   void initState() {
-    controller.text = widget.name;
+    controller.text = widget.profile.name;
     super.initState();
   }
 
@@ -24,16 +26,18 @@ class _NameTextFieldState extends State<NameTextField> {
     return Center(
       child: TextFormField(
         controller: controller,
-        onFieldSubmitted: (value) => {
-          if (value.trim() != '')
-            {
-              //TODO добавить ивент на смену имени
-              logger.i(value),
-            }
-          else
-            {
-              controller.text = widget.name,
-            },
+        onFieldSubmitted: (value) {
+          if (value.trim() != '') {
+            context.profileBloc?.changeProfile(
+              // TODO: not mock
+              widget.profile.copyWith(
+                name: value,
+              ),
+            );
+            logger.i(value);
+          } else {
+            controller.text = widget.profile.name;
+          }
         },
         style: context.T.displayLarge,
         textAlign: TextAlign.center,

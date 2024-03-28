@@ -20,7 +20,7 @@ extension ProfileBuilder on BuildContext {
   ProfileBloc? get profileBloc => BlocProvider.of<ProfileBloc>(this);
 }
 
-@injectable
+@singleton
 class ProfileBloc extends Bloc<ProfilesAllEvent, ProfileState> {
   final ProfileSubject profileSubject;
   final ProfileRepository profileRepository;

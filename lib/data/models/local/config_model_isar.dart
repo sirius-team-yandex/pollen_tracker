@@ -13,10 +13,12 @@ class ConfigModelIsar {
   LocaleEnum locale;
   @enumerated
   ThemeMode isDark;
+  bool isFirstLaunch;
 
   ConfigModelIsar({
     required this.currProfileId,
     required this.locale,
     required this.isDark,
+    required this.isFirstLaunch,
   });
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/localization.dart';
-import 'package:pollen_tracker/common/enums/locale_enum.dart';
-import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class ThemeSwitchingButton extends StatefulWidget {
@@ -41,18 +40,19 @@ class _ThemeSwitchingButtonState extends State<ThemeSwitchingButton> {
           trackColor: const MaterialStatePropertyAll<Color>(Colors.white),
           thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
           onChanged: (bool value) async {
-            // This is called when the user toggles the switch.
+            final config = ConfigInherited.of(context).configEntity;
+            if (config == null) {
+              return;
+            }
             if (value) {
               getIt<ConfigRepository>().set(
-                ConfigEntity(
-                  locale: Localizations.localeOf(context).languageCode == 'en' ? LocaleEnum.en : LocaleEnum.ru,
+                config.copyWith(
                   darkTheme: ThemeMode.dark,
                 ),
               );
             } else {
               getIt<ConfigRepository>().set(
-                ConfigEntity(
-                  locale: Localizations.localeOf(context).languageCode == 'en' ? LocaleEnum.en : LocaleEnum.ru,
+                config.copyWith(
                   darkTheme: ThemeMode.light,
                 ),
               );

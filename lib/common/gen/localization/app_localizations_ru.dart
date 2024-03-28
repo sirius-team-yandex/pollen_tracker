@@ -82,4 +82,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get change_profile => 'Сменить профиль';
+
+  @override
+  String get create_profile => 'Создать профиль';
+
+  @override
+  String get enter_name => 'Enter name';
 }

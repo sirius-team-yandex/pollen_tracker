@@ -52,8 +52,8 @@ class _CalendarPageState extends State<CalendarPage> {
         calendarBuilders: CalendarBuilders(
           // Customize only the markers builder to display the heatmap
           markerBuilder: (context, date, events) {
-            logger.d(date);
-            logger.d(_heatMapData.keys.first.toIso8601String());
+            // logger.d(date);
+            // logger.d(_heatMapData.keys.first.toIso8601String());
             if (_heatMapData.containsKey(date)) {
               logger.d('${_heatMapData[date]}');
               return Positioned(

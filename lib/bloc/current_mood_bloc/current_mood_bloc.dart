@@ -18,7 +18,7 @@ extension CurrentMoodBuilder on BuildContext {
   CurrentMoodBloc? get currentMoodBloc => BlocProvider.of<CurrentMoodBloc>(this);
 }
 
-@injectable
+@singleton
 class CurrentMoodBloc extends Bloc<CurrentMoodEvent, CurrentMoodState> {
   final MoodRecordSubject moodRecordSubject;
   final MoodRecordRepository currentMoodRepository;

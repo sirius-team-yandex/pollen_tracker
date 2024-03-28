@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/name_textfield.dart';
@@ -13,17 +15,17 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomCard(
+    return CustomCard(
       width: double.infinity,
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          MoodSvgWidget(
+          const MoodSvgWidget(
             size: 90,
             moodType: MoodType.good,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           SizedBox(
@@ -31,11 +33,18 @@ class ProfileWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                NameTextField(
-                  //TODO ПРОКИНУТЬ ИМЯ ПОЛЬЗОВАТЕЛЯ
-                  name: 'Default value',
+                BlocBuilder<ProfileBloc, ProfileState>(
+                  builder: (context, state) {
+                    return state.map(
+                      error: (value) => const Text(''), // TODO:
+                      logedOut: (value) => const Text(''), // TODO:
+                      logedIn: (value) => NameTextField(
+                        profile: value.profile,
+                      ),
+                    );
+                  },
                 ),
-                IconSurround(
+                const IconSurround(
                   icon: Icons.location_on_outlined,
                   iconPosition: IconPosition.center,
                   padding: EdgeInsets.only(bottom: 8),
@@ -43,14 +52,14 @@ class ProfileWidget extends StatelessWidget {
                     regionName: 'Санкт-Петербург, Россия',
                   ),
                 ),
-                IconSurround(
+                const IconSurround(
                   icon: Icons.bookmark_border,
                   padding: EdgeInsets.only(bottom: 8),
                   child: SpeciesController(
                     userSpecies: ['Бибааааааа', 'Бобаааааа', 'Ваня', 'Руслан'],
                   ),
                 ),
-                IconSurround(
+                const IconSurround(
                   iconPosition: IconPosition.center,
                   icon: Icons.dark_mode_outlined,
                   padding: EdgeInsets.only(bottom: 8),

@@ -9,6 +9,7 @@ class ConfigModelIsarToEntityMapper {
       currProfileId: configModelIsar.currProfileId,
       locale: configModelIsar.locale,
       darkTheme: configModelIsar.isDark,
+      isFirstLaunch: configModelIsar.isFirstLaunch,
     );
   }
 

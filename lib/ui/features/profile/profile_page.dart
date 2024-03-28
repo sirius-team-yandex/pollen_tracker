@@ -1,5 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/localization.dart';
+import 'package:pollen_tracker/common/router_config.dart';
+import 'package:pollen_tracker/domain/repositories/config_repository.dart';
+import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
 import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widget.dart' as v2;
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
@@ -29,8 +37,33 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
+            if (kDebugMode)
+              TextButton(
+                onPressed: () {
+                  final config = ConfigInherited.of(context).configEntity;
+                  if (config != null) {
+                    getIt<ConfigRepository>().set(
+                      config.copyWith(isFirstLaunch: true, currProfileId: null),
+                    );
+                  }
+                },
+                child: Text('${ConfigInherited.of(context).configEntity}', style: context.T.headlineMedium),
+              ),
+            if (kDebugMode)
+              BlocBuilder<ProfileBloc, ProfileState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    logedIn: (value) => Text('$value', style: context.T.headlineMedium),
+                    orElse: () {
+                      return const Text(''); // TODO: (error)
+                    },
+                  );
+                },
+              ),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go(RouteName.selectProfile);
+              },
               width: double.infinity,
               color: context.myColors.darkGreen,
               child: IconSurround(

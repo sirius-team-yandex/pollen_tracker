@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pollen_tracker/common/logger.dart';
+import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/features/select_profile/select_profile.dart';
 import 'package:pollen_tracker/ui/logged_in_app_scaffold.dart';
 import 'package:pollen_tracker/ui/features/calendar/calendar_page.dart';
@@ -17,11 +19,15 @@ abstract class RouteName {
   static const String calendar = '/calendar';
   static const String welcome = '/welcome';
   static const String selectProfile = '/selectProfile';
+
+  static const String notFirstLaunchRedirect = '/notFirstLaunchRedirect';
+
+  static const String rootRedirect = '/rootRedirect';
 }
 
 final routerConfig = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.welcome,
+  initialLocation: RouteName.rootRedirect,
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -56,6 +62,36 @@ final routerConfig = GoRouter(
     GoRoute(
       path: RouteName.selectProfile,
       builder: (context, state) => const SelectProfileWrapper(),
+    ),
+    GoRoute(
+      path: RouteName.rootRedirect,
+      redirect: (context, state) {
+        final config = ConfigInherited.of(context).configEntity;
+        logger.e(config);
+        if (config?.isFirstLaunch ?? true) {
+          logger.d('redirected to ${RouteName.welcome}');
+
+          return RouteName.welcome;
+        } else {
+          logger.d('redirected to ${RouteName.notFirstLaunchRedirect}');
+
+          return RouteName.notFirstLaunchRedirect;
+        }
+      },
+    ),
+    GoRoute(
+      path: RouteName.notFirstLaunchRedirect,
+      redirect: (context, state) {
+        final config = ConfigInherited.of(context).configEntity;
+        if (config?.currProfileId == null) {
+          logger.d('redirected to ${RouteName.selectProfile}');
+
+          return RouteName.selectProfile;
+        }
+        logger.d('redirected to ${RouteName.home}');
+
+        return RouteName.home;
+      },
     ),
   ],
 );

@@ -25,7 +25,7 @@ extension ProfileBuilder on BuildContext {
   CalendarBloc? get profileBloc => BlocProvider.of<CalendarBloc>(this);
 }
 
-@injectable
+@singleton
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   PollenSubject pollenSubject;
   MoodRecordSubject moodRecordSubject;

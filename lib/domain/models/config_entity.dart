@@ -10,5 +10,6 @@ class ConfigEntity with _$ConfigEntity {
     int? currProfileId,
     required LocaleEnum locale,
     required ThemeMode darkTheme,
+    required bool isFirstLaunch,
   }) = _ConfigEntity;
 }

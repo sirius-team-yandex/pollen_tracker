@@ -2,17 +2,16 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
-import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/language_changing_button.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/icon_surround.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/name_textfield.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/profile_widgets/region_switching.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_controller.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/theme_switching_button.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/language_changing_button.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/icon_surround.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/name_textfield.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/profile_icon.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/region_switching.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/species/species_controller.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/theme_switching_button.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
-import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -25,10 +24,7 @@ class ProfileWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const MoodSvgWidget(
-            size: 90,
-            moodType: MoodType.good,
-          ),
+          const ProfileIcon(),
           const SizedBox(
             height: 16,
           ),

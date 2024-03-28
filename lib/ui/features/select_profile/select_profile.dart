@@ -15,7 +15,7 @@ import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_controller.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/species/species_controller.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 import 'package:pollen_tracker/ui/widgets/input_text_field_widget.dart';

@@ -311,6 +311,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change language'**
   String get language;
+
+  /// No description provided for @add_new_comment.
+  ///
+  /// In en, this message translates to:
+  /// **'You can add your comment about the mood here'**
+  String get add_new_comment;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

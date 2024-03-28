@@ -115,4 +115,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get language => 'Сменить язык';
+
+  @override
+  String get add_new_comment => 'Вы можете добавить свой комментарий о настроении здесь';
 }

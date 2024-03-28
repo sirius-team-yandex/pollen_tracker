@@ -294,7 +294,7 @@ Future<List<PollenModel>> _generatePollenModel(double lat, double lng) async {
 
   for (var i = 0; i < 24 * 30; i++) {
     final currValue = i % entities.length;
-    final currDate = DateTime.now().subtract(Duration(hours: i));
+    final currDate = DateTime.now().add(const Duration(days: 2)).subtract(Duration(hours: i));
     mappedEntities.add(entities[currValue].copyWith(lat: lat, lng: lng, time: currDate));
   }
 

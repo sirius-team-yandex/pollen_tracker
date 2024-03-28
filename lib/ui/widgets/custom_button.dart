@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       child: SizedBox(
         width: width,
-        height: height ?? 64,
+        height: height ?? 48,
         child: Center(child: child),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
@@ -22,15 +23,30 @@ class PollenAirStatus extends StatelessWidget {
     }
   }
 
+   String _riskLevelStringTo100(BuildContext context,RiscLevel risc) {
+    switch (risc) {
+      case RiscLevel.low:
+        return context.S.risk_level_low;
+      case RiscLevel.moderate:
+        return context.S.risk_level_medium;
+
+      case RiscLevel.high:
+        return context.S.risk_level_high;
+      case RiscLevel.veryHigh:
+        return context.S.risk_level_very_high;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomCard(
       height: 150,
-      width: 184,
+      width: 200,
       backgroundColor: context.myColors.primaryGreen,
       padding: const EdgeInsets.all(16.0),
       borderRadius: BorderRadius.circular(16.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: [
           Row(
@@ -41,8 +57,8 @@ class PollenAirStatus extends StatelessWidget {
                 height: 60,
                 child: CustomPaint(
                   painter: CustomCircleStatusPainter(
-                    MyColors.greenForecast,
                     MyColors.redForecast,
+                    MyColors.greenForecast,
                     _riskLevelTo100(pollenForecast.level),
                   ),
                   child: Container(),
@@ -55,14 +71,16 @@ class PollenAirStatus extends StatelessWidget {
                 '${_riskLevelTo100(pollenForecast.level)}',
                 style: Theme.of(context)
                     .textTheme
-                    .displayMedium
-                    ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold),
+                    .displayLarge
+                    ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold, fontSize: 32),
               ),
             ],
           ),
-          Text(
-            'Состояние воздуха: \n Неблагоприятное',
-            style: Theme.of(context).textTheme.displayMedium,
+          Flexible(
+            child: Text(
+              '${context.S.air_pollution}: ${_riskLevelStringTo100(context, pollenForecast.level)}',
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
           ),
         ],
       ),

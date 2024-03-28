@@ -37,5 +37,13 @@
     "your_profile_deleted": "Ваш профиль удален",
     "long_press_for_remove": "Нажмите и удерживайте, чтобы убрать",
     "language": "Сменить язык",
-    "add_new_comment":"Вы можете добавить свой комментарий о настроении здесь"
+    "add_new_comment":"Вы можете добавить свой комментарий о настроении здесь",
+    "air_pollution": "Прогноз пыльцы воздуха",
+    "risk_level_high": "Высокий",
+    "risk_level_low": "Низкий",
+    "risk_level_medium": "Неблагоприятный",
+    "risk_level_very_high": "Очень высокий",
+    "create_a_new_profile": "Создать новый профиль",
+    "select_city": "Выберите город",
+    "select_species" : "Выберите аллергены"
 }

@@ -96,7 +96,7 @@ class _SelectProfile extends StatelessWidget {
                             ),
                             color: context.myColors.primaryGreen,
                             onLongPress: () {},
-                            child: Text('+', style: context.T.headlineMedium),
+                            child: Icon(Icons.add_circle_outline_rounded, color: context.myColors.primary, size: 60),
                           );
                         }
                         return Dismissible(
@@ -247,7 +247,13 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
               cities: widget.cities,
               onSelectCityCallback: _setCity,
             ),
-            const SizedBox(height: 30.0),
+            const SizedBox(height: 16.0),
+            Text(
+              context.S.select_species,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            const SizedBox(height: 16.0),
+              
             SpeciesController(
               userSpecies: selectedSpecies,
               callback: _addToSelectedSpecies,
@@ -273,7 +279,7 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
                   );
                   Navigator.of(context).pop();
                 },
-                child: Text(context.S.save),
+                child: Text(context.S.save, style: context.T.headlineMedium),
               ),
             ),
             const SizedBox(height: 30.0),

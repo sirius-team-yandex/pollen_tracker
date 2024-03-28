@@ -1,10 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:pollen_tracker/bloc/current_mood_bloc/current_mood_bloc.dart';
+import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/localization.dart';
+import 'package:pollen_tracker/domain/models/mood_record_entity.dart';
+import 'package:pollen_tracker/ui/features/home/home_widgets/current_mood_widgets/loaded_mood/loaded_mood_comment_field.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
+import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 
-class MoodSetRecordDialog extends StatelessWidget {
+class MoodSetRecordDialog extends StatefulWidget {
   const MoodSetRecordDialog({super.key});
+
+  @override
+  State<MoodSetRecordDialog> createState() => _MoodSetRecordDialogState();
+}
+
+class _MoodSetRecordDialogState extends State<MoodSetRecordDialog> {
+  String comment = '';
+
+   MoodType mood = MoodType.good ;
+  void _setMoodType(MoodType moodType) {
+    setState(() {
+      mood = moodType;
+    });
+  }
+
+  void _setComment(String? newComment) {
+    setState(() {
+      comment = newComment ?? '';
+    });
+  }
+
+  void _submit() {
+    context.currentMoodBloc?.writeCurrentMood(
+      MoodRecordEntity(date: DateTime.now(), moodType: mood, comment: comment),
+    );
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +65,12 @@ class MoodSetRecordDialog extends StatelessWidget {
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(height: 24.0),
-            const Flexible(child: SvgGridView()),
+            Flexible(
+              child: SvgGridView(
+                callback: _setMoodType,
+                selectedMoodType: mood,
+              ),
+            ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               decoration: BoxDecoration(
@@ -42,16 +78,9 @@ class MoodSetRecordDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(color: Colors.grey.shade300),
               ),
-              child: TextField(
-                minLines: 6,
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                style: Theme.of(context).textTheme.displayMedium,
-                decoration: InputDecoration(
-                  hintText: context.S.write_a_comment,
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(16.0),
-                ),
+              child: MoodCommentChanger(
+                record: null,
+                action: _setComment,
               ),
             ),
             const SizedBox(height: 30.0),
@@ -63,8 +92,7 @@ class MoodSetRecordDialog extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  // TODO: implement BLoC logic for saving
-                  Navigator.of(context).pop();
+                  _submit();
                 },
                 child: Text(context.S.save),
               ),
@@ -78,7 +106,11 @@ class MoodSetRecordDialog extends StatelessWidget {
 }
 
 class SvgGridView extends StatelessWidget {
-  const SvgGridView({super.key});
+  const SvgGridView({super.key, required this.callback, required this.selectedMoodType});
+
+  final Function(MoodType) callback;
+
+  final MoodType? selectedMoodType;
 
   @override
   Widget build(BuildContext context) {
@@ -90,14 +122,22 @@ class SvgGridView extends StatelessWidget {
         childAspectRatio: 1,
       ),
       itemBuilder: (context, index) {
-        String assetName = 'assets/images/svg/mood_${index + 1}.svg';
+        return GestureDetector(
+          onTap: () => callback(MoodType.values[index]),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: selectedMoodType == MoodType.values[index]
+                  ? context.myColors.primaryGreen
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
 
-        return Container(
-          alignment: Alignment.center,
-          child: SvgPicture.asset(
-            assetName,
-            width: 112.0,
-            height: 112.0,
+              padding: const EdgeInsets.all(8.0),
+              child: MoodSvgWidget(
+                moodType: MoodType.values[index],
+              ),
+            ),
           ),
         );
       },

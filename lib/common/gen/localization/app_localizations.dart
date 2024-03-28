@@ -88,7 +88,10 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ru')
+  ];
 
   /// No description provided for @health_check.
   ///
@@ -317,6 +320,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can add your comment about the mood here'**
   String get add_new_comment;
+
+  /// No description provided for @air_pollution.
+  ///
+  /// In en, this message translates to:
+  /// **'Air pollution'**
+  String get air_pollution;
+
+  /// No description provided for @risk_level_high.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get risk_level_high;
+
+  /// No description provided for @risk_level_low.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get risk_level_low;
+
+  /// No description provided for @risk_level_medium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get risk_level_medium;
+
+  /// No description provided for @risk_level_very_high.
+  ///
+  /// In en, this message translates to:
+  /// **'Very high'**
+  String get risk_level_very_high;
+
+  /// No description provided for @create_a_new_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new profile'**
+  String get create_a_new_profile;
+
+  /// No description provided for @select_city.
+  ///
+  /// In en, this message translates to:
+  /// **'Select city'**
+  String get select_city;
+
+  /// No description provided for @select_species.
+  ///
+  /// In en, this message translates to:
+  /// **'Select species'**
+  String get select_species;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -335,16 +386,18 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'ru':
-      return AppLocalizationsRu();
+    case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
   }
 
-  throw FlutterError('AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+  throw FlutterError(
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
+import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class SearchTextFieldAndResultWidget extends StatefulWidget {
   const SearchTextFieldAndResultWidget({super.key, required this.cities, required this.onSelectCityCallback});
@@ -54,10 +56,17 @@ class _SearchTextFieldAndResultWidgetState extends State<SearchTextFieldAndResul
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 24.0),
         TextFormField(
+          style: context.T.headlineMedium,
           controller: _searchController,
-          decoration: const InputDecoration(
-            labelText: 'Select city',
+          decoration: InputDecoration(
+            filled: true,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(24)
+            ),
+            labelText: context.S.select_city,
           ),
         ),
         const SizedBox(height: 16.0),
@@ -74,9 +83,8 @@ class _SearchTextFieldAndResultWidgetState extends State<SearchTextFieldAndResul
               child: ListTile(
                 title: Text(
                   '${searchedCities[index].name}, ${searchedCities[index].country} ',
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: context.T.headlineMedium,
                 ),
-                // subtitle: Text('Stars: ${star.stars}'),
               ),
             );
           },

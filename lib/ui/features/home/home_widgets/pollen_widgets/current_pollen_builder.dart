@@ -12,8 +12,9 @@ class CurrentPollenWidgetBuilder extends StatelessWidget {
     return BlocBuilder<CurrentPollenBloc, CurrentPollenState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loaded: (value) => value.isEmpty
-              ? const SizedBox()
+          loaded: (value) => 
+          value.isEmpty ?
+               const SizedBox()
               : CurrentPollenWidget(
                   pollenForecasts: value,
                 ),

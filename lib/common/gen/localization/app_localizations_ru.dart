@@ -147,4 +147,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calendar_risk_turner => 'Показывать прогноз';
+
+  @override
+  String get no_comment => 'Запись отсутствует';
 }

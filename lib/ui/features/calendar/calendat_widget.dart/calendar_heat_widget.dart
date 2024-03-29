@@ -18,6 +18,7 @@ class CalendarHeatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       borderRadius: BorderRadius.circular(36),
+      padding: EdgeInsets.zero,
       backgroundColor: color ?? Colors.transparent,
       width: 38.0,
       height: 38.0,

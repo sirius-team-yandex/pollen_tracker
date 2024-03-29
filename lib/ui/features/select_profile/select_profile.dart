@@ -273,7 +273,8 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
                   widget.selectProfileCallback(
                     context,
                     ProfileEntity(
-                      name: profileName.trim() != '' ? profileName : DateTime.now().microsecond.toString(),
+                      name:
+                          profileName.trim() != '' ? profileName : 'UserName_${DateTime.now().microsecond}',
                       species: selectedSpecies,
                       profileId: _getUniqueId(),
                       cityId: selectedCity.id,

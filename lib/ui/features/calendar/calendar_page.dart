@@ -7,6 +7,7 @@ import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/calendar/calendat_widget.dart/calendar_heat_widget.dart';
+import 'package:pollen_tracker/ui/features/calendar/show_comment.dart';
 import 'package:pollen_tracker/ui/features/calendar/today_overview.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/widgets/custom_button.dart';
@@ -73,10 +74,12 @@ class _CalendarPageState extends State<CalendarPage> {
         builder: (context, state) {
           //TODO СУПЕР СОМНИТЕЛЬНО
           MoodType? moodType;
+          String? selectedDayComment;
           RiscLevel? riscLevel;
           final Map<DateTime, Color> heatmapData = {};
           DateTime? selectedDay;
           if (state is LoadedRiscState) {
+            selectedDayComment = state.selectedDayComment;
             selectedDay = state.selectedDay;
             moodType = state.selectedDayMood;
             riscLevel = state.selectedDayRisc;
@@ -98,6 +101,7 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             );
           } else if (state is LoadedMoodState) {
+            selectedDayComment = state.selectedDayComment;
             selectedDay = state.selectedDay;
             moodType = state.selectedDayMood;
             riscLevel = state.selectedDayRisc;
@@ -192,11 +196,17 @@ class _CalendarPageState extends State<CalendarPage> {
                   height: 16,
                 ),
                 if (moodType != null && riscLevel != null && selectedDay != null)
-                  TodayOverview(
-                    selectedDay: selectedDay,
-                    moodType: moodType,
-                    riscLevel: riscLevel,
-                  ),
+                  state is LoadedRiscState
+                      ? TodayOverview(
+                          selectedDay: selectedDay,
+                          moodType: moodType,
+                          riscLevel: riscLevel,
+                        )
+                      : ShowComment(
+                        selectedComment: selectedDayComment,
+                          selectedMoodType: moodType,
+                          selectedDay: selectedDay,
+                        ),
               ],
             ),
           );

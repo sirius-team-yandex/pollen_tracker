@@ -147,4 +147,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calendar_risk_turner => 'Show risk';
+
+  @override
+  String get no_comment => 'No comment';
 }

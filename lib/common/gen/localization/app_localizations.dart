@@ -380,6 +380,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show risk'**
   String get calendar_risk_turner;
+
+  /// No description provided for @no_comment.
+  ///
+  /// In en, this message translates to:
+  /// **'No comment'**
+  String get no_comment;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

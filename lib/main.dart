@@ -255,12 +255,24 @@ Future<void> _prepopulate() async {
 }
 
 List<MoodRecordModelIsar> _generateMoodRecords(int ownerId) {
+  final List<String?> comments = [
+    'I snoozed today.',
+    'I saw a cat today!',
+    'I saw a dog today!',
+    'Everything was fine!',
+    'Felt a little ill today',
+    null,
+    null,
+    null,
+  ];
+
   final date = DateTime.now().toUtc();
 
   final List<MoodRecordModelIsar> list = [];
 
   for (var i = 0; i < 30; i++) {
     final MoodType mood;
+    final String? comment = comments[(i + Random().nextInt(8)) % comments.length];
 
     switch (Random().nextInt(3)) {
       case 0:
@@ -285,6 +297,7 @@ List<MoodRecordModelIsar> _generateMoodRecords(int ownerId) {
       MoodRecordModelIsar(
         ownerId: ownerId,
         date: date.subtract(Duration(days: i)),
+        comment: comment,
         moodType: mood,
       ),
     );

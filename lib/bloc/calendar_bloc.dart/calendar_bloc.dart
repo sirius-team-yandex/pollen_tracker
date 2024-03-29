@@ -59,6 +59,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           heatmap: event.heatmap,
           selectedDay: event.selectedDay,
           selectedDayMood: event.selectedDayMood,
+          selectedDayComment: event.selectedDayComment,
           selectedDayRisc: event.selectedDayRisc,
         ),
       ),
@@ -70,6 +71,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           heatmap: event.heatmap,
           selectedDay: event.selectedDay,
           selectedDayMood: event.selectedDayMood,
+          selectedDayComment: event.selectedDayComment,
           selectedDayRisc: event.selectedDayRisc,
         ),
       ),
@@ -173,6 +175,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           heatmap: monthRisc,
           selectedDay: day.toUtc().copyWith(hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0),
           selectedDayMood: moodDay?.moodType,
+          selectedDayComment: moodDay?.comment,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
         );
       },
@@ -209,6 +212,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
           heatmap: monthDaysMood,
           selectedDay: day.toUtc().copyWith(hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0),
           selectedDayMood: moodDay?.moodType,
+          selectedDayComment: moodDay?.comment,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
         );
       },

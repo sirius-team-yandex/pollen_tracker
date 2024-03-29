@@ -50,8 +50,8 @@ class PollenAirStatus extends StatelessWidget {
               child: CustomPaint(
                 painter: CustomCircleStatusPainter(
                   strokeThickness: 7,
-                  colorGood: MyColors.greenForecast,
-                  colorBad: MyColors.redForecast,
+                  colorGood: MyColors.redForecast,
+                  colorBad: MyColors.greenForecast,
                   riskLevel: _riskLevelTo100(riscLevel),
                 ),
                 child: Container(),

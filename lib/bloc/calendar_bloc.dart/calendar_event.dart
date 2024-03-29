@@ -11,11 +11,13 @@ abstract class CalendarEvent with _$CalendarEvent {
     required DateTime? selectedDay,
     required MoodType? selectedDayMood,
     required RiscLevel? selectedDayRisc,
+    required String? selectedDayComment,
   }) = _LoadedRiscCalendarEvent;
   const factory CalendarEvent.loadedMood({
     required Map<DateTime, MoodType> heatmap,
     required DateTime? selectedDay,
     required MoodType? selectedDayMood,
     required RiscLevel? selectedDayRisc,
+    required String? selectedDayComment,
   }) = _LoadedMoodCalendarEvent;
 }

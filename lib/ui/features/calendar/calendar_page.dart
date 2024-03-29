@@ -119,7 +119,7 @@ class _CalendarPageState extends State<CalendarPage> {
             );
           }
 
-          logger.d('new state: ${heatmapData}');
+          logger.d('new state: $heatmapData');
 
           return Padding(
             padding: const EdgeInsets.all(16.0),

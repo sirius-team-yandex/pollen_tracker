@@ -9,6 +9,7 @@ class CalendarState with _$CalendarState {
     required DateTime? selectedDay,
     required MoodType? selectedDayMood,
     required RiscLevel? selectedDayRisc,
+    required String? selectedDayComment,
   }) = LoadedRiscState;
 
   const factory CalendarState.loadedMood({
@@ -16,5 +17,6 @@ class CalendarState with _$CalendarState {
     required DateTime? selectedDay,
     required MoodType? selectedDayMood,
     required RiscLevel? selectedDayRisc,
+    required String? selectedDayComment,
   }) = LoadedMoodState;
 }

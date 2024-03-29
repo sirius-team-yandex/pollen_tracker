@@ -38,12 +38,14 @@
     "long_press_for_remove": "Нажмите и удерживайте, чтобы убрать",
     "language": "Сменить язык",
     "add_new_comment":"Вы можете добавить свой комментарий о настроении здесь",
-    "air_pollution": "Прогноз пыльцы воздуха",
-    "risk_level_high": "Высокий",
-    "risk_level_low": "Низкий",
-    "risk_level_medium": "Неблагоприятный",
-    "risk_level_very_high": "Очень высокий",
+    "air_pollution": "Содержание пыльцы",
+    "risk_level_high": "Высокое",
+    "risk_level_low": "Низкое",
+    "risk_level_medium": "Умеренное",
+    "risk_level_very_high": "Очень высокое",
     "create_a_new_profile": "Создать новый профиль",
     "select_city": "Выберите город",
-    "select_species" : "Выберите аллергены"
+    "select_species" : "Выберите аллергены",
+    "calendar_mood_turner": "Показывать настроения",
+    "calendar_risk_turner": "Показывать прогноз"
 }

@@ -365,6 +365,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select species'**
   String get select_species;
+
+  /// No description provided for @calendar_mood_turner.
+  ///
+  /// In en, this message translates to:
+  /// **'Show mood'**
+  String get calendar_mood_turner;
+
+  /// No description provided for @calendar_risk_turner.
+  ///
+  /// In en, this message translates to:
+  /// **'Show risk'**
+  String get calendar_risk_turner;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

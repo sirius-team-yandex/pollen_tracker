@@ -3,6 +3,7 @@ part of '../theme.dart';
 class ColorsTheme {
   // ** MAIN Theme Colors **
   ColorsTheme({
+    required this.onBackground,
     required this.primaryGreen,
     required this.darkGreen,
     required this.background,
@@ -10,6 +11,7 @@ class ColorsTheme {
   });
 
   factory ColorsTheme.light() => ColorsTheme(
+        onBackground: const Color(0xFF111111),
         primaryGreen: const Color(0xFFe9f9f1),
         darkGreen: const Color(0xFFc2e5d0),
         background: MyColors.white,
@@ -17,8 +19,9 @@ class ColorsTheme {
       );
 
   factory ColorsTheme.dark() => ColorsTheme(
-        primaryGreen: const Color(0xFF86a994),
-        darkGreen: const Color(0xFF537761),
+        onBackground: const Color(0xFFEEEEEE),
+        primaryGreen: const Color(0xFF537761),
+        darkGreen: const Color(0xFF86a994),
         background: MyColors.greyBackgroundDarkMode,
         primary: MyColors.white,
       );
@@ -27,6 +30,7 @@ class ColorsTheme {
   Color primaryGreen;
   Color background;
   Color primary;
+  Color onBackground;
 }
 
 extension CustomThemeExtension on BuildContext {

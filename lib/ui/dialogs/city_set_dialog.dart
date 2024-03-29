@@ -19,6 +19,7 @@ class CitySetDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(40.0),
       ),
       child: Container(
+        height: 404,
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: context.myColors.background,
@@ -37,11 +38,11 @@ class CitySetDialog extends StatelessWidget {
           children: <Widget>[
             Text(
               context.S.change_city,
-              style: Theme.of(context).textTheme.displayMedium,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
               regionName,
-              style: Theme.of(context).textTheme.displayMedium,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 24.0),
             Container(

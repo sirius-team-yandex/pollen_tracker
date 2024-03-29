@@ -21,9 +21,9 @@ part 'calendar_state.dart';
 
 enum _EmitType { risc, mood }
 
-extension ProfileBuilder on BuildContext {
-  CalendarState? get profileState => BlocProvider.of<CalendarBloc>(this).state;
-  CalendarBloc? get profileBloc => BlocProvider.of<CalendarBloc>(this);
+extension CalendarBlocBuilder on BuildContext {
+  CalendarState? get calendarState => BlocProvider.of<CalendarBloc>(this).state;
+  CalendarBloc? get calendarBloc => BlocProvider.of<CalendarBloc>(this);
 }
 
 @singleton
@@ -43,7 +43,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     required this.profileSubject,
     required this.riscFormatter,
   }) : super(const CalendarState.init()) {
-    typeSubject.add(_EmitType.mood);
+    typeSubject.add(_EmitType.risc);
     on<_InitCalendarEvent>(_init);
     on<_SelectDayCalendarEvent>((event, _) => dateSubject.add(event.day));
     on<_ShowRiscLevelCalendarEvent>(

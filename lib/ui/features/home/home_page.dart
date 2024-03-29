@@ -18,7 +18,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (context, state) {
             return state.maybeWhen(
@@ -37,19 +39,16 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      body: const SafeArea(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CurrentMoodWidget(),
-                SizedBox(height: 40.0),
-                CurrentPollenWidgetBuilder(),
-              ],
-            ),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CurrentMoodWidget(),
+              CurrentPollenWidgetBuilder(),
+            ],
           ),
         ),
       ),

@@ -6,6 +6,11 @@ import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/ui/features/calendar/calendat_widget.dart/calendar_heat_widget.dart';
+import 'package:pollen_tracker/ui/features/calendar/today_overview.dart';
+import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
+import 'package:pollen_tracker/ui/widgets/custom_button.dart';
+import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 import 'package:pollen_tracker/ui/widgets/pages_appbar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -32,26 +37,26 @@ class _CalendarPageState extends State<CalendarPage> {
   Color _mapColorRisc(RiscLevel level) {
     switch (level) {
       case RiscLevel.low:
-        return Colors.red;
+        return const Color(0xFF7be1ac);
       case RiscLevel.moderate:
-        return Colors.blue;
+        return const Color(0xFFfbdc71);
       case RiscLevel.high:
-        return Colors.black;
+        return const Color(0xFFefb494);
       case RiscLevel.veryHigh:
-        return Colors.green;
+        return const Color(0xFFe36d6d);
     }
   }
 
   Color _mapColorMood(MoodType mood) {
     switch (mood) {
       case MoodType.veryBad:
-        return Colors.green;
+        return const Color(0xFFe36d6d);
       case MoodType.bad:
-        return Colors.red;
+        return const Color(0xFFefb494);
       case MoodType.normal:
-        return Colors.blue;
+        return const Color(0xFFfbdc71);
       case MoodType.good:
-        return Colors.black;
+        return const Color(0xFF7be1ac);
     }
   }
 
@@ -66,9 +71,16 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
       body: BlocBuilder<CalendarBloc, CalendarState>(
         builder: (context, state) {
-          logger.d('state: $state');
+          //TODO СУПЕР СОМНИТЕЛЬНО
+          MoodType? moodType;
+          RiscLevel? riscLevel;
           final Map<DateTime, Color> heatmapData = {};
+          DateTime? selectedDay;
           if (state is LoadedRiscState) {
+            selectedDay = state.selectedDay;
+            moodType = state.selectedDayMood;
+            riscLevel = state.selectedDayRisc;
+            logger.d('$selectedDay $moodType $riscLevel');
             heatmapData.addAll(
               state.heatmap.map(
                 (key, value) => MapEntry(
@@ -86,6 +98,9 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             );
           } else if (state is LoadedMoodState) {
+            selectedDay = state.selectedDay;
+            moodType = state.selectedDayMood;
+            riscLevel = state.selectedDayRisc;
             heatmapData.addAll(
               state.heatmap.map(
                 (key, value) => MapEntry(
@@ -104,51 +119,84 @@ class _CalendarPageState extends State<CalendarPage> {
             );
           }
 
-          logger.d(heatmapData);
-
-          return TableCalendar(
-            calendarStyle: const CalendarStyle(
-              // Use this to customize the day cells
-              markerDecoration: BoxDecoration(
-                color: Colors.blue,
-                shape: BoxShape.circle,
-              ),
-            ),
-            calendarBuilders: CalendarBuilders(
-              // Customize only the markers builder to display the heatmap
-              markerBuilder: (context, date, events) {
-                // logger.d(date);
-                if (heatmapData.containsKey(date)) {
-                  logger.d('${heatmapData[date]}');
-                  return Positioned(
-                    right: 1,
-                    bottom: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                CustomButton(
+                  child:
+                      Text(state is LoadedRiscState ? context.S.calendar_mood_turner : context.S.calendar_risk_turner),
+                  onPressed: () {
+                    if (state is LoadedMoodState) {
+                      context.calendarBloc?.showRisc();
+                    } else {
+                      context.calendarBloc?.showMood();
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                CustomCard(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  height: 400,
+                  backgroundColor: context.myColors.primaryGreen,
+                  child: TableCalendar(
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(color: context.myColors.onBackground),
+                      weekendStyle: TextStyle(color: context.myColors.onBackground),
+                    ),
+                    headerStyle: HeaderStyle(
+                      titleCentered: true,
+                      formatButtonVisible: false,
+                      titleTextStyle: TextStyle(color: context.myColors.onBackground),
+                    ),
+                    calendarStyle: CalendarStyle(
+                      disabledTextStyle: TextStyle(color: context.myColors.onBackground),
+                      weekNumberTextStyle: TextStyle(color: context.myColors.onBackground),
+                      weekendTextStyle: TextStyle(color: context.myColors.onBackground),
+                      defaultTextStyle: TextStyle(color: context.myColors.onBackground),
+                      markerDecoration: const BoxDecoration(
+                        color: Colors.blue,
                         shape: BoxShape.circle,
-                        color: heatmapData[date],
-                      ),
-                      width: 20.0,
-                      height: 20.0,
-                      child: Center(
-                        child: Text(
-                          '${heatmapData[date]}',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 12.0,
-                          ),
-                        ),
                       ),
                     ),
-                  );
-                } else {
-                  return null;
-                }
-              },
+                    calendarBuilders: CalendarBuilders(
+                      // Customize only the markers builder to display the heatmap
+                      markerBuilder: (context, date, events) {
+                        // logger.d(date);
+                        if (heatmapData.containsKey(date)) {
+                          return Positioned(
+                            top: 7,
+                            bottom: 7,
+                            child: date.day != DateTime.now().day
+                                ? CalendarHeatWidget(
+                                    date: date,
+                                    color: heatmapData[date],
+                                    text: date.day.toString(),
+                                  )
+                                : const SizedBox(),
+                          );
+                        }
+                        return null;
+                      },
+                    ),
+                    focusedDay: DateTime.now(),
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                if (moodType != null && riscLevel != null && selectedDay != null)
+                  TodayOverview(
+                    selectedDay: selectedDay,
+                    moodType: moodType,
+                    riscLevel: riscLevel,
+                  ),
+              ],
             ),
-            focusedDay: DateTime.now(),
-            firstDay: DateTime.utc(2010, 10, 16),
-            lastDay: DateTime.utc(2030, 3, 14),
           );
         },
       ),

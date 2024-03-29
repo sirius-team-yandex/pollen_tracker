@@ -120,19 +120,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get add_new_comment => 'Вы можете добавить свой комментарий о настроении здесь';
 
   @override
-  String get air_pollution => 'Прогноз пыльцы воздуха';
+  String get air_pollution => 'Содержание пыльцы';
 
   @override
-  String get risk_level_high => 'Высокий';
+  String get risk_level_high => 'Высокое';
 
   @override
-  String get risk_level_low => 'Низкий';
+  String get risk_level_low => 'Низкое';
 
   @override
-  String get risk_level_medium => 'Неблагоприятный';
+  String get risk_level_medium => 'Умеренное';
 
   @override
-  String get risk_level_very_high => 'Очень высокий';
+  String get risk_level_very_high => 'Очень высокое';
 
   @override
   String get create_a_new_profile => 'Создать новый профиль';
@@ -142,4 +142,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get select_species => 'Выберите аллергены';
+
+  @override
+  String get calendar_mood_turner => 'Показывать настроения';
+
+  @override
+  String get calendar_risk_turner => 'Показывать прогноз';
 }

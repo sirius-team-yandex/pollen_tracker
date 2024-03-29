@@ -64,6 +64,7 @@ class _LoggedInAppScaffoldState extends State<LoggedInAppScaffold> {
       valueListenable: AppState.showNavBar,
       builder: (context, showBar, child) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           body: widget.child,
           bottomNavigationBar: !showBar
               ? null

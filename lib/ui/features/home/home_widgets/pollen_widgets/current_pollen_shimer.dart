@@ -7,28 +7,43 @@ class CurrentPollenShimer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
+        Column(
           children: [
-            ShimmerRectangleWidget(
-              height: 150,
-              width: 200,
+            SizedBox(
+              height: 42,
             ),
-            Spacer(),
-            ShimmerRectangleWidget(
+            SizedBox(
               height: 150,
-              width: 120,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ShimmerRectangleWidget(
+                    height: 150,
+                    width: 200,
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: ShimmerRectangleWidget(
+                      height: 150,
+                      width: 200,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
         SizedBox(
-          height: 40,
+          height: 32,
         ),
         ShimmerRectangleWidget(
           height: 200,
-          width: 1000,
+          width: double.infinity,
         ),
       ],
     );

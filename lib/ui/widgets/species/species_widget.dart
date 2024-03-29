@@ -28,6 +28,7 @@ class SpeciesWidget extends StatelessWidget {
           borderRadius: borderRadius ?? BorderRadius.circular(36),
         ),
         backgroundColor: color ?? context.myColors.darkGreen,
+        disabledBackgroundColor: color ?? context.myColors.darkGreen,
         elevation: 0,
         shadowColor: Colors.transparent,
       ),

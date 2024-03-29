@@ -14,12 +14,13 @@ ThemeData materialThemeFromAppTheme(AppThemeData theme) => ThemeData.from(
         onError: theme.main.background,
         onPrimary: theme.main.primary,
         onSurface: theme.main.primary,
-        onBackground: theme.main.background,
+        onBackground: theme.main.onBackground,
         error: theme.main.background,
       ),
     ).copyWith(
       extensions: <ThemeExtension<MyColors>>[
         MyColors(
+          onBackground: theme.main.onBackground,
           primaryGreen: theme.main.primaryGreen,
           darkGreen: theme.main.darkGreen,
           background: theme.main.background,

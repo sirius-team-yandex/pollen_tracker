@@ -19,7 +19,7 @@ class InputTextFieldFilledWidget extends StatelessWidget {
         border: InputBorder.none,
         contentPadding: const EdgeInsets.all(16.0),
       ),
-      onFieldSubmitted: (String value) => onInputed(value),
+      onChanged: (String value) => onInputed(value),
     );
   }
 }

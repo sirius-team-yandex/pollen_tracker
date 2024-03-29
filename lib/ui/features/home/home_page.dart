@@ -39,16 +39,18 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CurrentMoodWidget(),
-              CurrentPollenWidgetBuilder(),
-            ],
+      body: const SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CurrentMoodWidget(),
+                CurrentPollenWidgetBuilder(),
+              ],
+            ),
           ),
         ),
       ),

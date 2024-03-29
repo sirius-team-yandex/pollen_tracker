@@ -14,7 +14,6 @@ class ShowComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(selectedComment);
     return CustomCard(
       // ignore: prefer_const_constructors
       padding: EdgeInsets.all(16),
@@ -59,6 +58,5 @@ class ShowComment extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

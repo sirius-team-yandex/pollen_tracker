@@ -182,7 +182,10 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
   late CityEntity selectedCity;
   List<Species> selectedSpecies = [];
   void _setCity(CityEntity city) => setState(() => selectedCity = city);
-  void _setName(String name) => setState(() => profileName = name);
+  void _setName(String name) => setState(() {
+        profileName = name;
+        logger.i(name);
+      });
 
   int _getUniqueId() {
     return Random().nextInt(10000);
@@ -270,7 +273,7 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
                   widget.selectProfileCallback(
                     context,
                     ProfileEntity(
-                      name: profileName,
+                      name: profileName.trim() != '' ? profileName : DateTime.now().microsecond.toString(),
                       species: selectedSpecies,
                       profileId: _getUniqueId(),
                       cityId: selectedCity.id,

@@ -28,10 +28,11 @@ class CurrentPollenShimer extends StatelessWidget {
                     width: 16,
                   ),
                   Expanded(
-                      child: ShimmerRectangleWidget(
-                    height: 150,
-                    width: 200,
-                  )),
+                    child: ShimmerRectangleWidget(
+                      height: 150,
+                      width: 200,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -43,7 +44,7 @@ class CurrentPollenShimer extends StatelessWidget {
         ShimmerRectangleWidget(
           height: 200,
           width: double.infinity,
-        )
+        ),
       ],
     );
   }

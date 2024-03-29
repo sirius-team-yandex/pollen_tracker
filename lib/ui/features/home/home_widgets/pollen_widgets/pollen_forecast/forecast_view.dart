@@ -65,10 +65,10 @@ class ColoredColumn extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-           Text(
-              caption,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+          Text(
+            caption,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(width / 2),
             child: SizedBox(

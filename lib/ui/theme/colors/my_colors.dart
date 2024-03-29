@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 extension MyThemeBuilder on BuildContext {
   MyColors get myColors =>
       Theme.of(this).extension<MyColors>() ??
-      const MyColors(onBackground: Colors.red, background: Colors.red, primary: Colors.red, primaryGreen: Colors.red, darkGreen: Colors.red);
+      const MyColors(
+          onBackground: Colors.red,
+          background: Colors.red,
+          primary: Colors.red,
+          primaryGreen: Colors.red,
+          darkGreen: Colors.red);
 }
 
 class MyColors extends ThemeExtension<MyColors> {

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pollen_tracker/bloc/current_mood_bloc/current_mood_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
-import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/features/home/home_widgets/pollen_widgets/pollen_status/pollen_air_status.dart';
-import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 
@@ -17,12 +13,14 @@ class TodayOverview extends StatelessWidget {
   const TodayOverview({
     super.key,
     required this.moodType,
-    required this.riscLevel, required this.selectedDay,
+    required this.riscLevel,
+    required this.selectedDay,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
+      // ignore: prefer_const_constructors
       padding: EdgeInsets.all(16),
       height: 172,
       child: Column(
@@ -43,11 +41,11 @@ class TodayOverview extends StatelessWidget {
                   ),
                 ),
                 MoodSvgWidget(
-                            moodType: moodType,
-                          ),
+                  moodType: moodType,
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

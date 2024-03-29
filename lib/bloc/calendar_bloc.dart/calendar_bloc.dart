@@ -26,7 +26,6 @@ extension CalendarBlocBuilder on BuildContext {
   CalendarBloc? get calendarBloc => BlocProvider.of<CalendarBloc>(this);
 }
 
-
 @singleton
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
   PollenSubject pollenSubject;

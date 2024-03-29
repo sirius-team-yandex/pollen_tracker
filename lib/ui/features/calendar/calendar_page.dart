@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/calendar_bloc.dart/calendar_bloc.dart';
-import 'package:pollen_tracker/bloc/current_pollen_bloc/current_pollen_bloc.dart';
 import 'package:pollen_tracker/common/enums/mood_type.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/localization.dart';
@@ -81,7 +80,7 @@ class _CalendarPageState extends State<CalendarPage> {
             selectedDay = state.selectedDay;
             moodType = state.selectedDayMood;
             riscLevel = state.selectedDayRisc;
-            logger.d('${selectedDay} ${moodType} ${riscLevel}');
+            logger.d('$selectedDay $moodType $riscLevel');
             heatmapData.addAll(
               state.heatmap.map(
                 (key, value) => MapEntry(
@@ -124,16 +123,22 @@ class _CalendarPageState extends State<CalendarPage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                CustomButton(child: Text(state is LoadedRiscState? context.S.calendar_mood_turner: context.S.calendar_risk_turner),onPressed: (){
-                  if (state is LoadedMoodState){
-                    context.calendarBloc?.showRisc();
-                  }else{
-                    context.calendarBloc?.showMood();
-                  }
-                },),
-                SizedBox(height: 8,),
+                CustomButton(
+                  child:
+                      Text(state is LoadedRiscState ? context.S.calendar_mood_turner : context.S.calendar_risk_turner),
+                  onPressed: () {
+                    if (state is LoadedMoodState) {
+                      context.calendarBloc?.showRisc();
+                    } else {
+                      context.calendarBloc?.showMood();
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
                 CustomCard(
-                  padding: EdgeInsets.symmetric(horizontal: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
                   height: 400,
                   backgroundColor: context.myColors.primaryGreen,
                   child: TableCalendar(
@@ -142,9 +147,10 @@ class _CalendarPageState extends State<CalendarPage> {
                       weekendStyle: TextStyle(color: context.myColors.onBackground),
                     ),
                     headerStyle: HeaderStyle(
-                        titleCentered: true,
-                        formatButtonVisible: false,
-                        titleTextStyle: TextStyle(color: context.myColors.onBackground)),
+                      titleCentered: true,
+                      formatButtonVisible: false,
+                      titleTextStyle: TextStyle(color: context.myColors.onBackground),
+                    ),
                     calendarStyle: CalendarStyle(
                       disabledTextStyle: TextStyle(color: context.myColors.onBackground),
                       weekNumberTextStyle: TextStyle(color: context.myColors.onBackground),
@@ -161,16 +167,18 @@ class _CalendarPageState extends State<CalendarPage> {
                         // logger.d(date);
                         if (heatmapData.containsKey(date)) {
                           return Positioned(
-                              top: 7,
-                              bottom: 7,
-                              child: date.day != DateTime.now().day
-                                  ? CalendarHeatWidget(
-                                      date: date,
-                                      color: heatmapData[date],
-                                      text: date.day.toString(),
-                                    )
-                                  : SizedBox());
+                            top: 7,
+                            bottom: 7,
+                            child: date.day != DateTime.now().day
+                                ? CalendarHeatWidget(
+                                    date: date,
+                                    color: heatmapData[date],
+                                    text: date.day.toString(),
+                                  )
+                                : const SizedBox(),
+                          );
                         }
+                        return null;
                       },
                     ),
                     focusedDay: DateTime.now(),
@@ -178,7 +186,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     lastDay: DateTime.utc(2030, 3, 14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 if (moodType != null && riscLevel != null && selectedDay != null)

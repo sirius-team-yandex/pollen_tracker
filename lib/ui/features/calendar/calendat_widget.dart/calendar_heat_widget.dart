@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/bloc/calendar_bloc.dart/calendar_bloc.dart';
 import 'package:pollen_tracker/common/logger.dart';
-import 'package:pollen_tracker/ui/widgets/custom_button.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 
 class CalendarHeatWidget extends StatelessWidget {

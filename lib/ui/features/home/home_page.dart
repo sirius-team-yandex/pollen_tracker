@@ -39,20 +39,19 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      body:  Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CurrentMoodWidget(),
-                CurrentPollenWidgetBuilder(),
-              ],
-            ),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CurrentMoodWidget(),
+              CurrentPollenWidgetBuilder(),
+            ],
           ),
         ),
-    
+      ),
     );
   }
 }

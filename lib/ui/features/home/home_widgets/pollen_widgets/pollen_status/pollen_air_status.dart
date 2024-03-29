@@ -38,45 +38,44 @@ class PollenAirStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 60,
-                height: 60,
-                child: CustomPaint(
-                  painter: CustomCircleStatusPainter(
-                    strokeThickness: 7,
-                    colorGood: MyColors.greenForecast,
-                    colorBad: MyColors.redForecast,
-                    riskLevel: _riskLevelTo100(riscLevel),
-                  ),
-                  child: Container(),
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: 60,
+              height: 60,
+              child: CustomPaint(
+                painter: CustomCircleStatusPainter(
+                  strokeThickness: 7,
+                  colorGood: MyColors.greenForecast,
+                  colorBad: MyColors.redForecast,
+                  riskLevel: _riskLevelTo100(riscLevel),
                 ),
+                child: Container(),
               ),
-              const SizedBox(
-                width: 20,
-              ),
-              Text(
-                '${_riskLevelTo100(riscLevel)} %',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge
-                    ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold, fontSize: 32),
-              ),
-            ],
-          ),
-          Flexible(
-            child: Text(
-              '${context.S.air_pollution}: ${_riskLevelStringTo100(context, riscLevel)}',
-              style: Theme.of(context).textTheme.displayMedium,
             ),
+            const SizedBox(
+              width: 20,
+            ),
+            Text(
+              '${_riskLevelTo100(riscLevel)} %',
+              style: Theme.of(context)
+                  .textTheme
+                  .displayLarge
+                  ?.copyWith(color: MyColors.redForecast, fontWeight: FontWeight.bold, fontSize: 32),
+            ),
+          ],
+        ),
+        Flexible(
+          child: Text(
+            '${context.S.air_pollution}: ${_riskLevelStringTo100(context, riscLevel)}',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
-        ],
-    
+        ),
+      ],
     );
   }
 }

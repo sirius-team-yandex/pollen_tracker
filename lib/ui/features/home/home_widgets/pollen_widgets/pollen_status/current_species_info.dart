@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
-import 'package:pollen_tracker/ui/widgets/frame_mask.dart';
 import 'package:pollen_tracker/ui/widgets/species/species_builder.dart';
 
 class CurrentSpeciesInfo extends StatelessWidget {
@@ -27,7 +26,6 @@ class CurrentSpeciesInfo extends StatelessWidget {
     );
   }
 }
-
 
 /*Column(
               children: List.generate(

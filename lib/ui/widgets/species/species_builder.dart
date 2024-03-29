@@ -21,7 +21,6 @@ class SpeciesBuilder extends StatelessWidget {
   final Widget? lastElement;
   @override
   Widget build(BuildContext context) {
-    print(userSpecies.length);
     return Wrap(
       direction: verticalDirection ? Axis.vertical : Axis.horizontal,
       spacing: verticalDirection ? 4 : 12,
@@ -32,7 +31,7 @@ class SpeciesBuilder extends StatelessWidget {
           (i) => SpeciesWidget(
             text: userSpecies[i].name,
             action: onTap,
-            longPressAction: (onLongPress==null) ?null: () => onLongPress?.call(i),
+            longPressAction: (onLongPress == null) ? null : () => onLongPress?.call(i),
           ),
         ),
         lastElement ?? const SizedBox(),

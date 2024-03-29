@@ -34,7 +34,7 @@ class CurrentPollenWidget extends StatelessWidget {
                       ),
                       child: Column(
                         children: List.generate(
-                          3,
+                          profile.species.length >= 3 ? 3 : profile.species.length ,
                           (index) => Padding(
                             padding: const EdgeInsets.all(14.0),
                             child: Text(profile.species[index].name, style: Theme.of(context).textTheme.displayMedium),

@@ -57,6 +57,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       (event, emit) => emit(
         CalendarState.loadedRisc(
           heatmap: event.heatmap,
+          selectedDay: event.selectedDay,
           selectedDayMood: event.selectedDayMood,
           selectedDayRisc: event.selectedDayRisc,
         ),
@@ -67,6 +68,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       (event, emit) => emit(
         CalendarState.loadedMood(
           heatmap: event.heatmap,
+          selectedDay: event.selectedDay,
           selectedDayMood: event.selectedDayMood,
           selectedDayRisc: event.selectedDayRisc,
         ),
@@ -169,6 +171,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
 
         return CalendarEvent.loadedRisc(
           heatmap: monthRisc,
+          selectedDay: day.toUtc().copyWith(hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0),
           selectedDayMood: moodDay?.moodType,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
         );
@@ -204,6 +207,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         logger.d('MOOD LOADEEEEEED');
         return CalendarEvent.loadedMood(
           heatmap: monthDaysMood,
+          selectedDay: day.toUtc().copyWith(hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0),
           selectedDayMood: moodDay?.moodType,
           selectedDayRisc: _evaluateRisc(dayPollen, targets),
         );

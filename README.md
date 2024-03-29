@@ -11,8 +11,15 @@
 - Изменения конфигурациии (тема, локализация)
 - Отображение статистики состояния и прогнозов пыльцы в виде тепловой карты на календаре за прошедшие дни.
 - Вступительные страницы для введения пользователя в приложение.
+- В презентационном режиме (без АПИ ключа) мокируются данные для трёх городов: Токио, Дели и Джакарта
 
 ## Getting Started
+
+Note: by default only mocked data is provided. To enable actual data you should provide your AmbeeApi key and enable networking using the following dart-defines:
+```
+AMBEE_KEY=<YOUR_KEY_HERE>
+PROD_NETWORK=true //false by default
+```
 
 To build and run this project:
 

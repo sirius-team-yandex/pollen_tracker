@@ -8,8 +8,10 @@ import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/config_entity.dart';
 import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
+import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_subject.dart';
+import 'package:pollen_tracker/injectable_init.dart';
 
 part 'profiles_all_bloc.freezed.dart';
 part 'profiles_all_events.dart';
@@ -28,8 +30,11 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
 
   late StreamSubscription profilesAllSubscription;
 
-  ProfilesAllBloc({required this.profileRepository, required this.configRepository, required this.profileSubject})
-      : super(const ProfilesAllState.init()) {
+  ProfilesAllBloc({
+    required this.profileRepository,
+    required this.configRepository,
+    required this.profileSubject,
+  }) : super(const ProfilesAllState.init()) {
     profilesAllSubscription = profileSubject.observeAll().listen((profilesAll) {
       add(ProfilesAllEvent.load(profilesAll));
       logger.i('Call ProfilesAllEvent.load on ProfilesAllBloc from stream');
@@ -60,7 +65,10 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
     add(ProfilesAllEvent.delete(id));
   }
 
-  Future<void> _loadProfiles(_LoadProfiles event, Emitter<ProfilesAllState> emit) async {
+  Future<void> _loadProfiles(
+    _LoadProfiles event,
+    Emitter<ProfilesAllState> emit,
+  ) async {
     try {
       emit(ProfilesAllState.loaded(event.profiles));
       logger.i('Emit loaded state from ProfilesAllBloc');
@@ -69,19 +77,28 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
     }
   }
 
-  Future<void> _selectProfile(_SelectProfile event, Emitter<ProfilesAllState> emit) async {
+  Future<void> _selectProfile(
+    _SelectProfile event,
+    Emitter<ProfilesAllState> emit,
+  ) async {
     try {
       final ConfigEntity config = await configRepository.get();
       await configRepository.set(
         config.copyWith(currProfileId: event.id),
       );
+
+      // Update forecast data after new profile set
+      getIt<PollenRepository>().updateForecastData();
       logger.i('Set Config.currProfileId to ${event.id} from ProfilesAllBloc');
     } catch (e) {
       _error(e, 'Error on selecting profile from ProfilesAllBloc', emit);
     }
   }
 
-  Future<void> _addProfile(_AddProfile event, Emitter<ProfilesAllState> emit) async {
+  Future<void> _addProfile(
+    _AddProfile event,
+    Emitter<ProfilesAllState> emit,
+  ) async {
     try {
       await profileRepository.insert(event.profile);
       logger.i('Add new profile from ProfillesAllBloc');
@@ -90,12 +107,19 @@ class ProfilesAllBloc extends Bloc<ProfilesAllEvent, ProfilesAllState> {
     }
   }
 
-  Future<void> _deleteProfile(_DeleteProfile event, Emitter<ProfilesAllState> emit) async {
+  Future<void> _deleteProfile(
+    _DeleteProfile event,
+    Emitter<ProfilesAllState> emit,
+  ) async {
     try {
       await profileRepository.delete(event.id);
       logger.i('Delete profile ${event.id} from ProfillesAllBloc');
     } catch (e) {
-      _error(e, 'Error on deleting ${event.id} profile from ProfillesAllBloc', emit);
+      _error(
+        e,
+        'Error on deleting ${event.id} profile from ProfillesAllBloc',
+        emit,
+      );
     }
   }
 

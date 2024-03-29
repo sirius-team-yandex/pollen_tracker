@@ -45,5 +45,7 @@
     "risk_level_very_high": "Очень высокое",
     "create_a_new_profile": "Создать новый профиль",
     "select_city": "Выберите город",
-    "select_species" : "Выберите аллергены"
+    "select_species" : "Выберите аллергены",
+    "calendar_mood_turner": "Показывать настроения",
+    "calendar_risk_turner": "Показывать прогноз"
 }

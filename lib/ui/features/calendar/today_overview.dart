@@ -12,22 +12,23 @@ import 'package:pollen_tracker/ui/widgets/mood_svg_widget.dart';
 class TodayOverview extends StatelessWidget {
   final MoodType moodType;
   final RiscLevel riscLevel;
+  final DateTime selectedDay;
 
   const TodayOverview({
     super.key,
     required this.moodType,
-    required this.riscLevel,
+    required this.riscLevel, required this.selectedDay,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
       padding: EdgeInsets.all(16),
-      height: 200,
+      height: 172,
       child: Column(
         children: [
           Text(
-            DateTime.now().toString().substring(0, 10),
+            selectedDay.toString().substring(0, 10),
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           Expanded(

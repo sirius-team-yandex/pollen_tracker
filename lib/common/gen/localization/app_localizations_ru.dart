@@ -141,4 +141,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get select_species => 'Выберите аллергены';
+
+  @override
+  String get calendar_mood_turner => 'Показывать настроения';
+
+  @override
+  String get calendar_risk_turner => 'Показывать прогноз';
 }

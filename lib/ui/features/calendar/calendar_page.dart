@@ -10,6 +10,7 @@ import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/calendar/calendat_widget.dart/calendar_heat_widget.dart';
 import 'package:pollen_tracker/ui/features/calendar/today_overview.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
+import 'package:pollen_tracker/ui/widgets/custom_button.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 import 'package:pollen_tracker/ui/widgets/pages_appbar.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -71,13 +72,16 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
       body: BlocBuilder<CalendarBloc, CalendarState>(
         builder: (context, state) {
-          logger.d('state: $state');
+          //TODO СУПЕР СОМНИТЕЛЬНО
           MoodType? moodType;
           RiscLevel? riscLevel;
           final Map<DateTime, Color> heatmapData = {};
+          DateTime? selectedDay;
           if (state is LoadedRiscState) {
+            selectedDay = state.selectedDay;
             moodType = state.selectedDayMood;
             riscLevel = state.selectedDayRisc;
+            logger.d('${selectedDay} ${moodType} ${riscLevel}');
             heatmapData.addAll(
               state.heatmap.map(
                 (key, value) => MapEntry(
@@ -95,6 +99,9 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             );
           } else if (state is LoadedMoodState) {
+            selectedDay = state.selectedDay;
+            moodType = state.selectedDayMood;
+            riscLevel = state.selectedDayRisc;
             heatmapData.addAll(
               state.heatmap.map(
                 (key, value) => MapEntry(
@@ -113,12 +120,18 @@ class _CalendarPageState extends State<CalendarPage> {
             );
           }
 
-          logger.d(heatmapData);
-
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                CustomButton(child: Text(state is LoadedRiscState? context.S.calendar_mood_turner: context.S.calendar_risk_turner),onPressed: (){
+                  if (state is LoadedMoodState){
+                    context.calendarBloc?.showRisc();
+                  }else{
+                    context.calendarBloc?.showMood();
+                  }
+                },),
+                SizedBox(height: 8,),
                 CustomCard(
                   padding: EdgeInsets.symmetric(horizontal: 6),
                   height: 400,
@@ -147,19 +160,16 @@ class _CalendarPageState extends State<CalendarPage> {
                       markerBuilder: (context, date, events) {
                         // logger.d(date);
                         if (heatmapData.containsKey(date)) {
-                          logger.d('${heatmapData[date]}');
                           return Positioned(
                               top: 7,
                               bottom: 7,
                               child: date.day != DateTime.now().day
                                   ? CalendarHeatWidget(
-                                    date: date,
+                                      date: date,
                                       color: heatmapData[date],
                                       text: date.day.toString(),
                                     )
                                   : SizedBox());
-                        } else {
-                          return null;
                         }
                       },
                     ),
@@ -171,8 +181,9 @@ class _CalendarPageState extends State<CalendarPage> {
                 SizedBox(
                   height: 16,
                 ),
-                if (moodType != null && riscLevel != null)
+                if (moodType != null && riscLevel != null && selectedDay != null)
                   TodayOverview(
+                    selectedDay: selectedDay,
                     moodType: moodType,
                     riscLevel: riscLevel,
                   ),

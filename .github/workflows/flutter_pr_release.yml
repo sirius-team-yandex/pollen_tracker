@@ -3,7 +3,7 @@ name: Flutter PR
 on:
   pull_request:
     branches:
-    - release/*
+    - release-0.0.1
 
 jobs:
   build:

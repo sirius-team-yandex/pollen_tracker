@@ -141,4 +141,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get select_species => 'Select species';
+
+  @override
+  String get calendar_mood_turner => 'Show mood';
+
+  @override
+  String get calendar_risk_turner => 'Show risk';
 }

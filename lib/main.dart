@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
+import 'dart:developer' as dev;
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -56,7 +57,7 @@ void main() async {
         const PollenAppWrapper(),
       );
     },
-    (error, stackTrace) => log.call('MAIN: Catch in mainZone $error'),
+    (error, stackTrace) => dev.log.call('MAIN: Catch in mainZone $error'),
   );
 }
 
@@ -123,7 +124,11 @@ class _PollenAppWrapperState extends State<PollenAppWrapper> {
 class CitiesInherited extends InheritedWidget {
   final List<CityEntity> cities;
 
-  const CitiesInherited({super.key, required super.child, required this.cities});
+  const CitiesInherited({
+    super.key,
+    required super.child,
+    required this.cities,
+  });
 
   static CitiesInherited of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CitiesInherited>()!;
@@ -257,7 +262,7 @@ List<MoodRecordModelIsar> _generateMoodRecords(int ownerId) {
   for (var i = 0; i < 30; i++) {
     final MoodType mood;
 
-    switch (i % 4) {
+    switch (Random().nextInt(3)) {
       case 0:
         mood = MoodType.veryBad;
         break;
@@ -302,8 +307,11 @@ Future<List<PollenModel>> _generatePollenModel(double lat, double lng) async {
   final List<PollenEntity> mappedEntities = [];
 
   for (var i = 0; i < 24 * 30; i++) {
-    final currValue = i % entities.length;
-    final currDate = DateTime.now().add(const Duration(days: 2)).subtract(Duration(hours: i));
+    final currValue = (i + Random().nextInt(30)) % entities.length;
+    final currDate = DateTime.now()
+        .copyWith(minute: 0, second: 0, millisecond: 0, microsecond: 0)
+        .add(const Duration(days: 2))
+        .subtract(Duration(hours: i));
     mappedEntities.add(entities[currValue].copyWith(lat: lat, lng: lng, time: currDate));
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
@@ -38,7 +39,7 @@ class ForecastView extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ColoredColumn(
             percent: percent,
-            caption: '${item.time.hour}:${item.time.minute}',
+            caption: DateFormat('HH:mm').format(item.time),
           ),
         );
       },

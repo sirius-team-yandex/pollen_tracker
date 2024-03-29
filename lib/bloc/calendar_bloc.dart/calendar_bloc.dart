@@ -143,7 +143,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         final Map<DateTime, Map<Species, int>> monthLevels = {};
         final Map<DateTime, int> counter = {};
         for (final pollen in monthPollen) {
-          final currDay = pollen.time.copyWith(hour: 0, minute: 0, second: 0, microsecond: 0, millisecond: 0);
+          final currDay = pollen.time.toUtc().copyWith(hour: 0, minute: 0, second: 0, microsecond: 0, millisecond: 0);
           final levels = monthLevels[currDay] ?? {};
 
           counter[currDay] = (counter[currDay] ?? 0) + 1;

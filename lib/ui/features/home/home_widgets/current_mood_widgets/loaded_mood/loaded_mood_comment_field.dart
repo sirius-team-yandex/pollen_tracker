@@ -42,13 +42,20 @@ class _MoodCommentChangerState extends State<MoodCommentChanger> {
           widget.action(null);
         }
       },
-      style: context.T.displayMedium?.copyWith(letterSpacing: 1, height: 1.4),
+      style: context.T.displayMedium?.copyWith(
+        letterSpacing: 1,
+        height: 1.4,
+      ),
       textAlign: TextAlign.start,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(14),
         border: InputBorder.none,
         hintText: context.S.add_new_comment,
-        hintStyle: context.T.displayMedium?.copyWith(letterSpacing: 1, height: 1.4, color: context.myColors.primaryGreen),
+        hintStyle: context.T.displayMedium?.copyWith(
+          letterSpacing: 1,
+          height: 1.4,
+          color: context.myColors.background,
+        ),
       ),
     );
   }

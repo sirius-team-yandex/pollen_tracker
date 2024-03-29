@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: BlocBuilder<ProfileBloc, ProfileState>(
@@ -38,8 +39,7 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      body: const SafeArea(
-        child: Center(
+      body:  Center(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
+    
     );
   }
 }

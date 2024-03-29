@@ -4,6 +4,7 @@ import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/domain/models/city_entity.dart';
 import 'package:pollen_tracker/injectable_init.dart';
+import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
 class SearchTextFieldAndResultWidget extends StatefulWidget {
@@ -69,10 +70,14 @@ class _SearchTextFieldAndResultWidgetState extends State<SearchTextFieldAndResul
             labelText: context.S.select_city,
           ),
         ),
-        const SizedBox(height: 16.0),
+        Divider(
+          indent: 12,
+          endIndent: 12,
+          color: context.myColors.onBackground,
+        ),
         ListView.builder(
           shrinkWrap: true,
-          itemCount: searchedCities.length >= 4 ? 4 : searchedCities.length,
+          itemCount: searchedCities.length >= 3 ? 3 : searchedCities.length,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {

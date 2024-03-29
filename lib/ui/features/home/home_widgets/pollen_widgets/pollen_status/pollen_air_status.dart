@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pollen_tracker/common/enums/risc_enum.dart';
 import 'package:pollen_tracker/common/localization.dart';
-import 'package:pollen_tracker/ui/models/forecast_vo.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
-import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 import 'package:pollen_tracker/ui/widgets/custom_circle_status_painter.dart';
 
 class PollenAirStatus extends StatelessWidget {
-  const PollenAirStatus({super.key, required this.pollenForecast});
-  final ForecastVo pollenForecast;
+  const PollenAirStatus({super.key, required this.riscLevel});
+  final RiscLevel riscLevel;
 
   int _riskLevelTo100(RiscLevel risc) {
     switch (risc) {
@@ -39,12 +37,7 @@ class PollenAirStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      width: 200,
-      backgroundColor: context.myColors.primaryGreen,
-      padding: const EdgeInsets.all(16.0),
-      borderRadius: BorderRadius.circular(16.0),
-      child: Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -59,7 +52,7 @@ class PollenAirStatus extends StatelessWidget {
                     strokeThickness: 7,
                     colorGood: MyColors.greenForecast,
                     colorBad: MyColors.redForecast,
-                    riskLevel: _riskLevelTo100(pollenForecast.level),
+                    riskLevel: _riskLevelTo100(riscLevel),
                   ),
                   child: Container(),
                 ),
@@ -68,7 +61,7 @@ class PollenAirStatus extends StatelessWidget {
                 width: 20,
               ),
               Text(
-                '${_riskLevelTo100(pollenForecast.level)} %',
+                '${_riskLevelTo100(riscLevel)} %',
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge
@@ -78,12 +71,12 @@ class PollenAirStatus extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              '${context.S.air_pollution}: ${_riskLevelStringTo100(context, pollenForecast.level)}',
+              '${context.S.air_pollution}: ${_riskLevelStringTo100(context, riscLevel)}',
               style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
         ],
-      ),
+    
     );
   }
 }

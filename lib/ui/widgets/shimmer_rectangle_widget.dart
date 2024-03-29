@@ -9,10 +9,10 @@ class ShimmerRectangleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey,
-      highlightColor: context.myColors.primary,
+      baseColor: context.myColors.primaryGreen,
+      highlightColor: context.myColors.background,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(42.0),
+        borderRadius: BorderRadius.circular(16.0),
         child: SizedBox(
           height: height,
           width: width,

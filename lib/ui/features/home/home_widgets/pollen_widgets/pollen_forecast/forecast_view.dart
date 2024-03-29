@@ -53,7 +53,7 @@ class ColoredColumn extends StatelessWidget {
     super.key,
   });
 
-  static const width = 36.0;
+  static const width = 38.0;
   static const height = 32 * 4.5;
 
   final double percent;

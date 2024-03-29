@@ -21,10 +21,11 @@ part 'calendar_state.dart';
 
 enum _EmitType { risc, mood }
 
-extension ProfileBuilder on BuildContext {
-  CalendarState? get profileState => BlocProvider.of<CalendarBloc>(this).state;
-  CalendarBloc? get profileBloc => BlocProvider.of<CalendarBloc>(this);
+extension CalendarBlocBuilder on BuildContext {
+  CalendarState? get calendarState => BlocProvider.of<CalendarBloc>(this).state;
+  CalendarBloc? get calendarBloc => BlocProvider.of<CalendarBloc>(this);
 }
+
 
 @singleton
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {

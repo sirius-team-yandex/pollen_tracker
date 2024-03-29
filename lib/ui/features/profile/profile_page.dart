@@ -39,6 +39,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: context.myColors.background,
@@ -48,7 +49,6 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        
         primary: true,
         physics: const BouncingScrollPhysics(),
         child: Padding(

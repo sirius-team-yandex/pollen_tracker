@@ -76,7 +76,6 @@ class MoodLocalStorageDatasourceIsar {
     if (!lowerDate.isUtc || !upperDate.isUtc) {
       throw ArgumentError('Date should be UTC!');
     }
-
     yield* isar.moodRecordModelIsars
         .where()
         .ownerIdEqualToDateBetween(ownerId, lowerDate, upperDate)

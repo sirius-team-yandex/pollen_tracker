@@ -8,8 +8,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get health_check => 'Выберите сегодняшнее ощущение здоровья';
 
   @override
-  String get welcome_description_1 =>
-      'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
+  String get welcome_description_1 => 'Мы заботимся о Вашем здоровье и учитываем все аллергены, чтобы показывать свежий прогноз на ближайшие дни.';
 
   @override
   String get welcome_description_2 => 'Сохраняйте состояние своего здоровья для подробной статистики.';
@@ -115,4 +114,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get language => 'Сменить язык';
+
+  @override
+  String get add_new_comment => 'Вы можете добавить свой комментарий о настроении здесь';
+
+  @override
+  String get air_pollution => 'Прогноз пыльцы воздуха';
+
+  @override
+  String get risk_level_high => 'Высокий';
+
+  @override
+  String get risk_level_low => 'Низкий';
+
+  @override
+  String get risk_level_medium => 'Неблагоприятный';
+
+  @override
+  String get risk_level_very_high => 'Очень высокий';
+
+  @override
+  String get create_a_new_profile => 'Создать новый профиль';
+
+  @override
+  String get select_city => 'Выберите город';
+
+  @override
+  String get select_species => 'Выберите аллергены';
 }

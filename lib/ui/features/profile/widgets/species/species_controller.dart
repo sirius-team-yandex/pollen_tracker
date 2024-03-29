@@ -3,7 +3,7 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/ui/dialogs/species_add_dialog.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/species/species_widget.dart';
 import 'package:pollen_tracker/ui/widgets/notification_toast.dart';
 
 class SpeciesController extends StatelessWidget {

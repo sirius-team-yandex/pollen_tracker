@@ -3,7 +3,7 @@ import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
 import 'package:pollen_tracker/common/enums/species_enums.dart';
 import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/injectable_init.dart';
-import 'package:pollen_tracker/ui/features/profile/wiidgets/species/species_widget.dart';
+import 'package:pollen_tracker/ui/features/profile/widgets/species/species_widget.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 
 class SpeciesAddDialog extends StatelessWidget {

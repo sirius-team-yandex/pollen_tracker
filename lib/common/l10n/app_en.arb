@@ -36,5 +36,14 @@
     "your_city_changed_on": "Your city changed on",
     "your_profile_deleted": "Your profile deleted",
     "long_press_for_remove": "Long press for remove",
-    "language": "Change language"
+    "language": "Change language",
+    "add_new_comment":"You can add your comment about the mood here",
+    "air_pollution": "Air pollution",
+    "risk_level_high": "High",
+    "risk_level_low": "Low",
+    "risk_level_medium": "Medium",
+    "risk_level_very_high": "Very high",
+    "create_a_new_profile": "Create a new profile",
+    "select_city": "Select city",
+    "select_species" : "Select species"
 }

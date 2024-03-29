@@ -40,9 +40,9 @@ class ForecastView extends StatelessWidget {
           return ColoredColumn(
             percent: percent,
             caption: DateFormat('HH:mm').format(item.time),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

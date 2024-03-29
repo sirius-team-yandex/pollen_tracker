@@ -7,6 +7,8 @@ import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/main.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
+import 'package:pollen_tracker/ui/widgets/shimmer_rectangle_widget.dart';
+import 'package:rive/rive.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -42,37 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 assetSvgName: 'woman_with_allergen',
                 description: context.S.welcome_description_2,
               ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        final config = ConfigInherited.of(context).configEntity;
-                        if (config != null) {
-                          getIt<ConfigRepository>().set(
-                            config.copyWith(isFirstLaunch: false),
-                          );
-                        }
-                        context.go(RouteName.selectProfile);
-                      },
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: context.myColors.primaryGreen,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            '${context.S.create_profile} ',
-                            style: Theme.of(context).textTheme.displayMedium,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const _SubPageCreateProfileLink(),
             ],
           ),
           Positioned(
@@ -137,5 +109,102 @@ class _SubPageView extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _SubPageCreateProfileLink extends StatelessWidget {
+  const _SubPageCreateProfileLink();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          PlayPauseAnimation(),
+        ],
+      ),
+    );
+  }
+}
+
+class PlayPauseAnimation extends StatefulWidget {
+  const PlayPauseAnimation({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _PlayPauseAnimationState createState() => _PlayPauseAnimationState();
+}
+
+class _PlayPauseAnimationState extends State<PlayPauseAnimation> {
+  /// Controller for playback
+  late RiveAnimationController _controller;
+
+  /// Toggles between play and pause animation states
+  void _togglePlay() => setState(() => _controller.isActive = !_controller.isActive);
+
+  /// Tracks if the animation is playing by whether controller is running
+  bool get isPlaying => _controller.isActive;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = SimpleAnimation('idle');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextButton(
+          onPressed: () async {
+            _togglePlay();
+            await Future.delayed(const Duration(seconds: 1)).then(
+              (value) {
+                final config = ConfigInherited.of(context).configEntity;
+                if (config != null) {
+                  getIt<ConfigRepository>().set(
+                    config.copyWith(isFirstLaunch: false),
+                  );
+                }
+                context.go(RouteName.selectProfile);
+              },
+            );
+          },
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              color: context.myColors.primaryGreen,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '${context.S.create_profile} ',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 250,
+          width: 250,
+          child: Center(
+            child: RiveAnimation.network(
+              placeHolder: const ShimmerRectangleWidget(width: 250, height: 140),
+              'https://cdn.rive.app/animations/vehicles.riv',
+              controllers: [_controller],
+              // Update the play state when the widget's initialized
+              onInit: (a) => setState(() {}),
+            ),
+          ),
+        ),
+      ],
+    );
+    // floatingActionButton: FloatingActionButton(
+    //   onPressed: _togglePlay,
+    //   tooltip: isPlaying ? 'Pause' : 'Play',
+    //   child: Icon(
+    //     isPlaying ? Icons.pause : Icons.play_arrow,
+    //   ),
   }
 }

@@ -9,9 +9,9 @@ class InputTextFieldFilledWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      textInputAction: TextInputAction.send,
       minLines: 1,
-      keyboardType: TextInputType.multiline,
       style: Theme.of(context).textTheme.displayMedium,
       // TODO: validator
       decoration: InputDecoration(
@@ -19,7 +19,7 @@ class InputTextFieldFilledWidget extends StatelessWidget {
         border: InputBorder.none,
         contentPadding: const EdgeInsets.all(16.0),
       ),
-      onSubmitted: onInputed,
+      onChanged: (String value) => onInputed(value),
     );
   }
 }

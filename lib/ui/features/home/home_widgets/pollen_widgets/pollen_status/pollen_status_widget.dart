@@ -15,6 +15,9 @@ class PollenStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 24,
+        ),
         Text(
           context.S.atmospheric_pollution,
           style: context.T.displayLarge,

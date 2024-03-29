@@ -68,6 +68,7 @@ class _SelectProfile extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: 0,
             title: Text(
               context.S.change_profile,
               style: context.T.displayMedium,
@@ -182,7 +183,10 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
   late CityEntity selectedCity;
   List<Species> selectedSpecies = [];
   void _setCity(CityEntity city) => setState(() => selectedCity = city);
-  void _setName(String name) => setState(() => profileName = name);
+  void _setName(String name) => setState(() {
+        profileName = name;
+        logger.i(name);
+      });
 
   int _getUniqueId() {
     return Random().nextInt(10000);
@@ -270,7 +274,7 @@ class _CreateProfileDialogState extends State<CreateProfileDialog> {
                   widget.selectProfileCallback(
                     context,
                     ProfileEntity(
-                      name: profileName,
+                      name: profileName.trim() != '' ? profileName : 'UserName_${DateTime.now().microsecond}',
                       species: selectedSpecies,
                       profileId: _getUniqueId(),
                       cityId: selectedCity.id,

@@ -7,6 +7,7 @@ import 'package:pollen_tracker/common/localization.dart';
 import 'package:pollen_tracker/common/logger.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/calendar/calendat_widget.dart/calendar_heat_widget.dart';
+import 'package:pollen_tracker/ui/features/calendar/show_comment.dart';
 import 'package:pollen_tracker/ui/features/calendar/today_overview.dart';
 import 'package:pollen_tracker/ui/theme/colors/my_colors.dart';
 import 'package:pollen_tracker/ui/widgets/custom_button.dart';
@@ -64,143 +65,156 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: PagesAppBar(
           title: context.S.history,
           icon: Icons.history,
         ),
       ),
-      body: BlocBuilder<CalendarBloc, CalendarState>(
-        builder: (context, state) {
-          //TODO СУПЕР СОМНИТЕЛЬНО
-          MoodType? moodType;
-          RiscLevel? riscLevel;
-          final Map<DateTime, Color> heatmapData = {};
-          DateTime? selectedDay;
-          if (state is LoadedRiscState) {
-            selectedDay = state.selectedDay;
-            moodType = state.selectedDayMood;
-            riscLevel = state.selectedDayRisc;
-            logger.d('$selectedDay $moodType $riscLevel');
-            heatmapData.addAll(
-              state.heatmap.map(
-                (key, value) => MapEntry(
-                  key
-                      .copyWith(
-                        hour: 0,
-                        minute: 0,
-                        second: 0,
-                        millisecond: 0,
-                        microsecond: 0,
-                      )
-                      .toUtc(),
-                  _mapColorRisc(value),
+      body: SingleChildScrollView(
+        child: BlocBuilder<CalendarBloc, CalendarState>(
+          builder: (context, state) {
+            //TODO СУПЕР СОМНИТЕЛЬНО
+            MoodType? moodType;
+            String? selectedDayComment;
+            RiscLevel? riscLevel;
+            final Map<DateTime, Color> heatmapData = {};
+            DateTime? selectedDay;
+            if (state is LoadedRiscState) {
+              selectedDayComment = state.selectedDayComment;
+              selectedDay = state.selectedDay;
+              moodType = state.selectedDayMood;
+              riscLevel = state.selectedDayRisc;
+              logger.d('$selectedDay $moodType $riscLevel');
+              heatmapData.addAll(
+                state.heatmap.map(
+                  (key, value) => MapEntry(
+                    key
+                        .copyWith(
+                          hour: 0,
+                          minute: 0,
+                          second: 0,
+                          millisecond: 0,
+                          microsecond: 0,
+                        )
+                        .toUtc(),
+                    _mapColorRisc(value),
+                  ),
                 ),
-              ),
-            );
-          } else if (state is LoadedMoodState) {
-            selectedDay = state.selectedDay;
-            moodType = state.selectedDayMood;
-            riscLevel = state.selectedDayRisc;
-            heatmapData.addAll(
-              state.heatmap.map(
-                (key, value) => MapEntry(
-                  key
-                      .copyWith(
-                        hour: 0,
-                        minute: 0,
-                        second: 0,
-                        millisecond: 0,
-                        microsecond: 0,
-                      )
-                      .toUtc(),
-                  _mapColorMood(value),
+              );
+            } else if (state is LoadedMoodState) {
+              selectedDayComment = state.selectedDayComment;
+              selectedDay = state.selectedDay;
+              moodType = state.selectedDayMood;
+              riscLevel = state.selectedDayRisc;
+              heatmapData.addAll(
+                state.heatmap.map(
+                  (key, value) => MapEntry(
+                    key
+                        .copyWith(
+                          hour: 0,
+                          minute: 0,
+                          second: 0,
+                          millisecond: 0,
+                          microsecond: 0,
+                        )
+                        .toUtc(),
+                    _mapColorMood(value),
+                  ),
                 ),
-              ),
-            );
-          }
+              );
+            }
 
-          logger.d('new state: $heatmapData');
+            logger.d('new state: $heatmapData');
 
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                CustomButton(
-                  child:
-                      Text(state is LoadedRiscState ? context.S.calendar_mood_turner : context.S.calendar_risk_turner),
-                  onPressed: () {
-                    if (state is LoadedMoodState) {
-                      context.calendarBloc?.showRisc();
-                    } else {
-                      context.calendarBloc?.showMood();
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                CustomCard(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  height: 400,
-                  backgroundColor: context.myColors.primaryGreen,
-                  child: TableCalendar(
-                    daysOfWeekStyle: DaysOfWeekStyle(
-                      weekdayStyle: TextStyle(color: context.myColors.onBackground),
-                      weekendStyle: TextStyle(color: context.myColors.onBackground),
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  CustomButton(
+                    child: Text(
+                      state is LoadedRiscState ? context.S.calendar_mood_turner : context.S.calendar_risk_turner,
                     ),
-                    headerStyle: HeaderStyle(
-                      titleCentered: true,
-                      formatButtonVisible: false,
-                      titleTextStyle: TextStyle(color: context.myColors.onBackground),
-                    ),
-                    calendarStyle: CalendarStyle(
-                      disabledTextStyle: TextStyle(color: context.myColors.onBackground),
-                      weekNumberTextStyle: TextStyle(color: context.myColors.onBackground),
-                      weekendTextStyle: TextStyle(color: context.myColors.onBackground),
-                      defaultTextStyle: TextStyle(color: context.myColors.onBackground),
-                      markerDecoration: const BoxDecoration(
-                        color: Colors.blue,
-                        shape: BoxShape.circle,
+                    onPressed: () {
+                      if (state is LoadedMoodState) {
+                        context.calendarBloc?.showRisc();
+                      } else {
+                        context.calendarBloc?.showMood();
+                      }
+                    },
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  CustomCard(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    height: 400,
+                    backgroundColor: context.myColors.primaryGreen,
+                    child: TableCalendar(
+                      daysOfWeekStyle: DaysOfWeekStyle(
+                        weekdayStyle: TextStyle(color: context.myColors.onBackground),
+                        weekendStyle: TextStyle(color: context.myColors.onBackground),
                       ),
+                      headerStyle: HeaderStyle(
+                        titleCentered: true,
+                        formatButtonVisible: false,
+                        titleTextStyle: TextStyle(color: context.myColors.onBackground),
+                      ),
+                      calendarStyle: CalendarStyle(
+                        disabledTextStyle: TextStyle(color: context.myColors.onBackground),
+                        weekNumberTextStyle: TextStyle(color: context.myColors.onBackground),
+                        weekendTextStyle: TextStyle(color: context.myColors.onBackground),
+                        defaultTextStyle: TextStyle(color: context.myColors.onBackground),
+                        markerDecoration: const BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      calendarBuilders: CalendarBuilders(
+                        // Customize only the markers builder to display the heatmap
+                        markerBuilder: (context, date, events) {
+                          // logger.d(date);
+                          if (heatmapData.containsKey(date)) {
+                            return Positioned(
+                              top: 7,
+                              bottom: 7,
+                              child: date.day != DateTime.now().day
+                                  ? CalendarHeatWidget(
+                                      date: date,
+                                      color: heatmapData[date],
+                                      text: date.day.toString(),
+                                    )
+                                  : const SizedBox(),
+                            );
+                          }
+                          return null;
+                        },
+                      ),
+                      focusedDay: DateTime.now(),
+                      firstDay: DateTime.utc(2010, 10, 16),
+                      lastDay: DateTime.utc(2030, 3, 14),
                     ),
-                    calendarBuilders: CalendarBuilders(
-                      // Customize only the markers builder to display the heatmap
-                      markerBuilder: (context, date, events) {
-                        // logger.d(date);
-                        if (heatmapData.containsKey(date)) {
-                          return Positioned(
-                            top: 7,
-                            bottom: 7,
-                            child: date.day != DateTime.now().day
-                                ? CalendarHeatWidget(
-                                    date: date,
-                                    color: heatmapData[date],
-                                    text: date.day.toString(),
-                                  )
-                                : const SizedBox(),
-                          );
-                        }
-                        return null;
-                      },
-                    ),
-                    focusedDay: DateTime.now(),
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
                   ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                if (moodType != null && riscLevel != null && selectedDay != null)
-                  TodayOverview(
-                    selectedDay: selectedDay,
-                    moodType: moodType,
-                    riscLevel: riscLevel,
+                  const SizedBox(
+                    height: 16,
                   ),
-              ],
-            ),
-          );
-        },
+                  if (moodType != null && riscLevel != null && selectedDay != null)
+                    state is LoadedRiscState
+                        ? TodayOverview(
+                            selectedDay: selectedDay,
+                            moodType: moodType,
+                            riscLevel: riscLevel,
+                          )
+                        : ShowComment(
+                            selectedComment: selectedDayComment,
+                            selectedMoodType: moodType,
+                            selectedDay: selectedDay,
+                          ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

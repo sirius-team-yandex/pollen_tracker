@@ -47,5 +47,6 @@
     "select_city": "Select city",
     "select_species" : "Select species",
     "calendar_mood_turner": "Show mood",
-    "calendar_risk_turner": "Show risk"
+    "calendar_risk_turner": "Show risk",
+    "no_comment": "No comment"
 }

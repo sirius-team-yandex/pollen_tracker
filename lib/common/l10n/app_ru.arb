@@ -47,5 +47,6 @@
     "select_city": "Выберите город",
     "select_species" : "Выберите аллергены",
     "calendar_mood_turner": "Показывать настроения",
-    "calendar_risk_turner": "Показывать прогноз"
+    "calendar_risk_turner": "Показывать прогноз",
+    "no_comment": "Запись отсутствует"
 }

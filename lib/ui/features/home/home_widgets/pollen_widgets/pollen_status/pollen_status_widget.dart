@@ -11,29 +11,32 @@ class PollenStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        children: [
-          Text(
-            context.S.atmospheric_pollution,
-            style: context.T.displayLarge,
-          ),
-          const SizedBox(
-            height: 28,
-          ),
-          Row(
+    return Column(
+      children: [
+        Text(
+          context.S.atmospheric_pollution,
+          style: context.T.displayLarge,
+        ),
+        const SizedBox(
+          height: 18,
+        ),
+        SizedBox(
+          height: 150,
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               PollenAirStatus(
                 pollenForecast: pollenForecast,
               ),
-              const CurrentSpeciesInfo(),
+              const SizedBox(
+                width: 16,
+              ),
+              const Expanded(child: CurrentSpeciesInfo()),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

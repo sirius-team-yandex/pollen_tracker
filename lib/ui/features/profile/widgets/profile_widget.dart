@@ -9,7 +9,7 @@ import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/icon_
 import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/name_textfield.dart';
 import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/profile_icon.dart';
 import 'package:pollen_tracker/ui/features/profile/widgets/profile_widgets/region_switching.dart';
-import 'package:pollen_tracker/ui/features/profile/widgets/species/species_controller.dart';
+import 'package:pollen_tracker/ui/widgets/species/species_controller.dart';
 import 'package:pollen_tracker/ui/features/profile/widgets/theme_switching_button.dart';
 import 'package:pollen_tracker/ui/widgets/custom_card.dart';
 

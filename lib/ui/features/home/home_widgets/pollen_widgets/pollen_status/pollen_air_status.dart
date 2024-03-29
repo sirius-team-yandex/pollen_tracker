@@ -40,7 +40,6 @@ class PollenAirStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      height: 148,
       width: 200,
       backgroundColor: context.myColors.primaryGreen,
       padding: const EdgeInsets.all(16.0),

@@ -40,65 +40,72 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        backgroundColor: context.myColors.background,
         title: PagesAppBar(
           title: context.S.profile,
           icon: Icons.person_outline,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            //const ProfileWidget(),
-            const v2.ProfileWidget(),
-            const SizedBox(
-              height: 16,
-            ),
-            // if (kDebugMode)
-            //   TextButton(
-            //     onPressed: () {
-            //       final config = ConfigInherited.of(context).configEntity;
-            //       if (config != null) {
-            //         getIt<ConfigRepository>().set(
-            //           config.copyWith(isFirstLaunch: true, currProfileId: null),
-            //         );
-            //       }
-            //     },
-            //     child: Text('${ConfigInherited.of(context).configEntity}', style: context.T.headlineMedium),
-            //   ),
-            // if (kDebugMode)
-            //   BlocBuilder<ProfileBloc, ProfileState>(
-            //     builder: (context, state) {
-            //       return state.maybeWhen(
-            //         logedIn: (value) => Text('$value', style: context.T.headlineMedium),
-            //         orElse: () {
-            //           return const Text(''); // TODO: (error)
-            //         },
-            //       );
-            //     },
-            //   ),
-            CustomButton(
-              onPressed: () {
-                context.go(RouteName.selectProfile);
-                final config = ConfigInherited.of(context).configEntity;
-                if (config == null) {
-                  return;
-                }
-                getIt<ConfigRepository>().set(
-                  config.copyWith(
-                    currProfileId: null,
-                  ),
-                );
-              },
-              width: double.infinity,
-              color: context.myColors.darkGreen,
-              child: IconSurround(
-                icon: Icons.cached_rounded,
-                child: Text(context.S.change_profile, style: context.T.headlineMedium),
+      body: SingleChildScrollView(
+        
+        primary: true,
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              //const ProfileWidget(),
+              const v2.ProfileWidget(),
+              const SizedBox(
+                height: 16,
               ),
-            ),
-          ],
+              // if (kDebugMode)
+              //   TextButton(
+              //     onPressed: () {
+              //       final config = ConfigInherited.of(context).configEntity;
+              //       if (config != null) {
+              //         getIt<ConfigRepository>().set(
+              //           config.copyWith(isFirstLaunch: true, currProfileId: null),
+              //         );
+              //       }
+              //     },
+              //     child: Text('${ConfigInherited.of(context).configEntity}', style: context.T.headlineMedium),
+              //   ),
+              // if (kDebugMode)
+              //   BlocBuilder<ProfileBloc, ProfileState>(
+              //     builder: (context, state) {
+              //       return state.maybeWhen(
+              //         logedIn: (value) => Text('$value', style: context.T.headlineMedium),
+              //         orElse: () {
+              //           return const Text(''); // TODO: (error)
+              //         },
+              //       );
+              //     },
+              //   ),
+              CustomButton(
+                onPressed: () {
+                  context.go(RouteName.selectProfile);
+                  final config = ConfigInherited.of(context).configEntity;
+                  if (config == null) {
+                    return;
+                  }
+                  getIt<ConfigRepository>().set(
+                    config.copyWith(
+                      currProfileId: null,
+                    ),
+                  );
+                },
+                width: double.infinity,
+                color: context.myColors.darkGreen,
+                child: IconSurround(
+                  icon: Icons.cached_rounded,
+                  child: Text(context.S.change_profile, style: context.T.headlineMedium),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

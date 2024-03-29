@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (context, state) {
             return state.maybeWhen(
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CurrentMoodWidget(),

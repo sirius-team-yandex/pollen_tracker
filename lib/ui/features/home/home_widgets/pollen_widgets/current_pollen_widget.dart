@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pollen_tracker/bloc/profile_bloc/profile_bloc.dart';
+import 'package:pollen_tracker/ui/widgets/frame_mask.dart';
 import 'package:pollen_tracker/ui/features/home/home_widgets/pollen_widgets/pollen_status/pollen_air_status.dart';
 import 'package:pollen_tracker/ui/features/home/home_widgets/pollen_widgets/pollen_forecast/forecast_view.dart';
 import 'package:pollen_tracker/ui/features/home/home_widgets/pollen_widgets/pollen_status/pollen_status_widget.dart';
@@ -22,7 +23,7 @@ class CurrentPollenWidget extends StatelessWidget {
         const SizedBox(
           height: 32,
         ),
-        ForecastView(vos: pollenForecasts),
+        FrameMask(child: ForecastView(vos: pollenForecasts)),
       ],
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:pollen_tracker/app/firebase/init.dart';
 import 'package:pollen_tracker/common/enums/locale_enum.dart';
@@ -27,21 +28,28 @@ import 'package:pollen_tracker/domain/models/profile_entity.dart';
 import 'package:pollen_tracker/domain/repositories/city_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_repository.dart';
 import 'package:pollen_tracker/domain/repositories/config_subject.dart';
-import 'package:pollen_tracker/domain/repositories/pollen_repository.dart';
 import 'package:pollen_tracker/domain/repositories/profile_repository.dart';
 import 'package:pollen_tracker/injectable_init.dart';
 import 'package:pollen_tracker/ui/features/splash_screen.dart';
 import 'package:pollen_tracker/ui/theme/app_theme.dart';
 import 'package:pollen_tracker/ui/theme/theme.dart';
 
+const bool _enableNetwork = bool.hasEnvironment('PROD_NETWORK') ? bool.fromEnvironment('PROD_NETWORK') : false;
+
 void main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await configureDependencies();
+      final String dev;
+      if (_enableNetwork) {
+        dev = Environment.prod;
+      } else {
+        dev = Environment.dev;
+      }
+
+      await configureDependencies(env: dev);
       await initFirebase();
       await _prepopulate();
-      getIt<PollenRepository>().updateForecastData();
 
       logger.i('Starting app in main.dart');
       runApp(
